@@ -1,16 +1,17 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import app from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
 
 const config = {
   apiKey: "AIzaSyDLHt4MewPBEAcbAPMK-qTeSK8fEwvAglM",
   authDomain: "teamproject2-9c8e7.firebaseapp.com",
-  databaseURL: "https://teamproject2-9c8e7-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL:
+    "https://teamproject2-9c8e7-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "teamproject2-9c8e7",
   storageBucket: "teamproject2-9c8e7.appspot.com",
   messagingSenderId: "512912249622",
   appId: "1:512912249622:web:79fe0f9f74acc37975f637",
-  measurementId: "G-E4FS31R02K"
+  measurementId: "G-E4FS31R02K",
 };
 
 class Firebase {
@@ -31,16 +32,41 @@ class Firebase {
 
   doSignOut = () => this.auth.signOut();
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);
 
-  doPasswordUpdate = password =>
+  doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
+
+  // *** Merge Auth and DB User API *** //
+  onAuthUserListener = (next, fallback) =>
+    this.auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        this.user(authUser.uid)
+          .once("value")
+          .then((snapshot) => {
+            const dbUser = snapshot.val();
+            // default empty roles
+            if (!dbUser.roles) {
+              dbUser.roles = {};
+            }
+            // merge auth and db user
+            authUser = {
+              uid: authUser.uid,
+              email: authUser.email,
+              ...dbUser,
+            };
+            next(authUser);
+          });
+      } else {
+        fallback();
+      }
+    });
 
   // *** User API ***
 
-  user = uid => this.db.ref(`users/${uid}`);
+  user = (uid) => this.db.ref(`users/${uid}`);
 
-  users = () => this.db.ref('users');
+  users = () => this.db.ref("users");
 }
 
 export default Firebase;

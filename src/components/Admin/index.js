@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { withFirebase } from '../Firebase';
+import { withFirebase } from "../Firebase";
+import { withAuthorization } from "../Session";
+import * as ROLES from "../../constants/roles";
 
 class AdminPage extends Component {
   constructor(props) {
@@ -15,10 +17,10 @@ class AdminPage extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.users().on('value', snapshot => {
+    this.props.firebase.users().on("value", (snapshot) => {
       const usersObject = snapshot.val();
 
-      const usersList = Object.keys(usersObject).map(key => ({
+      const usersList = Object.keys(usersObject).map((key) => ({
         ...usersObject[key],
         uid: key,
       }));
@@ -40,6 +42,7 @@ class AdminPage extends Component {
     return (
       <div>
         <h1>Admin</h1>
+        <p>The Admin Page is accessible by every signed in admin user.</p>
 
         {loading && <div>Loading ...</div>}
 
@@ -51,7 +54,7 @@ class AdminPage extends Component {
 
 const UserList = ({ users }) => (
   <ul>
-    {users.map(user => (
+    {users.map((user) => (
       <li key={user.uid}>
         <span>
           <strong>ID:</strong> {user.uid}
@@ -67,4 +70,9 @@ const UserList = ({ users }) => (
   </ul>
 );
 
-export default withFirebase(AdminPage);
+const condition = (authUser) =>
+  authUser && authUser.roles.includes(ROLES.ADMIN);
+
+export default withAuthorization(condition(withFirebase(AdminPage)));
+
+/* const SignInForm = withRouter(withFirebase(SignInFormBase)); */
