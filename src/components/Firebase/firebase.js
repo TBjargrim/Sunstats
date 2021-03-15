@@ -1,15 +1,9 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/database';
+import app from "firebase/app";
+import "firebase/auth";
+import "firebase/database";
 
 const config = {
-  apiKey: "AIzaSyA8DAcWE9m5MEUnsY5FRtQwk5aVSA3qy7c",
-  authDomain: "firebae-app-5e267.firebaseapp.com",
-  databaseURL: "https://firebae-app-5e267-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "firebae-app-5e267",
-  storageBucket: "firebae-app-5e267.appspot.com",
-  messagingSenderId: "203487911198",
-  appId: "1:203487911198:web:0d85acf387bf4b502dfd0f"
+
 };
 
 class Firebase {
@@ -33,9 +27,9 @@ class Firebase {
 
   doSignOut = () => this.auth.signOut();
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);
 
-  doPasswordUpdate = password =>
+  doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
 
   // *** Merge Auth and DB User API *** //
@@ -59,7 +53,6 @@ class Firebase {
               email: authUser.email,
               ...dbUser,
             };
-
             next(authUser);
           });
       } else {
@@ -69,7 +62,7 @@ class Firebase {
 
   // *** User API ***
 
-  user = uid => this.db.ref(`users/${uid}`);
+  user = (uid) => this.db.ref(`users/${uid}`);
 
   users = () => this.db.ref('users');
   // *** Message API ***

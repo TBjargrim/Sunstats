@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
@@ -37,7 +37,7 @@ class SignUpFormBase extends Component {
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(authUser => {
+      .then((authUser) => {
         // Create a user in your Firebase realtime database
         return this.props.firebase
           .user(authUser.user.uid)
@@ -51,18 +51,18 @@ class SignUpFormBase extends Component {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push(ROUTES.HOME);
           })
-          .catch(error => {
+          .catch((error) => {
             this.setState({ error });
           });
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({ error });
       });
 
     event.preventDefault();
   };
 
-  onChange = event => {
+  onChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -82,9 +82,9 @@ class SignUpFormBase extends Component {
 
     const isInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '';
+      passwordOne === "" ||
+      email === "" ||
+      username === "";
 
     return (
       <form onSubmit={this.onSubmit}>

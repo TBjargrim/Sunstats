@@ -38,7 +38,6 @@ const withAuthentication = Component => {
       );
     }
   }
-
   return withFirebase(WithAuthentication);
 };
 
