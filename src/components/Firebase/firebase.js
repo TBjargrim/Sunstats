@@ -3,7 +3,13 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
-
+  apiKey: "AIzaSyA8DAcWE9m5MEUnsY5FRtQwk5aVSA3qy7c",
+  authDomain: "firebae-app-5e267.firebaseapp.com",
+  databaseURL: "https://firebae-app-5e267-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "firebae-app-5e267",
+  storageBucket: "firebae-app-5e267.appspot.com",
+  messagingSenderId: "203487911198",
+  appId: "1:203487911198:web:0d85acf387bf4b502dfd0f"
 };
 
 class Firebase {

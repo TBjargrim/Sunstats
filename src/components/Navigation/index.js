@@ -9,6 +9,8 @@ import { AuthUserContext } from '../Session';
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
+import Logo from '../../Images/logo.png'
+import styled from 'styled-components';
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
@@ -22,13 +24,14 @@ const Navigation = () => (
   </AuthUserContext.Consumer>
 );
 
-const NavigationAuth = ({ authUser, isOpen, toggle }) => (
-  <div>
+const NavigationAuth = ({ authUser, isOpen, toggle }) => {
+  return (
+    <div>
 
-    <Sidebar authUser={authUser} isOpen={isOpen} toggle={toggle} />
-    <Navbar authUser={authUser} toggle={toggle} />
+      <Sidebar authUser={authUser} isOpen={isOpen} toggle={toggle} />
+      <Navbar authUser={authUser} toggle={toggle} />
 
-    {/* <li>
+      {/* <li>
       <Link to={ROUTES.HOME}>Home</Link>
     </li>
     <li>
@@ -48,36 +51,38 @@ const NavigationAuth = ({ authUser, isOpen, toggle }) => (
 
     <li>
       <SignOutButton />
-    </li>*/}
-  </div>
-);
+     </li>*/}
+    </div>)
+};
 
+const StyledNav = styled.ul`
+display: flex;
+justify-content:space-between;
+margin-right:25px;
+li {
+ list-style: none;
+ margin-top: 10px;
+}
+a {
+  text-decoration: none;
+  color: #6B6B6B;
+  font-size:14px;
+}
+`
+const StyledLogo = styled.img`
+max-width:130px;
+margin-left: -30px;
+`
 const NavigationNonAuth = () => (
-  <ul>
+  <StyledNav>
+    <StyledLogo src={Logo}></StyledLogo>
     <li>
       <Link to={ROUTES.LANDING}>Landing</Link>
     </li>
     <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
-  </ul>
+  </StyledNav>
 );
 
 export default Navigation;
-
-// {/* < Router >
-//   <GlobalStyle />
-
-//   {/* <Start /> */}
-
-
-//   <Switch>
-//     <Route path='/facial'> <Facials /></Route>
-//     <Route path='/bookings' component={Booking}> </Route>
-//     <Route path='/treatments' component={Treatments}></Route>
-//     <Route path='/contact' component={Contact}> </Route>
-//     <Route path='/products' component={Products}> </Route>
-
-//     <Route exact path='/'><Start /> </Route>
-//   </Switch>
-// </Router > */}

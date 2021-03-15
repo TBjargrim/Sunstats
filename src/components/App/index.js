@@ -10,8 +10,13 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
+import { createGlobalStyle } from 'styled-components';
 
-
+const GlobalStyle = createGlobalStyle`
+* {
+  font-family: 'Raleway', sans-serif;
+}
+`
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +27,7 @@ const App = () => {
   return (
     <Router>
       <div>
+        <GlobalStyle />
         <Navigation isOpen={isOpen} toggle={toggle} />
 
         <Switch>
