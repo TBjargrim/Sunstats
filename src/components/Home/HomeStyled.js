@@ -2,7 +2,7 @@ import styled from "styled-components";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
-import { useState } from "react"; 
+import { useState } from "react";
 /* 
 https://hypeserver.github.io/react-date-range/#daterange
 */
@@ -49,35 +49,35 @@ const DateRangeDiv = styled.div`
 `;
 
 function HomeStyled() {
-     const [state, setState] = useState([
-      {
-        startDate: new Date(),
-        endDate: null,
-        key: "selection",
-        color: "#ff85a2",
-         
-       },
-     ]);
-  
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: "selection",
+      color: "#ff85a2",
+
+    },
+  ]);
+
   return (
     <FlexDiv>
       <div>
         <h2>Vilken medeltemperatur vill du ha?</h2>
-      <TravelSlc>
-        <option value="volvo">10 C</option>
-        <option value="saab">15 C</option>
-        <option value="opel">20 C</option>
-        <option value="audi">25 C</option>
-      </TravelSlc>
+        <TravelSlc>
+          <option value="volvo">10 C</option>
+          <option value="saab">15 C</option>
+          <option value="opel">20 C</option>
+          <option value="audi">25 C</option>
+        </TravelSlc>
       </div>
       <div>
-      <h2>När vill du åka?</h2>
-      <DateRangeDiv>
-        <DateRange
-          editableDateInputs={true}
-          moveRangeOnFirstSelection={false}
-          ranges={state}
-          onChange={(item) => setState([item.selection])}
+        <h2>När vill du åka?</h2>
+        <DateRangeDiv>
+          <DateRange
+            editableDateInputs={true}
+            moveRangeOnFirstSelection={false}
+            ranges={state}
+            onChange={(item) => setState([item.selection])}
           /* scroll={
             {
               enabled: true,
@@ -87,12 +87,12 @@ function HomeStyled() {
               monthWidth: 200,
             }
           } */
-        />
-      </DateRangeDiv> 
+          />
+        </DateRangeDiv>
       </div>
       <div>
         <TravelBtn type="submit">OK</TravelBtn>
-        </div>
+      </div>
     </FlexDiv>
   );
 }

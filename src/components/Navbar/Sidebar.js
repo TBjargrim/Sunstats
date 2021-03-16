@@ -3,15 +3,11 @@ import { Link } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import SignOutButton from '../SignOut';
-import { AuthUserContext } from '../Session';
+// import { AuthUserContext } from '../Session';
 
 import styled from 'styled-components';
-// import { FaTimes } from 'react-icons/fa';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route
-} from "react-router-dom";
+import { FaTimes } from 'react-icons/fa';
+
 
 const SideBarContainer = styled.aside`
 position:fixed;
@@ -26,11 +22,10 @@ left:0;
 transition:0.3s ease-in-out;
 opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
 top:${({ isOpen }) => (isOpen ? '0' : '-100%')};
-
 `
-// const CloseIcon = styled(FaTimes)`
-// color:#fff;
-// `
+const CloseIcon = styled(FaTimes)`
+color:#fff;
+`
 const Icon = styled.div`
 position:absolute;
 top:1.2rem;
@@ -104,7 +99,7 @@ const Sidebar = ({ authUser, isOpen, toggle }) => {
     return (
         <SideBarContainer isOpen={isOpen} onClick={toggle}>
             <Icon onClick={toggle}>
-                {/* <CloseIcon /> */}
+                <CloseIcon />
             </Icon>
             <SidebarWrapper>
                 <SidebarMenu>

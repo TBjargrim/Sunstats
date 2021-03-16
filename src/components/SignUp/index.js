@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
+import styled from 'styled-components';
 
 const SignUpPage = () => (
   <div>
@@ -135,10 +136,27 @@ class SignUpFormBase extends Component {
   }
 }
 
+const StyledP = styled.p`
+position: absolute;
+bottom: 0;
+text-align: center;
+width: 100%;
+border-top: 1px solid lightgray;
+padding-top: 15px;
+`
+const StyledLink=styled(Link)`
+margin-left:5px;
+text-decoration:none;
+font-weight:700;
+letter-spacing:1px;
+color: #F68F24;
+text-transform:uppercase;
+`
+
 const SignUpLink = () => (
-  <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-  </p>
+  <StyledP>
+    Don't have an account? <StyledLink to={ROUTES.SIGN_UP}>Sign Up</StyledLink>
+  </StyledP>
 );
 
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));

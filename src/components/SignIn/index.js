@@ -5,14 +5,57 @@ import { SignUpLink } from '../SignUp';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import { PasswordForgetLink } from '../PasswordForget';
+import styled from 'styled-components'
+
+const StyledH1 = styled.h1`
+display:flex;
+justify-content:center;
+letter-spacing:1px;
+`
+
+const StyledForm = styled.form`
+display:flex;
+flex-direction:column;
+align-items: center;
+/* max-width:500px; */
+margin:10px;
+
+input{
+  padding:5px 8px;
+  margin-top:6px;
+  width:300px;
+}
+button{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+border: none;
+padding: 10px;
+color: white;
+border-radius: 25px;
+width:200px;
+letter-spacing:1px;
+cursor:pointer;
+&:hover {
+  background-color: #F8AF59;
+  border:1px solid #EC8F21;
+}
+}
+`
+const StyledDiv = styled.div`
+text-align:center;
+`
+
+
 
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
+  <StyledDiv>
+    <StyledH1>Sign In</StyledH1>
     <SignInForm />
     <PasswordForgetLink />
     <SignUpLink />
-  </div>
+  </StyledDiv>
 );
 
 const INITIAL_STATE = {
@@ -49,7 +92,7 @@ class SignInFormBase extends Component {
     const { email, password, error } = this.state;
     const isInvalid = password === '' || email === '';
     return (
-      <form onSubmit={this.onSubmit}>
+      <StyledForm onSubmit={this.onSubmit}>
         <input
           name="email"
           value={email}
@@ -66,7 +109,7 @@ class SignInFormBase extends Component {
         />
         <button disabled={isInvalid} type="submit">Sign In</button>
         {error && <p>{error.message}</p>}
-      </form>
+      </StyledForm>
     );
   }
 }

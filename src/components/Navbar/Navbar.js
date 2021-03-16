@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 // import { FaBars } from 'react-icons/fa';
-
+import Logo from '../../Images/logo.png'
 
 const StyledNav = styled.nav`
  /* background-color:${({ scrollNav }) => (scrollNav ? '#918E8D' : 'transparent')}; */
@@ -97,7 +97,17 @@ margin-left:20px;
 // const BurgerMenyIcon = styled(FaBars)`
 // color:#000;`
 
-const Navbar = ({ authUser, isOpen, toggle }) => {
+const LogoImg = styled.img`
+max-width:270px;
+/* border:1px solid red; */
+margin-top: -20px;
+@media screen and (max-width:768px) {
+    max-width:150px;
+    margin-top:15px;
+}
+`
+
+const Navbar = ({ authUser, toggle }) => {
   //   const [scrollNav, setScrollNav] = useState(false);
   //   const [isOpen, setIsOpen] = useState(false);
 
@@ -117,7 +127,7 @@ const Navbar = ({ authUser, isOpen, toggle }) => {
     // scrollNav={scrollNav}
     <StyledNav >
       <NavbarContainer>
-        <NavLogo to='/home'>logo</NavLogo>
+        <NavLogo to='/home'><LogoImg src={Logo} /></NavLogo>
         <MobileIcon onClick={toggle}>
           {/* <BurgerMenyIcon /> */}
         </MobileIcon>
