@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
 const HomePage = () => (
   <StyledDiv>
     <HomeStyled />
-    <Messages />
+    {/* <Messages /> */}
   </StyledDiv>
 );
 
