@@ -15,6 +15,7 @@ import Logo from '../../Images/logo.png'
 const StyledNav = styled.nav`
  /* background-color:${({ scrollNav }) => (scrollNav ? '#918E8D' : 'transparent')}; */
  background-color:transparent;
+ position:relative;
 /* height:80px;
 margin-top:-80px;
 display:flex;
