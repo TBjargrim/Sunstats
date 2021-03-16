@@ -148,7 +148,6 @@ const Navbar = ({ authUser, toggle }) => {
             <SignOutButton />
           </NavItem>
         </NavMenu>
-
       </NavbarContainer>
     </StyledNav>
   )

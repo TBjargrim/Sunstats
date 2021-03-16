@@ -3,6 +3,12 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route
+} from "react-router-dom";
+import * as ROUTES from '../../constants/routes';
 /* 
 https://hypeserver.github.io/react-date-range/#daterange
 */
@@ -11,11 +17,13 @@ const FlexDiv = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 20px 20px 20px 12px;
- 
   h2 {
     font-size: 16px;
     font-weight: 500;
    margin-bottom: 15px;
+  }
+  a {
+    text-decoration: none;
   }
 `;
 const TravelSlc = styled.select`
@@ -55,7 +63,6 @@ function HomeStyled() {
       endDate: null,
       key: "selection",
       color: "#ff85a2",
-
     },
   ]);
 
@@ -91,10 +98,11 @@ function HomeStyled() {
         </DateRangeDiv>
       </div>
       <div>
+        <Link to={ROUTES.SEARCHED}>
         <TravelBtn type="submit">OK</TravelBtn>
+        </Link>
       </div>
     </FlexDiv>
   );
 }
-
 export default HomeStyled;
