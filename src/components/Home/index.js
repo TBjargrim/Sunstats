@@ -3,7 +3,7 @@ import { compose } from 'recompose';
 import { withAuthorization, AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
 import styled from 'styled-components';
-// import HomeStyled from "./HomeStyled"
+import HomeStyled from "./HomeStyled"
 
 const StyledDiv = styled.div`
 
@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
 
 const HomePage = () => (
   <StyledDiv>
-    {/* <HomeStyled /> */}
+    <HomeStyled />
     {/* <Messages /> */}
   </StyledDiv>
 );
