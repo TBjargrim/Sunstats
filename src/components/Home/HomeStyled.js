@@ -3,6 +3,10 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { useState } from "react";
+import { Route } from "react-router";
+import { Link } from "react-router-dom";
+import * as ROUTES from '../../constants/routes';
+
 /* 
 https://hypeserver.github.io/react-date-range/#daterange
 */
@@ -48,6 +52,9 @@ const DateRangeDiv = styled.div`
 
 `;
 
+
+
+
 function HomeStyled() {
   const [state, setState] = useState([
     {
@@ -88,6 +95,14 @@ function HomeStyled() {
             }
           } */
           />
+          <Link to={
+            ROUTES.BRAND
+          }> 
+        
+          <button>
+              brand          
+              </button>
+              </Link>
         </DateRangeDiv>
       </div>
       <div>
