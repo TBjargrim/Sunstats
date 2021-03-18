@@ -109,23 +109,7 @@ margin-top: -20px;
 `
 
 const Navbar = ({ authUser, toggle }) => {
-  //   const [scrollNav, setScrollNav] = useState(false);
-  //   const [isOpen, setIsOpen] = useState(false);
-
-  //   const toggle = () => {
-  //     setIsOpen(!isOpen)
-  //   }
-  //   const changeNav = () => {
-  //     if (window.scrollY >= 80) {
-  //       setScrollNav(true)
-  //     } else {
-  //       setScrollNav(false)
-  //     }
-  //   };
-  //   useEffect(() => {
-  //   }, [])
   return (
-    // scrollNav={scrollNav}
     <StyledNav >
       <NavbarContainer>
         <NavLogo to='/home'><LogoImg src={Logo} /></NavLogo>
