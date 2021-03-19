@@ -77,11 +77,11 @@ const NavigationNonAuth = () => (
   <StyledNav>
     <StyledLogo src={Logo}></StyledLogo>
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+      <Link to={ROUTES.LANDING}>Back</Link>
     </li>
-    <li>
+    {/* <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
+    </li> */}
   </StyledNav>
 );
 

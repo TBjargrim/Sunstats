@@ -15,6 +15,7 @@ import Logo from '../../Images/logo.png'
 const StyledNav = styled.nav`
  /* background-color:${({ scrollNav }) => (scrollNav ? '#918E8D' : 'transparent')}; */
  background-color:transparent;
+ position:relative;
 /* height:80px;
 margin-top:-80px;
 display:flex;
@@ -108,23 +109,7 @@ margin-top: -20px;
 `
 
 const Navbar = ({ authUser, toggle }) => {
-  //   const [scrollNav, setScrollNav] = useState(false);
-  //   const [isOpen, setIsOpen] = useState(false);
-
-  //   const toggle = () => {
-  //     setIsOpen(!isOpen)
-  //   }
-  //   const changeNav = () => {
-  //     if (window.scrollY >= 80) {
-  //       setScrollNav(true)
-  //     } else {
-  //       setScrollNav(false)
-  //     }
-  //   };
-  //   useEffect(() => {
-  //   }, [])
   return (
-    // scrollNav={scrollNav}
     <StyledNav >
       <NavbarContainer>
         <NavLogo to='/home'><LogoImg src={Logo} /></NavLogo>
