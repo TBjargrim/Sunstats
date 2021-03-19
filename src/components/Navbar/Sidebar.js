@@ -12,19 +12,19 @@ import { FaTimes } from 'react-icons/fa';
 const SideBarContainer = styled.aside`
 position:fixed;
 z-index:999;
-width:100%;
+width:60%;
 height:100%;
-background:#000;
-display:grid;
-align-items:center;
+background-color:#e7e7e7;
 top:0;
-left:0;
+right:0;
 transition:0.3s ease-in-out;
+padding-top:60px;
+box-shadow: -2px 0px 3px rgba(69, 69, 69, 0.25);
 opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
 top:${({ isOpen }) => (isOpen ? '0' : '-100%')};
 `
 const CloseIcon = styled(FaTimes)`
-color:#fff;
+color:#9d9d9d;
 `
 const Icon = styled.div`
 position:absolute;
@@ -36,65 +36,47 @@ cursor:pointer;
 outline:none;
 `
 const SidebarWrapper = styled.div`
-color:#fff;
-`
-const SidebarLink = styled(Link)`
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.5rem;
-text-decoration:none;
-list-style:none;
-transition:0.2s ease-in-out;
-text-decoration:none;
-color:#fff;
-cursor:pointer;
 
-&:hover {
-    color:#01bf71;
-    transition:0.2s ease-in-out;
-    background:#fff;
-}
-`
-const NavButton = styled.li`
-display:flex;
-justify-content:center;
-`
-const NavBtnLink = styled(Link)`
-border-radius:50px;
-background:#01bf71;
-white-space:nowrap;
-padding:10px 22px;
-color: #010606;
-font-size:16px;
-outline:none;
-border:none;
-cursor:pointer;
-transition: all 0.2s ease-in-out;
-text-decoration:none;
-&:hover {
-    transition:all 0.2s ease-in-out;
-    background: #fff;
-    color:#01bf71;
-}
 `
 const SidebarMenu = styled.ul`
-display:grid;
-grid-template-columns:1fr;
-grid-template-rows:repeat(6,80px);
-text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top:60px;
+margin-right:25px;
+padding:0px;
 
-@media screen and(max-width:768px){
+/* @media screen and(max-width:768px){
 grid-template-rows:repeat(6,60px);
+} */
+`
+const StyledLI = styled.li`
+list-style:none;
+transition:0.2s ease-in-out;
+margin-top:30px;
+width:100%;
+text-align:center;
+padding:20px 0px;
+&:hover {
+    color:white;
+    transition:0.2s ease-in-out;
+    background:#fff;
+    /* margin:30px 0px; */
 }
 `
+const ButtonLI = styled.li`
+display:flex;
+justify-content:center;
+margin-top:40px;
+`
+const StyledLink = styled(Link)`
+font-size:1.5rem;
+text-decoration:none;
+color:black;
+cursor:pointer;
+`
 const Sidebar = ({ authUser, isOpen, toggle }) => {
-    // const [isOpen, setIsOpen] = useState(false);
 
-    // const toggle = () => {
-    //     setIsOpen(!isOpen)
-    //     console.log('func ran');
-    // }
 
     return (
         <SideBarContainer isOpen={isOpen} onClick={toggle}>
@@ -103,19 +85,19 @@ const Sidebar = ({ authUser, isOpen, toggle }) => {
             </Icon>
             <SidebarWrapper>
                 <SidebarMenu>
-                    <SidebarLink>
-                        <Link to='/home' onClick={toggle}>Home</Link>
-                    </SidebarLink>
-                    <SidebarLink>
-                        <Link to='/account' onClick={toggle}>Account</Link>
-                    </SidebarLink>
-                    <SidebarLink>
+                    <StyledLI>
+                        <StyledLink to='/home' onClick={toggle}>Home</StyledLink>
+                    </StyledLI>
+                    <StyledLI>
+                        <StyledLink to='/account' onClick={toggle}>Account</StyledLink>
+                    </StyledLI>
+                    <StyledLI>
                         {!!authUser.roles[ROLES.ADMIN] && (
-                            <Link to={ROUTES.ADMIN}>Admin</Link>)}
-                    </SidebarLink>
-                    <NavButton>
+                            <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
+                    </StyledLI>
+                    <ButtonLI>
                         <div onClick={toggle}> <SignOutButton /> </div>
-                    </NavButton>
+                    </ButtonLI>
                 </SidebarMenu>
             </SidebarWrapper>
         </SideBarContainer>

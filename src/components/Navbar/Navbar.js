@@ -9,7 +9,7 @@ import {
   Route
 } from "react-router-dom";
 import styled from 'styled-components';
-// import { FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import Logo from '../../Images/logo.png'
 
 const StyledNav = styled.nav`
@@ -95,8 +95,9 @@ margin-left:20px;
 // }
 // `
 
-// const BurgerMenyIcon = styled(FaBars)`
-// color:#000;`
+const BurgerMenyIcon = styled(FaBars)`
+color:#9d9d9d;
+`
 
 const LogoImg = styled.img`
 max-width:270px;
@@ -114,7 +115,7 @@ const Navbar = ({ authUser, toggle }) => {
       <NavbarContainer>
         <NavLogo to='/home'><LogoImg src={Logo} /></NavLogo>
         <MobileIcon onClick={toggle}>
-          {/* <BurgerMenyIcon /> */}
+          <BurgerMenyIcon />
         </MobileIcon>
         <NavMenu>
           <NavItem>
