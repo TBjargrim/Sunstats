@@ -5,8 +5,6 @@ import VanImg from '../../Images/TravelWithVan2.jpg';
 import { StyledDiv, StyledImg, StyledH2, StyledP, StyledLink, StyledText } from './SelectionStyling';
 
 
-
-
 function SelectionPageOne() {
 
     return (

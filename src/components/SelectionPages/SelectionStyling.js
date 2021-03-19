@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 export const StyledDiv = styled.div`
 
-
 `
 
 export const StyledImg = styled.img`
@@ -16,7 +15,6 @@ margin-left: 150px;
     margin-left: 30px;
     margin-top: 30px;
 }
-
 `
 
 export const StyledText = styled.div`
@@ -48,6 +46,32 @@ line-height: 23px;
 }
 `
 export const StyledLink = styled(Link)`
-
-
+  width:330px;
+  height:45px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 20px 0px;
+  cursor: pointer;
+  border:none;
+  transition: ease background-color 250ms; 
+  font-size: 25px;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px 20px;
+  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+  &:focus{
+    outline:none;
+  }
+  &:hover {
+  background-color: #F8AF59;
+  opacity:0.9;
+  }
+  @media screen and (max-width:1000px) {
+    width:250px;
+    height:30px;
+    font-size: 15px;
+  }
 `
