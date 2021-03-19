@@ -4,5 +4,7 @@ export const SIGN_IN = '/signin';
 export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
+export const SELECTION_ONE = '/selection-one';
+export const SELECTION_TWO = '/selection-two';
 export const PASSWORD_FORGET = '/pw-forget';
 export const ADMIN_DETAILS = '/admin/:id';
