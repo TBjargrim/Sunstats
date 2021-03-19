@@ -15,6 +15,9 @@ cursor:pointer;
   background-color: #F8AF59;
   border:1px solid #EC8F21;
 }
+&:focus{
+  outline:none;
+}
 `
 const StyledBtnOne = styled.div`
 

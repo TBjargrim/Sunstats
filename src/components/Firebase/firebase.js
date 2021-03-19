@@ -3,13 +3,7 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
-  apiKey: "AIzaSyARp5r62I7zpa0cdpSNRMQiS-YiopTbUsY",
-  authDomain: "school-firebase-5be94.firebaseapp.com",
-  databaseURL: "https://school-firebase-5be94-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "school-firebase-5be94",
-  storageBucket: "school-firebase-5be94.appspot.com",
-  messagingSenderId: "179140556848",
-  appId: "1:179140556848:web:21e2c1533521ee18bdd5f5"
+
 };
 
 class Firebase {
