@@ -12,11 +12,11 @@ import * as ROLES from '../../constants/roles';
 import Logo from '../../Images/logo.png'
 import styled from 'styled-components';
 
-const Navigation = () => (
+const Navigation = ({ isOpen, toggle }) => (
   <AuthUserContext.Consumer>
     {authUser =>
       authUser ? (
-        <NavigationAuth authUser={authUser} />
+        <NavigationAuth authUser={authUser} isOpen={isOpen} toggle={toggle} />
       ) : (
         <NavigationNonAuth />
       )
