@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 export const StyledDiv = styled.div`
 
 `
@@ -18,14 +18,15 @@ margin-left: 150px;
 `
 
 export const StyledText = styled.div`
-margin:0px 200px;
+margin:0px 300px;
 /* border:1px solid blue; */
 @media screen and (max-width:960px) {
     margin:10px;
 }
 `
 export const StyledH2 = styled.h2`
-font-weight: 900;
+text-align:center;
+font-weight: 500;
 font-size: 50px;
 line-height: 59px;
 color: #353535;
@@ -46,18 +47,18 @@ line-height: 23px;
 }
 `
 export const StyledLink = styled(Link)`
-  width:330px;
-  height:45px;
+border:none;
+width: 50px;
+height: 50px;
+  border-radius:100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
   color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 20px 0px;
+  margin: 20px 10px;
   cursor: pointer;
-  border:none;
   transition: ease background-color 250ms; 
-  font-size: 25px;
+  font-size: 40px;
   text-align: center;
   text-decoration: none;
   padding: 15px 20px;
@@ -70,8 +71,84 @@ export const StyledLink = styled(Link)`
   opacity:0.9;
   }
   @media screen and (max-width:1000px) {
-    width:250px;
-    height:30px;
-    font-size: 15px;
+    font-size: 35px;
+    width: 35px;
+height: 35px;
+  }
+`
+
+export const StyledButtonWrapper = styled.div`
+position:relative;
+left:50%;
+transform:translateX(-50%);
+max-width:650px;
+  @media screen and (max-width:1000px) {
+    width:327px;
+  }
+
+`
+export const StyledButtons = styled.button`
+position:relative;
+min-width:300px;
+background: #F4F4F4;
+border: 1px solid #DBDBDB;
+box-sizing: border-box;
+border-radius: 25px;
+margin:10px;
+padding:15px 0px 15px 120px;
+text-transform:uppercase;
+letter-spacing:0.5px;
+text-align:left;
+cursor:pointer;
+&:focus{
+    outline:none;
+  }
+&:hover{
+    background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D;
+border: none;
+box-sizing: border-box;
+border-radius: 25px;
+}
+@media screen and (max-width:1000px) {
+    width:200px;
+    padding:10px 0px 10px 120px;
+  }
+`
+export const LinkWrapper = styled.div`
+display:flex;
+justify-content:center;
+`
+export const StyledLinkSkip = styled(Link)`
+ text-decoration: none;
+ display:flex;
+justify-content:center;
+color:#4D4D4D;
+cursor:pointer;
+margin-top:20px;
+margin-bottom:100px;
+&:hover{
+color:black;
+}
+@media screen and (max-width:1000px) {
+    margin-top:15px;
+    margin-bottom:20px;
+  }
+
+`
+// export const StyledLeftArrow = styled(FaArrowLeft)`
+// width:200px;
+// color:white;
+// z-index:99;
+
+// `
+export const StyledIcon = styled.img`
+position:absolute;
+top:20%;
+left:20%;
+width:30px;
+height:30px;
+border-radius:100%;
+@media screen and (max-width:1000px) {
+    top:8%;
   }
 `
