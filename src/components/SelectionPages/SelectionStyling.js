@@ -2,18 +2,48 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom'
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 export const StyledDiv = styled.div`
+margin:0 50px;
+`
+export const StyledImageDiv = styled.div`
+text-align:center;
+@media screen and (max-width:960px) {
 
+}
 `
 
 export const StyledImg = styled.img`
 width: 400px;
+height:auto;
 filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 border-radius: 100%;
-margin-left: 150px;
+
+&:hover{
+
+}
 @media screen and (max-width:960px) {
-    width: 200px;
+    width: 150px;
     margin-left: 30px;
     margin-top: 30px;
+}
+@media screen and (max-width:400px) {
+    width: 100px;
+}
+`
+export const StyledImgSmall = styled.img`
+width: 300px;
+height:auto;
+filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
+border-radius: 100%;
+
+&:hover{
+
+}
+ 
+@media screen and (max-width:960px) {
+    width: 100px;
+}
+@media screen and (max-width:400px) {
+    width: 50px;
 }
 `
 
@@ -30,9 +60,14 @@ font-weight: 500;
 font-size: 50px;
 line-height: 59px;
 color: #353535;
+
 @media screen and (max-width:960px) {
     font-size: 35px;
     margin-left: 15px;
+}
+@media screen and (max-width:400px) {
+  font-size: 25px;
+  line-height: 30px;
 }
 `
 
@@ -42,8 +77,11 @@ font-weight: 200;
 font-size: 20px;
 line-height: 23px;
 @media screen and (max-width:960px) {
-    font-size: 15px;
+    font-size: 20px;
     margin:10px;
+}
+@media screen and (max-width:400px) {
+  font-size: 13px;
 }
 `
 export const StyledLink = styled(Link)`
@@ -100,6 +138,20 @@ text-transform:uppercase;
 letter-spacing:0.5px;
 text-align:left;
 cursor:pointer;
+animation-name:zoom;
+animation-duration:3s;
+
+@keyframes zoom {
+  0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
 &:focus{
     outline:none;
   }
@@ -109,10 +161,12 @@ border: none;
 box-sizing: border-box;
 border-radius: 25px;
 }
+
 @media screen and (max-width:1000px) {
     width:200px;
     padding:10px 0px 10px 120px;
   }
+
 `
 export const LinkWrapper = styled.div`
 display:flex;
