@@ -1,100 +1,66 @@
+
 import styled from "styled-components";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRange } from "react-date-range";
 import { useState } from "react";
-/* 
-https://hypeserver.github.io/react-date-range/#daterange
-*/
+import React, { Component } from "react";
+import Calendar from "./Calendar"
+import Temp from "./Temp"
+
+
+
 const FlexDiv = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-content: center;
   padding: 20px 20px 20px 12px;
- 
+ div {
+   text-align: center;
+ }
   h2 {
-    font-size: 16px;
-    font-weight: 500;
-   margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 400;
+   margin-bottom: 25px;
+  }
+  p {
+    font-size: 15px;
   }
 `;
-const TravelSlc = styled.select`
-  font-size: 18px;
-  border-radius: 30px;
-  margin: 0 0 30px 0;
-  padding: 5px 60px 5px 60px;
-  font-size: 13px;
-  background: white;
-  border: none;
-  outline: none;
-  box-shadow: 1px 2px 10px gray;
-   background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-    no-repeat right #fff;
-  -webkit-appearance: none;
-  background-position-x: 120px; 
-`;
+
 const TravelBtn = styled.button`
   display: block;
-  background-color: orange;
+  background: linear-gradient(
+    180deg
+    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 5px 40px 5px 40px;
-  font-size: 17px;
-  margin: 15px 0 10px 210px;
-  box-shadow: 1px 2px 10px gray;
+  font-size: 20px;
+  margin: 15px 0 10px;
+/*   box-shadow: 1px 2px 10px gray; */
 `;
-const DateRangeDiv = styled.div`
+const BtnDiv = styled.div`
+display: flex;
+justify-content: center;
+`;
 
-`;
 
 function HomeStyled() {
-  const [state, setState] = useState([
-    {
-      startDate: new Date(),
-      endDate: null,
-      key: "selection",
-      color: "#ff85a2",
-
-    },
-  ]);
-
   return (
     <FlexDiv>
       <div>
         <h2>Vilken medeltemperatur vill du ha?</h2>
-        <TravelSlc>
-          <option value="volvo">10 C</option>
-          <option value="saab">15 C</option>
-          <option value="opel">20 C</option>
-          <option value="audi">25 C</option>
-        </TravelSlc>
+       <Temp />
       </div>
       <div>
         <h2>När vill du åka?</h2>
-        <DateRangeDiv>
-          <DateRange
-            editableDateInputs={true}
-            moveRangeOnFirstSelection={false}
-            ranges={state}
-            onChange={(item) => setState([item.selection])}
-          /* scroll={
-            {
-              enabled: true,
-              calendarHeight: 200,
-              calendarWidth: 200,
-              monthHeight: 200,
-              monthWidth: 200,
-            }
-          } */
-          />
-        </DateRangeDiv>
+          <Calendar />
+          <p><i>Startdatum för två veckors intervall</i></p>
       </div>
-      <div>
+      <BtnDiv>
         <TravelBtn type="submit">OK</TravelBtn>
-      </div>
+      </BtnDiv>
     </FlexDiv>
   );
-}
+} 
 
 export default HomeStyled;
