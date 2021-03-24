@@ -1,29 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import * as ROUTES from '../../constants/routes';
+import React from 'react';
 import * as ROLES from '../../constants/roles';
 import SignOutButton from '../SignOut';
-import { AuthUserContext } from '../Session';
 import {
   BrowserRouter as Router,
-  Link,
-  Route
+  Link
 } from "react-router-dom";
 import styled from 'styled-components';
-// import { FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import Logo from '../../Images/logo.png'
 
 const StyledNav = styled.nav`
- /* background-color:${({ scrollNav }) => (scrollNav ? '#918E8D' : 'transparent')}; */
  background-color:transparent;
-/* height:80px;
-margin-top:-80px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:1rem;
-position:sticky;
-top:0;
-z-index:10; */
+ position:relative;
+
 
 @media screen and (max-width:960px) {
     transition:0.8s all ease;
@@ -68,38 +57,24 @@ margin:50px;
 const NavItem = styled.li`
 height:50px;
 list-style: none;
-/* border: 2px solid green; */
 a {
 display:flex;
 margin-top:5px;
 
 margin-left:20px;
-  /* border: 2px solid black; */
   text-decoration:none;
   color: #6B6B6B;
   margin-right:30px;
 }
 `
-// const NavLinks = styled(Link)`
-// color:black;
-// display:flex;
-// align-items:center;
-// text-decoration:none;
-// padding:0 1rem;
-// height:100%;
-// cursor:pointer;
 
-// &.active {
-//     border-bottom:3px solid #01bf71;
-// }
-// `
 
-// const BurgerMenyIcon = styled(FaBars)`
-// color:#000;`
+const BurgerMenyIcon = styled(FaBars)`
+color:#9d9d9d;
+`
 
 const LogoImg = styled.img`
 max-width:270px;
-/* border:1px solid red; */
 margin-top: -20px;
 @media screen and (max-width:768px) {
     max-width:150px;
@@ -108,28 +83,12 @@ margin-top: -20px;
 `
 
 const Navbar = ({ authUser, toggle }) => {
-  //   const [scrollNav, setScrollNav] = useState(false);
-  //   const [isOpen, setIsOpen] = useState(false);
-
-  //   const toggle = () => {
-  //     setIsOpen(!isOpen)
-  //   }
-  //   const changeNav = () => {
-  //     if (window.scrollY >= 80) {
-  //       setScrollNav(true)
-  //     } else {
-  //       setScrollNav(false)
-  //     }
-  //   };
-  //   useEffect(() => {
-  //   }, [])
   return (
-    // scrollNav={scrollNav}
     <StyledNav >
       <NavbarContainer>
         <NavLogo to='/home'><LogoImg src={Logo} /></NavLogo>
         <MobileIcon onClick={toggle}>
-          {/* <BurgerMenyIcon /> */}
+          <BurgerMenyIcon />
         </MobileIcon>
         <NavMenu>
           <NavItem>

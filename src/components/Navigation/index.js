@@ -12,11 +12,11 @@ import * as ROLES from '../../constants/roles';
 import Logo from '../../Images/logo.png'
 import styled from 'styled-components';
 
-const Navigation = () => (
+const Navigation = ({ isOpen, toggle }) => (
   <AuthUserContext.Consumer>
     {authUser =>
       authUser ? (
-        <NavigationAuth authUser={authUser} />
+        <NavigationAuth authUser={authUser} isOpen={isOpen} toggle={toggle} />
       ) : (
         <NavigationNonAuth />
       )
@@ -77,11 +77,11 @@ const NavigationNonAuth = () => (
   <StyledNav>
     <StyledLogo src={Logo}></StyledLogo>
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+      <Link to={ROUTES.LANDING}>Back</Link>
     </li>
-    <li>
+    {/* <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
+    </li> */}
   </StyledNav>
 );
 

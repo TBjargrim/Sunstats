@@ -41,6 +41,9 @@ cursor:pointer;
   background-color: #F8AF59;
   border:1px solid #EC8F21;
 }
+&:focus{
+  outline:none;
+}
 }
 `
 const StyledDiv = styled.div`
@@ -76,7 +79,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.HOME);
+        this.props.history.push(ROUTES.SELECTION_ONE);
       })
       .catch(error => {
         this.setState({ error });
