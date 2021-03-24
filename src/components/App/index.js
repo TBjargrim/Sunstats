@@ -11,6 +11,8 @@ import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import { createGlobalStyle } from 'styled-components';
+import SelectionPageOne from '../SelectionPages/SelectionPageOne';
+import SelectionPageTwo from '../SelectionPages/SelectionPageTwo';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -38,6 +40,8 @@ const App = () => {
             path={ROUTES.PASSWORD_FORGET}
             component={PasswordForgetPage} />
           <Route path={ROUTES.HOME} component={HomePage} />
+          <Route path={ROUTES.SELECTION_ONE} component={SelectionPageOne} />
+          <Route path={ROUTES.SELECTION_TWO} component={SelectionPageTwo} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
         </Switch>
