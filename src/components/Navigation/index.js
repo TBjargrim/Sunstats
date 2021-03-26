@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Navbar/Sidebar'
 
-import Home from '../Home'
-import Account from '../Account'
+// import Home from '../Home'
+// import Account from '../Account'
 import { AuthUserContext } from '../Session';
-import SignOutButton from '../SignOut';
+// import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
-import * as ROLES from '../../constants/roles';
+// import * as ROLES from '../../constants/roles';
 import Logo from '../../Images/logo.png'
 import styled from 'styled-components';
 

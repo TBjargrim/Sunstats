@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+// import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 export const StyledDiv = styled.div`
 margin:0 50px;
 `

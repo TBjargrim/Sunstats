@@ -1,6 +1,6 @@
 import React from 'react'
 import * as ROUTES from '../../constants/routes';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import VanImg from '../../Images/TravelWithVan2.jpg';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from './SelectionStyling';
