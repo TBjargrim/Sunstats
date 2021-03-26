@@ -4,8 +4,7 @@ export const Aruba2017 = [{
         "request": [
             {
                 "type": "City",
-                "query": "Oranjestad, Aruba",
-                "month": "jan"
+                "query": "Oranjestad, Aruba"
             }
         ],
         "weather": [
