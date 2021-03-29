@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Line } from 'react-chartjs-2';
 
+
 import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
 
 const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
@@ -80,34 +81,6 @@ const BrandedPage = () => {
 
     return (
         <div>
-            <Line
-                data={monthData(ArubaAllYears)}
-                options={{
-                    responsive: true,
-                    title: { text: city(ArubaAllYears), display: true },
-                    scales: {
-                        yAxes: [
-                            {
-                                ticks: {
-                                    autoSkip: true,
-                                    maxTicksLimit: 12,
-                                    beginAtZero: true
-                                },
-                                gridLines: {
-                                    display: false
-                                }
-                            }
-                        ],
-                        xAxes: [
-                            {
-                                gridLines: {
-                                    display: false
-                                }
-                            }
-                        ]
-                    }
-                }}
-            />
         </div>
     )
 };
