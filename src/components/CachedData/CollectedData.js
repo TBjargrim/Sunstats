@@ -4,10 +4,12 @@ import { Line } from 'react-chartjs-2';
 // Importing the data from separete fils - containging cached api data (three years)
 import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
 import { Tokyo2017, Tokyo2018, Tokyo2019 } from '../CachedData/DataTokyo';
+import { Paris2017, Paris2018, Paris2019 } from '../CachedData/DataParis';
 
 // Add all yearArrays together to one array - to simplify the data comparison
 const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
 const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
+const ParisAllYears = [Paris2017, Paris2018, Paris2019];
 
 //Make a function that takes the AllYears array as an argument for counting average temp and humidity.
 const monthData = (arrCity) => {
@@ -93,6 +95,9 @@ const city = (arrCity) => {
 monthData(TokyoAllYears)
 city(TokyoAllYears)
 
+monthData(ParisAllYears)
+city(ParisAllYears)
+
 monthData(ArubaAllYears)
 city(ArubaAllYears)
 // how to push in a value and use as an argument?
@@ -103,10 +108,10 @@ const CollectedData = () => {
   return (
     <div>
       <Line
-        data={monthData(TokyoAllYears)}
+        data={monthData(ParisAllYears)}
         options={{
           responsive: true,
-          title: { text: city(TokyoAllYears), display: true },
+          title: { text: city(ParisAllYears), display: true },
           scales: {
             yAxes: [
               {
