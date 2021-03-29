@@ -21,7 +21,7 @@ transition:0.3s ease-in-out;
 padding-top:60px;
 box-shadow: -2px 0px 3px rgba(69, 69, 69, 0.25);
 opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
-top:${({ isOpen }) => (isOpen ? '0' : '-100%')};
+top:${({ isOpen }) => (isOpen ? '0' : '-150%')};
 `
 const CloseIcon = styled(FaTimes)`
 color:#9d9d9d;
