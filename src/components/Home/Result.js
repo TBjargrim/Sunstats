@@ -1,11 +1,8 @@
-
 import styled from "styled-components";
 import { useState } from "react";
 import React, { Component } from "react";
 import Calendar from "./Calendar"
 import Temp from "./Temp"
-
-
 
 const FlexDiv = styled.div`
   display: flex;
@@ -25,26 +22,25 @@ const FlexDiv = styled.div`
   }
 `;
 
-
-
-
-
-function HomeStyled() {
+function Result() {
   return (
     <FlexDiv>
       <div>
+        <ul>
+          <li>Stad</li>
+        </ul>
          {/*
         <h2>Vilken medeltemperatur vill du ha?</h2>
        <Temp /> */}
       </div>
-      <div>
+      {/* <div>
         <h2>När vill du åka?</h2>
           <Calendar />
           <p><i>Startdatum för två veckors intervall</i></p>
-      </div>
+      </div> */}
       
     </FlexDiv>
   );
 } 
 
-export default HomeStyled;
+export default Result;

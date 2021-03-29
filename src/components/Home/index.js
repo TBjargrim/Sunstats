@@ -3,21 +3,14 @@ import { compose } from 'recompose';
 import { withAuthorization, AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
 import styled from 'styled-components';
-import HomeStyled from "./HomeStyled"
-
-const StyledDiv = styled.div`
-
-`
+import Result from "./Result"
 
 
 const HomePage = () => (
-  <StyledDiv>
-    <HomeStyled />
-    {/* <Messages /> */}
-  </StyledDiv>
+  <div>
+    <Result />
+  </div>
 );
-
-
 
 class MessagesBase extends Component {
   constructor(props) {
