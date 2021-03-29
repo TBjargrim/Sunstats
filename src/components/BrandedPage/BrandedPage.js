@@ -24,8 +24,6 @@ const monthData = (arrCity) => {
     filteredMonthNum.push('Jan', 'Feb', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec');
     console.log(filteredMonthNum)
 
-
-
     const sumArray = (array) => {
         const newArray = [];
         array.forEach(sub => {
@@ -74,7 +72,6 @@ const city = (arrCity) => {
     const cityData = arrCity[0][0].data.request[0].query
     return cityData
 }
-
 
 monthData(ArubaAllYears)
 city(ArubaAllYears)
