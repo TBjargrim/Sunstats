@@ -28,7 +28,8 @@ const monthData = (arrCity) => {
   let filteredMonthNum = arrCity[0].map(item => item.data.weather[0].date.slice(4, 8))
 
   //get -01- to -12-, and replace that with jan-dec.
-  let labelMonths = filteredMonthNum.splice(0, 12); //returns the array with the items removed but has removed it from filteredMonthNum, not used but might be good in the future
+  let labelMonths = filteredMonthNum.splice(0, 12); //returns the array with the items removed but has removed it 
+  //from filteredMonthNum, not used but might be good in the future
   filteredMonthNum.push('Jan', 'Feb', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec');
 
   //Function for calculating average temp and humidity.
@@ -136,3 +137,10 @@ const CollectedData = () => {
 };
 
 export default CollectedData;
+
+{/* <Bar
+  data={data}
+  width={100}
+  height={50}
+  options={{ maintainAspectRatio: false }}
+/> */}

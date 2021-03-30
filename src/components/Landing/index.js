@@ -4,7 +4,8 @@ import BackgroundLanding from '../../Images/BackgroundLanding.jpg';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
 import Logo from '../../Images/sunstats_logo.png'
-import NativeSpringExample from '../Animations/animationsInfo'
+import AnimationsInfo from '../Animations/animationsInfo'
+
 
 
 const Wrapper = styled.div`
@@ -121,7 +122,7 @@ const Landing = () => (
   <Wrapper style={{ backgroundImage: `url(${BackgroundLanding})` }}>
     <Logga src={Logo}></Logga>
     <ContainerDiv>
-<NativeSpringExample/>
+      <AnimationsInfo />
       {/* <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li> */}
