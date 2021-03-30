@@ -17,11 +17,11 @@ const TravelSlc = styled.select`
 `;
 
 const Temp = () => {
-    return (<TravelSlc>
-        <option value="10">10 C</option>
-        <option value="15">15 C</option>
-        <option value="20">20 C</option>
-        <option value="25">25 C</option>
-    </TravelSlc>);
+  return (<TravelSlc>
+    <option value="10">10 C</option>
+    <option value="15">15 C</option>
+    <option value="20">20 C</option>
+    <option value="25">25 C</option>
+  </TravelSlc>);
 }
 export default Temp;
