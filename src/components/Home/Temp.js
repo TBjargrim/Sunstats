@@ -21,17 +21,12 @@ const TravelSlc = styled.select`
   background-position-x: 120px; 
 `;
 
-const Temp = () => {
+const Temp = ({setTargetTemp}) => {
 
-  const [targetTemp, setTargetTemp] = useState();
-    
+   
   const handleClick = (e) => {
     const temp = parseInt(e.target.value);
     setTargetTemp(temp);
-
-    console.log(dataArr.filter((obj) =>
-      obj.temp >= temp - 5 &&
-      obj.temp <= temp + 5))
   }
       return(
     <div>
@@ -41,10 +36,10 @@ const Temp = () => {
     </StyledText>
     <StyledButtonWrapper>
         
-        <StyledButtons onClick={handleClick} value="0"><StyledIcon src={VanImg}></StyledIcon>After Ski 0</StyledButtons>
-        <StyledButtons onClick={handleClick} value="10"><StyledIcon src={VanImg}></StyledIcon>Vandring 10</StyledButtons>
-        <StyledButtons onClick={handleClick} value="20"><StyledIcon src={VanImg}></StyledIcon>Tshirt-väder 20</StyledButtons>
-        <StyledButtons onClick={handleClick} value="30"><StyledIcon src={VanImg}></StyledIcon>Strandhäng 30</StyledButtons>
+        <StyledButtons onClick={handleClick} value="0"><StyledIcon src={VanImg}></StyledIcon>After Ski</StyledButtons>
+        <StyledButtons onClick={handleClick} value="10"><StyledIcon src={VanImg}></StyledIcon>Vandring</StyledButtons>
+        <StyledButtons onClick={handleClick} value="20"><StyledIcon src={VanImg}></StyledIcon>Tshirt-väder</StyledButtons>
+        <StyledButtons onClick={handleClick} value="30"><StyledIcon src={VanImg}></StyledIcon>Strandhäng</StyledButtons>
     </StyledButtonWrapper>
     <StyledLinkSkip to={ROUTES.RESULT}>Hoppa över</StyledLinkSkip>
     <LinkWrapper>
@@ -54,44 +49,5 @@ const Temp = () => {
   </div>
     );
   }
-  
-    let dataArr = [
-      {
-          city: "Trysil",
-          temp: 0,
-      },
-      {
-          city: "Åre",
-          temp: 4,
-      },
-      {
-          city: "Madrid",
-          temp: 16,
-      },
-      {
-          city: "Lissabon",
-          temp: 15,
-      },
-      {
-          city: "Mexico city",
-          temp: 25,
-      },
-      {
-          city: "Aruba",
-          temp: 34,
-      },
-      {
-          city: "Marocko",
-          temp: 20,
-      },
-      {
-          city: "Stockholm",
-          temp: 10,
-      },
-      {
-          city: "Köpenhamn",
-          temp: 11,
-      }
-  ];
   
 export default Temp;

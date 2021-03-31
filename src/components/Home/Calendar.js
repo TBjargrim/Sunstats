@@ -27,27 +27,25 @@ display: flex;
 justify-content: center;
 `;
 
+const Calendar = ({setSaveDate}) => {
+  const [startDate, setStartDate] = useState(new Date());
 
-function handleChange() {
+  function handleChange() {
 
-  let parent = document.getElementsByClassName("react-datepicker__input-container")
-  let obj = Object.keys(parent)[0];
-  let value = parent[obj];
-  let tagInp = value.getElementsByTagName("input")[0];
-  let res = tagInp.value;
-  console.log(res);
-}
-
-
-const Calendar = () => {
-    const [startDate, setStartDate] = useState(new Date());
+    let parent = document.getElementsByClassName("react-datepicker__input-container")
+    let obj = Object.keys(parent)[0];
+    let value = parent[obj];
+    let tagInp = value.getElementsByTagName("input")[0];
+    let res = tagInp.value;
+    setSaveDate(res);
+  }
  
   return (
       <>
       <DatePicker
         selected={startDate}
         onChange={date => setStartDate(date)}
-        dateFormat="MM-yyyy"
+        dateFormat="MMMM"
         showMonthYearPicker
       />
       <BtnDiv>

@@ -12,6 +12,7 @@ import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import { createGlobalStyle } from 'styled-components';
 import Wiz from "../Home/Wiz";
+import Destination from '../Home/Destination';
 
 
 
@@ -41,9 +42,9 @@ const App = () => {
           <Route
             path={ROUTES.PASSWORD_FORGET}
             component={PasswordForgetPage} />
+          <Route path={ROUTES.DESTINATION} component={Destination} />
           <Route path={ROUTES.RESULT} component={HomePage} />
           <Route path={ROUTES.WIZ} component={Wiz} />
-    {/*       <Route path={ROUTES.SELECTION_TWO} component={SelectionPageTwo} /> */}
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
         </Switch>
