@@ -35,7 +35,6 @@ const Temp = ({setTargetTemp}) => {
         <StyledP>Välj ett val som passar just dig</StyledP>
     </StyledText>
     <StyledButtonWrapper>
-        
         <StyledButtons onClick={handleClick} value="0"><StyledIcon src={VanImg}></StyledIcon>After Ski</StyledButtons>
         <StyledButtons onClick={handleClick} value="10"><StyledIcon src={VanImg}></StyledIcon>Vandring</StyledButtons>
         <StyledButtons onClick={handleClick} value="20"><StyledIcon src={VanImg}></StyledIcon>Tshirt-väder</StyledButtons>

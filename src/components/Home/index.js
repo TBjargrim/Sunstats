@@ -8,7 +8,7 @@ import Result from "./Result"
 
 const HomePage = () => (
   <div>
-    <Result />
+    <h1>Home page</h1>
   </div>
 );
 
