@@ -97,6 +97,9 @@ const Navbar = ({ authUser, toggle }) => {
           <NavItem>
             <Link to='/account'>Account</Link>
           </NavItem>
+          <NavItem>
+            <Link to='/wiz'>wizard</Link>
+          </NavItem>
           {!!authUser.roles[ROLES.ADMIN] && (
             <NavItem>
               <Link to='/admin'>Admin</Link>

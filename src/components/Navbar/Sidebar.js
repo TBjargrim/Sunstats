@@ -92,6 +92,9 @@ const Sidebar = ({ authUser, isOpen, toggle }) => {
                         <StyledLink to='/account' onClick={toggle}>Account</StyledLink>
                     </StyledLI>
                     <StyledLI>
+                        <StyledLink to='/wiz' onClick={toggle}>Hitta resmål</StyledLink>
+                    </StyledLI>
+                    <StyledLI>
                         {!!authUser.roles[ROLES.ADMIN] && (
                             <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
                     </StyledLI>
