@@ -59,40 +59,44 @@ img{
 
 let dataArr = [
   {
-      city: "Trysil",
-    avarageTemp: 0, 
+    city: "Trysil",
+    avarageTemp: 0,
   },
   {
-      city: "Åre",
-      avarageTemp: 4,
+    city: "Åre",
+    avarageTemp: 4,
   },
   {
-      city: "Madrid",
-      avarageTemp: 16,
+    city: "Madrid",
+    avarageTemp: 16,
   },
   {
-      city: "Lissabon",
-      avarageTemp: 15,
+    city: "Lissabon",
+    avarageTemp: 15,
   },
   {
-      city: "Mexico city",
-      avarageTemp: 25,
+    city: "Mexico city",
+    avarageTemp: 25,
   },
   {
-      city: "Aruba",
-      avarageTemp: 34,
+    city: "Aruba",
+    avarageTemp: 34,
   },
   {
-      city: "Marocko",
-      avarageTemp: 20,
+    city: "Paris",
+    avarageTemp: 33,
   },
   {
-      city: "Stockholm",
-      avarageTemp: 10,
+    city: "Marocko",
+    avarageTemp: 20,
   },
   {
-      city: "Köpenhamn",
-      avarageTemp: 11,
+    city: "Stockholm",
+    avarageTemp: 10,
+  },
+  {
+    city: "Köpenhamn",
+    avarageTemp: 11,
   }
 ];
 
@@ -104,7 +108,7 @@ function Result() {
   let newArr = (dataArr.filter((obj) =>
     obj.avarageTemp >= parseInt(temp) - 5 &&
     obj.avarageTemp <= parseInt(temp) + 5));
-  
+
   function createHandleClickForDestination(destination) {
     return function () {
       let clickedCity = destination;
@@ -125,16 +129,16 @@ function Result() {
                 <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt="city" />
               </CityCardImg>
               <CityCardInfo>
-            <h2>{obj.city}</h2>
-              <p>Medeltemperatur: {obj.avarageTemp}</p>
+                <h2>{obj.city}</h2>
+                <p>Medeltemperatur: {obj.avarageTemp}</p>
               </CityCardInfo>
-              </CityCard>
+            </CityCard>
           </li>)}
         </ul>
-      </div>      
+      </div>
     </FlexDiv>
   );
-} 
+}
 
 
 export default Result;
