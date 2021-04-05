@@ -17,9 +17,6 @@ height:auto;
 filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 border-radius: 100%;
 
-&:hover{
-
-}
 @media screen and (max-width:960px) {
     width: 150px;
     margin-left: 30px;
@@ -35,10 +32,6 @@ height:auto;
 filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 border-radius: 100%;
 
-&:hover{
-
-}
- 
 @media screen and (max-width:960px) {
     width: 100px;
 }
@@ -111,7 +104,7 @@ height: 50px;
   @media screen and (max-width:1000px) {
     font-size: 35px;
     width: 35px;
-height: 35px;
+    height: 35px;
   }
 `
 
@@ -140,7 +133,9 @@ text-align:left;
 cursor:pointer;
 animation-name:zoom;
 animation-duration:3s;
-
+&:active{
+  color: white;
+}
 @keyframes zoom {
   0% {
         transform: scale(1,1);
@@ -161,6 +156,7 @@ border: none;
 box-sizing: border-box;
 border-radius: 25px;
 }
+
 
 @media screen and (max-width:1000px) {
     width:200px;

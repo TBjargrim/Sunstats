@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom"
-import { CustomCollectedData, cityHistoric } from '../CachedData/TestCollectedData';
+import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData';
 
 
 function Destination() {
     const { temp, date, destination } = useParams();
-    console.log({ temp, date, destination })
+    // console.log({ temp, date, destination })
     //let allYears = cityHistoric[destination];
     return (
         <>

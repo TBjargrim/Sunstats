@@ -11,6 +11,7 @@ const Temp = ({ setTargetTemp }) => {
     const temp = parseInt(e.target.value);
     setTargetTemp(temp);
   }
+
   return (
     <div>
       <StyledText>
@@ -18,10 +19,10 @@ const Temp = ({ setTargetTemp }) => {
         <StyledP>Välj ett val som passar just dig</StyledP>
       </StyledText>
       <StyledButtonWrapper>
-        <StyledButtons onClick={handleClick} value="0"><StyledIcon src={VanImg}></StyledIcon>After Ski</StyledButtons>
-        <StyledButtons onClick={handleClick} value="10"><StyledIcon src={VanImg}></StyledIcon>Vandring</StyledButtons>
-        <StyledButtons onClick={handleClick} value="20"><StyledIcon src={VanImg}></StyledIcon>Tshirt-väder</StyledButtons>
-        <StyledButtons onClick={handleClick} value="30"><StyledIcon src={VanImg}></StyledIcon>Strandhäng</StyledButtons>
+        <StyledButtons onClick={handleClick} value="5"><StyledIcon src={VanImg}></StyledIcon>Kallt</StyledButtons>
+        <StyledButtons onClick={handleClick} value="15"><StyledIcon src={VanImg}></StyledIcon>Lagom</StyledButtons>
+        <StyledButtons onClick={handleClick} value="25"><StyledIcon src={VanImg}></StyledIcon>Varmt</StyledButtons>
+        <StyledButtons onClick={handleClick} value="35"><StyledIcon src={VanImg}></StyledIcon>Svettigt</StyledButtons>
       </StyledButtonWrapper>
       <StyledLinkSkip to={ROUTES.RESULT}>Hoppa över</StyledLinkSkip>
       <LinkWrapper>
