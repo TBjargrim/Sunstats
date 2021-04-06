@@ -38,6 +38,17 @@ const monthData = (arrCity, city) => {
     tempData.push(filteredTemp);
     humidityData.push(filteredHumidity);
   }
+  let SthlmHumidityData = []
+  let SthlmTempData = []
+  for (let i = 0; i < StockholmAllYears.length; i++) {
+    //Take each Year Array and map it to collect the temp and humidity
+    let StockholmTemp = StockholmAllYears[i].map(temp => parseInt(temp.data.weather[0].avgtempC))
+    let StockholmHumidity = StockholmAllYears[i].map(item => parseInt(item.data.weather[0].hourly[0].humidity))
+    //We push the collected data in to our empty arrays at the top.
+    SthlmTempData.push(StockholmTemp);
+    SthlmHumidityData.push(StockholmHumidity);
+  }
+
   //Map through the data to get the numbers of each month, (ex. for jan -01-) and save it to filteredMonthNum.
   let filteredMonthNum = arrCity[0].map(item => item.data.weather[0].date.slice(4, 8))
 
@@ -74,37 +85,83 @@ const monthData = (arrCity, city) => {
   }
   //making two varibles for setting the tempData and humidityData as arguments to the sumArray function.
   const avgTempData = (sumArray(tempData));
+  const avgTempStockholm = (sumArray(SthlmTempData))
   const avgHumidityData = (sumArray(humidityData));
+  const avgHumiditySthlm = (sumArray(SthlmHumidityData));
 
+  console.log((sumArray(SthlmTempData)))
+  console.log(sumArray(SthlmHumidityData))
   //Testing chart.js, making an object with values from the functions above.
+  //   const chartDataTemp = {
+  //     labels: filteredMonthNum,
+  //     datasets: [{
+  //       label: 'Temp ' + city,
+  //       data: avgTempData,
+  //       borderColor: 'rgb(238, 130, 238)',
+  //       backgroundColor: 'rgba(149,224,170,1)',
+  //       fill: false
+  //     }]
+  //   }
+
+  //   const chartDataHum = {
+  //     labels: filteredMonthNum,
+  //     datasets: [{
+  //       label: 'Humitity ' + city,
+  //       data: avgHumidityData,
+  //       borderColor: 'rgba(75,192,192,1)',
+  //       backgroundColor: 'rgba(147,212,228,1)',
+  //     }]
+  //   }
+  //   return chartDataTemp
   const chartDataTemp = {
     labels: filteredMonthNum,
     datasets: [{
       label: 'Temp ' + city,
       data: avgTempData,
       borderColor: 'rgb(238, 130, 238)',
-      backgroundColor: 'rgba(149,224,170,1)',
+      backgroundColor: 'rgba(0,0,0,0.1)',
       fill: false
-    }]
-  }
 
-  const chartDataHum = {
+    }, {
+      label: 'Temp Stockholm',
+      data: avgTempStockholm,
+      borderColor: 'rgb(60, 179, 113)',
+      backgroundColor: 'rgba(0,0,0,0.1)',
+      fill: false
+    }
+    ]
+  }
+  const chartDataHumidity = {
     labels: filteredMonthNum,
     datasets: [{
-      label: 'Humitity ' + city,
+      label: 'Luftfuktighet',
       data: avgHumidityData,
-      borderColor: 'rgba(75,192,192,1)',
-      backgroundColor: 'rgba(147,212,228,1)',
-    }]
-  }
-  return chartDataTemp
+      borderColor: 'rgb(238, 130, 238)',
+      backgroundColor: 'rgba(0,0,0,0.1)',
+      fill: false
 
+    }, {
+      label: 'Luftfuktighet Stockholm',
+      data: avgHumiditySthlm,
+      borderColor: 'rgb(60, 179, 113)',
+      backgroundColor: 'rgba(0,0,0,0.1)',
+      fill: false
+    }
+    ]
+  }
+  const Arr = []
+  Arr.push(chartDataHumidity)
+  Arr.push(chartDataTemp)
+  console.log(Arr)
+  return Arr
 }
 //Making function to get the city name and saving it to a varible.
 const city = (arrCity) => {
   const cityData = arrCity[0][0].data.request[0].query
   return cityData
 }
+// const temp = monthData();
+console.log(monthData(ArubaAllYears))
 
 // monthData(TokyoAllYears)
 // city(TokyoAllYears)
@@ -124,8 +181,39 @@ export const CustomCollectedData = (props) => {
   // arr = ParisAllYears
   return (
     <div>
-      <Bar
+      <Line
         data={monthData(props.data, props.city)}
+        width={500}
+        height={250}
+        options={{
+          maintainAspectRatio: true,
+          responsive: true,
+          title: { text: city(props.data), display: false },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 12,
+                  beginAtZero: true
+                },
+                gridLines: {
+                  display: false
+                }
+              }
+            ],
+            xAxes: [
+              {
+                gridLines: {
+                  display: false
+                }
+              }
+            ]
+          }
+        }}
+      />
+      <Line
+        data={monthData(StockholmAllYears)}
         width={500}
         height={250}
         options={{
