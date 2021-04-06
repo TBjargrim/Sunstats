@@ -5,7 +5,7 @@ import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, Styl
 import React, { useState } from 'react'
 import * as ROUTES from '../../constants/routes';
 
-const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack }) => {
+const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack, setTargetJumpOver }) => {
 
   const handleClick = (e) => {
     const temp = parseInt(e.target.value);
@@ -20,6 +20,13 @@ const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack }) => 
     let clicked = false;
     setTargetTempClickBack(clicked);
   }
+  const handleJump = () => {
+    let clicked = true;
+    let temp = 30;
+    console.log(temp);
+    setTargetTemp(temp);
+    setTargetJumpOver(clicked);
+  }
       return(
     <div>
       <StyledText>
@@ -32,10 +39,10 @@ const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack }) => 
         <StyledButtons onClick={handleClick} value="20"><StyledIcon src={VanImg}></StyledIcon>Tshirt-väder</StyledButtons>
         <StyledButtons onClick={handleClick} value="30"><StyledIcon src={VanImg}></StyledIcon>Strandhäng</StyledButtons>
     </StyledButtonWrapper>
-    <StyledLinkSkip to={ROUTES.RESULT}>Hoppa över</StyledLinkSkip>
+    <StyledLinkSkip to={ROUTES.WIZ} onClick={handleJump}>Hoppa över</StyledLinkSkip>
     <LinkWrapper>
         <StyledLink to={ROUTES.WIZ}><FaArrowLeft onClick={handleBack} /></StyledLink>
-       <StyledLink to={ROUTES.WIZ}> <FaArrowRight onClick={handleNext} /> </StyledLink> 
+       <StyledLink to={ROUTES.WIZ}> <FaArrowRight onClick={handleNext} disabled/> </StyledLink> 
     </LinkWrapper>
   </div>
     );
