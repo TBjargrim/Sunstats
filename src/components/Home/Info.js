@@ -5,9 +5,15 @@ import { Link } from 'react-router-dom'
 import VanImg from '../../Images/TravelWithVan2.jpg';
 import TravelImg from '../../Images/Travel2.jpg';
 import { FaArrowRight } from 'react-icons/fa';
+import { useState } from "react";
 import { StyledDiv, StyledImageDiv, StyledImg, StyledImgSmall, StyledH2, StyledP, StyledLink, StyledText, LinkWrapper } from '../SelectionPages/SelectionStyling';
 
-function Info() {
+function Info({setTargetInfoClick}) {
+
+    function handleClick() {
+        let clicked = true;
+        setTargetInfoClick(clicked);
+}
     return (
         <StyledDiv>
         <StyledImageDiv>
@@ -19,8 +25,7 @@ function Info() {
             <StyledP>Vi kan hjälpa dig fatta ett beslut. Genom att söka på när du vill åka och vilken världsdel får du info om vilken stad som passar dig!</StyledP>
         </StyledText>
             <LinkWrapper>
-                {/* här ska det inte vara en route men conditional rendering */}
-            <StyledLink to={ROUTES.WIZ}><FaArrowRight /></StyledLink>
+                <StyledLink to={ROUTES.WIZ}><FaArrowRight onClick={handleClick} /></StyledLink>
         </LinkWrapper>
         </StyledDiv >
     );
