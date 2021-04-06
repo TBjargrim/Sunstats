@@ -6,7 +6,7 @@ import VanImg from '../../Images/TravelWithVan2.jpg';
 import TravelImg from '../../Images/Travel2.jpg';
 import { FaArrowRight } from 'react-icons/fa';
 import { useState } from "react";
-import { StyledDiv, StyledImageDiv, StyledImg, StyledImgSmall, StyledH2, StyledP, StyledLink, StyledText, LinkWrapper } from '../SelectionPages/SelectionStyling';
+import { StyledDiv, StyledImageDiv, StyledImg, StyledImgSmall, StyledH2, StyledP, StyledLink, StyledText, LinkWrapper } from './SelectionStyling';
 
 function Info({ setTargetInfoClick }) {
 

@@ -77,27 +77,50 @@ const monthData = (arrCity, city) => {
   const avgHumidityData = (sumArray(humidityData));
 
   //Testing chart.js, making an object with values from the functions above.
-  const chartDataTemp = {
+  //   const chartDataTemp = {
+  //     labels: filteredMonthNum,
+  //     datasets: [{
+  //       label: 'Temp ' + city,
+  //       data: avgTempData,
+  //       borderColor: 'rgb(238, 130, 238)',
+  //       backgroundColor: 'rgba(149,224,170,1)',
+  //       fill: false
+  //     }]
+  //   }
+
+  //   const chartDataHum = {
+  //     labels: filteredMonthNum,
+  //     datasets: [{
+  //       label: 'Humitity ' + city,
+  //       data: avgHumidityData,
+  //       borderColor: 'rgba(75,192,192,1)',
+  //       backgroundColor: 'rgba(147,212,228,1)',
+  //     }]
+  //   }
+  //   return chartDataTemp
+
+
+
+  const chartData = {
     labels: filteredMonthNum,
     datasets: [{
       label: 'Temp ' + city,
       data: avgTempData,
-      borderColor: 'rgb(238, 130, 238)',
-      backgroundColor: 'rgba(149,224,170,1)',
+      borderColor: 'rgb(236, 143, 33)',
+      backgroundColor: 'rgba(0,0,0,0.1)',
       fill: false
-    }]
+
+    }, {
+      label: 'Luftfuktighet ' + city,
+      data: avgHumidityData,
+      borderColor: 'rgb(61, 165, 217)',
+      backgroundColor: 'rgba(0,0,0,0.1)',
+      fill: false
+    }
+    ]
   }
 
-  const chartDataHum = {
-    labels: filteredMonthNum,
-    datasets: [{
-      label: 'Humitity ' + city,
-      data: avgHumidityData,
-      borderColor: 'rgba(75,192,192,1)',
-      backgroundColor: 'rgba(147,212,228,1)',
-    }]
-  }
-  return chartDataTemp
+  return chartData
 
 }
 //Making function to get the city name and saving it to a varible.
@@ -124,7 +147,7 @@ export const CustomCollectedData = (props) => {
   // arr = ParisAllYears
   return (
     <div>
-      <Bar
+      <Line
         data={monthData(props.data, props.city)}
         width={500}
         height={250}

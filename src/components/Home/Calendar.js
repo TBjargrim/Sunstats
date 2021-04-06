@@ -7,9 +7,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import styled from "styled-components";
 import "./datepicker.css";
+import * as ROUTES from '../../constants/routes';
+import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from './SelectionStyling.js';
 // import { Redirect } from "react-router";
 const CalendarDiv = styled.div`
-padding-top: 200px;
+padding-top: 200px; 
 div {
   text-align: center;
 }
@@ -33,7 +35,7 @@ justify-content: center;
 margin-top: 30px;
 `;
 
-const Calendar = ({setSaveDate}) => {
+const Calendar = ({ setSaveDate }) => {
   const [startDate, setStartDate] = useState(new Date());
 
   function handleChange() {
@@ -44,17 +46,26 @@ const Calendar = ({setSaveDate}) => {
     let res = tagInp.value;
     setSaveDate(res);
   }
- 
+
+  // const handleJump = () => {
+  //   let clicked = true;
+  //   let temp = 30;
+  //   console.log(temp);
+  //   setTargetTemp(temp);
+  //   setTargetJumpOver(clicked);
+  // }
+
   return (
     <CalendarDiv>
       <div>
-      <DatePicker
-        selected={startDate}
-        onChange={date => setStartDate(date)}
-        dateFormat="MMMM"
-        showMonthYearPicker
-      />
+        <DatePicker
+          selected={startDate}
+          onChange={date => setStartDate(date)}
+          dateFormat="MMMM"
+          showMonthYearPicker
+        />
       </div>
+      {/* <StyledLinkSkip to={ROUTES.WIZ} onClick={handleJump}>Hoppa över</StyledLinkSkip> */}
       <BtnDiv>
         <TravelBtn type="submit" onClick={handleChange}>OK</TravelBtn>
       </BtnDiv>
