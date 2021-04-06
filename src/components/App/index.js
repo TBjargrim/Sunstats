@@ -11,8 +11,11 @@ import AdminPage from '../Admin';
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
 import { createGlobalStyle } from 'styled-components';
-import SelectionPageOne from '../SelectionPages/SelectionPageOne';
-import SelectionPageTwo from '../SelectionPages/SelectionPageTwo';
+import Wiz from "../Home/Wiz";
+import Destination from '../Home/Destination';
+import Result from "../Home/Result";
+
+
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -33,15 +36,17 @@ const App = () => {
         <Navigation isOpen={isOpen} toggle={toggle} />
 
         <Switch>
+     
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route
             path={ROUTES.PASSWORD_FORGET}
             component={PasswordForgetPage} />
+          <Route path={ROUTES.DESTINATION} component={Destination} />
+          <Route path={ROUTES.RESULT} component={Result} />
           <Route path={ROUTES.HOME} component={HomePage} />
-          <Route path={ROUTES.SELECTION_ONE} component={SelectionPageOne} />
-          <Route path={ROUTES.SELECTION_TWO} component={SelectionPageTwo} />
+          <Route path={ROUTES.WIZ} component={Wiz} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
         </Switch>

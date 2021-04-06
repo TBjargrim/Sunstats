@@ -11,11 +11,35 @@ const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
 const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
 const ParisAllYears = [Paris2017, Paris2018, Paris2019];
 
+export const cityHistoric = {
+  'Aruba': [...ArubaAllYears],
+  'Tokyo': [...TokyoAllYears],
+  'Paris': [...ParisAllYears]
+}
+console.log(cityHistoric)
 // const AllCities = [ArubaAllYears, TokyoAllYears, ParisAllYears]
 // const colorArr = ['rgb(238, 130, 238)', 'rgb(60, 179, 113)', 'rgb(60, 179, 113)', 'rgb(60, 179, 113)']
 
 //Make a function that takes the AllYears array as an argument for counting average temp and humidity.
-const monthData = (arrCity) => {
+/*const createTempObject = (avgTempData, city) => (
+  {
+    label: 'Temp ' + city,
+    data: avgTempData,
+    borderColor: 'rgb(238, 130, 238)',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    fill: false
+
+  });
+const createMoistureObject = (avgHumidityData, city) => (
+  {
+    label: 'Luftfuktighet ' + city,
+    data: avgHumidityData,
+    borderColor: 'rgb(60, 179, 113)',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    fill: false
+  });
+*/
+const monthData = (arrCity, city) => {
 
   //Making varibles for the collected data, humidity and temp data.
   let humidityData = []
@@ -65,22 +89,22 @@ const monthData = (arrCity) => {
   const chartData = {
     labels: filteredMonthNum,
     datasets: [{
-      label: 'Temp Paris',
+      label: 'Temp ' + city,
       data: avgTempData,
       borderColor: 'rgb(238, 130, 238)',
       backgroundColor: 'rgba(0,0,0,0.1)',
       fill: false
 
     }, {
-      label: 'Luftfuktighet Paris',
+      label: 'Luftfuktighet ' + city,
       data: avgHumidityData,
       borderColor: 'rgb(60, 179, 113)',
       backgroundColor: 'rgba(0,0,0,0.1)',
       fill: false
     }
     ]
-
   }
+
   return chartData
 
 }
@@ -186,7 +210,7 @@ const monthData = (arrCity) => {
 return datasets
 
 } */
-monthData(ParisAllYears);
+//monthData(ParisAllYears);
 
 //Making function to get the city name and saving it to a varible.
 const city = (arrCity) => {
@@ -198,19 +222,59 @@ const city = (arrCity) => {
 // city(TokyoAllYears)
 
 // newMonthData(AllCities)
-city(ParisAllYears)
+//city(ParisAllYears)
 
 // monthData(ArubaAllYears)
 // city(ArubaAllYears)
 // how to push in a value and use as an argument?
 // spread the "AllaResmålVing" array and somehow make it in to the jsx
 
+export const CustomCollectedData = (props) => {
+  // arr = ParisAllYears
+  return (
+    <div>
+      <Line
+        data={monthData(props.data, props.city)}
+        width={50}
+        height={25}
+        options={{
+          maintainAspectRatio: true,
+          responsive: true,
+          title: { text: city(props.data), display: false },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 12,
+                  beginAtZero: true
+                },
+                gridLines: {
+                  display: false
+                }
+              }
+            ],
+            xAxes: [
+              {
+                gridLines: {
+                  display: false
+                }
+              }
+            ]
+          }
+        }}
+      />
+
+    </div>
+  )
+};
+
 const CollectedData = () => {
 
   return (
     <div>
       <Line
-        data={newMonthData(ParisAllYears)}
+        data={monthData(ParisAllYears)}
         width={50}
         height={25}
         options={{

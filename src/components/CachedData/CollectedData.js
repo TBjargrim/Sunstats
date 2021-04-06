@@ -5,11 +5,13 @@ import { Line } from 'react-chartjs-2';
 import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
 import { Tokyo2017, Tokyo2018, Tokyo2019 } from '../CachedData/DataTokyo';
 import { Paris2017, Paris2018, Paris2019 } from '../CachedData/DataParis';
+import { Stockholm2017, Stockholm2018, Stockholm2019 } from '../CachedData/DataStockholm';
 
 // Add all yearArrays together to one array - to simplify the data comparison
 const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
 const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
 const ParisAllYears = [Paris2017, Paris2018, Paris2019];
+const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
 
 //Make a function that takes the AllYears array as an argument for counting average temp and humidity.
 const monthData = (arrCity) => {
@@ -100,6 +102,9 @@ city(ParisAllYears)
 
 monthData(ArubaAllYears)
 city(ArubaAllYears)
+
+monthData(StockholmAllYears)
+city(StockholmAllYears)
 // how to push in a value and use as an argument?
 // spread the "AllaResmålVing" array and somehow make it in to the jsx
 
@@ -108,10 +113,10 @@ const CollectedData = () => {
   return (
     <div>
       <Line
-        data={monthData(ParisAllYears)}
+        data={monthData(StockholmAllYears)}
         options={{
           responsive: true,
-          title: { text: city(ParisAllYears), display: true },
+          title: { text: city(StockholmAllYears), display: true },
           scales: {
             yAxes: [
               {
