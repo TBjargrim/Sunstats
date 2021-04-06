@@ -133,9 +133,7 @@ text-align:left;
 cursor:pointer;
 animation-name:zoom;
 animation-duration:3s;
-&:active{
-  color: white;
-}
+
 @keyframes zoom {
   0% {
         transform: scale(1,1);
@@ -149,6 +147,7 @@ animation-duration:3s;
 }
 &:focus{
     outline:none;
+    background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D;
   }
 &:hover{
     background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D;

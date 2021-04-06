@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import VanImg from '../../Images/TravelWithVan2.jpg';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from '../SelectionPages/SelectionStyling';
+import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from './SelectionStyling.js';
 import React, { useState } from 'react'
 import * as ROUTES from '../../constants/routes';
 
