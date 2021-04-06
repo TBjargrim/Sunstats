@@ -31,18 +31,6 @@ const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack }) => 
         <StyledButtons onClick={handleClick} value="10"><StyledIcon src={VanImg}></StyledIcon>Vandring</StyledButtons>
         <StyledButtons onClick={handleClick} value="20"><StyledIcon src={VanImg}></StyledIcon>Tshirt-väder</StyledButtons>
         <StyledButtons onClick={handleClick} value="30"><StyledIcon src={VanImg}></StyledIcon>Strandhäng</StyledButtons>
-<<<<<<< HEAD
-      </StyledButtonWrapper>
-      <StyledLinkSkip to={ROUTES.RESULT}>Hoppa över</StyledLinkSkip>
-      <LinkWrapper>
-        <StyledLink to={ROUTES.WIZ}><FaArrowLeft /></StyledLink>
-        <StyledLink to={ROUTES.RESULT}><FaArrowRight /></StyledLink>
-      </LinkWrapper>
-    </div>
-  );
-}
-
-=======
     </StyledButtonWrapper>
     <StyledLinkSkip to={ROUTES.RESULT}>Hoppa över</StyledLinkSkip>
     <LinkWrapper>
@@ -53,5 +41,4 @@ const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack }) => 
     );
   }
   
->>>>>>> conditionRender
 export default Temp;
