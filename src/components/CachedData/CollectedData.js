@@ -22,7 +22,7 @@ export const cityHistoric = {
   'Barcelona': [...BarcelonaAllYears],
   'Stockholm': [...StockholmAllYears]
 }
-
+console.log(cityHistoric)
 //Make a function that takes the AllYears array as an argument for counting average temp and humidity.
 const monthData = (arrCity, city) => {
 
