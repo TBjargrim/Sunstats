@@ -59,44 +59,24 @@ img{
 
 let dataArr = [
   {
-    city: "Trysil",
-    avarageTemp: 0,
-  },
-  {
-    city: "Åre",
-    avarageTemp: 4,
-  },
-  {
-    city: "Madrid",
-    avarageTemp: 16,
-  },
-  {
-    city: "Lissabon",
-    avarageTemp: 15,
-  },
-  {
-    city: "Mexico city",
-    avarageTemp: 25,
-  },
-  {
-    city: "Aruba",
-    avarageTemp: 34,
-  },
-  {
-    city: "Paris",
-    avarageTemp: 33,
-  },
-  {
-    city: "Marocko",
-    avarageTemp: 20,
-  },
-  {
-    city: "Stockholm",
+    city: "Tokyo",
     avarageTemp: 10,
   },
   {
-    city: "Köpenhamn",
-    avarageTemp: 11,
+    city: "Aruba",
+    avarageTemp: 30,
+  },
+  {
+    city: "Paris",
+    avarageTemp: 5,
+  },
+  {
+    city: "Stockholm",
+    avarageTemp: 4,
+  },
+  {
+    city: "Barcelona",
+    avarageTemp: 20,
   }
 ];
 

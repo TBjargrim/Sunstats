@@ -11,21 +11,29 @@ function Wiz() {
     const [targetInfoClick, setTargetInfoClick] = useState();
     const [targetTempClick, setTargetTempClick] = useState();
     const [targetTempClickBack, setTargetTempClickBack] = useState();
+    const [targetJumpOver, setTargetJumpOver] = useState();
     
     return (
         <>
             {!targetInfoClick ?
+            //OM info click inte är klickad, visa info
                 <Info
                 setTargetInfoClick={setTargetInfoClick} />
                 : null}
             
-            {targetInfoClick && !targetTempClick ?
+            {targetInfoClick && !targetTempClick && !targetJumpOver ?
+            //Om infoclick är klickad och
+            //tempclick inte är klickad
                 <Temp
                     setTargetTempClick={setTargetTempClick}
                     setTargetTemp={setTargetTemp}
+                    setTargetJumpOver={setTargetJumpOver}
                     setTargetTempClickBack={setTargetTempClickBack}/> : null}
             
-            {targetTemp && targetTempClick ?
+            {targetTemp && targetTempClick ||
+            targetTemp && targetJumpOver ?
+                // om targettemp och targettempclick är true (klickade)
+                //
                 <Calendar setSaveDate={setSaveDate} /> : null}
 
 

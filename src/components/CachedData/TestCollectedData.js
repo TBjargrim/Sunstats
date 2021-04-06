@@ -5,16 +5,19 @@ import { Line } from 'react-chartjs-2';
 import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
 import { Tokyo2017, Tokyo2018, Tokyo2019 } from '../CachedData/DataTokyo';
 import { Paris2017, Paris2018, Paris2019 } from '../CachedData/DataParis';
+import { Barcelona2017, Barcelona2018, Barcelona2019 } from '../CachedData/DataBarcelona';
 
 // Add all yearArrays together to one array - to simplify the data comparison
 const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
 const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
 const ParisAllYears = [Paris2017, Paris2018, Paris2019];
+const BarcelonaAllYears = [Barcelona2017, Barcelona2018, Barcelona2019];
 
 export const cityHistoric = {
   'Aruba': [...ArubaAllYears],
   'Tokyo': [...TokyoAllYears],
-  'Paris': [...ParisAllYears]
+  'Paris': [...ParisAllYears],
+  'Barcelona': [...BarcelonaAllYears]
 }
 console.log(cityHistoric)
 // const AllCities = [ArubaAllYears, TokyoAllYears, ParisAllYears]
@@ -275,12 +278,11 @@ const CollectedData = () => {
     <div>
       <Line
         data={monthData(ParisAllYears)}
-        width={50}
-        height={25}
+
         options={{
           maintainAspectRatio: true,
           responsive: true,
-          title: { text: city(ParisAllYears), display: false },
+          title: { text: city(ParisAllYears), display: true },
           scales: {
             yAxes: [
               {

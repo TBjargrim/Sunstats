@@ -1,20 +1,30 @@
 import React, { useState } from "react";
-import { Line } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2';
 
 // Importing the data from separete fils - containging cached api data (three years)
 import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
 import { Tokyo2017, Tokyo2018, Tokyo2019 } from '../CachedData/DataTokyo';
 import { Paris2017, Paris2018, Paris2019 } from '../CachedData/DataParis';
 import { Stockholm2017, Stockholm2018, Stockholm2019 } from '../CachedData/DataStockholm';
+import { Barcelona2017, Barcelona2018, Barcelona2019 } from '../CachedData/DataBarcelona';
 
 // Add all yearArrays together to one array - to simplify the data comparison
 const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
 const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
 const ParisAllYears = [Paris2017, Paris2018, Paris2019];
 const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
+const BarcelonaAllYears = [Barcelona2017, Barcelona2018, Barcelona2019];
 
+export const cityHistoric = {
+  'Aruba': [...ArubaAllYears],
+  'Tokyo': [...TokyoAllYears],
+  'Paris': [...ParisAllYears],
+  'Barcelona': [...BarcelonaAllYears],
+  'Stockholm': [...StockholmAllYears]
+}
+console.log(cityHistoric)
 //Make a function that takes the AllYears array as an argument for counting average temp and humidity.
-const monthData = (arrCity) => {
+const monthData = (arrCity, city) => {
 
   //Making varibles for the collected data, humidity and temp data.
   let humidityData = []
@@ -67,24 +77,49 @@ const monthData = (arrCity) => {
   const avgHumidityData = (sumArray(humidityData));
 
   //Testing chart.js, making an object with values from the functions above.
+  //   const chartDataTemp = {
+  //     labels: filteredMonthNum,
+  //     datasets: [{
+  //       label: 'Temp ' + city,
+  //       data: avgTempData,
+  //       borderColor: 'rgb(238, 130, 238)',
+  //       backgroundColor: 'rgba(149,224,170,1)',
+  //       fill: false
+  //     }]
+  //   }
+
+  //   const chartDataHum = {
+  //     labels: filteredMonthNum,
+  //     datasets: [{
+  //       label: 'Humitity ' + city,
+  //       data: avgHumidityData,
+  //       borderColor: 'rgba(75,192,192,1)',
+  //       backgroundColor: 'rgba(147,212,228,1)',
+  //     }]
+  //   }
+  //   return chartDataTemp
+
+
+
   const chartData = {
     labels: filteredMonthNum,
     datasets: [{
-      label: 'Temp',
+      label: 'Temp ' + city,
       data: avgTempData,
-      borderColor: 'rgb(238, 130, 238)',
+      borderColor: 'rgb(236, 143, 33)',
       backgroundColor: 'rgba(0,0,0,0.1)',
       fill: false
 
     }, {
-      label: 'Luftfuktighet',
+      label: 'Luftfuktighet ' + city,
       data: avgHumidityData,
-      borderColor: 'rgb(60, 179, 113)',
+      borderColor: 'rgb(61, 165, 217)',
       backgroundColor: 'rgba(0,0,0,0.1)',
       fill: false
-    }]
-
+    }
+    ]
   }
+
   return chartData
 
 }
@@ -94,29 +129,32 @@ const city = (arrCity) => {
   return cityData
 }
 
-monthData(TokyoAllYears)
-city(TokyoAllYears)
+// monthData(TokyoAllYears)
+// city(TokyoAllYears)
 
-monthData(ParisAllYears)
-city(ParisAllYears)
+// monthData(ParisAllYears)
+// city(ParisAllYears)
 
-monthData(ArubaAllYears)
-city(ArubaAllYears)
+// monthData(ArubaAllYears)
+// city(ArubaAllYears)
 
-monthData(StockholmAllYears)
-city(StockholmAllYears)
+// monthData(StockholmAllYears)
+// city(StockholmAllYears)
 // how to push in a value and use as an argument?
 // spread the "AllaResmålVing" array and somehow make it in to the jsx
 
-const CollectedData = () => {
-
+export const CustomCollectedData = (props) => {
+  // arr = ParisAllYears
   return (
     <div>
       <Line
-        data={monthData(StockholmAllYears)}
+        data={monthData(props.data, props.city)}
+        width={500}
+        height={250}
         options={{
+          maintainAspectRatio: true,
           responsive: true,
-          title: { text: city(StockholmAllYears), display: true },
+          title: { text: city(props.data), display: false },
           scales: {
             yAxes: [
               {
@@ -145,4 +183,43 @@ const CollectedData = () => {
   )
 };
 
-export default CollectedData;
+const CollectedData = () => {
+
+  return (
+    <div>
+      {/* <Line
+        data={monthData(ArubaAllYears)}
+        width={50}
+        height={25}
+        options={{
+          responsive: true,
+          title: { text: city(ParisAllYears), display: true },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 12,
+                  beginAtZero: true
+                },
+                gridLines: {
+                  display: false
+                }
+              }
+            ],
+            xAxes: [
+              {
+                gridLines: {
+                  display: false
+                }
+              }
+            ]
+          }
+        }}
+      /> */}
+
+    </div>
+  )
+};
+
+export default CustomCollectedData;
