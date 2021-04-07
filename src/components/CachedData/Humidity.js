@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Line, Bar } from 'react-chartjs-2';
 
@@ -21,28 +22,33 @@ export const cityHistoric = {
     'Barcelona': [...BarcelonaAllYears],
     'Stockholm': [...StockholmAllYears]
 }
-console.log(cityHistoric)
+// console.log(cityHistoric)
 
-const monthDataTemp = (arrCity, city) => {
+const monthDataHumidity = (arrCity, city) => {
 
-    let tempData = []
+    let humidityData = []
     for (let i = 0; i < arrCity.length; i++) {
+        let filteredHumidity = arrCity[i].map(item => parseInt(item.data.weather[0].hourly[0].humidity))
 
-        let filteredTemp = arrCity[i].map(temp => parseInt(temp.data.weather[0].avgtempC))
-        tempData.push(filteredTemp);
-
+        humidityData.push(filteredHumidity);
     }
 
-    let SthlmTempData = []
+    let SthlmHumidityData = []
+
     for (let i = 0; i < StockholmAllYears.length; i++) {
-        let StockholmTemp = StockholmAllYears[i].map(temp => parseInt(temp.data.weather[0].avgtempC))
-        SthlmTempData.push(StockholmTemp);
+
+        let StockholmHumidity = StockholmAllYears[i].map(item => parseInt(item.data.weather[0].hourly[0].humidity))
+
+        SthlmHumidityData.push(StockholmHumidity);
     }
+
 
     let filteredMonthNum = arrCity[0].map(item => item.data.weather[0].date.slice(4, 8))
 
+
     let labelMonths = filteredMonthNum.splice(0, 12);
     filteredMonthNum.push('Jan', 'Feb', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec');
+
 
     const sumArray = (array) => {
         const newArray = [];
@@ -64,49 +70,49 @@ const monthDataTemp = (arrCity, city) => {
         return sumArr;
     }
 
-    const avgTempData = (sumArray(tempData));
-    const avgTempSthlm = (sumArray(SthlmTempData));
+    const avgHumidityData = (sumArray(humidityData));
+    const avgHumiditySthlm = (sumArray(SthlmHumidityData));
 
     const chartData = {
         labels: filteredMonthNum,
         datasets: [{
-            label: 'Medeltemp Stockholm',
-            data: avgTempSthlm,
-            borderColor: 'rgb(238, 130, 238)',
-            backgroundColor: 'rgba(0,0,0,0.1)',
-            fill: false,
-
-
-        }, {
-            label: 'Medeltemp',
-            data: avgTempData,
-            borderColor: 'rgb(60, 179, 113)',
+            label: city,
+            data: avgHumidityData,
+            borderColor: 'rgb(149, 224, 170)',
             backgroundColor: 'rgba(0,0,0,0.1)',
             fill: false
+        },
+        {
+            label: 'Stockholm',
+            data: avgHumiditySthlm,
+            borderColor: 'rgb(61, 165, 217)',
+            backgroundColor: 'rgba(0,0,0,0.1)',
+            fill: false
+
         }
         ]
-
     }
     return chartData
 }
-console.log(monthDataTemp(StockholmAllYears))
+// console.log(monthDataHumidity(StockholmAllYears))
 
 const city = (arrCity) => {
     const cityData = arrCity[0][0].data.request[0].query
     return cityData
 }
 
-const TestTemp = (props) => {
+const TestHumidity = (props) => {
     return (
         <div>
             <Line
-                data={monthDataTemp(props.data)}
-                width={500}
-                height={250}
+                data={monthDataHumidity(props.data, props.city)}
+                width={600}
+                height={500}
                 options={{
                     maintainAspectRatio: true,
                     responsive: true,
-                    title: { text: city(props.data), display: true },
+                    // title: { text: city(props.data), display: true },
+                    title: { text: 'Luftfuktighet', display: true },
                     scales: {
                         yAxes: [
                             {
@@ -135,4 +141,4 @@ const TestTemp = (props) => {
     )
 }
 
-export default TestTemp
+export default TestHumidity

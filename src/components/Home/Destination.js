@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom"
 // import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData.txt';
 import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
-import { Avarage } from "../CachedData/Avarage";
-import { cityHistoric } from '../CachedData/TestHumidity';
-import TestHumidity from '../CachedData/TestHumidity'
-import TestTemp from '../CachedData/TestTemp'
-import TestBubble from "../CachedData/TestBubble";
+// import { Avarage } from "../CachedData/Avarage";
+import { cityHistoric } from '../CachedData/Humidity';
+import TestHumidity from '../CachedData/Humidity'
+import TestTemp from '../CachedData/Temp'
+// import TestBubble from "../CachedData/TestBubble";
 
 const StyledWrapper = styled.div`
 display:flex;
@@ -42,17 +42,19 @@ p {
     font-weight: 800;
     letter-spacing: 1px;
     font-size: 19px;
-    margin:20px 0 0 0;
+    margin:15px 0 0 0;
 }
 h1 {
     font-size: 40px;
     font-weight: 900;
     color: #40A6BC;
     letter-spacing: 1px;
-    margin:10px 0 40px 0;
+    margin:10px 0 30px 0;
 }
 `
-
+const StyledDiv = styled.div`
+margin:10px 0px 60px 0px;
+`
 function Destination() {
     const { temp, date, destination } = useParams();
 
@@ -68,9 +70,15 @@ function Destination() {
             <StyledContainer>
                 <p>{date}</p>
                 <h1>{destination}</h1>
-                <TestTemp city={destination} data={cityHistoric[destination]} />
-                <TestHumidity city={destination} data={cityHistoric[destination]} />
-                <TestBubble date={date} city={destination} data={cityHistoric[destination]} />
+                <StyledDiv>
+                    <TestTemp city={destination} data={cityHistoric[destination]} />
+                </StyledDiv>
+                <StyledDiv>
+                    <TestHumidity city={destination} data={cityHistoric[destination]} />
+                </StyledDiv>
+                {/* <StyledDiv>
+                    <TestBubble date={date} city={destination} data={cityHistoric[destination]} />
+                </StyledDiv> */}
             </StyledContainer>
 
         </>)
