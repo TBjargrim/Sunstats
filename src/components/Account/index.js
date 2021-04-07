@@ -1,5 +1,5 @@
 import React from 'react';
-import CollectedData from '../CachedData/CollectedData'
+// import CollectedData from '../CachedData/CollectedData.txt'
 import { AuthUserContext, withAuthorization } from '../Session';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';

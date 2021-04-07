@@ -27,7 +27,7 @@ function Info({ setTargetInfoClick }) {
             <LinkWrapper>
                 <StyledLink to={ROUTES.WIZ}><FaArrowRight onClick={handleClick} /></StyledLink>
             </LinkWrapper>
-        </StyledDiv >
+        </StyledDiv>
     );
 }
 export default Info;

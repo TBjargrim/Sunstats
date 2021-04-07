@@ -1,7 +1,12 @@
 import { useParams } from "react-router-dom"
-import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData';
+// import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData.txt';
 import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
+import { Avarage } from "../CachedData/Avarage";
+import { cityHistoric } from '../CachedData/TestHumidity';
+import TestHumidity from '../CachedData/TestHumidity'
+import TestTemp from '../CachedData/TestTemp'
+import TestBubble from "../CachedData/TestBubble";
 
 const StyledWrapper = styled.div`
 display:flex;
@@ -50,11 +55,9 @@ h1 {
 
 function Destination() {
     const { temp, date, destination } = useParams();
-    // console.log({ temp, date, destination })
-    //let allYears = cityHistoric[destination];
+
     return (
         <>
-
             <StyledWrapper>
                 <StyledLogo src={VingLogga} alt='Bild på strand' />
             </StyledWrapper>
@@ -65,10 +68,11 @@ function Destination() {
             <StyledContainer>
                 <p>{date}</p>
                 <h1>{destination}</h1>
-                <CustomCollectedData city={destination} data={cityHistoric[destination]} />
+                <TestTemp city={destination} data={cityHistoric[destination]} />
+                <TestHumidity city={destination} data={cityHistoric[destination]} />
+                <TestBubble date={date} city={destination} data={cityHistoric[destination]} />
             </StyledContainer>
 
         </>)
 }
-
 export default Destination;
