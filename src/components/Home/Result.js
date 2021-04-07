@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React, { useState } from "react";
-import { Redirect, useParams, useHistory } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 
 
 const FlexDiv = styled.div`

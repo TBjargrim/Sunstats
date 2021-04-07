@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom"
 import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
 // import { Avarage } from "../CachedData/Avarage";
-import { cityHistoric } from '../CachedData/Humidity';
-import TestHumidity from '../CachedData/Humidity'
-import TestTemp from '../CachedData/Temp'
+import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';
+import TestHumidity from '../CollectedData/Humidity'
+import TestTemp from '../CollectedData/Temp'
 // import TestBubble from "../CachedData/TestBubble";
 
 const StyledWrapper = styled.div`

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { compose } from 'recompose';
 import { withAuthorization, AuthUserContext } from '../Session';
 import { withFirebase } from '../Firebase';
-import styled from 'styled-components';
-import Result from "./Result"
+
 
 
 const HomePage = () => (

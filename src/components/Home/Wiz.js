@@ -1,6 +1,5 @@
-import React, {useState} from "react";
-import styled from "styled-components";
-import {Redirect} from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import Calendar from "./Calendar";
 import Temp from "./Temp";
 import Info from "./Info";
@@ -12,33 +11,33 @@ function Wiz() {
     const [targetTempClick, setTargetTempClick] = useState();
     const [targetTempClickBack, setTargetTempClickBack] = useState();
     const [targetJumpOver, setTargetJumpOver] = useState();
-    
+
     return (
         <>
             {!targetInfoClick ?
-            //OM info click inte är klickad, visa info
+                //OM info click inte är klickad, visa info
                 <Info
-                setTargetInfoClick={setTargetInfoClick} />
+                    setTargetInfoClick={setTargetInfoClick} />
                 : null}
-            
+
             {targetInfoClick && !targetTempClick && !targetJumpOver ?
-            //Om infoclick är klickad och
-            //tempclick inte är klickad
+                //Om infoclick är klickad och
+                //tempclick inte är klickad
                 <Temp
                     setTargetTempClick={setTargetTempClick}
                     setTargetTemp={setTargetTemp}
                     setTargetJumpOver={setTargetJumpOver}
-                    setTargetTempClickBack={setTargetTempClickBack}/> : null}
-            
+                    setTargetTempClickBack={setTargetTempClickBack} /> : null}
+
             {targetTemp && targetTempClick ||
-            targetTemp && targetJumpOver ?
+                targetTemp && targetJumpOver ?
                 // om targettemp och targettempclick är true (klickade)
                 //
                 <Calendar setSaveDate={setSaveDate} /> : null}
 
 
             {targetTemp && saveDate ? <Redirect to={`/result/${targetTemp}/${saveDate}`} /> : null}
-         </>
+        </>
     )
 }
 
