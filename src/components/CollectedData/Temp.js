@@ -1,10 +1,11 @@
 import React from "react";
 import { Line } from 'react-chartjs-2';
-
+import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
 import { Stockholm2017, Stockholm2018, Stockholm2019 } from '../CachedData/DataStockholm';
 
-
+const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
 const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
+
 
 const monthDataTemp = (arrCity, city) => {
 
@@ -78,6 +79,12 @@ const city = (arrCity) => {
     return cityData
 }
 
+export const Stockholm = monthDataTemp(StockholmAllYears).datasets[0].data
+// export const StockholmAvgTemp = Stockholm.datasets[0].data
+console.log(Stockholm)
+const Aruba = monthDataTemp(ArubaAllYears)
+export const ArubaAvgTemp = Aruba.datasets[0].data
+// console.log(StockholmAvgTemp)
 
 const Temp = (props) => {
     return (
