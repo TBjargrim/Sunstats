@@ -77,7 +77,7 @@ const NavigationNonAuth = () => (
   <StyledNav>
     <StyledLogo src={Logo}></StyledLogo>
     <li>
-      <Link to={ROUTES.LANDING}>Back</Link>
+      <Link to={ROUTES.LANDING}>Tillbaka</Link>
     </li>
     {/* <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>

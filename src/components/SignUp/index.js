@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1>Skapa konto</h1>
     <SignUpForm />
   </div>
 );
@@ -94,28 +94,28 @@ class SignUpFormBase extends Component {
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Full Name"
+          placeholder="För- och efternamn"
         />
         <input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="E-post"
         />
         <input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
+          placeholder="Lösenord"
         />
         <input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Bekräfta lösenord"
         />
         <label>
           Admin:
@@ -127,7 +127,7 @@ class SignUpFormBase extends Component {
           />
         </label>
         <button disabled={isInvalid} type="submit">
-          Sign Up
+          Logga in
         </button>
 
         {error && <p>{error.message}</p>}
@@ -155,7 +155,7 @@ text-transform:uppercase;
 
 const SignUpLink = () => (
   <StyledP>
-    Don't have an account? <StyledLink to={ROUTES.SIGN_UP}>Sign Up</StyledLink>
+    Har du inget konto än? <StyledLink to={ROUTES.SIGN_UP}>Klicka här för att skapa konto</StyledLink>
   </StyledP>
 );
 

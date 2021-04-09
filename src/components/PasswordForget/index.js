@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const PasswordForgetPage = () => (
   <div>
-    <h1>PasswordForget</h1>
+    <h1>Lösenordsåterställning</h1>
     <PasswordForgetForm />
   </div>
 );
@@ -44,10 +44,10 @@ class PasswordForgetFormBase extends Component {
           value={this.state.email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="E-post"
         />
         <button disabled={isInvalid} type="submit">
-          Reset My Password
+          Återställ lösenord
 </button>
         {error && <p>{error.message}</p>}
       </form>
@@ -70,7 +70,7 @@ a{
 
 const PasswordForgetLink = () => (
   <StyledP>
-    <StyledLink to={ROUTES.PASSWORD_FORGET}>Forgot Password?</StyledLink>
+    <StyledLink to={ROUTES.PASSWORD_FORGET}>Har du glömt ditt lösenord?</StyledLink>
   </StyledP>
 );
 export default PasswordForgetPage;

@@ -54,7 +54,7 @@ text-align:center;
 
 const SignInPage = () => (
   <StyledDiv>
-    <StyledH1>Sign In</StyledH1>
+    <StyledH1>Logga in</StyledH1>
     <SignInForm />
     <PasswordForgetLink />
     <SignUpLink />
@@ -101,16 +101,16 @@ class SignInFormBase extends Component {
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="E-post"
         />
         <input
           name="password"
           value={password}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
+          placeholder="Lösenord"
         />
-        <button disabled={isInvalid} type="submit">Sign In</button>
+        <button disabled={isInvalid} type="submit">Logga in</button>
         {error && <p>{error.message}</p>}
       </StyledForm>
     );

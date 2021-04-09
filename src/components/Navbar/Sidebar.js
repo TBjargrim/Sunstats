@@ -86,10 +86,10 @@ const Sidebar = ({ authUser, isOpen, toggle }) => {
             <SidebarWrapper>
                 <SidebarMenu>
                     <StyledLI>
-                        <StyledLink to='/home' onClick={toggle}>Home</StyledLink>
+                        <StyledLink to='/home' onClick={toggle}>Start</StyledLink>
                     </StyledLI>
                     <StyledLI>
-                        <StyledLink to='/account' onClick={toggle}>Account</StyledLink>
+                        <StyledLink to='/account' onClick={toggle}>Min sida</StyledLink>
                     </StyledLI>
                     <StyledLI>
                         <StyledLink to='/wiz' onClick={toggle}>Hitta resmål</StyledLink>

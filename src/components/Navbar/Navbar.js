@@ -95,10 +95,10 @@ const Navbar = ({ authUser, toggle }) => {
             <Link to='/home'>Home</Link>
           </NavItem>
           <NavItem>
-            <Link to='/account'>Account</Link>
+            <Link to='/account'>Min sida </Link>
           </NavItem>
           <NavItem>
-            <Link to='/wiz'>wizard</Link>
+            <Link to='/wiz'>Restyper</Link>
           </NavItem>
           {!!authUser.roles[ROLES.ADMIN] && (
             <NavItem>
