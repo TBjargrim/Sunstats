@@ -1,94 +1,96 @@
-import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
-import { Tokyo2017, Tokyo2018, Tokyo2019 } from '../CachedData/DataTokyo';
-import { Paris2017, Paris2018, Paris2019 } from '../CachedData/DataParis';
-import { Stockholm2017, Stockholm2018, Stockholm2019 } from '../CachedData/DataStockholm';
-import { Barcelona2017, Barcelona2018, Barcelona2019 } from '../CachedData/DataBarcelona';
-import { ArubaAvgTemp, Stockholm } from './Temp'
-// Add all yearArrays together to one array - to simplify the data comparison
-const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
-const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
-const ParisAllYears = [Paris2017, Paris2018, Paris2019];
-const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
-const BarcelonaAllYears = [Barcelona2017, Barcelona2018, Barcelona2019];
+import {
+    AlanyaAllYears,
+    ArubaAllYears, BarcelonaAllYears, HonoluluAllYears, IbizaAllYears,
+    KingstonAllYears, KretaAllYears, ParisAllYears, PhuketAllYears, RhodosAllYears,
+    RomeAllYears, SingaporeAllYears, StockholmAllYears, TokyoAllYears, UbudAllYears
+} from './ConstantsCityAllYears'
+
+import {
+    Alanya, Aruba, Barcelona,
+    Honolulu, Ibiza, Kingston,
+    Kreta, Paris, Phuket,
+    Rhodos, Rome, Singapore,
+    Stockholm, Tokyo, Ubud
+} from './AverageTemp'
 
 export const cityHistoric = {
+    'Alanya': [...AlanyaAllYears],
     'Aruba': [...ArubaAllYears],
+    'Barcelona': [...BarcelonaAllYears],
+    'Honolulu': [...HonoluluAllYears],
+    'Ibiza': [...IbizaAllYears],
+    'Kingston': [...KingstonAllYears],
+    'Kreta': [...KretaAllYears],
+    'Phuket': [...PhuketAllYears],
+    'Rhodos': [...RhodosAllYears],
+    'Rome': [...RomeAllYears],
+    'Singapore': [...SingaporeAllYears],
     'Tokyo': [...TokyoAllYears],
     'Paris': [...ParisAllYears],
-    'Barcelona': [...BarcelonaAllYears],
+    'Ubud': [...UbudAllYears],
     'Stockholm': [...StockholmAllYears]
 }
 
-const obj = {
-    Aruba: {
-        AverageTemp: ArubaAvgTemp,
+export const collectedAvgTempAndCities = [
+    {
+        city: 'Alanya',
+        averageTemp: Alanya,
     },
-    Stockholm: {
-        AverageTemp: Stockholm,
+    {
+        city: 'Aruba',
+        averageTemp: Aruba,
     },
-
-}
-console.log(obj)
-// Make a function that looks like month data that takes out the avgtemp and city name.
-//Push it in to an array(global) that looks something like this
-// const Arr = [
-//     Aruba: {
-//         AverageTemp:[] //Use the array and choose the index that match the choosen month, loop through and filter just the number/month
-//     },
-//     Paris:{
-//         AverageTemp:[]
-//     }
-// ]
-//Get the user to choose month first to get the citys that have the correct avg temp for that month
-export const CollectTemp = (arr) => {
-
-    let AllVingInfo = [];
-    //Making data from cityHistoric into an array
-    let dataArr = Object.values(cityHistoric)
-    let dataCityName = Object.keys(cityHistoric) //Creates an array with all the Citynames
-    // console.log(dataCityName)
-
-    for (let i = 0; i < dataArr.length; i++) {
-        // console.log(dataArr[i])
-        let SeparateCityArr = dataArr[i]
-        for (let k = 0; k < SeparateCityArr.length; k++) {
-            // console.log(SeparateCityArr[k].map(temp => parseInt(temp.data.weather[0].avgtempC)))
-        }
-
-    }
-    const sumArray = (array) => {
-        const newArray = [];
-        array.forEach(sub => {
-            sub.forEach((num, index) => {
-                if (newArray[index]) {
-                    newArray[index] += num;
-                }
-                else {
-                    newArray[index] = num;
-                }
-            });
-        });
-        let sumArr = [];
-        for (var i = 0; i < newArray.length; i++) {
-            let avgSum = newArray[i] / 3
-            sumArr.push(avgSum.toFixed(1))
-        };
-        return sumArr;
-    }
-
-
-    AllVingInfo.push({
-        city: dataCityName,
-        avgTemp: []
-    })
-}
-CollectTemp(cityHistoric)
-
-// for (let i = 0; i < arrCity.length; i++) {
-
-//     let filteredTemp = arrCity[i].map(temp => parseInt(temp.data.weather[0].avgtempC))
-//     tempData.push(filteredTemp);
-
-
-//Get the data from every city 
-
+    {
+        city: 'Barcelona',
+        averageTemp: Barcelona,
+    },
+    {
+        city: 'Honolulu',
+        averageTemp: Honolulu,
+    },
+    {
+        city: 'Ibiza',
+        averageTemp: Ibiza,
+    },
+    {
+        city: 'Kingston',
+        averageTemp: Kingston,
+    },
+    {
+        city: 'Kreta',
+        averageTemp: Kreta,
+    },
+    {
+        city: 'Paris',
+        averageTemp: Paris,
+    },
+    {
+        city: 'Phuket',
+        averageTemp: Phuket,
+    },
+    {
+        city: 'Rhodos',
+        averageTemp: Rhodos,
+    },
+    {
+        city: 'Rome',
+        averageTemp: Rome,
+    },
+    {
+        city: 'Singapore',
+        averageTemp: Singapore,
+    },
+    // {
+    //     city: 'Stockholm',
+    //     averageTemp: Stockholm,
+    // },
+    {
+        city: 'Tokyo',
+        averageTemp: Tokyo,
+    },
+    {
+        city: 'Ubud',
+        averageTemp: Ubud,
+    },
+]
+// console.log(collectedAvgTempAndCities)

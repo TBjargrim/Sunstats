@@ -4,8 +4,8 @@ import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
 // import { Avarage } from "../CachedData/Avarage";
 import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';
-import TestHumidity from '../CollectedData/Humidity'
-import TestTemp from '../CollectedData/Temp'
+import TestHumidity from '../CollectedData/AverageHumidity'
+import TestTemp from '../CollectedData/AverageTemp'
 // import TestBubble from "../CachedData/TestBubble";
 
 const StyledWrapper = styled.div`
@@ -53,7 +53,7 @@ h1 {
 }
 `
 const StyledDiv = styled.div`
-margin:10px 0px 60px 0px;
+margin:10px 10px 60px 10px;
 `
 function Destination() {
     const { temp, date, destination } = useParams();

@@ -2,10 +2,10 @@
 import VanImg from '../../Images/TravelWithVan2.jpg';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from './SelectionStyling.js';
-import React from 'react'
+import React, { useState } from 'react'
 import * as ROUTES from '../../constants/routes';
 
-const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack, setTargetJumpOver, setTargetInfoClick }) => {
+const Temp = ({ setTargetTemp, setTargetJumpOver, setTargetInfoClick }) => {
   const [selectedTemp, setSelectedTemp] = useState();
 
   const handleClick = (e) => {
