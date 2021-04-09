@@ -49,6 +49,7 @@ const App = () => {
           <Route path={ROUTES.WIZ} component={Wiz} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
+
         </Switch>
       </div>
     </Router>

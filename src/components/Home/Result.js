@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useState } from "react";
 import { Redirect, useParams, useHistory } from "react-router-dom"
+import InputFilter from "../InputFilter/InputFilter"
 
 
 const FlexDiv = styled.div`
@@ -101,6 +102,9 @@ function Result() {
   return (
     <FlexDiv>
       <h1>{date}</h1>
+      <InputFilter/>
+      
+     
       <div>
         <ul>
           {newArr.map(obj => <li key={obj.city}>
