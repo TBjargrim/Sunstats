@@ -26,25 +26,24 @@ const FlexDiv = styled.div`
   align-content: center;
   padding: 20px 20px 20px 12px;
   h1 {
-    font-weight: 500;
+    font-weight: 800;
     text-align: center;
+    color: #40A6BC;
   }
   ul {
     padding: 0;
-
   }
   li {
       text-decoration: none;
       list-style-type: none;
   }
-  
 `;
 const CityCard = styled.div`
 display: flex;
 flex-direction: row;
-box-shadow: 1px 2px 10px gray;
+box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 margin: 15px;
-background-color: #E8E8E8;
+background-color: #F0F0F0;
 div{
   display: flex;
 }
@@ -67,16 +66,18 @@ p {
   padding-top: 10px;
 }
 `;
+
+const FavHeart = styled.div`
+margin: 15px;
+font-size: 22px;
+`
+
 const CityCardImg = styled.div`
-width: 90%;
-height: 10%;
+width: 100%;
 img{
   width: 100%;
-  
 }
 `;
-
-
 
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
@@ -115,7 +116,6 @@ function Result({ setSaveDate }) {
   }
 
   let newArr = []
-  // console.log(ImagesCities)
   if (date === 'January') {
     citiesArr.forEach((city, index) => {
       const JanTemp = JanArr[index];
@@ -167,7 +167,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(AprObj.temperatur) >= parseInt(temp) - 5 && parseInt(AprObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(AprObj)
-        // console.log(AprObj)
       }
     })
   } else if (date === "May") {
@@ -223,7 +222,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(AugObj.temperatur) >= parseInt(temp) - 5 && parseInt(AugObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(AugObj)
-        console.log(AugObj)
       }
     })
   } else if (date === "September") {
@@ -237,7 +235,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(SepObj.temperatur) >= parseInt(temp) - 5 && parseInt(SepObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(SepObj)
-        console.log(SepObj)
       }
     })
   } else if (date === "October") {
@@ -251,7 +248,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(OctObj.temperatur) >= parseInt(temp) - 5 && parseInt(OctObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(OctObj)
-        console.log(OctObj)
       }
     })
   } else if (date === "November") {
@@ -265,7 +261,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(NovObj.temperatur) >= parseInt(temp) - 5 && parseInt(NovObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(NovObj)
-        // console.log(NovObj)
       }
     })
   } else if (date === "December") {
@@ -279,7 +274,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(DecObj.temperatur) >= parseInt(temp) - 5 && parseInt(DecObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(DecObj)
-        // console.log(DecObj)
       }
     })
   };
@@ -289,7 +283,6 @@ function Result({ setSaveDate }) {
     return function () {
       let clickedCity = destination;
       setRedirectionPath(clickedCity);
-      // console.log(clickedCity)
       history.push(`/result/${temp}/${date}/${destination}`);
     }
   }
@@ -333,12 +326,11 @@ function Result({ setSaveDate }) {
   function handleClick(props) {
     //toggle between obj.fav 
     //when true the obj should be pushed into an array
-    console.log(props.fav)
+    // console.log(props.fav)
     setFavorites(prevValue => {
       return !prevValue
     })
   }
-  // console.log(favorites)
 
   return (
     <FlexDiv>
@@ -356,11 +348,11 @@ function Result({ setSaveDate }) {
                 <h2>{obj.city}</h2>
                 <p>Medeltemperatur: {obj.temperatur}</p>
               </CityCardInfo>
-              <div >
+              <FavHeart>
                 {favorites ? (
-                  <FiHeart onClick={handleClick} style={{ color: 'red' }} />
-                ) : <FaHeart onClick={handleClick} style={{ color: 'red' }} />}
-              </div>
+                  <FaHeart onClick={handleClick} style={{ color: 'red' }} />
+                ) : <FiHeart onClick={handleClick} style={{ color: 'red' }} />}
+              </FavHeart>
             </CityCard>
 
           </li>)}
