@@ -299,8 +299,14 @@ function Result({ setSaveDate }) {
   const AddFavourite = (city) => {
     const newFavouriteList = [...favorites, city]; //Copy of the useState, favorites
     // console.log(newFavouriteList)
-    setToggleHeart(!toggleHeart);
+
     setFavorites(newFavouriteList)
+    for (let i = 0; i < newFavouriteList.length; i++) {
+      let x = newFavouriteList[i]
+      setToggleHeart(!toggleHeart);
+      console.log(x)
+
+    }
     console.log(newFavouriteList)
     console.log(toggleHeart)
   }

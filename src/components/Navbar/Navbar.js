@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
-import Logo from '../../Images/logo.png'
+import Logo from '../../Images/sunstats_logo.png'
 
 const StyledNav = styled.nav`
  background-color:transparent;
