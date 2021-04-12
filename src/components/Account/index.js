@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import CollectedData from '../CachedData/CollectedData.txt'
 import { AuthUserContext, withAuthorization } from '../Session';
 import { PasswordForgetForm } from '../PasswordForget';
@@ -6,9 +6,11 @@ import PasswordChangeForm from '../PasswordChange';
 // import BrandedPage from '../BrandedPage/BrandedPage';
 
 const AccountPage = () => (
-  <AuthUserContext.Consumer>
 
-    {authUser => (
+
+  <AuthUserContext.Consumer >
+
+    { authUser => (
       <div>
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
@@ -16,7 +18,7 @@ const AccountPage = () => (
         {/* <CollectedData /> */}
       </div>
     )}
-  </AuthUserContext.Consumer>
+  </AuthUserContext.Consumer >
 );
 
 const condition = authUser => !!authUser;
