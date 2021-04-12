@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom"
 import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
+import InputFilter from "../InputFilter/InputFilter"
 
 import AlanyaImg from '../../Images/AlanyaImage.jpg'
 import ArubaImg from '../../Images/ArubaImage.jpg'
@@ -310,7 +311,7 @@ function Result({ setSaveDate }) {
   return (
     <FlexDiv>
       <h1>{date}</h1>
-
+      <InputFilter />
       <div>
         <ul>
           {newArr.map(obj => <li key={obj.city}>

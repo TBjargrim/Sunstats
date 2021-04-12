@@ -4,28 +4,19 @@ import { Redirect, useParams, useHistory } from "react-router-dom"
 
 
   function InputFilter() {
-  const [monthValue, setMonthValue] = useState("");
-  const [tempValue, setTempValue] = useState("");
   let history = useHistory();
 
-
-  function handleClick(){
+    function handleClick(e) {
+    e.preventDefault();
     let selectionMonth = document.querySelector(".month");
-    let sum = selectionMonth.value;
-    setMonthValue(sum);
+    let monthValue = selectionMonth.value;
     let selectionTemp = document.querySelector(".temp");
-   setTempValue(selectionTemp.value);
-    console.log(tempValue + monthValue)
+    let tempValue = selectionTemp.value;
     
-    // history.push(`/result/${tempValue}/${monthValue}`);
-
-
+    history.push(`/result/${tempValue}/${monthValue}`);
   }
-  
     return (
-
     <div>
-      <form>
       <select className="month">
         <option value="January"> January</option>
         <option value="February"> February</option>
@@ -39,8 +30,6 @@ import { Redirect, useParams, useHistory } from "react-router-dom"
         <option value="October"> October</option>
         <option value="November"> November</option>
         <option value="December"> December</option>
-
-
         </select>
 
         <select className="temp">
@@ -50,14 +39,8 @@ import { Redirect, useParams, useHistory } from "react-router-dom"
         <option value="25"> 25</option>
         <option value="30"> 30</option>
         <option value="35"> 35</option>
-        
-        </select>
-        </form>
-        <button onClick={handleClick}> sök </button>
-        
-        <h1>
-            InputFilter
-        </h1>
+          </select>
+        <button onClick={handleClick}>Sök</button>
     </div>
         
 
