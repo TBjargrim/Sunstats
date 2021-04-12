@@ -7,8 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import styled from "styled-components";
 import "./datepicker.css";
-import * as ROUTES from '../../constants/routes';
-import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from './SelectionStyling.js';
+// import * as ROUTES from '../../constants/routes';
+
 // import { Redirect } from "react-router";
 const CalendarDiv = styled.div`
 padding-top: 200px; 

@@ -2,7 +2,6 @@ import React from 'react';
 import * as ROLES from '../../constants/roles';
 import SignOutButton from '../SignOut';
 import {
-  BrowserRouter as Router,
   Link
 } from "react-router-dom";
 import styled from 'styled-components';

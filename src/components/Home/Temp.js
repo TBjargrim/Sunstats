@@ -1,11 +1,11 @@
-import styled from "styled-components";
+
 import VanImg from '../../Images/TravelWithVan2.jpg';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from './SelectionStyling.js';
 import React, { useState } from 'react'
 import * as ROUTES from '../../constants/routes';
 
-const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack, setTargetJumpOver, setTargetInfoClick }) => {
+const Temp = ({ setTargetTemp, setTargetJumpOver, setTargetInfoClick }) => {
   const [selectedTemp, setSelectedTemp] = useState();
 
   const handleClick = (e) => {
@@ -30,10 +30,10 @@ const Temp = ({ setTargetTemp, setTargetTempClick, setTargetTempClickBack, setTa
         <StyledP>Välj ett val som passar just dig</StyledP>
       </StyledText>
       <StyledButtonWrapper>
-        <StyledButtons onClick={handleClick} value="5"><StyledIcon src={VanImg}></StyledIcon>After Ski</StyledButtons>
-        <StyledButtons onClick={handleClick} value="10"><StyledIcon src={VanImg}></StyledIcon>Vandring</StyledButtons>
-        <StyledButtons onClick={handleClick} value="20"><StyledIcon src={VanImg}></StyledIcon>Tshirt-väder</StyledButtons>
-        <StyledButtons onClick={handleClick} value="30"><StyledIcon src={VanImg}></StyledIcon>Strandhäng</StyledButtons>
+        <StyledButtons onClick={handleClick} value="5"><StyledIcon src={VanImg}></StyledIcon>0-10 grader</StyledButtons>
+        <StyledButtons onClick={handleClick} value="15"><StyledIcon src={VanImg}></StyledIcon>10-20 grader</StyledButtons>
+        <StyledButtons onClick={handleClick} value="25"><StyledIcon src={VanImg}></StyledIcon>20-30 grader</StyledButtons>
+        <StyledButtons onClick={handleClick} value="35"><StyledIcon src={VanImg}></StyledIcon>30-40 grader</StyledButtons>
       </StyledButtonWrapper>
       <StyledLinkSkip to={ROUTES.WIZ} onClick={handleJump}>Hoppa över</StyledLinkSkip>
       <LinkWrapper>

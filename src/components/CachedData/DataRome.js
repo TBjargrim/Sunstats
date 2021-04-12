@@ -1,4 +1,4 @@
-export const Rom2017 = [{
+export const Rome2017 = [{
     "data": {
         "request": [
             {
@@ -73,7 +73,7 @@ export const Rom2017 = [{
         ]
     }
 },
-  {
+{
     "data": {
         "request": [
             {
@@ -898,8 +898,8 @@ export const Rom2017 = [{
         ]
     }
 }]
-export const Rom2018 = [{
-  {
+export const Rome2018 = [{
+
     "data": {
         "request": [
             {
@@ -974,7 +974,7 @@ export const Rom2018 = [{
         ]
     }
 },
-  {
+{
     "data": {
         "request": [
             {
@@ -1800,8 +1800,7 @@ export const Rom2018 = [{
     }
 }
 ]
-export const Rom2019 = [{
-  {
+export const Rome2019 = [{
     "data": {
         "request": [
             {
@@ -1809,73 +1808,73 @@ export const Rom2019 = [{
                 "query": "Rome, Italy"
             }
         ],
-        "weather": [
-                "date": "2019-01-15",
-                "astronomy": [
-                    {
-                        "sunrise": "08:35 AM",
-                        "sunset": "06:04 PM",
-                        "moonrise": "01:31 PM",
-                        "moonset": "02:10 AM",
-                        "moon_phase": "First Quarter",
-                        "moon_illumination": "61"
-                    }
-                ],
-                "maxtempC": "14",
-                "maxtempF": "58",
-                "mintempC": "6",
-                "mintempF": "43",
-                "avgtempC": "11",
-                "avgtempF": "51",
-                "totalSnow_cm": "0.0",
-                "sunHour": "9.7",
-                "uvIndex": "4",
-                "hourly": [
-                    {
-                        "time": "24",
-                        "tempC": "14",
-                        "tempF": "58",
-                        "windspeedMiles": "6",
-                        "windspeedKmph": "10",
-                        "winddirDegree": "95",
-                        "winddir16Point": "E",
-                        "weatherCode": "113",
-                        "weatherIconUrl": [
-                            {
-                                "value": "http://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png"
-                            }
-                        ],
-                        "weatherDesc": [
-                            {
-                                "value": "Sunny"
-                            }
-                        ],
-                        "precipMM": "0.0",
-                        "precipInches": "0.0",
-                        "humidity": "53",
-                        "visibility": "10",
-                        "visibilityMiles": "6",
-                        "pressure": "1019",
-                        "pressureInches": "31",
-                        "cloudcover": "4",
-                        "HeatIndexC": "10",
-                        "HeatIndexF": "49",
-                        "DewPointC": "0",
-                        "DewPointF": "32",
-                        "WindChillC": "8",
-                        "WindChillF": "46",
-                        "WindGustMiles": "10",
-                        "WindGustKmph": "16",
-                        "FeelsLikeC": "8",
-                        "FeelsLikeF": "46",
-                        "uvIndex": "4"
-                    }
-                ]
-            }
+        "weather": [{
+            "date": "2019-01-15",
+            "astronomy": [
+                {
+                    "sunrise": "08:35 AM",
+                    "sunset": "06:04 PM",
+                    "moonrise": "01:31 PM",
+                    "moonset": "02:10 AM",
+                    "moon_phase": "First Quarter",
+                    "moon_illumination": "61"
+                }
+            ],
+            "maxtempC": "14",
+            "maxtempF": "58",
+            "mintempC": "6",
+            "mintempF": "43",
+            "avgtempC": "11",
+            "avgtempF": "51",
+            "totalSnow_cm": "0.0",
+            "sunHour": "9.7",
+            "uvIndex": "4",
+            "hourly": [
+                {
+                    "time": "24",
+                    "tempC": "14",
+                    "tempF": "58",
+                    "windspeedMiles": "6",
+                    "windspeedKmph": "10",
+                    "winddirDegree": "95",
+                    "winddir16Point": "E",
+                    "weatherCode": "113",
+                    "weatherIconUrl": [
+                        {
+                            "value": "http://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png"
+                        }
+                    ],
+                    "weatherDesc": [
+                        {
+                            "value": "Sunny"
+                        }
+                    ],
+                    "precipMM": "0.0",
+                    "precipInches": "0.0",
+                    "humidity": "53",
+                    "visibility": "10",
+                    "visibilityMiles": "6",
+                    "pressure": "1019",
+                    "pressureInches": "31",
+                    "cloudcover": "4",
+                    "HeatIndexC": "10",
+                    "HeatIndexF": "49",
+                    "DewPointC": "0",
+                    "DewPointF": "32",
+                    "WindChillC": "8",
+                    "WindChillF": "46",
+                    "WindGustMiles": "10",
+                    "WindGustKmph": "16",
+                    "FeelsLikeC": "8",
+                    "FeelsLikeF": "46",
+                    "uvIndex": "4"
+                }
+            ]
+        }
         ]
     }
 },
-  {
+{
     "data": {
         "request": [
             {
@@ -2699,5 +2698,4 @@ export const Rom2019 = [{
             }
         ]
     }
-}
 }]
