@@ -21,6 +21,11 @@ import SingaporeImg from '../../Images/SingaporeImage.jpg'
 import TokyoImg from '../../Images/TokyoImage.jpg'
 import UbudImg from '../../Images/UbudImage.jpg'
 
+const Green = styled.p`
+color: green;
+padding: 20px;
+font-weight: 600;
+`;
 const FlexDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -44,10 +49,11 @@ display: flex;
 flex-direction: row;
 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 margin: 15px;
-background-color: #F0F0F0;
+border-radius: 30px;
 div{
   display: flex;
 }
+
 `;
 const CityCardInfo = styled.div`
 flex-direction: column;
@@ -67,18 +73,19 @@ p {
   padding-top: 10px;
 }
 `;
-
 const FavHeart = styled.div`
 margin: 15px;
 font-size: 22px;
 `
-
+  ;
 const CityCardImg = styled.div`
 width: 100%;
 img{
   width: 100%;
+  border-radius: 30px 0 0 30px;
 }
 `;
+
 
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
@@ -116,6 +123,9 @@ function Result({ setSaveDate }) {
     DecArr.push(collectedAvgTempAndCities[i].averageTemp[11])
   }
 
+
+  
+
   let newArr = []
   if (date === 'January') {
     citiesArr.forEach((city, index) => {
@@ -128,7 +138,9 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(JanObj.temperatur) >= parseInt(temp) - 5 && parseInt(JanObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(JanObj)
+        ;
       }
+
     });
   } else if (date === "February") {
     citiesArr.forEach((city, index) => {
@@ -278,6 +290,7 @@ function Result({ setSaveDate }) {
     })
   };
 
+let newArrSorted = newArr.sort((a, b) => (a.temperatur > b.temperatur) ? -1 : 1)
 
   function createHandleClickForDestination(destination) {
     return function () {
@@ -314,13 +327,13 @@ function Result({ setSaveDate }) {
       <InputFilter />
       <div>
         <ul>
-          {newArr.map(obj => <li key={obj.city}>
-
+          {newArrSorted.map(obj => <li key={obj.city}>
             <CityCard >
               <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
                 <img src={obj.image} alt='bild på strand' />
               </CityCardImg>
               <CityCardInfo>
+                {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
                 <h2>{obj.city}</h2>
                 <p>Medeltemperatur: {obj.temperatur}</p>
                 {madeFavorites ?
