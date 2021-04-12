@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { AuthUserContext, withAuthorization } from '../Session';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
-// import BrandedPage from '../BrandedPage/BrandedPage';
+import MyPage from './MyPage';
 
 const AccountPage = () => (
 
@@ -15,7 +15,7 @@ const AccountPage = () => (
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
-        {/* <CollectedData /> */}
+        <MyPage />
       </div>
     )}
   </AuthUserContext.Consumer >

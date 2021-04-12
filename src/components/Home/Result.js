@@ -76,6 +76,7 @@ const CityCardImg = styled.div`
 width: 100%;
 img{
   width: 100%;
+  height: 100%;
 }
 `;
 
@@ -84,6 +85,7 @@ function Result({ setSaveDate }) {
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
   const [favorites, setFavorites] = useState([]);
+  const [toggleHeart, setToggleHeart] = useState(false)
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -115,7 +117,8 @@ function Result({ setSaveDate }) {
     DecArr.push(collectedAvgTempAndCities[i].averageTemp[11])
   }
 
-  let newArr = []
+  let newArr = [];
+
   if (date === 'January') {
     citiesArr.forEach((city, index) => {
       const JanTemp = JanArr[index];
@@ -162,7 +165,8 @@ function Result({ setSaveDate }) {
       const AprObj = {
         city: city,
         temperatur: AprTemp,
-        image: AprImage
+        image: AprImage,
+        fav: false
       }
       if (parseInt(AprObj.temperatur) >= parseInt(temp) - 5 && parseInt(AprObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(AprObj)
@@ -276,6 +280,11 @@ function Result({ setSaveDate }) {
       }
     })
   };
+  for (let i = 0; i < newArr.length; i++) {
+    let x = newArr[i]
+
+    console.log(x)
+  }
 
 
   function createHandleClickForDestination(destination) {
@@ -285,28 +294,33 @@ function Result({ setSaveDate }) {
       history.push(`/result/${temp}/${date}/${destination}`);
     }
   }
-
+  /* const toggleTrueFalse = () =>  */
+  // if city === id setToggleHeart
   const AddFavourite = (city) => {
-    const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
+    const newFavouriteList = [...favorites, city]; //Copy of the useState, favorites
     // console.log(newFavouriteList)
+    setToggleHeart(!toggleHeart);
     setFavorites(newFavouriteList)
     console.log(newFavouriteList)
+    console.log(toggleHeart)
   }
   //Make it so you can only fav your city once.
   //Be able to delete when you toogle
   //Make an if statement, if clicked, not being able to click again? And make the "full heart" visible
   //Make the state work in Account(?)
-  const deleteFavorite = (city) => {
-    const filteredFav = favorites.filter((obj) => obj.city !== city)
-    setFavorites(filteredFav)
-    console.log(favorites)
-  }
+  /*   const deleteFavorite = (city) => {
+      const filteredFav = favorites.filter((obj) => obj.city !== city)
+      setFavorites(filteredFav)
+      setToggleHeart(toggleHeart)
+      console.log(favorites)
+    } */
+
   useEffect(() => {
     const json = JSON.stringify(favorites);
     localStorage.setItem("favorites", json)
   }, [favorites])
-
-  const madeFavorites = true;
+  // myBool = !myBool;
+  // const madeFavorites = false;
   return (
     <FlexDiv>
       <h1>{date}</h1>
@@ -322,10 +336,11 @@ function Result({ setSaveDate }) {
               <CityCardInfo>
                 <h2>{obj.city}</h2>
                 <p>Medeltemperatur: {obj.temperatur}</p>
-                {madeFavorites ?
-                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
+                {console.log("ghej" + toggleHeart)}
+                {toggleHeart ?
+                  (<FaHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
                   :
-                  (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)}
+                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
 
               </CityCardInfo>
 
