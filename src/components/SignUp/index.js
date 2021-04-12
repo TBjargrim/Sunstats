@@ -35,6 +35,8 @@ class SignUpFormBase extends Component {
     if (isAdmin) {
       roles[ROLES.ADMIN] = ROLES.ADMIN;
     }
+    const favCities = {};
+    favCities.Ibiza = 'Ibiza';
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -46,6 +48,7 @@ class SignUpFormBase extends Component {
             username,
             email,
             roles,
+            favCities
           })
           
           .then(() => {

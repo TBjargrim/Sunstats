@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
 import { FiHeart } from 'react-icons/fi';
@@ -19,6 +19,8 @@ import RomeImg from '../../Images/RomeImage.jpg'
 import SingaporeImg from '../../Images/SingaporeImage.jpg'
 import TokyoImg from '../../Images/TokyoImage.jpg'
 import UbudImg from '../../Images/UbudImage.jpg'
+
+import { AuthUserContext } from '../Session'
 
 const FlexDiv = styled.div`
   display: flex;
@@ -84,6 +86,9 @@ function Result({ setSaveDate }) {
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
   const [favorites, setFavorites] = useState(false);
+  
+  const authUser = useContext(AuthUserContext)
+  console.log(Object.keys(authUser.favCities)) // OBS!
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
