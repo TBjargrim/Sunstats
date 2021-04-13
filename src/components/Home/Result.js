@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom"
 import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
+import InputFilter from "../InputFilter/InputFilter"
 
 import AlanyaImg from '../../Images/AlanyaImage.jpg'
 import ArubaImg from '../../Images/ArubaImage.jpg'
@@ -20,6 +21,11 @@ import SingaporeImg from '../../Images/SingaporeImage.jpg'
 import TokyoImg from '../../Images/TokyoImage.jpg'
 import UbudImg from '../../Images/UbudImage.jpg'
 
+const Green = styled.p`
+color: green;
+padding: 20px;
+font-weight: 600;
+`;
 const FlexDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,7 +49,7 @@ display: flex;
 flex-direction: row;
 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 margin: 15px;
-background-color: #F0F0F0;
+border-radius: 30px;
 div{
   display: flex;
 }
@@ -52,7 +58,6 @@ const CityCardInfo = styled.div`
 flex-direction: column;
 width: 100%;
 padding: 35px;
-
 h2 {
   font-size: 20px;
   font-weight: 400;
@@ -66,26 +71,25 @@ p {
   padding-top: 10px;
 }
 `;
-
 const FavHeart = styled.div`
 margin: 15px;
 font-size: 22px;
 `
-
+  ;
 const CityCardImg = styled.div`
 width: 100%;
 img{
   width: 100%;
-  height: 100%;
+  border-radius: 30px 0 0 30px;
 }
 `;
+
 
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
   const [favorites, setFavorites] = useState([]);
-  const [toggleHeart, setToggleHeart] = useState(false)
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -117,8 +121,10 @@ function Result({ setSaveDate }) {
     DecArr.push(collectedAvgTempAndCities[i].averageTemp[11])
   }
 
-  let newArr = [];
 
+
+
+  let newArr = []
   if (date === 'January') {
     citiesArr.forEach((city, index) => {
       const JanTemp = JanArr[index];
@@ -130,7 +136,9 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(JanObj.temperatur) >= parseInt(temp) - 5 && parseInt(JanObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(JanObj)
+          ;
       }
+
     });
   } else if (date === "February") {
     citiesArr.forEach((city, index) => {
@@ -165,8 +173,7 @@ function Result({ setSaveDate }) {
       const AprObj = {
         city: city,
         temperatur: AprTemp,
-        image: AprImage,
-        fav: false
+        image: AprImage
       }
       if (parseInt(AprObj.temperatur) >= parseInt(temp) - 5 && parseInt(AprObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(AprObj)
@@ -280,12 +287,8 @@ function Result({ setSaveDate }) {
       }
     })
   };
-  for (let i = 0; i < newArr.length; i++) {
-    let x = newArr[i]
 
-    console.log(x)
-  }
-
+  let newArrSorted = newArr.sort((a, b) => (a.temperatur > b.temperatur) ? -1 : 1)
 
   function createHandleClickForDestination(destination) {
     return function () {
@@ -294,53 +297,47 @@ function Result({ setSaveDate }) {
       history.push(`/result/${temp}/${date}/${destination}`);
     }
   }
-  /* const toggleTrueFalse = () =>  */
-  // if city === id setToggleHeart
+
   const AddFavourite = (city) => {
-    const newFavouriteList = [...favorites, city]; //Copy of the useState, favorites
+    const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
     // console.log(newFavouriteList)
-    setToggleHeart(!toggleHeart);
     setFavorites(newFavouriteList)
     console.log(newFavouriteList)
-    console.log(toggleHeart)
   }
   //Make it so you can only fav your city once.
   //Be able to delete when you toogle
   //Make an if statement, if clicked, not being able to click again? And make the "full heart" visible
   //Make the state work in Account(?)
-  /*   const deleteFavorite = (city) => {
-      const filteredFav = favorites.filter((obj) => obj.city !== city)
-      setFavorites(filteredFav)
-      setToggleHeart(toggleHeart)
-      console.log(favorites)
-    } */
-
+  const deleteFavorite = (city) => {
+    const filteredFav = favorites.filter((obj) => obj.city !== city)
+    setFavorites(filteredFav)
+    console.log(favorites)
+  }
   useEffect(() => {
     const json = JSON.stringify(favorites);
     localStorage.setItem("favorites", json)
   }, [favorites])
-  // myBool = !myBool;
-  // const madeFavorites = false;
+
+  const madeFavorites = true;
   return (
     <FlexDiv>
       <h1>{date}</h1>
-
+      <InputFilter />
       <div>
         <ul>
-          {newArr.map(obj => <li key={obj.city}>
-
+          {newArrSorted.map(obj => <li key={obj.city}>
             <CityCard >
               <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
                 <img src={obj.image} alt='bild på strand' />
               </CityCardImg>
               <CityCardInfo>
+                {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
                 <h2>{obj.city}</h2>
                 <p>Medeltemperatur: {obj.temperatur}</p>
-                {console.log("ghej" + toggleHeart)}
-                {toggleHeart ?
-                  (<FaHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
+                {madeFavorites ?
+                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
                   :
-                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
+                  (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)}
 
               </CityCardInfo>
 
