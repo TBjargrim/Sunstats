@@ -90,6 +90,7 @@ function Result({ setSaveDate }) {
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
   const [favorites, setFavorites] = useState([]);
+  const [toggleHeart, setToggleHeart] = useState(false);
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -301,7 +302,14 @@ function Result({ setSaveDate }) {
   const AddFavourite = (city) => {
     const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
     // console.log(newFavouriteList)
+
     setFavorites(newFavouriteList)
+    for (let i = 0; i < newFavouriteList.length; i++) {
+      let x = newFavouriteList[i]
+      setToggleHeart(!toggleHeart);
+      console.log(x)
+
+    }
     console.log(newFavouriteList)
   }
   //Make it so you can only fav your city once.
