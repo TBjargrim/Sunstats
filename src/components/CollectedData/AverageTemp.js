@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 
 import {
     AlanyaAllYears, ArubaAllYears, BarcelonaAllYears, HonoluluAllYears, IbizaAllYears,
-    KingstonAllYears, KretaAllYears, ParisAllYears, PhuketAllYears, RhodosAllYears, RomeAllYears, SingaporeAllYears, StockholmAllYears, TokyoAllYears, UbudAllYears
+    KingstonAllYears, KretaAllYears, ParisAllYears, PhuketAllYears, RhodosAllYears, RomeAllYears, SingaporeAllYears, StockholmAllYears, TokyoAllYears, BaliAllYears
 } from './ConstantsCityAllYears'
 
 // const BarcelonaAllYears = [Barcelona2017, Barcelona2018, Barcelona2019];
@@ -101,7 +101,7 @@ export const Rhodos = monthDataTemp(RhodosAllYears).datasets[0].data
 export const Rome = monthDataTemp(RomeAllYears).datasets[0].data
 export const Singapore = monthDataTemp(SingaporeAllYears).datasets[0].data
 export const Tokyo = monthDataTemp(TokyoAllYears).datasets[0].data
-export const Ubud = monthDataTemp(UbudAllYears).datasets[0].data
+export const Bali = monthDataTemp(BaliAllYears).datasets[0].data
 export const Stockholm = monthDataTemp(StockholmAllYears).datasets[0].data
 
 // console.log(Aruba)

@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from "styled-components";
-import Settings from './Settings';
-
 import AlanyaImg from '../../Images/AlanyaImage.jpg'
-
 import London from '../../Images/London.jpg'
 import Tokyo from '../../Images/TokyoImage.jpg'
 import NY from '../../Images/NY.jpg'
-import NYByNight from '../../Images/NYByNight.jpg'
 import Paris from '../../Images/Paris.jpg'
-
 
 const StyledDiv = styled.div`
 padding: 0;
@@ -31,17 +26,14 @@ li {
   margin: 5px;
 }
 `
-
 const CityCard = styled.div`
 margin: 0;
 padding: 5px;
-/* background-color: #E8E8E8; */
 
 h2{
 font-size: 18px;
 }
 `;
-
 const StyledImg = styled.div`
 margin: 5px;
 img{
@@ -119,12 +111,9 @@ img{
 }
 `
 const MyPage = () => {
-  const [myFav, setMyFav] = useState([])
-  // const [isOpened, setIsOpened] = useState(false);
+
   let savedFav = JSON.parse(localStorage.getItem('favorites'));
 
-  const myFavArr = []
-  console.log(savedFav)
   return (
     <div>
       <StyledDiv>

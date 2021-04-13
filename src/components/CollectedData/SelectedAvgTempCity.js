@@ -2,15 +2,14 @@ import {
     AlanyaAllYears,
     ArubaAllYears, BarcelonaAllYears, HonoluluAllYears, IbizaAllYears,
     KingstonAllYears, KretaAllYears, ParisAllYears, PhuketAllYears, RhodosAllYears,
-    RomeAllYears, SingaporeAllYears, StockholmAllYears, TokyoAllYears, UbudAllYears
+    RomeAllYears, SingaporeAllYears, TokyoAllYears, BaliAllYears
 } from './ConstantsCityAllYears'
 
 import {
     Alanya, Aruba, Barcelona,
     Honolulu, Ibiza, Kingston,
     Kreta, Paris, Phuket,
-    Rhodos, Rome, Singapore,
-    Stockholm, Tokyo, Ubud
+    Rhodos, Rome, Singapore, Tokyo, Bali
 } from './AverageTemp'
 
 export const cityHistoric = {
@@ -27,8 +26,7 @@ export const cityHistoric = {
     'Singapore': [...SingaporeAllYears],
     'Tokyo': [...TokyoAllYears],
     'Paris': [...ParisAllYears],
-    'Ubud': [...UbudAllYears],
-    'Stockholm': [...StockholmAllYears]
+    'Bali': [...BaliAllYears],
 }
 
 export const collectedAvgTempAndCities = [
@@ -80,17 +78,13 @@ export const collectedAvgTempAndCities = [
         city: 'Singapore',
         averageTemp: Singapore,
     },
-    // {
-    //     city: 'Stockholm',
-    //     averageTemp: Stockholm,
-    // },
     {
         city: 'Tokyo',
         averageTemp: Tokyo,
     },
     {
-        city: 'Ubud',
-        averageTemp: Ubud,
+        city: 'Bali',
+        averageTemp: Bali,
     },
 ]
 // console.log(collectedAvgTempAndCities)

@@ -34,7 +34,7 @@ text-decoration:none;
 `
 const MobileIcon = styled.div`
 display:none;
-@media screen and (max-width:768px) {
+@media screen and (max-width:960px) {
     display:block;
     position:absolute;
     top:0;
@@ -49,7 +49,7 @@ display:flex;
 flex-direction:row;
 justify-content: center;
 margin:50px;
-@media screen and (max-width:768px) {
+@media screen and (max-width:960px) {
     display:none;
 }
 `
@@ -75,7 +75,7 @@ color:#F68F24;
 const LogoImg = styled.img`
 max-width:270px;
 margin-top: -20px;
-@media screen and (max-width:768px) {
+@media screen and (max-width:764px) {
     max-width:150px;
     margin-top:15px;
 }
@@ -90,21 +90,21 @@ const Navbar = ({ authUser, toggle }) => {
           <BurgerMenyIcon />
         </MobileIcon>
         <NavMenu>
+
           <NavItem>
-            <Link to='/home'>Home</Link>
+            <Link to='/account'>Min Profil</Link>
           </NavItem>
           <NavItem>
-            <Link to='/account'>Account</Link>
-          </NavItem>
-          <NavItem>
-            <Link to='/wiz'>wizard</Link>
+            <Link to='/wiz'>Sök resa</Link>
           </NavItem>
           {!!authUser.roles[ROLES.ADMIN] && (
             <NavItem>
               <Link to='/admin'>Admin</Link>
             </NavItem>
           )}
-
+          <NavItem>
+            <Link to='/settings'>Inställningar</Link>
+          </NavItem>
           <NavItem>
             <SignOutButton />
           </NavItem>

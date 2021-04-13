@@ -56,7 +56,7 @@ const StyledDiv = styled.div`
 margin:10px 10px 60px 10px;
 `
 function Destination() {
-    const { temp, date, destination } = useParams();
+    const { date, destination } = useParams();
 
     return (
         <>

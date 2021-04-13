@@ -8,7 +8,8 @@ const Settings = () => {
 
     return (
         <div>
-
+            <PasswordForgetForm />
+            <PasswordChangeForm />
         </div>
     )
 }
