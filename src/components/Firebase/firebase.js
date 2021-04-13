@@ -3,13 +3,6 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
-  apiKey: "AIzaSyDGRF2yG_WV33xnps63xNk8pp8oEyhxyHE",
-  authDomain: "sunstats-d0ceb.firebaseapp.com",
-  databaseURL: "https://sunstats-d0ceb-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "sunstats-d0ceb",
-  storageBucket: "sunstats-d0ceb.appspot.com",
-  messagingSenderId: "150073564142",
-  appId: "1:150073564142:web:dc20a4cb9ddeb522d6ccff"
 };
 
 class Firebase {
