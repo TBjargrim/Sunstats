@@ -6,7 +6,43 @@ import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
+import styled from 'styled-components';
 
+const StyledDiv = styled.div`
+margin-left:65px;
+h2{
+  font-size:27px;
+  margin-left:65px;
+  margin-top:55px;
+}
+ul{
+
+}
+li{
+  list-style:none;
+  margin:20px;
+  max-width:450px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+div{
+  margin:5px;
+  padding:5px;
+}
+`
+const StyledLink = styled(Link)`
+  text-decoration:none;
+  border:solid 1px #EC8F21;
+color:#EC8F21;
+background-color: white;
+border-radius:10px;
+margin-top:7px;
+margin-left:12px;
+padding:2px;
+a{
+  text-decoration:none;
+  margin-bottom:12px;
+}
+`
 const AdminPage = () => (
   <div>
     <h1>Admin</h1>
@@ -55,35 +91,35 @@ class UserListBase extends Component {
     const { users, loading } = this.state;
 
     return (
-      <div>
-        <h2>Users</h2>
+      <StyledDiv>
+        <h2>Användare:</h2>
         { loading && <div>Loading ...</div>}
         <ul>
           {users.map(user => (
             <li key={user.uid}>
-              <span>
-                <strong>ID:</strong> {user.uid}
-              </span>
-              <span>
-                <strong>E-Mail:</strong> {user.email}
-              </span>
-              <span>
+              <div>
                 <strong>Username:</strong> {user.username}
-              </span>
-              <span>
-                <Link
+              </div>
+              <div>
+                <strong>E-Mail:</strong> {user.email}
+              </div>
+              <div>
+                <strong>ID:</strong> {user.uid}
+              </div>
+              <div>
+                <StyledLink
                   to={{
                     pathname: `${ROUTES.ADMIN}/${user.uid}`,
                     state: { user },
                   }}
                 >
                   Details
-                </Link>
-              </span>
+                </StyledLink>
+              </div>
             </li>
           ))}
         </ul>
-      </div >
+      </StyledDiv >
     );
   }
 }
