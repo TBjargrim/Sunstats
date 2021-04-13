@@ -53,7 +53,7 @@ import { Redirect, useParams, useHistory } from "react-router-dom"
         
         </select>
         </form>
-        <button onClick={handleClick}> sök </button>
+        <button onClick={handleClick}> Sök </button>
         
         <h1>
             InputFilter

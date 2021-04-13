@@ -26,8 +26,8 @@ const Temp = ({ setTargetTemp, setTargetJumpOver, setTargetInfoClick }) => {
 
     <div>
       <StyledText>
-        <StyledH2>Välj vilken typ av resa du är ute efter </StyledH2>
-        <StyledP>Välj ett val som passar just dig</StyledP>
+        <StyledH2>Vilken typ av resa du är ute efter </StyledH2>
+        <StyledP>Välj det som passar just dig</StyledP>
       </StyledText>
       <StyledButtonWrapper>
         <StyledButtons onClick={handleClick} value="5"><StyledIcon src={VanImg}></StyledIcon>0-10 grader</StyledButtons>

@@ -22,7 +22,7 @@ function Info({ setTargetInfoClick }) {
             </StyledImageDiv>
             <StyledText>
                 <StyledH2>Svårt att välja vart du ska resa?</StyledH2>
-                <StyledP>Vi kan hjälpa dig fatta ett beslut. Genom att söka på när du vill åka och vilken världsdel får du info om vilken stad som passar dig!</StyledP>
+                <StyledP>Vi kan hjälpa dig. Genom att söka på när du vill åka och vart får du information om vilket resmål som passar dig!</StyledP>
             </StyledText>
             <LinkWrapper>
                 <StyledLink to={ROUTES.WIZ}><FaArrowRight onClick={handleClick} /></StyledLink>

@@ -160,11 +160,11 @@ class MessageItem extends Component {
         )}
         {editMode ? (
           <span>
-            <button onClick={this.onSaveEditText}>Save</button>
-            <button onClick={this.onToggleEditMode}>Reset</button>
+            <button onClick={this.onSaveEditText}>Spara</button>
+            <button onClick={this.onToggleEditMode}>Återställ</button>
           </span>
         ) : (
-          <button onClick={this.onToggleEditMode}>Edit</button>
+          <button onClick={this.onToggleEditMode}>Redigera</button>
         )}
       </li>
     );

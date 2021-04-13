@@ -10,7 +10,7 @@ import * as ROUTES from '../../constants/routes';
 const AdminPage = () => (
   <div>
     <h1>Admin</h1>
-    <p>The Admin Page is accessible by every signed in admin user.</p>
+    <p>Denna sida är endast tillgänglig för administratörer.</p>
 
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />
@@ -56,7 +56,7 @@ class UserListBase extends Component {
 
     return (
       <div>
-        <h2>Users</h2>
+        <h2>Användare</h2>
         { loading && <div>Loading ...</div>}
         <ul>
           {users.map(user => (
@@ -65,10 +65,10 @@ class UserListBase extends Component {
                 <strong>ID:</strong> {user.uid}
               </span>
               <span>
-                <strong>E-Mail:</strong> {user.email}
+                <strong>E-post:</strong> {user.email}
               </span>
               <span>
-                <strong>Username:</strong> {user.username}
+                <strong>Användarnamn:</strong> {user.username}
               </span>
               <span>
                 <Link
@@ -77,7 +77,7 @@ class UserListBase extends Component {
                     state: { user },
                   }}
                 >
-                  Details
+                  Mer information
                 </Link>
               </span>
             </li>
@@ -129,7 +129,7 @@ class UserItemBase extends Component {
 
     return (
       <div>
-        <h2>User ({this.props.match.params.id})</h2>
+        <h2>Användare ({this.props.match.params.id})</h2>
         {loading && <div>Loading ...</div>}
 
         {user && (
@@ -138,17 +138,17 @@ class UserItemBase extends Component {
               <strong>ID:</strong> {user.uid}
             </span>
             <span>
-              <strong>E-Mail:</strong> {user.email}
+              <strong>E-post:</strong> {user.email}
             </span>
             <span>
-              <strong>Username:</strong> {user.username}
+              <strong>Användarnamn:</strong> {user.username}
             </span>
             <span>
               <button
                 type="button"
                 onClick={this.onSendPasswordResetEmail}
               >
-                Send Password Reset
+                Skicka återställ lösenord
               </button>
             </span>
           </div>

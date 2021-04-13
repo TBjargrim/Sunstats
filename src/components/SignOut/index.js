@@ -27,7 +27,7 @@ const StyledBtnOne = styled.div`
 
 const SignOutButton = ({ firebase }) => (
   <StyledBtnOne>
-    <StyledBtn type="button" onClick={firebase.doSignOut}>Sign Out</StyledBtn>
+    <StyledBtn type="button" onClick={firebase.doSignOut}>Logga ut</StyledBtn>
   </StyledBtnOne>
 );
 
