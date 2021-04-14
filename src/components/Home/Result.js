@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
+import InputFilter from "../InputFilter/InputFilter"
 
 import AlanyaImg from '../../Images/AlanyaImage.jpg'
 import ArubaImg from '../../Images/ArubaImage.jpg'
@@ -20,6 +21,11 @@ import SingaporeImg from '../../Images/SingaporeImage.jpg'
 import TokyoImg from '../../Images/TokyoImage.jpg'
 import UbudImg from '../../Images/UbudImage.jpg'
 
+const Green = styled.p`
+color: green;
+padding: 20px;
+font-weight: 600;
+`;
 const FlexDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,7 +49,7 @@ display: flex;
 flex-direction: row;
 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 margin: 15px;
-background-color: #F0F0F0;
+border-radius: 30px;
 div{
   display: flex;
 }
@@ -52,7 +58,6 @@ const CityCardInfo = styled.div`
 flex-direction: column;
 width: 100%;
 padding: 35px;
-
 h2 {
   font-size: 20px;
   font-weight: 400;
@@ -66,24 +71,26 @@ p {
   padding-top: 10px;
 }
 `;
-
 const FavHeart = styled.div`
 margin: 15px;
 font-size: 22px;
 `
-
+  ;
 const CityCardImg = styled.div`
 width: 100%;
 img{
   width: 100%;
+  border-radius: 30px 0 0 30px;
 }
 `;
+
 
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
-  const [favorites, setFavorites] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+  const [toggleHeart, setToggleHeart] = useState(false);
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -115,6 +122,9 @@ function Result({ setSaveDate }) {
     DecArr.push(collectedAvgTempAndCities[i].averageTemp[11])
   }
 
+
+
+
   let newArr = []
   if (date === 'January') {
     citiesArr.forEach((city, index) => {
@@ -123,12 +133,13 @@ function Result({ setSaveDate }) {
       const JanObj = {
         city: city,
         temperatur: JanTemp,
-        image: JanImage,
-        fav: false
+        image: JanImage
       }
       if (parseInt(JanObj.temperatur) >= parseInt(temp) - 5 && parseInt(JanObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(JanObj)
+          ;
       }
+
     });
   } else if (date === "February") {
     citiesArr.forEach((city, index) => {
@@ -278,6 +289,7 @@ function Result({ setSaveDate }) {
     })
   };
 
+  let newArrSorted = newArr.sort((a, b) => (a.temperatur > b.temperatur) ? -1 : 1)
 
   function createHandleClickForDestination(destination) {
     return function () {
@@ -286,73 +298,64 @@ function Result({ setSaveDate }) {
       history.push(`/result/${temp}/${date}/${destination}`);
     }
   }
-  // const getArray = JSON.parse(localStorage.getItem('favorites' || '0'))
 
-  // useEffect(() => {
-  //   if (getArray !== 0) {
-  //     setFavorites([...getArray])
-  //   }
-  // }, [])
+  const AddFavourite = (city) => {
+    const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
+    // console.log(newFavouriteList)
 
-  // const addFav = (props) => {
-  //   let array = favorites;
-  //   let addArray = true;
-  //   array.map((item, num) => {
-  //     if (item === props.fav) {
-  //       array.splice(key, 1);
-  //       addArray = false;
-  //     }
-  //   });
-  //   if (addArray) {
-  //     array.push(props.fav);
-  //   }
-  //   setFavorites([...array])
-  //   localStorage.setItem("favorites", JSON.stringify(favorites));
+    setFavorites(newFavouriteList)
+    for (let i = 0; i < newFavouriteList.length; i++) {
+      let x = newFavouriteList[i]
+      setToggleHeart(!toggleHeart);
+      console.log(x)
 
-  //   let storage = localStorage.getItem('favItem' + (props.i) || '0')
-  //   if (storage == null) {
-  //     localStorage.setItem(('favItem' + (props.i)), JSON.stringify(props.item));
-  //   }
-  //   else {
-  //     localStorage.removeItem('favItem' + (props.i));
-  //   }
-  // }
-  // console.log(addFav())
-  // const toggle = () => {
-  //   let localLiked = favorites;
-  //   localLiked = !localLiked;
-  //   setFavorites(localLiked)
-  // }
-  function handleClick(props) {
-    //toggle between obj.fav 
-    //when true the obj should be pushed into an array
-    // console.log(props.fav)
-    setFavorites(prevValue => {
-      return !prevValue
-    })
+    }
+    console.log(newFavouriteList)
   }
+  //Make it so you can only fav your city once.
+  //Be able to delete when you toogle
+  //Make an if statement, if clicked, not being able to click again? And make the "full heart" visible
+  //Make the state work in Account(?)
+  const deleteFavorite = (city) => {
+    const filteredFav = favorites.filter((obj) => obj.city !== city)
+    setFavorites(filteredFav)
+    console.log(favorites)
+  }
+  useEffect(() => {
+    const json = JSON.stringify(favorites);
+    localStorage.setItem("favorites", json)
+  }, [favorites])
 
+  const madeFavorites = true;
   return (
     <FlexDiv>
       <h1>{date}</h1>
-
+      <InputFilter />
       <div>
         <ul>
-          {newArr.map(obj => <li key={obj.city}>
-
-            <CityCard onClick={createHandleClickForDestination(obj.city)}>
-              <CityCardImg>
+          {newArrSorted.map(obj => <li key={obj.city}>
+            <CityCard >
+              <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
                 <img src={obj.image} alt='bild på strand' />
               </CityCardImg>
               <CityCardInfo>
+                {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
                 <h2>{obj.city}</h2>
                 <p>Medeltemperatur: {obj.temperatur}</p>
+                {madeFavorites ?
+                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
+                  :
+                  (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)}
+
               </CityCardInfo>
-              <FavHeart>
-                {favorites ? (
-                  <FaHeart onClick={handleClick} style={{ color: 'red' }} />
-                ) : <FiHeart onClick={handleClick} style={{ color: 'red' }} />}
-              </FavHeart>
+
+              {/* <FavHeart>
+                {favorites.includes(i) ? (
+                  <FaHeart onClick={() => addFav({ items, i })}
+                    style={{ color: 'red' }} />
+                ) : <FiHeart onClick={() => addFav({ items, i })}
+                  style={{ color: 'red' }} />}
+              </FavHeart> */}
             </CityCard>
 
           </li>)}

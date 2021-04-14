@@ -3,7 +3,33 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import styled from 'styled-components';
-
+const StyledForm = styled.div`
+margin-top:90px;
+background-color:#e8e8e8;
+padding-bottom: 30px;
+input {
+  width: 90%;
+  margin: 5px 10px;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+p{
+padding-top:20px;
+  font-weight:800px;
+  letter-spacing:1px;
+  font-size:20px;
+  margin-left:20px;
+}
+`
+const StyledButton = styled.button`
+border:solid 1px #EC8F21;
+color:#EC8F21;
+border-radius:10px;
+background-color: white;
+margin-top:7px;
+margin-left:12px;
+`
 const PasswordForgetPage = () => (
   <div>
     <h1>Lösenordsåterställning</h1>

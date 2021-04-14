@@ -1,5 +1,29 @@
 import React, { Component } from 'react';
 import { withFirebase } from '../Firebase';
+import styled from "styled-components";
+
+const StyledForm = styled.div`
+padding-bottom: 30px;
+display: flex;
+margin: auto;
+background:#e8e8e8;
+input {
+  width: 90%;
+  margin: 5px 10px;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+`
+
+const StyledButton = styled.button`
+border:solid 1px #EC8F21;
+color:#EC8F21;
+background-color: white;
+border-radius:10px;
+margin-top:7px;
+margin-left:12px;
+`
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
@@ -30,6 +54,7 @@ class PasswordChangeForm extends Component {
     const isInvalid =
       passwordOne !== passwordTwo || passwordOne === '';
     return (
+      <StyledForm>
       <form onSubmit={this.onSubmit}>
         <input
           name="passwordOne"
@@ -45,11 +70,12 @@ class PasswordChangeForm extends Component {
           type="password"
           placeholder="Bekräfta nytt lösenord"
         />
-        <button disabled={isInvalid} type="submit">
+        <StyledButton disabled={isInvalid} type="submit">
           Återställ lösenord
-</button>
+</StyledButton>
         {error && <p>{error.message}</p>}
       </form>
+      </StyledForm>
     );
   }
 }
