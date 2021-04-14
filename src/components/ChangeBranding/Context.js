@@ -1,6 +1,6 @@
-import React from 'react';
-import { VingTheme } from './ThemeStyled';
+// import React from 'react';
+// import { VingTheme } from './ThemeStyled';
 
-export const ThemeContext = React.createContext(VingTheme);
+// export const ThemeContext = React.createContext(VingTheme);
 
-export const context = React.useContext(ThemeContext);
+// export const context = React.useContext(ThemeContext);

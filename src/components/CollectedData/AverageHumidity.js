@@ -57,14 +57,14 @@ const monthDataHumidity = (arrCity, city) => {
         datasets: [{
             label: city,
             data: avgHumidityData,
-            borderColor: 'rgb(149, 224, 170)',
+            borderColor: 'rgb(80, 215, 102)',
             backgroundColor: 'rgba(0,0,0,0.1)',
             fill: false
         },
         {
             label: 'Stockholm',
             data: avgHumiditySthlm,
-            borderColor: 'rgb(61, 165, 217)',
+            borderColor: 'rgb(165, 165, 165)',
             backgroundColor: 'rgba(0,0,0,0.1)',
             fill: false
 

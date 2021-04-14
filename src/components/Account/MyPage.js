@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from "styled-components";
-import AlanyaImg from '../../Images/AlanyaImage.jpg'
-import London from '../../Images/London.jpg'
+import London from '../../Images/LondonImage.jpg'
 import Tokyo from '../../Images/TokyoImage.jpg'
-import NY from '../../Images/NY.jpg'
-import Paris from '../../Images/Paris.jpg'
+import NY from '../../Images/NYimage.jpg'
+import Barcelona from '../../Images/BarcelonaImage.jpg'
+import Paris from '../../Images/ParisImage.jpg'
 
 const StyledDiv = styled.div`
 padding: 0;
@@ -46,68 +46,89 @@ img{
 `
 
 const StyledWrapper = styled.div`
-background-color:#FFEEB0;
-border-radius:20px;
+background-color:#D8DEE3;
+border-radius:15px;
 width:90%;
-margin:40px 20px;
-padding: 10px 0;
+margin:30px auto;
+padding: 5px;
+
+@media screen and (max-width:980px) {
+display: flex;
+flex-direction: column;
+}
 `
 const StyledP = styled.p`
-  font-size:15px;
+  font-size:20px;
   text-align:left;
-margin:10px 0px 9px 14px;
-padding-top:10px;
-`
-const StyledExampelOne = styled.div`
-margin-bottom:20px;
-position:relative;
-img{
-  width:100%;
-  border-radius:10px;
-  height:170px;
-}
-p{
-  position:absolute;
-  z-index:3;
-  color:white;
-  top:10px;
-  font-weight:800;
-  letter-spacing:2px;
-  text-align:center;
-  font-size:30px;
+  width: 100%;
+  padding:10px;
+@media screen and (max-width:1000px) {
+  width: 100%;
 }
 `
+// const StyledExampelOne = styled.div`
+// margin-bottom:20px;
+// position:relative;
+// /* width: 80%; */
+// /* height: 100px; */
+// img{
+//   width:80%;
+//   border-radius:10px;
+//   /* height:5%; */
+// }
+// p{
+//   position:absolute;
+//   z-index:3;
+//   color:white;
+//   top:10px;
+//   font-weight:800;
+//   letter-spacing:2px;
+//   text-align:center;
+//   font-size:30px;
+// }
+// `
 const StyledWrapperTwo = styled.div`
 display:flex;
-width:100%;
+justify-content: center;
+@media screen and (max-width:500px) {
+flex-wrap: wrap;
+}
 `
 const StyledExampelTwo = styled.div`
-position:relative;
 display:flex;
 width:45%;
+justify-content: center;
 flex-wrap: wrap;
 img{
-width:42%;
-margin: 5px;
+width:40%;
+height: 40%;
+margin: 20px;
 border-radius: 7px;
 }
-p{
-  position:absolute;
-  z-index:3;
-  color:white;
-  top:10px;
-  font-weight:800;
-  letter-spacing:2px;
-  text-align:center;
-  font-size:30px;
+@media screen and (max-width:1000px) {
+    width: 100%;
+    img {
+      margin: 10px;
+    }
 }
 `
 const StyledExampelThree = styled.div`
 width:45%;
-margin: 5px;
+height: 50%;
+display: flex;
+justify-content: center;
 img{
-  width:100%;
+  width:82%;
+  margin-top: 20px;
   border-radius: 7px;
+}
+@media screen and (max-width:1000px) {
+  width:100%;
+img{
+  width:80%;
+  height: 100%;
+  margin-top: 10px;
+}
 }
 `
 const MyPage = () => {
@@ -131,22 +152,16 @@ const MyPage = () => {
         </ul>
       </StyledDiv>
       <StyledWrapper>
-        <StyledP>Utforska även andra förslag till dig:</StyledP>
-        <StyledExampelOne>
+        <StyledP>Utforska andra förslag för dig:</StyledP>
+        {/* <StyledExampelOne>
           <img src={AlanyaImg} alt='bild på strand' />
           <p>Slappa på en av Jamaicas stränder</p>
-        </StyledExampelOne>
+        </StyledExampelOne> */}
         <StyledWrapperTwo>
           <StyledExampelTwo>
-            {/* <div> */}
             <img src={London} alt='bild på strand' />
-            {/* <p>BIG</p> */}
-            {/* </div> */}
             <img src={NY} alt='bild på strand' />
-            {/* <div> */}
-            <img src={NY} alt='bild på strand' />
-            {/* <p>CITY</p> */}
-            {/* </div> */}
+            <img src={Barcelona} alt='bild på strand' />
             <img src={Tokyo} alt='bild på strand' />
           </StyledExampelTwo>
           <StyledExampelThree>

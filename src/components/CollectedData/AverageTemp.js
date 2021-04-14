@@ -67,14 +67,14 @@ const monthDataTemp = (arrCity, city) => {
             {
                 label: city,
                 data: avgTempData,
-                borderColor: 'rgb(225, 195, 41)',
+                borderColor: 'rgb(51, 176, 238)',
                 backgroundColor: 'rgba(0,0,0,0.1)',
                 fill: false
             },
             {
                 label: 'Stockholm',
                 data: avgTempSthlm,
-                borderColor: 'rgb(61, 165, 217)',
+                borderColor: 'rgb(165, 165, 165)',
                 backgroundColor: 'rgba(0,0,0,0.1)',
                 fill: false,
             }
