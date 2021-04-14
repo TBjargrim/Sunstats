@@ -302,11 +302,11 @@ function Result({ setSaveDate }) {
   const AddFavourite = (city) => {
     const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
     // console.log(newFavouriteList)
-
+    setToggleHeart(!toggleHeart);
     setFavorites(newFavouriteList)
     for (let i = 0; i < newFavouriteList.length; i++) {
       let x = newFavouriteList[i]
-      setToggleHeart(!toggleHeart);
+
       console.log(x)
 
     }
@@ -345,7 +345,7 @@ function Result({ setSaveDate }) {
                 {madeFavorites ?
                   (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
                   :
-                  (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)}
+                  (<FaHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
 
               </CityCardInfo>
 

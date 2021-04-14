@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { compose } from 'recompose';
 
@@ -7,6 +7,7 @@ import { withAuthorization } from '../Session';
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
 import styled from 'styled-components';
+import RenderTheme from '../ChangeBranding/RenderTheme';
 
 const StyledDiv = styled.div`
 margin-left:65px;
@@ -92,6 +93,7 @@ class UserListBase extends Component {
 
     return (
       <StyledDiv>
+        <RenderTheme />
         <h2>Användare:</h2>
         { loading && <div>Loading ...</div>}
         <ul>
@@ -165,6 +167,7 @@ class UserItemBase extends Component {
 
     return (
       <div>
+
         <h2>User ({this.props.match.params.id})</h2>
         {loading && <div>Loading ...</div>}
 

@@ -6,24 +6,30 @@ import styled from "styled-components";
 import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';
 import TestHumidity from '../CollectedData/AverageHumidity'
 import TestTemp from '../CollectedData/AverageTemp'
-// import TestBubble from "../CachedData/TestBubble";
-
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
 const StyledWrapper = styled.div`
 display:flex;
 justify-content: center;
 /* width: 100%; */
+
 `
 
 const StyledLogo = styled.img`
 width: 50%;
+height:20%;
 position: absolute;
-background-color: white;
+background-color: transparent;
 padding: 10px;
 margin-top: 60px;
 border-radius: 20px;
+background-image:${({ theme }) => theme.backgroundImage};
+background-repeat:${({ theme }) => theme.backgroundImageRepeat};
 `
 const CityCardImg = styled.div`
 width: 100%;
+
 img{
   width: 100%;
 }
@@ -38,7 +44,7 @@ margin-top: -60px;
 position: absolute;
 width: 100%;
 p {
-    color: #40A6BC;
+    color: ${({ theme }) => theme.text};
     font-weight: 800;
     letter-spacing: 1px;
     font-size: 19px;
@@ -57,13 +63,17 @@ margin:10px 10px 60px 10px;
 `
 function Destination() {
     const { date, destination } = useParams();
+    const [theme, toggleTheme] = useVingMode();
+    const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+
+
 
     return (
-        <>
+        <ThemeProvider theme={themeMode}>
             <StyledWrapper>
-                <StyledLogo src={VingLogga} alt='Bild på strand' />
+                {/* src={VingLogga} alt='Bild på strand' */}
+                <StyledLogo />
             </StyledWrapper>
-
             <CityCardImg>
                 <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt="city" />
             </CityCardImg>
@@ -81,6 +91,6 @@ function Destination() {
                 </StyledDiv> */}
             </StyledContainer>
 
-        </>)
+        </ThemeProvider>)
 }
 export default Destination;

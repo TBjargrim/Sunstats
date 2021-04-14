@@ -7,6 +7,10 @@ import {
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import Logo from '../../Images/sunstats_logo.png'
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
+
 
 const StyledNav = styled.nav`
  background-color:transparent;
@@ -66,15 +70,15 @@ margin-left:20px;
   margin-right:30px;
 }
 `
-
-
 const BurgerMenyIcon = styled(FaBars)`
 color:#F68F24;
 `
-
 const LogoImg = styled.img`
-max-width:270px;
+width:100px;
+height:90px;
 margin-top: -20px;
+background-image:${({ theme }) => theme.backgroundImage};
+background-repeat:${({ theme }) => theme.backgroundImageRepeat};
 @media screen and (max-width:764px) {
     max-width:150px;
     margin-top:15px;
@@ -82,36 +86,42 @@ margin-top: -20px;
 `
 
 const Navbar = ({ authUser, toggle }) => {
+  const [theme, toggleTheme, componentMounted] = useVingMode();
+  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+
   return (
-    <StyledNav >
-      <NavbarContainer>
-        <NavLogo to='/home'><LogoImg src={Logo} /></NavLogo>
-        <MobileIcon onClick={toggle}>
-          <BurgerMenyIcon />
-        </MobileIcon>
-        <NavMenu>
+    <ThemeProvider theme={themeMode}>
+      <StyledNav >
+        <NavbarContainer>
+          <NavLogo to='/wiz'><LogoImg /></NavLogo>
+          {/* src={Logo} */}
+          <MobileIcon onClick={toggle}>
+            <BurgerMenyIcon />
+          </MobileIcon>
+          <NavMenu>
 
-          <NavItem>
-            <Link to='/account'>Min Profil</Link>
-          </NavItem>
-          <NavItem>
-            <Link to='/wiz'>Sök resa</Link>
-          </NavItem>
-          {!!authUser.roles[ROLES.ADMIN] && (
             <NavItem>
-              <Link to='/admin'>Admin</Link>
+              <Link to='/account'>Min Profil</Link>
             </NavItem>
-          )}
-          <NavItem>
-            <Link to='/settings'>Inställningar</Link>
-          </NavItem>
-          <NavItem>
-            <SignOutButton />
-          </NavItem>
-        </NavMenu>
+            <NavItem>
+              <Link to='/wiz'>Sök resa</Link>
+            </NavItem>
+            {!!authUser.roles[ROLES.ADMIN] && (
+              <NavItem>
+                <Link to='/admin'>Admin</Link>
+              </NavItem>
+            )}
+            <NavItem>
+              <Link to='/settings'>Inställningar</Link>
+            </NavItem>
+            <NavItem>
+              <SignOutButton />
+            </NavItem>
+          </NavMenu>
 
-      </NavbarContainer>
-    </StyledNav>
+        </NavbarContainer>
+      </StyledNav>
+    </ThemeProvider>
   )
 }
 
