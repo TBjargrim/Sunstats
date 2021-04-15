@@ -89,7 +89,7 @@ function Result({ setSaveDate }) {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
   const [toggleHeart, setToggleHeart] = useState(false);
 
   let citiesArr = []
@@ -288,7 +288,7 @@ function Result({ setSaveDate }) {
       }
     })
   };
-
+  console.log(newArr)
   let newArrSorted = newArr.sort((a, b) => (a.temperatur > b.temperatur) ? -1 : 1)
 
   function createHandleClickForDestination(destination) {
@@ -300,26 +300,28 @@ function Result({ setSaveDate }) {
   }
 
   const AddFavourite = (city) => {
-    const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
-    // console.log(newFavouriteList)
-    setToggleHeart(!toggleHeart);
-    setFavorites(newFavouriteList)
-    for (let i = 0; i < newFavouriteList.length; i++) {
-      let x = newFavouriteList[i]
+    //const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
+    console.log(city)
+    let tempFavorites = favorites;
+    tempFavorites.push(city.city)
 
-      console.log(x)
+    setFavorites([...new Set(tempFavorites)]); // eliminate doubles
+    console.log(favorites)
 
-    }
-    console.log(newFavouriteList)
+    //setToggleHeart(toggleHeart => !toggleHeart);//Togglar alla knapparna samtidigt?
+    //If item is in the array, target and take away
+    //if clicked item === city return false? take away from array
+
   }
   //Make it so you can only fav your city once.
   //Be able to delete when you toogle
   //Make an if statement, if clicked, not being able to click again? And make the "full heart" visible
   //Make the state work in Account(?)
   const deleteFavorite = (city) => {
-    const filteredFav = favorites.filter((obj) => obj.city !== city)
+    console.log(city)
+    const filteredFav = favorites.filter(strCity => strCity !== city.city)
     setFavorites(filteredFav)
-    console.log(favorites)
+    console.log(filteredFav)
   }
   useEffect(() => {
     const json = JSON.stringify(favorites);
@@ -342,10 +344,10 @@ function Result({ setSaveDate }) {
                 {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
                 <h2>{obj.city}</h2>
                 <p>Medeltemperatur: {obj.temperatur}</p>
-                {madeFavorites ?
-                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
+                {favorites.includes(obj.city) ?
+                  (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)
                   :
-                  (<FaHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
+                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
 
               </CityCardInfo>
 

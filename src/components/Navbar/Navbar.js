@@ -87,10 +87,9 @@ background-repeat:${({ theme }) => theme.backgroundImageRepeat};
 
 const Navbar = ({ authUser, toggle }) => {
   const [theme, toggleTheme, componentMounted] = useVingMode();
-  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
-
+  console.log(theme)
   return (
-    <ThemeProvider theme={themeMode}>
+    <ThemeProvider theme={theme === 'ving' ? VingTheme : ApolloTheme}>
       <StyledNav >
         <NavbarContainer>
           <NavLogo to='/wiz'><LogoImg /></NavLogo>
