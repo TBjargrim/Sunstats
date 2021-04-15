@@ -12,7 +12,7 @@ import { Rome2017, Rome2018, Rome2019 } from '../CachedData/DataRome';
 import { Singapore2017, Singapore2018, Singapore2019 } from '../CachedData/DataSingapore';
 import { Stockholm2017, Stockholm2018, Stockholm2019 } from '../CachedData/DataStockholm';
 import { Tokyo2017, Tokyo2018, Tokyo2019 } from '../CachedData/DataTokyo';
-import { Ubud2017, Ubud2018, Ubud2019 } from '../CachedData/DataUbud';
+import { Bali2017, Bali2018, Bali2019 } from '../CachedData/DataBali';
 
 
 export const AlanyaAllYears = [Alanya2017, Alanya2018, Alanya2019];
@@ -29,4 +29,4 @@ export const RomeAllYears = [Rome2017, Rome2018, Rome2019];
 export const SingaporeAllYears = [Singapore2017, Singapore2018, Singapore2019];
 export const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
 export const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
-export const UbudAllYears = [Ubud2017, Ubud2018, Ubud2019];
+export const BaliAllYears = [Bali2017, Bali2018, Bali2019];

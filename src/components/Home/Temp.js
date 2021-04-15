@@ -1,5 +1,8 @@
 
-import VanImg from '../../Images/TravelWithVan2.jpg';
+import Img1 from '../../Images/ParisImage.jpg';
+import Img2 from '../../Images/TokyoImage.jpg';
+import Img3 from '../../Images/BarcelonaImage.jpg';
+import Img4 from '../../Images/KingstonImage.jpg';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { StyledText, StyledButtonWrapper, StyledButtons, StyledH2, StyledP, StyledLink, StyledLinkSkip, LinkWrapper, StyledIcon } from './SelectionStyling.js';
 import React, { useState } from 'react'
@@ -30,10 +33,10 @@ const Temp = ({ setTargetTemp, setTargetJumpOver, setTargetInfoClick }) => {
         <StyledP>Välj det som passar just dig</StyledP>
       </StyledText>
       <StyledButtonWrapper>
-        <StyledButtons onClick={handleClick} value="5"><StyledIcon src={VanImg}></StyledIcon>0-10 grader</StyledButtons>
-        <StyledButtons onClick={handleClick} value="15"><StyledIcon src={VanImg}></StyledIcon>10-20 grader</StyledButtons>
-        <StyledButtons onClick={handleClick} value="25"><StyledIcon src={VanImg}></StyledIcon>20-30 grader</StyledButtons>
-        <StyledButtons onClick={handleClick} value="35"><StyledIcon src={VanImg}></StyledIcon>30-40 grader</StyledButtons>
+        <StyledButtons onClick={handleClick} value="5"><StyledIcon src={Img1}></StyledIcon>0-10 grader</StyledButtons>
+        <StyledButtons onClick={handleClick} value="15"><StyledIcon src={Img2}></StyledIcon>10-20 grader</StyledButtons>
+        <StyledButtons onClick={handleClick} value="25"><StyledIcon src={Img3}></StyledIcon>20-30 grader</StyledButtons>
+        <StyledButtons onClick={handleClick} value="35"><StyledIcon src={Img4}></StyledIcon>30-40 grader</StyledButtons>
       </StyledButtonWrapper>
       <StyledLinkSkip to={ROUTES.WIZ} onClick={handleJump}>Hoppa över</StyledLinkSkip>
       <LinkWrapper>

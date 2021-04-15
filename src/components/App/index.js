@@ -14,6 +14,7 @@ import { createGlobalStyle } from 'styled-components';
 import Wiz from "../Home/Wiz";
 import Destination from '../Home/Destination';
 import Result from "../Home/Result";
+import Settings from '../Account/Settings';
 
 
 
@@ -36,7 +37,7 @@ const App = () => {
         <Navigation isOpen={isOpen} toggle={toggle} />
 
         <Switch>
-     
+
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -49,6 +50,7 @@ const App = () => {
           <Route path={ROUTES.WIZ} component={Wiz} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.ADMIN} component={AdminPage} />
+          <Route path={ROUTES.SETTINGS} component={Settings} />
 
         </Switch>
       </div>

@@ -5,6 +5,7 @@ export const SIGN_IN = '/signin';
 export const RESULT = '/result/:temp/:date';
 export const DESTINATION = '/result/:temp/:date/:destination';
 export const ACCOUNT = '/account';
+export const SETTINGS = '/settings';
 export const ADMIN = '/admin';
 export const WIZ = '/wiz';
 export const PASSWORD_FORGET = '/pw-forget';

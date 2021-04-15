@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import CollectedData from '../CachedData/CollectedData.txt'
 import { AuthUserContext, withAuthorization } from '../Session';
-import { PasswordForgetForm } from '../PasswordForget';
-import PasswordChangeForm from '../PasswordChange';
+// import { PasswordForgetForm } from '../PasswordForget';
+// import PasswordChangeForm from '../PasswordChange';
 import MyPage from './MyPage';
 import styled from 'styled-components';
-import Settings from './Settings';
+// import Settings from './Settings';
 
 const Styledh1 = styled.div`
 display: flex;
@@ -43,8 +43,6 @@ const AccountPage = () => (
       <div>
         <Styledh1>Hejsan {authUser.username}</Styledh1>
         <MyPage />
-        <PasswordForgetForm />
-        <PasswordChangeForm />
 
       </div>
     )}
