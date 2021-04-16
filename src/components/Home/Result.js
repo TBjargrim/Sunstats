@@ -298,31 +298,21 @@ function Result({ setSaveDate }) {
       history.push(`/result/${temp}/${date}/${destination}`);
     }
   }
-
   const AddFavourite = (city) => {
     //const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
     console.log(city)
     let tempFavorites = favorites;
     tempFavorites.push(city.city)
-
+    console.log(...tempFavorites)
     setFavorites([...new Set(tempFavorites)]); // eliminate doubles
-    console.log(favorites)
-
-    //setToggleHeart(toggleHeart => !toggleHeart);//Togglar alla knapparna samtidigt?
-    //If item is in the array, target and take away
-    //if clicked item === city return false? take away from array
-
   }
-  //Make it so you can only fav your city once.
-  //Be able to delete when you toogle
-  //Make an if statement, if clicked, not being able to click again? And make the "full heart" visible
-  //Make the state work in Account(?)
   const deleteFavorite = (city) => {
     console.log(city)
     const filteredFav = favorites.filter(strCity => strCity !== city.city)
     setFavorites(filteredFav)
     console.log(filteredFav)
   }
+  console.log(favorites)
   useEffect(() => {
     const json = JSON.stringify(favorites);
     localStorage.setItem("favorites", json)
@@ -348,16 +338,7 @@ function Result({ setSaveDate }) {
                   (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)
                   :
                   (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
-
               </CityCardInfo>
-
-              {/* <FavHeart>
-                {favorites.includes(i) ? (
-                  <FaHeart onClick={() => addFav({ items, i })}
-                    style={{ color: 'red' }} />
-                ) : <FiHeart onClick={() => addFav({ items, i })}
-                  style={{ color: 'red' }} />}
-              </FavHeart> */}
             </CityCard>
 
           </li>)}

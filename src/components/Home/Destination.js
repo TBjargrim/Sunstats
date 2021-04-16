@@ -10,18 +10,17 @@ import { ThemeProvider } from 'styled-components';
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 import { useVingMode } from '../ChangeBranding/LocalStorage'
 
+
 const StyledWrapper = styled.div`
 display:flex;
 justify-content: center;
-/* width: 100%; */
-
 `
 
 const StyledLogo = styled.img`
 width: 50%;
 height:20%;
 position: absolute;
-background-color: white;
+background-color: transparent;
 padding: 10px;
 margin-top: 60px;
 border-radius: 20px;
@@ -30,7 +29,7 @@ background-repeat:${({ theme }) => theme.backgroundImageRepeat};
 `
 const CityCardImg = styled.div`
 width: 100%;
-
+/* height: 1000px; */
 img{
   width: 100%;
 }
@@ -38,8 +37,10 @@ img{
 
 const StyledContainer = styled.div`
 text-align: center;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
 background-color: white;
-/* padding: 20px; */
 border-radius: 60px;
 margin-top: -60px;
 position: absolute;
@@ -59,14 +60,32 @@ h1 {
     margin:10px 0 30px 0;
 }
 `
+
+const Header = styled.div`
+width: 100%;
+`
+
 const StyledDiv = styled.div`
-margin:10px 10px 60px 10px;
+width: 40%;
+height: 15%;
+margin:20px 50px 70px 50px;
+
+@media screen and (max-width:1100px) {
+    margin:20px 20px 50px 20px;
+    width: 45%;
+}
+@media screen and (max-width:860px) {
+    width: 75%;
+    margin:20px 15px 50px 15px;
+}
 `
 function Destination() {
     const { date, destination } = useParams();
     const [theme, toggleTheme] = useVingMode();
     const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
-    console.log(theme)
+    //Theme = ving /apollo 
+    //ThemeMode = objectet med all styling
+    console.log(themeMode)
     return (
         <ThemeProvider theme={themeMode}>
             <StyledWrapper>
@@ -77,8 +96,11 @@ function Destination() {
                 <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt="city" />
             </CityCardImg>
             <StyledContainer>
-                <p>{date}</p>
-                <h1>{destination}</h1>
+                <Header>
+                    <p>{date}</p>
+                    <h1>{destination}</h1>
+                </Header>
+
                 <StyledDiv>
                     <TestTemp city={destination} data={cityHistoric[destination]} />
                 </StyledDiv>

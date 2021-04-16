@@ -11,7 +11,6 @@ import { ThemeProvider } from 'styled-components';
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 import { useVingMode } from '../ChangeBranding/LocalStorage'
 
-
 const StyledNav = styled.nav`
  background-color:transparent;
  position:relative;
@@ -87,9 +86,10 @@ background-repeat:${({ theme }) => theme.backgroundImageRepeat};
 
 const Navbar = ({ authUser, toggle }) => {
   const [theme, toggleTheme, componentMounted] = useVingMode();
-  console.log(theme)
+  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+
   return (
-    <ThemeProvider theme={theme === 'ving' ? VingTheme : ApolloTheme}>
+    <ThemeProvider theme={themeMode}>
       <StyledNav >
         <NavbarContainer>
           <NavLogo to='/wiz'><LogoImg /></NavLogo>
