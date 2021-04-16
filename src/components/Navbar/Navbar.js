@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
-import Logo from '../../Images/sunstats_logo.png'
+// import Logo from '../../Images/sunstats_logo.png'
 import { ThemeProvider } from 'styled-components';
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 import { useVingMode } from '../ChangeBranding/LocalStorage'

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 // import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData.txt';
-import VingLogga from '../../Images/ving_logga.png'
+// import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
 // import { Avarage } from "../CachedData/Avarage";
 import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';

@@ -71,11 +71,7 @@ p {
   padding-top: 10px;
 }
 `;
-const FavHeart = styled.div`
-margin: 15px;
-font-size: 22px;
-`
-  ;
+
 const CityCardImg = styled.div`
 width: 100%;
 img{
@@ -90,7 +86,7 @@ function Result({ setSaveDate }) {
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
-  const [toggleHeart, setToggleHeart] = useState(false);
+  // const [toggleHeart, setToggleHeart] = useState(false);
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -318,7 +314,7 @@ function Result({ setSaveDate }) {
     localStorage.setItem("favorites", json)
   }, [favorites])
 
-  const madeFavorites = true;
+  // const madeFavorites = true;
   return (
     <FlexDiv>
       <h1>{date}</h1>

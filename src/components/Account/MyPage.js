@@ -30,7 +30,6 @@ li {
 const CityCard = styled.div`
 margin: 0;
 padding: 5px;
-
 h2{
 font-size: 18px;
 }
@@ -52,7 +51,6 @@ border-radius:15px;
 width:90%;
 margin:30px auto;
 padding: 5px;
-
 @media screen and (max-width:980px) {
 display: flex;
 flex-direction: column;
@@ -111,19 +109,28 @@ img{
 }
 }
 `
+
 const MyPage = () => {
   const [fetchAPI, setFetchAPI] = useState([])
   let savedFav = JSON.parse(localStorage.getItem('favorites'));
+
+  // testade att spara mer arrayen ett steg till, alltså newArr i en till array. Men det funkade inte riktigt. blev samma problem...
+  // Testade också att göra en till for loop inuti loopen vi redan har. men det sket sig också ^^
+  // gjorde också en helvändning och testade det sättet vi gjorde i Sams väder komponent. men det funkar inte riktigt för det vi vill ha ut med den infon
+  // tror vi får testa state och hela det sättet. Håller tummarna för det!
+  // MEN är ganska dålig på det och hade inte tålamod till det idag(främst för att jag inte vill sitta själv med det! :-)
+
+  let test = []
 
   let newArr = [];
   for (let i = 0; i < savedFav.length; i++) {
     // URL = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec735448d26149ab9c7183714211504&format=json&num_of_days=1&q=${savedFav[i]}`
 
     let cityObj = {
-      city: 'text',
-      temp: 10,
-      sunrise: 'text',
-      sunset: 'text',
+      city: '',
+      temp: 0,
+      sunrise: '',
+      sunset: '',
     }
     axios
       .get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec735448d26149ab9c7183714211504&format=json&num_of_days=1&q=${savedFav[i]}`)
@@ -137,80 +144,41 @@ const MyPage = () => {
         cityObj.temp = tempYo
         cityObj.sunrise = sunriseYo
         cityObj.sunset = sunsetYo
-        newArr.push({ ...cityObj })
-
+        newArr.push({ cityObj })
+        console.log(newArr)
       })
       .catch(err => {
         console.log(err)
       })
-
-    // console.log(newArr.lenght)
   }
-
   return (
     <div>
       <StyledDiv>
         <p>Dina valda favoriter: </p>
         <ul>
-          {newArr.map(obj => <li key={obj}>
+          {savedFav.map(obj => <li key={obj}>
             <CityCard >
-              {/* <StyledImg>
-              </StyledImg> */}
               <h2>{obj}</h2>
             </CityCard>
           </li>)}
         </ul>
       </StyledDiv>
+
       <StyledWrapper>
         <StyledP>Utforska andra förslag för dig:</StyledP>
         <StyledWrapperTwo>
           <StyledExampelTwo>
-            <img src={London} alt='bild på strand' />
-            <img src={NY} alt='bild på strand' />
-            <img src={Barcelona} alt='bild på strand' />
-            <img src={Tokyo} alt='bild på strand' />
+            <img src={London} alt='bild på London' />
+            <img src={NY} alt='bild på New York' />
+            <img src={Barcelona} alt='bild på Barcelona' />
+            <img src={Tokyo} alt='bild på Tokyo' />
           </StyledExampelTwo>
           <StyledExampelThree>
-            <img src={Paris} alt='bild på strand' />
+            <img src={Paris} alt='bild på Paris' />
           </StyledExampelThree>
         </StyledWrapperTwo>
       </StyledWrapper>
     </div>
   )
 }
-
 export default MyPage
-// const myFav = []
-// console.log(localStorage.getItem('favorites'))
-// useEffect(() => {
-//   console.log('useeffect körs')
-//   savedFav = JSON.parse(localStorage.getItem('favorites'));
-//   if (savedFav) {
-//     myFavvo = setMyFav(savedFav);
-//   }
-
-// }, [])
-// const [items, setItems] = useState([]);
-// useEffect(() => {
-//   const items = JSON.parse(localStorage.getItem('items'));
-//   if (items) {
-//     setItems(items);
-//   }
-// });
-
-{/* <ul>
-{newArr.map(obj => <li key={obj.city}>
-
-  <CityCard >
-    <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
-      <img src={obj.image} alt='bild på strand' />
-    </CityCardImg>
-    <CityCardInfo>
-      <h2>{obj.city}</h2>
-      <p>Medeltemperatur: {obj.temperatur}</p>
-      {favorites ?
-        (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
-        :
-        (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)}
-
-    </CityCardInfo> */}
