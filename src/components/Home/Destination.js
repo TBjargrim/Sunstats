@@ -46,7 +46,7 @@ margin-top: -60px;
 position: absolute;
 width: 100%;
 p {
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.color};
     font-weight: 800;
     letter-spacing: 1px;
     font-size: 19px;
@@ -55,7 +55,7 @@ p {
 h1 {
     font-size: 40px;
     font-weight: 900;
-    color: #40A6BC;
+    color: ${({ theme }) => theme.h1};
     letter-spacing: 1px;
     margin:10px 0 30px 0;
 }

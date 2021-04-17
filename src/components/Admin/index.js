@@ -9,6 +9,9 @@ import * as ROUTES from '../../constants/routes';
 import styled from 'styled-components';
 import RenderTheme from '../ChangeBranding/RenderTheme';
 
+const DivWrapper = styled.div`
+margin:40px;
+`
 const StyledDiv = styled.div`
 margin-left:65px;
 h2{
@@ -45,15 +48,16 @@ a{
 }
 `
 const AdminPage = () => (
-  <div>
-    <h1>Admin</h1>
-    <p>The Admin Page is accessible by every signed in admin user.</p>
-
+  <>
+    <DivWrapper>
+      <h1>Admin</h1>
+    </DivWrapper>
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />
       <Route exact path={ROUTES.ADMIN} component={UserList} />
     </Switch>
-  </div>
+    <RenderTheme />
+  </>
 );
 
 class UserListBase extends Component {
@@ -93,7 +97,7 @@ class UserListBase extends Component {
 
     return (
       <StyledDiv>
-        <RenderTheme />
+
         <h2>Användare:</h2>
         { loading && <div>Loading ...</div>}
         <ul>

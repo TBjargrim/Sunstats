@@ -7,14 +7,16 @@ import SignOutButton from '../SignOut';
 
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
-
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 const SideBarContainer = styled.aside`
 position:fixed;
 z-index:999;
 width:100%;
 height:100%;
-background-color:#e7e7e7;
+background:${({ theme }) => theme.background};
 top:0;
 right:0;
 transition:0.3s ease-in-out;
@@ -24,7 +26,7 @@ opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
 top:${({ isOpen }) => (isOpen ? '0' : '-120%')};
 `
 const CloseIcon = styled(FaTimes)`
-color:#9d9d9d;
+color:${({ theme }) => theme.h1};
 `
 const Icon = styled.div`
 position:absolute;
@@ -73,40 +75,43 @@ const StyledLink = styled(Link)`
 font-size:1.7rem;
 font-weight:700;
 text-decoration:none;
-color:#F2A22A;
+color:${({ theme }) => theme.h1};
 cursor:pointer;
 `
 const Sidebar = ({ authUser, isOpen, toggle }) => {
-
+    const [theme, toggleTheme, componentMounted] = useVingMode();
+    const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
     return (
-        <SideBarContainer isOpen={isOpen} onClick={toggle}>
-            <Icon onClick={toggle}>
-                <CloseIcon />
-            </Icon>
-            <SidebarWrapper>
-                <SidebarMenu>
+        <ThemeProvider theme={themeMode}>
+            <SideBarContainer isOpen={isOpen} onClick={toggle}>
+                <Icon onClick={toggle}>
+                    <CloseIcon />
+                </Icon>
+                <SidebarWrapper>
+                    <SidebarMenu>
 
-                    <StyledLI>
-                        <StyledLink to='/account' onClick={toggle}>Min Profil</StyledLink>
-                    </StyledLI>
-                    <StyledLI>
-                        <StyledLink to='/wiz' onClick={toggle}>Hitta resmål</StyledLink>
-                    </StyledLI>
-                    <StyledLI>
-                        <StyledLink to='/settings' onClick={toggle}>Inställningar</StyledLink>
-                    </StyledLI>
-                    <StyledLI>
-                        {!!authUser.roles[ROLES.ADMIN] && (
-                            <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
-                    </StyledLI>
+                        <StyledLI>
+                            <StyledLink to='/account' onClick={toggle}>Min Profil</StyledLink>
+                        </StyledLI>
+                        <StyledLI>
+                            <StyledLink to='/wiz' onClick={toggle}>Hitta resmål</StyledLink>
+                        </StyledLI>
+                        <StyledLI>
+                            <StyledLink to='/settings' onClick={toggle}>Inställningar</StyledLink>
+                        </StyledLI>
+                        <StyledLI>
+                            {!!authUser.roles[ROLES.ADMIN] && (
+                                <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
+                        </StyledLI>
 
-                    <ButtonLI>
-                        <div onClick={toggle}> <SignOutButton /> </div>
-                    </ButtonLI>
-                </SidebarMenu>
-            </SidebarWrapper>
-        </SideBarContainer>
+                        <ButtonLI>
+                            <div onClick={toggle}> <SignOutButton /> </div>
+                        </ButtonLI>
+                    </SidebarMenu>
+                </SidebarWrapper>
+            </SideBarContainer>
+        </ThemeProvider>
     )
 }
 

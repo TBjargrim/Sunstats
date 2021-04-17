@@ -70,7 +70,7 @@ margin-left:20px;
 }
 `
 const BurgerMenyIcon = styled(FaBars)`
-color:#F68F24;
+color:${({ theme }) => theme.h1};
 `
 const LogoImg = styled.img`
 width:100px;

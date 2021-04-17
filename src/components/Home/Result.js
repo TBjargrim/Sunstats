@@ -5,6 +5,9 @@ import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import InputFilter from "../InputFilter/InputFilter"
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 import AlanyaImg from '../../Images/AlanyaImage.jpg'
 import ArubaImg from '../../Images/ArubaImage.jpg'
@@ -34,7 +37,8 @@ const FlexDiv = styled.div`
   h1 {
     font-weight: 800;
     text-align: center;
-    color: #40A6BC;
+    /* color: #40A6BC; */
+    color: ${({ theme }) => theme.h1};
   }
   ul {
     padding: 0;
@@ -84,6 +88,8 @@ img{
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
+  const [theme, toggleTheme] = useVingMode();
+  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
   let history = useHistory();
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
   // const [toggleHeart, setToggleHeart] = useState(false);
@@ -295,6 +301,7 @@ function Result({ setSaveDate }) {
     }
   }
   const AddFavourite = (city) => {
+
     //const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
     console.log(city)
     let tempFavorites = favorites;
@@ -316,31 +323,33 @@ function Result({ setSaveDate }) {
 
   // const madeFavorites = true;
   return (
-    <FlexDiv>
-      <h1>{date}</h1>
-      <InputFilter />
-      <div>
-        <ul>
-          {newArrSorted.map(obj => <li key={obj.city}>
-            <CityCard >
-              <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
-                <img src={obj.image} alt='bild på strand' />
-              </CityCardImg>
-              <CityCardInfo>
-                {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
-                <h2>{obj.city}</h2>
-                <p>Medeltemperatur: {obj.temperatur}</p>
-                {favorites.includes(obj.city) ?
-                  (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)
-                  :
-                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
-              </CityCardInfo>
-            </CityCard>
+    <ThemeProvider theme={themeMode}>
+      <FlexDiv>
+        <h1>{date}</h1>
+        <InputFilter />
+        <div>
+          <ul>
+            {newArrSorted.map(obj => <li key={obj.city}>
+              <CityCard >
+                <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
+                  <img src={obj.image} alt='bild på strand' />
+                </CityCardImg>
+                <CityCardInfo>
+                  {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
+                  <h2>{obj.city}</h2>
+                  <p>Medeltemperatur: {obj.temperatur}</p>
+                  {favorites.includes(obj.city) ?
+                    (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)
+                    :
+                    (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
+                </CityCardInfo>
+              </CityCard>
 
-          </li>)}
-        </ul>
-      </div>
-    </FlexDiv>
+            </li>)}
+          </ul>
+        </div>
+      </FlexDiv>
+    </ThemeProvider>
   );
 }
 

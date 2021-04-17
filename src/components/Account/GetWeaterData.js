@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
-
+import sunset_icon from '../../Images/sunset_icon.png'
+import sunrise_icon from '../../Images/sunrise_icon.png'
+import { FaHeart } from 'react-icons/fa';
 // https://stackoverflow.com/questions/56532652/axios-get-then-in-a-for-loop
 // https://levelup.gitconnected.com/fetch-api-data-with-axios-and-display-it-in-a-react-app-with-hooks-3f9c8fa89e7b
 
@@ -30,10 +32,29 @@ margin: 0;
 padding: 5px;
 background-color:#D8DEE3;
 border-radius:15px;
+min-width:250px;
 h2{
-font-size: 18px;
+font-size: 24px;
+}
+h4{
+    font-size: 24px;
+}
+h4 span {
+   
 }
 `;
+const Styledh4 = styled.h4`
+position:absolute;
+display:flex;
+font-size: 74px;
+span{
+    font-size: 14px;
+}
+`
+const WeatherIcon = styled.img`
+border-radius:50%;
+width:100px;
+`
 
 const GetWeatherData = () => {
     const [fetchAPI, setFetchAPI] = useState([])
@@ -48,6 +69,7 @@ const GetWeatherData = () => {
             temp: 0,
             sunrise: '',
             sunset: '',
+            icon: '',
         }
         for (let i = 0; i < savedFav.length; i++) {
             // URL = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec735448d26149ab9c7183714211504&format=json&num_of_days=1&q=${savedFav[i]}`
@@ -55,15 +77,18 @@ const GetWeatherData = () => {
             axios
                 .get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec735448d26149ab9c7183714211504&format=json&num_of_days=1&q=${savedFav[i]}`)
                 .then(res => {
-
+                    console.log(res)
                     let cityYo = res.data.data.request[0].query;
                     let tempYo = parseInt(res.data.data.current_condition[0].FeelsLikeC)
                     let sunriseYo = res.data.data.weather[0].astronomy[0].sunrise
                     let sunsetYo = res.data.data.weather[0].astronomy[0].sunset
-                    cityObj.city = cityYo;
+                    let iconYo = res.data.data.current_condition[0].weatherIconUrl[0].value
+                    console.log(iconYo)
+                    cityObj.city = cityYo.split(',')[0]; //Take away the contry name and only shows the city-name.
                     cityObj.temp = tempYo
                     cityObj.sunrise = sunriseYo
                     cityObj.sunset = sunsetYo
+                    cityObj.icon = iconYo
                     newArr.push({ ...cityObj })
                     setFetchAPI(newArr)
                 })
@@ -74,10 +99,14 @@ const GetWeatherData = () => {
     }
 
     useEffect(() => {
+
         WeatherData()
+        // const interval = setInterval(() => {
+        //     WeatherData()
+        // }, 100000)
+        // return () => clearInterval(interval)
     }, [])
-
-
+    console.log(sunset_icon)
     return (
         <>
             <StyledDiv>
@@ -86,10 +115,18 @@ const GetWeatherData = () => {
                     {fetchAPI.map(obj => <li key={obj.city}>
                         {/* {console.log(fetchAPI)} */}
                         <CityCard>
+                            <FaHeart style={{ color: 'red' }} />
                             <h2>{obj.city}</h2>
-                            <h4>Nu är det {obj.temp} grader.</h4>
-                            <h4>Solen går upp kl: {obj.sunrise}</h4>
-                            <h4>Solen går ner kl: {obj.sunset}</h4>
+
+                            <Styledh4><span>Just nu</span> {obj.temp} ºC</Styledh4>
+                            <WeatherIcon src={obj.icon} />
+                            <div>
+                                <img src={sunrise_icon} />
+                                <h4>{obj.sunrise}</h4>
+                                <img src={sunset_icon} />
+                                <h4>{obj.sunset}</h4>
+                            </div>
+
                         </CityCard>
                     </li>)}
                 </ul>
