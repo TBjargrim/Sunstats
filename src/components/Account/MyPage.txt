@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useState } from 'react'
+import axios from 'axios';
 import styled from "styled-components";
 import London from '../../Images/LondonImage.jpg'
 import Tokyo from '../../Images/TokyoImage.jpg'
 import NY from '../../Images/NYimage.jpg'
 import Barcelona from '../../Images/BarcelonaImage.jpg'
 import Paris from '../../Images/ParisImage.jpg'
-import WeatherData from './GetWeaterData';
 
 const StyledDiv = styled.div`
 padding: 0;
@@ -112,8 +111,8 @@ img{
 `
 
 const MyPage = () => {
-
-  // let savedFav = JSON.parse(localStorage.getItem('favorites'));
+  const [fetchAPI, setFetchAPI] = useState([])
+  let savedFav = JSON.parse(localStorage.getItem('favorites'));
 
   // testade att spara mer arrayen ett steg till, alltså newArr i en till array. Men det funkade inte riktigt. blev samma problem...
   // Testade också att göra en till for loop inuti loopen vi redan har. men det sket sig också ^^
@@ -121,14 +120,48 @@ const MyPage = () => {
   // tror vi får testa state och hela det sättet. Håller tummarna för det!
   // MEN är ganska dålig på det och hade inte tålamod till det idag(främst för att jag inte vill sitta själv med det! :-)
 
-  // let test = []
+  let test = []
 
+  let newArr = [];
+  for (let i = 0; i < savedFav.length; i++) {
+    // URL = `http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec735448d26149ab9c7183714211504&format=json&num_of_days=1&q=${savedFav[i]}`
+
+    let cityObj = {
+      city: '',
+      temp: 0,
+      sunrise: '',
+      sunset: '',
+    }
+    axios
+      .get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec735448d26149ab9c7183714211504&format=json&num_of_days=1&q=${savedFav[i]}`)
+      .then(res => {
+
+        let cityYo = res.data.data.request[0].query;
+        let tempYo = parseInt(res.data.data.current_condition[0].FeelsLikeC)
+        let sunriseYo = res.data.data.weather[0].astronomy[0].sunrise
+        let sunsetYo = res.data.data.weather[0].astronomy[0].sunset
+        cityObj.city = cityYo;
+        cityObj.temp = tempYo
+        cityObj.sunrise = sunriseYo
+        cityObj.sunset = sunsetYo
+        newArr.push({ cityObj })
+        console.log(newArr)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
   return (
     <div>
       <StyledDiv>
         <p>Dina valda favoriter: </p>
-        <WeatherData />
-
+        <ul>
+          {savedFav.map(obj => <li key={obj}>
+            <CityCard >
+              <h2>{obj}</h2>
+            </CityCard>
+          </li>)}
+        </ul>
       </StyledDiv>
 
       <StyledWrapper>
