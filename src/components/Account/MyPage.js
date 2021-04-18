@@ -13,7 +13,7 @@ padding: 0;
 p {
   font-size: 20px;
   text-align: left;
-  margin-left:30px;
+  margin:70px 150px;
 }
 ul {
   list-style: none;
@@ -62,6 +62,7 @@ const StyledP = styled.p`
   text-align:left;
   width: 100%;
   padding:10px;
+  margin:40px 80px;
 @media screen and (max-width:1000px) {
   width: 100%;
 }
@@ -112,7 +113,6 @@ img{
 `
 
 const MyPage = () => {
-
   // let savedFav = JSON.parse(localStorage.getItem('favorites'));
 
   // testade att spara mer arrayen ett steg till, alltså newArr i en till array. Men det funkade inte riktigt. blev samma problem...
@@ -120,9 +120,7 @@ const MyPage = () => {
   // gjorde också en helvändning och testade det sättet vi gjorde i Sams väder komponent. men det funkar inte riktigt för det vi vill ha ut med den infon
   // tror vi får testa state och hela det sättet. Håller tummarna för det!
   // MEN är ganska dålig på det och hade inte tålamod till det idag(främst för att jag inte vill sitta själv med det! :-)
-
   // let test = []
-
   return (
     <div>
       <StyledDiv>

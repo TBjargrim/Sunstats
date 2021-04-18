@@ -24,6 +24,18 @@ const GlobalStyle = createGlobalStyle`
 * {
   font-family: 'Raleway', sans-serif;
 }
+h1{
+  color: ${({ theme }) => theme.h1};
+}
+p{
+  color: ${({ theme }) => theme.text};
+}
+button{
+  background: ${({ theme }) => theme.button.background};
+  &:hover{
+    background: ${({ theme }) => theme.button.hover.backgroundColor};
+  }
+}
 `
 
 const App = () => {

@@ -6,7 +6,8 @@ import {
 } from "react-router-dom";
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
-// import Logo from '../../Images/sunstats_logo.png'
+import ving_logga from '../../Images/vinglogga_transparant.png'
+import apollo_logga from '../../Images/apollologga_transparant.png'
 import { ThemeProvider } from 'styled-components';
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 import { useVingMode } from '../ChangeBranding/LocalStorage'
@@ -73,14 +74,13 @@ const BurgerMenyIcon = styled(FaBars)`
 color:${({ theme }) => theme.h1};
 `
 const LogoImg = styled.img`
-width:100px;
-height:90px;
-margin-top: -20px;
-background-image:${({ theme }) => theme.backgroundImage};
-background-repeat:${({ theme }) => theme.backgroundImageRepeat};
-@media screen and (max-width:764px) {
-    max-width:150px;
-    margin-top:15px;
+width: 40%;
+margin: -20px;
+margin-left:25px;
+@media screen and (max-width:960px) {
+  width: 20%;
+    margin-top:25px;
+    margin-left:25px;
 }
 `
 
@@ -92,8 +92,9 @@ const Navbar = ({ authUser, toggle }) => {
     <ThemeProvider theme={themeMode}>
       <StyledNav >
         <NavbarContainer>
-          <NavLogo to='/wiz'><LogoImg /></NavLogo>
-          {/* src={Logo} */}
+          <NavLogo to='/wiz'>
+            <LogoImg src={theme === 'ving' ? ving_logga : apollo_logga} />
+          </NavLogo>
           <MobileIcon onClick={toggle}>
             <BurgerMenyIcon />
           </MobileIcon>

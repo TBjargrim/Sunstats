@@ -25,7 +25,7 @@ function Info({ setTargetInfoClick }) {
                 <StyledP>Vi kan hjälpa dig fatta ett beslut. Genom att söka på när du vill åka och vilken världsdel får du info om vilken stad som passar dig!</StyledP>
             </StyledText>
             <LinkWrapper>
-                <StyledLink to={ROUTES.WIZ}><FaArrowRight onClick={handleClick} /></StyledLink>
+                <StyledLink to={ROUTES.WIZ} onClick={handleClick}><FaArrowRight onClick={handleClick} /></StyledLink>
             </LinkWrapper>
         </StyledDiv>
     );

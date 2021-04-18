@@ -14,8 +14,10 @@ export const useVingMode = () => {
     const toggleTheme = () => {
         if (theme === 'ving') {
             setMode('apollo');
+            window.location.reload();
         } else {
             setMode('ving');
+            window.location.reload();
         }
     };
     //Om användare valt ett tema så sätts läggs det i setTheme-functionen.

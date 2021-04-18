@@ -7,8 +7,6 @@ const StyledDiv = styled.div`
 `
 
 const Settings = () => {
-
-
     return (
         <StyledDiv>
             <PasswordForgetForm />

@@ -34,9 +34,9 @@ button {
   font-size: 14px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
   /* background: ${({ theme }) => theme.background}; */
- background: linear-gradient(
+ /* background: linear-gradient(
     180deg
-    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565; 
+    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565;  */
 }
 `;
 

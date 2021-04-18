@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import sunset_icon from '../../Images/sunset_icon.png'
 import sunrise_icon from '../../Images/sunrise_icon.png'
 import { FaHeart } from 'react-icons/fa';
-// https://stackoverflow.com/questions/56532652/axios-get-then-in-a-for-loop
-// https://levelup.gitconnected.com/fetch-api-data-with-axios-and-display-it-in-a-react-app-with-hooks-3f9c8fa89e7b
 
 const StyledDiv = styled.div`
 padding: 0;
@@ -40,7 +38,6 @@ h4{
     font-size: 24px;
 }
 h4 span {
-   
 }
 `;
 const Styledh4 = styled.h4`
@@ -58,9 +55,14 @@ width:100px;
 
 const GetWeatherData = () => {
     const [fetchAPI, setFetchAPI] = useState([])
+
     let savedFav = JSON.parse(localStorage.getItem('favorites'));
 
+    // function reloadThePage() {
+    //     window.location.reload();
+    // }
 
+    // window.location.reload();
     const WeatherData = () => {
         let newArr = [];
 
@@ -84,7 +86,7 @@ const GetWeatherData = () => {
                     let sunsetYo = res.data.data.weather[0].astronomy[0].sunset
                     let iconYo = res.data.data.current_condition[0].weatherIconUrl[0].value
                     console.log(iconYo)
-                    cityObj.city = cityYo.split(',')[0]; //Take away the contry name and only shows the city-name.
+                    cityObj.city = cityYo.split(',')[0]; //Take away the country name and only shows the city-name.
                     cityObj.temp = tempYo
                     cityObj.sunrise = sunriseYo
                     cityObj.sunset = sunsetYo
@@ -96,17 +98,19 @@ const GetWeatherData = () => {
                     console.log(err)
                 })
         }
+
     }
 
     useEffect(() => {
 
         WeatherData()
+
+
         // const interval = setInterval(() => {
         //     WeatherData()
-        // }, 100000)
+        // }, 10000)
         // return () => clearInterval(interval)
     }, [])
-    console.log(sunset_icon)
     return (
         <>
             <StyledDiv>
