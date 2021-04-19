@@ -84,13 +84,13 @@ img{
 }
 `;
 
-
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
   let history = useHistory();
   const [favorites, setFavorites] = useState([]);
   const [toggleHeart, setToggleHeart] = useState(false);
+  const [cityTemp, setCityTemp] = useState();
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -108,6 +108,7 @@ function Result({ setSaveDate }) {
   let DecArr = []
   for (let i = 0; i < collectedAvgTempAndCities.length; i++) {
     citiesArr.push(collectedAvgTempAndCities[i].city)
+
     JanArr.push(collectedAvgTempAndCities[i].averageTemp[0])
     FebArr.push(collectedAvgTempAndCities[i].averageTemp[1])
     MarArr.push(collectedAvgTempAndCities[i].averageTemp[2])
@@ -121,9 +122,6 @@ function Result({ setSaveDate }) {
     NovArr.push(collectedAvgTempAndCities[i].averageTemp[10])
     DecArr.push(collectedAvgTempAndCities[i].averageTemp[11])
   }
-
-
-
 
   let newArr = []
   if (date === 'January') {
@@ -291,11 +289,20 @@ function Result({ setSaveDate }) {
 
   let newArrSorted = newArr.sort((a, b) => (a.temperatur > b.temperatur) ? -1 : 1)
 
-  function createHandleClickForDestination(destination) {
+  function createHandleClickForDestination(destination, temperature, image) {
     return function () {
       let clickedCity = destination;
       setRedirectionPath(clickedCity);
-      history.push(`/result/${temp}/${date}/${destination}`);
+      setCityTemp(temperature)
+      history.push
+      ({
+        pathname: `/result/${temp}/${date}/${destination}`,
+        state:
+        {
+          temp: temperature,
+          image: image, 
+        }
+      });
     }
   }
 
@@ -306,9 +313,7 @@ function Result({ setSaveDate }) {
     setFavorites(newFavouriteList)
     for (let i = 0; i < newFavouriteList.length; i++) {
       let x = newFavouriteList[i]
-
       console.log(x)
-
     }
     console.log(newFavouriteList)
   }
@@ -327,6 +332,9 @@ function Result({ setSaveDate }) {
   }, [favorites])
 
   const madeFavorites = true;
+
+
+  
   return (
     <FlexDiv>
       <h1>{date}</h1>
@@ -335,7 +343,7 @@ function Result({ setSaveDate }) {
         <ul>
           {newArrSorted.map(obj => <li key={obj.city}>
             <CityCard >
-              <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
+              <CityCardImg onClick={createHandleClickForDestination(obj.city, obj.temperatur, obj.image)}>
                 <img src={obj.image} alt='bild på strand' />
               </CityCardImg>
               <CityCardInfo>
@@ -348,7 +356,7 @@ function Result({ setSaveDate }) {
                   (<FaHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
 
               </CityCardInfo>
-
+              
               {/* <FavHeart>
                 {favorites.includes(i) ? (
                   <FaHeart onClick={() => addFav({ items, i })}
