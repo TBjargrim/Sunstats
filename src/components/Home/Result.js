@@ -299,8 +299,7 @@ function Result({ setSaveDate }) {
         pathname: `/result/${temp}/${date}/${destination}`,
         state:
         {
-          temp: temperature,
-          image: image, 
+          temp: temperature, 
         }
       });
     }
