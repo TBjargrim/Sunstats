@@ -49,6 +49,7 @@ a{
 `
 const AdminPage = () => (
   <>
+    <RenderTheme />
     <DivWrapper>
       <h1>Admin</h1>
     </DivWrapper>
@@ -56,7 +57,7 @@ const AdminPage = () => (
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />
       <Route exact path={ROUTES.ADMIN} component={UserList} />
     </Switch>
-    <RenderTheme />
+
   </>
 );
 

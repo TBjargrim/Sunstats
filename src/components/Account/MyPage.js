@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-
+// import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 import London from '../../Images/LondonImage.jpg'
 import Tokyo from '../../Images/TokyoImage.jpg'
@@ -28,23 +27,23 @@ li {
   margin: 5px;
 }
 `
-const CityCard = styled.div`
-margin: 0;
-padding: 5px;
-h2{
-font-size: 18px;
-}
-`;
-const StyledImg = styled.div`
-margin: 5px;
-img{
-  border-radius: 15px;
-  float: left;
-  width:  110px;
-  height: 110px;
-  object-fit: cover;
-}
-`
+// const CityCard = styled.div`
+// margin: 0;
+// padding: 5px;
+// h2{
+// font-size: 18px;
+// }
+// `;
+// const StyledImg = styled.div`
+// margin: 5px;
+// img{
+//   border-radius: 15px;
+//   float: left;
+//   width:  110px;
+//   height: 110px;
+//   object-fit: cover;
+// }
+// `
 
 const StyledWrapper = styled.div`
 background-color:#D8DEE3;
@@ -60,9 +59,7 @@ flex-direction: column;
 const StyledP = styled.p`
   font-size:20px;
   text-align:left;
-  width: 100%;
   padding:10px;
-  margin:40px 80px;
 @media screen and (max-width:1000px) {
   width: 100%;
 }
@@ -113,20 +110,12 @@ img{
 `
 
 const MyPage = () => {
-  // let savedFav = JSON.parse(localStorage.getItem('favorites'));
 
-  // testade att spara mer arrayen ett steg till, alltså newArr i en till array. Men det funkade inte riktigt. blev samma problem...
-  // Testade också att göra en till for loop inuti loopen vi redan har. men det sket sig också ^^
-  // gjorde också en helvändning och testade det sättet vi gjorde i Sams väder komponent. men det funkar inte riktigt för det vi vill ha ut med den infon
-  // tror vi får testa state och hela det sättet. Håller tummarna för det!
-  // MEN är ganska dålig på det och hade inte tålamod till det idag(främst för att jag inte vill sitta själv med det! :-)
-  // let test = []
   return (
     <div>
       <StyledDiv>
         <p>Dina valda favoriter: </p>
         <WeatherData />
-
       </StyledDiv>
 
       <StyledWrapper>

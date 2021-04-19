@@ -37,7 +37,6 @@ const FlexDiv = styled.div`
   h1 {
     font-weight: 800;
     text-align: center;
-    /* color: #40A6BC; */
     color: ${({ theme }) => theme.h1};
   }
   ul {
@@ -92,7 +91,6 @@ function Result({ setSaveDate }) {
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
   let history = useHistory();
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
-  // const [toggleHeart, setToggleHeart] = useState(false);
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -193,7 +191,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(MayObj.temperatur) >= parseInt(temp) - 5 && parseInt(MayObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(MayObj)
-        console.log(MayObj)
       }
     })
   } else if (date === "June") {
@@ -207,7 +204,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(JunObj.temperatur) >= parseInt(temp) - 5 && parseInt(JunObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(JunObj)
-        console.log(JunObj)
       }
     })
   } else if (date === "July") {
@@ -221,7 +217,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(JulObj.temperatur) >= parseInt(temp) - 5 && parseInt(JulObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(JulObj)
-        console.log(JulObj)
       }
     })
   } else if (date === "Augusti") {
@@ -290,7 +285,6 @@ function Result({ setSaveDate }) {
       }
     })
   };
-  console.log(newArr)
   let newArrSorted = newArr.sort((a, b) => (a.temperatur > b.temperatur) ? -1 : 1)
 
   function createHandleClickForDestination(destination) {
@@ -302,26 +296,21 @@ function Result({ setSaveDate }) {
   }
   const AddFavourite = (city) => {
 
-    //const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
-    console.log(city)
     let tempFavorites = favorites;
     tempFavorites.push(city.city)
-    console.log(...tempFavorites)
+    // console.log(...tempFavorites)
     setFavorites([...new Set(tempFavorites)]); // eliminate doubles
   }
   const deleteFavorite = (city) => {
-    console.log(city)
     const filteredFav = favorites.filter(strCity => strCity !== city.city)
     setFavorites(filteredFav)
-    console.log(filteredFav)
   }
-  console.log(favorites)
+
   useEffect(() => {
     const json = JSON.stringify(favorites);
     localStorage.setItem("favorites", json)
   }, [favorites])
 
-  // const madeFavorites = true;
   return (
     <ThemeProvider theme={themeMode}>
       <FlexDiv>

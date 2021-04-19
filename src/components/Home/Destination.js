@@ -86,7 +86,7 @@ function Destination() {
     // const LogoMode = theme === 'ving' ? VingTheme : ApolloTheme;
     //Theme = ving /apollo 
     //ThemeMode = objectet med all styling
-    console.log(themeMode)
+    // console.log(themeMode)
     return (
         <ThemeProvider theme={themeMode}>
             <StyledWrapper>
