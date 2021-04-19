@@ -5,12 +5,56 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import styled from 'styled-components';
+import { StyledText } from "../Home/SelectionStyling";
 
+const StyledH1 = styled.h1`
+display:flex;
+justify-content:center;
+letter-spacing:1px;
+`
+const StyledForm = styled.form`
+display:flex;
+flex-direction:column;
+align-items: center;
+/* max-width:500px; */
+margin:10px;
+
+
+input{
+  padding:5px 8px;
+  margin-top:6px;
+  width:300px;
+}
+button{
+  margin-top:20px;
+  display:flex;
+  justify-content:center;
+  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+border: none;
+padding: 10px;
+color: white;
+border-radius: 25px;
+width:200px;
+letter-spacing:1px;
+cursor:pointer;
+&:hover {
+  background-color: #F8AF59;
+  border:1px solid #EC8F21;
+}
+&:focus{
+  outline:none;
+}
+}
+`
+const StyledDiv = styled.div`
+text-align:center;
+`
 const SignUpPage = () => (
   <div>
-    <h1>Skapa konto</h1>
-    <SignUpForm />
-  </div>
+    <StyledH1>Skapa konto</StyledH1>
+     <SignUpForm />
+</div>
+
 );
 
 const INITIAL_STATE = {
@@ -88,7 +132,7 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <StyledForm onSubmit={this.onSubmit}>
         <input
           name="username"
           value={username}
@@ -117,24 +161,28 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Bekräfta lösenord"
         />
-        <label>
-          Admin:
-          <input
+        <div>
+        <StyledText>Admin:</StyledText>
+
+        </div>
+    <input
             name="isAdmin"
             type="checkbox"
             checked={isAdmin}
             onChange={this.onChangeCheckbox}
           />
-        </label>
+    
+
         <button disabled={isInvalid} type="submit">
           Logga in
         </button>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </StyledForm>
     );
   }
 }
+
 
 const StyledP = styled.p`
 position: absolute;
