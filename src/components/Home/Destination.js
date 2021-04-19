@@ -3,6 +3,7 @@ import { useEffect } from "react";
 // import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData.txt';
 import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
+import { Stockholm } from "../CollectedData/AverageTemp"
 // import { Avarage } from "../CachedData/Avarage";
 import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';
 import TestHumidity from '../CollectedData/AverageHumidity'
@@ -51,15 +52,15 @@ p {
     color: ${({ theme }) => theme.text};
     font-weight: 800;
     letter-spacing: 1px;
-    font-size: 19px;
-    margin:15px 0 0 0;
+    font-size: 25px;
+    margin: 0 0 15px 0;
 }
 h1 {
     font-size: 40px;
     font-weight: 900;
     color: #40A6BC;
     letter-spacing: 1px;
-    margin:10px 0 30px 0;
+    margin:10px 0 10px 0;
 }
 `
 
@@ -81,14 +82,62 @@ margin:20px 50px 70px 50px;
     margin:20px 15px 50px 15px;
 }
 `
+const ComparisonDiv = styled.div`
+background-color: pink;
+padding: 20px;
+
+p {
+    margin: 10px;
+    color: orange;
+    font-size: 20px;
+}
+`;
 
 function Destination() {
     const { temp, date, destination} = useParams();
     const [theme, toggleTheme] = useVingMode();
     const history = useHistory();
     const state = history.location.state.temp;
-
-    console.log(cityHistoric[destination])
+    let sweState;
+    
+    console.log(Stockholm);
+    if (date === "January") {
+        sweState = Stockholm[0];
+    }
+    if (date === "February") {
+        sweState = Stockholm[1];
+    }
+    if (date === "March") {
+        sweState = Stockholm[2];
+    }
+    if (date === "April") {
+        sweState = Stockholm[3];
+    }
+    if (date === "May") {
+        sweState = Stockholm[4];
+    }
+    if (date === "June") {
+        sweState = Stockholm[5];
+    }
+    if (date === "July") {
+        sweState = Stockholm[6];
+    }
+    if (date === "August") {
+        sweState = Stockholm[7];
+    }
+    if (date === "September") {
+        sweState = Stockholm[8];
+    }
+    if (date === "October") {
+        sweState = Stockholm[9];
+    }
+    if (date === "November") {
+        sweState = Stockholm[10];
+    }
+    if (date === "December") {
+        sweState = Stockholm[11];
+    }
+   
 
     const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
@@ -103,9 +152,15 @@ function Destination() {
             </CityCardImg>
             <StyledContainer>
                 <Header>
-                    <p>{date}</p>
                     <h1>{destination}</h1>
-                     <p>Medeltemperatur: {state} </p> 
+                    <p>{date}</p>
+                    
+                    <ComparisonDiv>
+                    <p>{destination}: {state}ºC </p>
+                    <p>Stockholm: {sweState}ºC</p>
+                    <p>Skillnad i medeltemp: {state - sweState}ºC</p>
+                    </ComparisonDiv>
+                    
                 </Header>
 
                 <StyledDiv>

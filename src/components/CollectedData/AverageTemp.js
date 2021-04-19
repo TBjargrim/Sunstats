@@ -61,6 +61,8 @@ const monthDataTemp = (arrCity, city) => {
     const avgTempData = (sumArray(tempData));
     const avgTempSthlm = (sumArray(SthlmTempData));
 
+    
+
     const chartData = {
         labels: filteredMonthNum,
         datasets: [
