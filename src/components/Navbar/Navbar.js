@@ -91,13 +91,13 @@ const Navbar = ({ authUser, toggle }) => {
         </MobileIcon>
         <NavMenu>
           <NavItem>
-            <Link to='/home'>Home</Link>
+            <Link to='/home'>Start</Link>
           </NavItem>
           <NavItem>
-            <Link to='/account'>Account</Link>
+            <Link to='/account'>Min sida</Link>
           </NavItem>
           <NavItem>
-            <Link to='/wiz'>wizard</Link>
+            <Link to='/wiz'>Välj resmål</Link>
           </NavItem>
           {!!authUser.roles[ROLES.ADMIN] && (
             <NavItem>

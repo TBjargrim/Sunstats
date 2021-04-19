@@ -51,16 +51,16 @@ function InputFilter() {
       <BarWrapper>
         <select className="month">
           <option>Månad</option>
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
+          <option value="January">Januari</option>
+          <option value="February">Februari</option>
+          <option value="March">Mars</option>
           <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
+          <option value="May">Maj</option>
+          <option value="June">Juni</option>
+          <option value="July">Juli</option>
+          <option value="August">Augusti</option>
           <option value="September">September</option>
-          <option value="October">October</option>
+          <option value="October">Oktober</option>
           <option value="November">November</option>
           <option value="December">December</option>
         </select>

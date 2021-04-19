@@ -73,7 +73,7 @@ class PasswordForgetFormBase extends Component {
           placeholder="E-post"
         />
         <button disabled={isInvalid} type="submit">
-          Återståll mitt lösenord
+          Återställ mitt lösenord
 </button>
         {error && <p>{error.message}</p>}
       </form>
