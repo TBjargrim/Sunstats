@@ -52,7 +52,7 @@ text-align:center;
 font-weight: 500;
 font-size: 50px;
 line-height: 59px;
-color: #353535;
+/* color: #353535; */
 
 @media screen and (max-width:960px) {
     font-size: 35px;
@@ -93,7 +93,8 @@ height: 50px;
   text-align: center;
   text-decoration: none;
   padding: 15px 20px;
-  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+  background: ${({ theme }) => theme.button.background};
+  /* background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565; */
   &:focus{
     outline:none;
   }

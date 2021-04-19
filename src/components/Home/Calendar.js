@@ -18,9 +18,9 @@ div {
 `;
 const TravelBtn = styled.button`
   display: block;
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg
-    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565;
+    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565; */
   color: white;
   border: none;
   border-radius: 30px;
@@ -28,6 +28,9 @@ const TravelBtn = styled.button`
   font-size: 20px;
   margin: 15px 0 10px 0;
 /*   box-shadow: 1px 2px 10px gray; */
+&:active{
+  outline:none;
+}
 `;
 const BtnDiv = styled.div`
 display: flex;

@@ -1,7 +1,7 @@
 import { useParams, useLocation, useHistory } from "react-router-dom"
 import { useEffect } from "react";
 // import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData.txt';
-import VingLogga from '../../Images/ving_logga.png'
+// import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
 import { Stockholm } from "../CollectedData/AverageTemp"
 // import { Avarage } from "../CachedData/Avarage";
@@ -13,23 +13,24 @@ import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 import { useVingMode } from '../ChangeBranding/LocalStorage'
 import { fromRenderProps, mapProps } from "recompose";
 
+import ving_logga from '../../Images/vinglogga_transparant.png'
+import apollo_logga from '../../Images/apollologga_transparant.png'
 
 const StyledWrapper = styled.div`
 display:flex;
 justify-content: center;
+margin-top: 30px;
 `
 
-const StyledLogo = styled.img`
-width: 50%;
-height:20%;
+const StyledLogo = styled.div`
 position: absolute;
-background-color: transparent;
-padding: 10px;
-margin-top: 60px;
-border-radius: 20px;
-background-image:${({ theme }) => theme.backgroundImage};
-background-repeat:${({ theme }) => theme.backgroundImageRepeat};
+text-align: center;
+img{
+    width: 70%;
+    margin-left: 30px;
+}
 `
+
 const CityCardImg = styled.div`
 width: 100%;
 /* height: 1000px; */
@@ -49,7 +50,7 @@ margin-top: -60px;
 position: absolute;
 width: 100%;
 p {
-    color: ${({ theme }) => theme.text};
+    /* color: ${({ theme }) => theme.color}; */
     font-weight: 800;
     letter-spacing: 1px;
     font-size: 25px;
@@ -58,7 +59,7 @@ p {
 h1 {
     font-size: 40px;
     font-weight: 900;
-    color: #40A6BC;
+    /* color: ${({ theme }) => theme.h1}; */
     letter-spacing: 1px;
     margin:10px 0 10px 0;
 }
@@ -144,8 +145,9 @@ function Destination() {
     return (
         <ThemeProvider theme={themeMode}>
             <StyledWrapper>
-                {/* src={VingLogga} alt='Bild på strand' */}
-                <StyledLogo />
+                <StyledLogo>
+                    <img src={theme === 'ving' ? ving_logga : apollo_logga} alt='Bild på strand' />
+                </StyledLogo>
             </StyledWrapper>
             <CityCardImg>
                 <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt="city" />

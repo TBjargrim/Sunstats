@@ -40,8 +40,8 @@ const Temp = ({ setTargetTemp, setTargetJumpOver, setTargetInfoClick }) => {
       </StyledButtonWrapper>
       <StyledLinkSkip to={ROUTES.WIZ} onClick={handleJump}>Hoppa över</StyledLinkSkip>
       <LinkWrapper>
-        <StyledLink to={ROUTES.WIZ}><FaArrowLeft onClick={handleBack} /></StyledLink>
-        <StyledLink to={ROUTES.WIZ}> <FaArrowRight onClick={handleNext} /> </StyledLink>
+        <StyledLink onClick={handleBack} to={ROUTES.WIZ}><FaArrowLeft onClick={handleBack} /></StyledLink>
+        <StyledLink onClick={handleNext} to={ROUTES.WIZ}> <FaArrowRight onClick={handleNext} /> </StyledLink>
       </LinkWrapper>
     </div>
   );

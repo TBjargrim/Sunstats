@@ -14,18 +14,20 @@ export const useVingMode = () => {
     const toggleTheme = () => {
         if (theme === 'ving') {
             setMode('apollo');
+            window.location.reload();
         } else {
             setMode('ving');
+            window.location.reload();
         }
     };
     //Om användare valt ett tema så sätts läggs det i setTheme-functionen.
     useEffect(() => {
         const localTheme = window.localStorage.getItem('theme');
-        if (localTheme) {
-            setTheme(localTheme);
-        } else {
-            setMode('ving');
-        }
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: apollo)').matches && !localTheme ?
+            setMode('apollo') :
+            localTheme ?
+                setTheme(localTheme) :
+                setMode('ving');
         setComponentMounted(true);
     }, []);
     //Vi returnar theme som innehåller valt theme och toggletheme functionen som "switshar" mellan teman.

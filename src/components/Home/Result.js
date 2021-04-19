@@ -5,6 +5,9 @@ import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
 import { FiHeart } from 'react-icons/fi';
 import { FaHeart } from 'react-icons/fa';
 import InputFilter from "../InputFilter/InputFilter"
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 import AlanyaImg from '../../Images/AlanyaImage.jpg'
 import ArubaImg from '../../Images/ArubaImage.jpg'
@@ -34,7 +37,7 @@ const FlexDiv = styled.div`
   h1 {
     font-weight: 800;
     text-align: center;
-    color: #40A6BC;
+    color: ${({ theme }) => theme.h1};
   }
   ul {
     padding: 0;
@@ -71,11 +74,7 @@ p {
   padding-top: 10px;
 }
 `;
-const FavHeart = styled.div`
-margin: 15px;
-font-size: 22px;
-`
-  ;
+
 const CityCardImg = styled.div`
 width: 100%;
 img{
@@ -87,6 +86,8 @@ img{
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
+  const [theme, toggleTheme] = useVingMode();
+  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
   let history = useHistory();
   const [favorites, setFavorites] = useState([]);
   const [toggleHeart, setToggleHeart] = useState(false);
@@ -189,7 +190,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(MayObj.temperatur) >= parseInt(temp) - 5 && parseInt(MayObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(MayObj)
-        console.log(MayObj)
       }
     })
   } else if (date === "June") {
@@ -203,7 +203,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(JunObj.temperatur) >= parseInt(temp) - 5 && parseInt(JunObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(JunObj)
-        console.log(JunObj)
       }
     })
   } else if (date === "July") {
@@ -217,7 +216,6 @@ function Result({ setSaveDate }) {
       }
       if (parseInt(JulObj.temperatur) >= parseInt(temp) - 5 && parseInt(JulObj.temperatur) <= parseInt(temp) + 5) {
         newArr.push(JulObj)
-        console.log(JulObj)
       }
     })
   } else if (date === "Augusti") {
@@ -286,7 +284,6 @@ function Result({ setSaveDate }) {
       }
     })
   };
-
   let newArrSorted = newArr.sort((a, b) => (a.temperatur > b.temperatur) ? -1 : 1)
 
   function createHandleClickForDestination(destination, temperature, image) {
@@ -304,71 +301,60 @@ function Result({ setSaveDate }) {
       });
     }
   }
-
   const AddFavourite = (city) => {
     const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
     // console.log(newFavouriteList)
-    setToggleHeart(!toggleHeart);
-    setFavorites(newFavouriteList)
-    for (let i = 0; i < newFavouriteList.length; i++) {
-      let x = newFavouriteList[i]
-      console.log(x)
-    }
-    console.log(newFavouriteList)
+    // setToggleHeart(!toggleHeart);
+    // setFavorites(newFavouriteList)
+    // for (let i = 0; i < newFavouriteList.length; i++) {
+    //   let x = newFavouriteList[i]
+    //   console.log(x)
+    // }
+    // console.log(newFavouriteList)
+
+    let tempFavorites = favorites;
+    tempFavorites.push(city.city)
+    // console.log(...tempFavorites)
+    setFavorites([...new Set(tempFavorites)]); // eliminate doubles
   }
-  //Make it so you can only fav your city once.
-  //Be able to delete when you toogle
-  //Make an if statement, if clicked, not being able to click again? And make the "full heart" visible
-  //Make the state work in Account(?)
   const deleteFavorite = (city) => {
-    const filteredFav = favorites.filter((obj) => obj.city !== city)
+    const filteredFav = favorites.filter(strCity => strCity !== city.city)
     setFavorites(filteredFav)
-    console.log(favorites)
   }
+
   useEffect(() => {
     const json = JSON.stringify(favorites);
     localStorage.setItem("favorites", json)
   }, [favorites])
 
-  const madeFavorites = true;
-
-
-  
   return (
-    <FlexDiv>
-      <h1>{date}</h1>
-      <InputFilter />
-      <div>
-        <ul>
-          {newArrSorted.map(obj => <li key={obj.city}>
-            <CityCard >
-              <CityCardImg onClick={createHandleClickForDestination(obj.city, obj.temperatur, obj.image)}>
-                <img src={obj.image} alt='bild på strand' />
-              </CityCardImg>
-              <CityCardInfo>
-                {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
-                <h2>{obj.city}</h2>
-                <p>Medeltemperatur: {obj.temperatur}</p>
-                {madeFavorites ?
-                  (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)
-                  :
-                  (<FaHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
+    <ThemeProvider theme={themeMode}>
+      <FlexDiv>
+        <h1>{date}</h1>
+        <InputFilter />
+        <div>
+          <ul>
+            {newArrSorted.map(obj => <li key={obj.city}>
+              <CityCard >
+                <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
+                  <img src={obj.image} alt='bild på strand' />
+                </CityCardImg>
+                <CityCardInfo>
+                  {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
+                  <h2>{obj.city}</h2>
+                  <p>Medeltemperatur: {obj.temperatur}</p>
+                  {favorites.includes(obj.city) ?
+                    (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)
+                    :
+                    (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
+                </CityCardInfo>
+              </CityCard>
 
-              </CityCardInfo>
-              
-              {/* <FavHeart>
-                {favorites.includes(i) ? (
-                  <FaHeart onClick={() => addFav({ items, i })}
-                    style={{ color: 'red' }} />
-                ) : <FiHeart onClick={() => addFav({ items, i })}
-                  style={{ color: 'red' }} />}
-              </FavHeart> */}
-            </CityCard>
-
-          </li>)}
-        </ul>
-      </div>
-    </FlexDiv>
+            </li>)}
+          </ul>
+        </div>
+      </FlexDiv>
+    </ThemeProvider>
   );
 }
 
