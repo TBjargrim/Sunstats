@@ -21,7 +21,6 @@ display:flex;
 justify-content: center;
 margin-top: 30px;
 `
-
 const StyledLogo = styled.div`
 position: absolute;
 text-align: center;
@@ -30,7 +29,6 @@ img{
     margin-left: 30px;
 }
 `
-
 const CityCardImg = styled.div`
 width: 100%;
 /* height: 1000px; */
@@ -38,7 +36,6 @@ img{
   width: 100%;
 }
 `;
-
 const StyledContainer = styled.div`
 text-align: center;
 display: flex;
@@ -64,7 +61,6 @@ h1 {
     margin:10px 0 10px 0;
 }
 `
-
 const Header = styled.div`
 width: 100%;
 `
@@ -95,13 +91,12 @@ p {
 `;
 
 function Destination() {
-    const { temp, date, destination} = useParams();
+    const { temp, date, destination } = useParams();
     const [theme, toggleTheme] = useVingMode();
     const history = useHistory();
     const state = history.location.state.temp;
     let sweState;
-    
-    console.log(Stockholm);
+
     if (date === "January") {
         sweState = Stockholm[0];
     }
@@ -138,7 +133,7 @@ function Destination() {
     if (date === "December") {
         sweState = Stockholm[11];
     }
-   
+
 
     const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
@@ -156,13 +151,12 @@ function Destination() {
                 <Header>
                     <h1>{destination}</h1>
                     <p>{date}</p>
-                    
                     <ComparisonDiv>
-                    <p>{destination}: {state}ºC </p>
-                    <p>Stockholm: {sweState}ºC</p>
-                    <p>Skillnad i medeltemp: {state - sweState}ºC</p>
+                        <p>{destination}: {state}ºC </p>
+                        <p>Stockholm: {sweState}ºC</p>
+                        <p>Skillnad i medeltemp: {state - sweState}ºC</p>
                     </ComparisonDiv>
-                    
+
                 </Header>
 
                 <StyledDiv>

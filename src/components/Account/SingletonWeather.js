@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import sunset_icon from '../../Images/sunset_icon.png'
 import sunrise_icon from '../../Images/sunrise_icon.png'
 import { FaHeart } from 'react-icons/fa';
+import { GiSunrise } from "react-icons/gi";
+import { GiSunset } from "react-icons/gi";
 
 const StyledDiv = styled.div`
 padding: 0;
@@ -70,17 +72,35 @@ span{
     
 }
 `
+const Heart = styled(FaHeart)`
+color: red;
+font-size: 25px;
+margin: 5px;
+`
 
 const SunriseSunset = styled.div`
 width: 100%;
 margin: 0;
 text-align: center;
 /* border: 1px solid red; */
-h4:first-child{
-color: yellow;
+h4{
+  font-weight: 400;
+  text-transform: lowercase;
 }
 `
-
+const SunriseIcon = styled(GiSunrise)`
+color:#E8CC3B;
+font-size: 30px;
+`
+const SunsetIcon = styled(GiSunset)`
+color:#4F67E2;
+font-size: 30px;
+`
+const SunWrapper = styled.div`
+display: flex;
+justify-content: center;
+margin: 8px 0;
+`
 
 const SingletonWeather = (props) => {
   const [data, setData] = useState(false)
@@ -108,23 +128,25 @@ const SingletonWeather = (props) => {
       })
   }, []);
 
-
-
   return (
     <>
       {data && <li>
         <CityCard>
-          <FaHeart style={{ color: 'red' }} />
+          <Heart />
           <h2>{data.city}</h2>
           <Temp>
             <h4><span>Just nu</span> {data.temp} ºC</h4>
             <img src={data.icon} />
           </Temp>
           <SunriseSunset>
-            <img src={sunrise_icon} />
-            <h4>{data.sunrise}</h4>
-            <img src={sunset_icon} />
-            <h4>{data.sunset}</h4>
+            <SunWrapper>
+              <SunriseIcon />
+              <h4>{data.sunrise}</h4>
+            </SunWrapper>
+            <SunWrapper>
+              <SunsetIcon />
+              <h4>{data.sunset}</h4>
+            </SunWrapper>
           </SunriseSunset>
 
         </CityCard>

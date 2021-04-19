@@ -5,7 +5,8 @@ import Tokyo from '../../Images/TokyoImage.jpg'
 import NY from '../../Images/NYimage.jpg'
 import Barcelona from '../../Images/BarcelonaImage.jpg'
 import Paris from '../../Images/ParisImage.jpg'
-import WeatherData from './GetWeaterData';
+import WeatherData from './GetWeaterData'
+
 
 const StyledDiv = styled.div`
 padding: 0;
