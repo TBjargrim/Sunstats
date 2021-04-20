@@ -3,51 +3,38 @@ import axios from 'axios';
 import styled from 'styled-components'
 import sunset_icon from '../../Images/sunset_icon.png'
 import sunrise_icon from '../../Images/sunrise_icon.png'
-import { FaHeart } from 'react-icons/fa';
+
 import { GiSunrise } from "react-icons/gi";
 import { GiSunset } from "react-icons/gi";
 
-const StyledDiv = styled.div`
-padding: 0;
-p {
-  font-size: 20px;
-  text-align: left;
-  margin-left:30px;
-}
-ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-}
-li {
-  text-align: center;
-  margin: 5px;
-}
-`
 const CityCard = styled.div`
+position: relative;
+z-index: 1;
 margin: 0;
 padding: 5px;
-background-color:#D8DEE3;
-border-radius:15px;
-width: 220px;
+background: #E1E1E1;
+box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.30);
+border-radius: 17px;
 /* border: 1px solid orange; */
+width: 350px;
+height: 200px;
 display: flex;
 flex-wrap: wrap;
 h2{
-font-size: 20px;
-/* border: 1px solid green; */
+font-size: 25px;
 width: 100%;
+text-align: start;
+margin-left: 15px;
+letter-spacing:1px;
 }
-h4{
-    font-size: 20px;
-    /* border: 1px solid blue; */
-    margin: 0;
-}
-h4 span {
-    /* border: 1px solid yellow; */
+img{
+border-radius:50%;
+width:55px;
+position: absolute;
+right: 40px;
+top: 10px;
+z-index: -1;
+/* border: 1px solid purple;   */
 }
 `;
 
@@ -57,49 +44,47 @@ border-radius: 10px;
 padding: 5px;
 /* border: 1px solid black; */
 display: flex;
-background-color: white;
-img{
-border-radius:50%;
-width:50px;
-/* border: 1px solid purple;   */
-}
+
 h4{
-font-size: 22px;
-margin-right: 15px;
+  width:100%;
+  /* border: 1px solid black; */
+font-size: 50px;
+margin:0px 15px;
+font-weight: 500;
+text-align:center;
 }
-span{
-    font-size: 20px;
-    
+h4 span{
+    font-size: 18px;
+    font-weight: 400;
+    /* margin-right:5px; */
 }
 `
-const Heart = styled(FaHeart)`
-color: red;
-font-size: 25px;
-margin: 5px;
-`
+
 
 const SunriseSunset = styled.div`
 width: 100%;
-margin: 0;
-text-align: center;
-/* border: 1px solid red; */
+display: flex;
+justify-content: center;
 h4{
   font-weight: 400;
+  font-size: 19px;
   text-transform: lowercase;
 }
 `
 const SunriseIcon = styled(GiSunrise)`
 color:#E8CC3B;
 font-size: 30px;
+margin-top: 20px;
+
 `
 const SunsetIcon = styled(GiSunset)`
 color:#4F67E2;
 font-size: 30px;
+margin-top: 20px;
 `
 const SunWrapper = styled.div`
 display: flex;
-justify-content: center;
-margin: 8px 0;
+margin:0 20px;
 `
 
 const SingletonWeather = (props) => {
@@ -132,11 +117,10 @@ const SingletonWeather = (props) => {
     <>
       {data && <li>
         <CityCard>
-          <Heart />
           <h2>{data.city}</h2>
+          <img src={data.icon} />
           <Temp>
             <h4><span>Just nu</span> {data.temp} ºC</h4>
-            <img src={data.icon} />
           </Temp>
           <SunriseSunset>
             <SunWrapper>
@@ -148,7 +132,6 @@ const SingletonWeather = (props) => {
               <h4>{data.sunset}</h4>
             </SunWrapper>
           </SunriseSunset>
-
         </CityCard>
       </li>}
     </>);

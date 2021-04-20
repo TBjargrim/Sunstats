@@ -3,8 +3,11 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> stylingBranding
 };
 
 class Firebase {

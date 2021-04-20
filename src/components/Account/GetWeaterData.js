@@ -10,17 +10,22 @@ p {
   margin-left:30px;
 }
 ul {
+  display:flex;
+  flex-direction:column;
   list-style: none;
-  display: flex;
-  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
 }
+
 li {
   text-align: center;
   margin: 5px;
+  /* border: 1px solid green; */
+
 }
+
 `
 
 

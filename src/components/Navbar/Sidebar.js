@@ -62,8 +62,6 @@ padding:20px 0px;
 &:hover {
     color:white;
     transition:0.2s ease-in-out;
-    background:#fff;
-    /* margin:30px 0px; */
 }
 `
 const ButtonLI = styled.li`

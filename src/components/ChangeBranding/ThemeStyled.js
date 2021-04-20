@@ -1,4 +1,3 @@
-import ving from '../../Images/ving_logga.png'
 
 export const VingTheme = {
     background: '#E8BA7E',
@@ -25,11 +24,11 @@ export const VingTheme = {
 }
 
 export const ApolloTheme = {
-    background: '#5AC6CC',
+    background: '#75D0D6',
     text: '#1B1464',
-    h1: '#1B1464',
+    h1: '#271E89',
     button: {
-        background: '#E364C1',
+        background: 'linear-gradient(180deg, rgba(255, 191, 233, 0.74) -33.33%, rgba(210, 210, 210, 0) 79.06%), #F833B5',
         border: 'none',
         padding: '10px',
         color: '#1B1464',
@@ -38,8 +37,8 @@ export const ApolloTheme = {
         letterSpacing: '1px',
         cursor: 'pointer',
         hover: {
-            backgroundColor: '#F8AF59',
-            border: '1px solid #E364C1',
+            backgroundColor: '#EC92FB',
+            // border: '1px solid white',
         },
         focus: {
             outline: 'none'
