@@ -13,7 +13,7 @@ justify-content:center;
 font-size:30px;
 font-weight:700;
 text-transform:capitalize;
-margin-top:20px;
+margin-top:70px;
 animation-name: moveInleft;
     animation-duration: 3s;
 @keyframes moveInleft {

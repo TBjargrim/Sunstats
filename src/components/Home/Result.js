@@ -74,9 +74,6 @@ p {
   margin: 0;
   padding-top: 10px;
 }
-
-
-
 `;
 
 const CityCardImg = styled.div`
@@ -91,7 +88,7 @@ img{
   width: 100%;
   border-radius: 30px 0 0 30px;
 }
-`;
+}`
 
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
@@ -302,17 +299,17 @@ function Result({ setSaveDate }) {
       setRedirectionPath(clickedCity);
       setCityTemp(temperature)
       history.push
-      ({
-        pathname: `/result/${temp}/${date}/${destination}`,
-        state:
-        {
-          temp: temperature, 
-        }
-      });
+        ({
+          pathname: `/result/${temp}/${date}/${destination}`,
+          state:
+          {
+            temp: temperature,
+          }
+        });
     }
   }
   const AddFavourite = (city) => {
-    const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
+    // const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
     // console.log(newFavouriteList)
     // setToggleHeart(!toggleHeart);
     // setFavorites(newFavouriteList)

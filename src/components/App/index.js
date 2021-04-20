@@ -35,6 +35,14 @@ button{
   &:hover{
     background: ${({ theme }) => theme.button.hover.backgroundColor};
   }
+  &:focus{
+    background: ${({ theme }) => theme.button.hover.backgroundColor};
+  }
+}
+Link{
+  &:hover{
+    color:${({ theme }) => theme.button.hover.backgroundColor};
+  }
 }
 `
 

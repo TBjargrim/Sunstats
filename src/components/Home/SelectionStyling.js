@@ -99,7 +99,7 @@ height: 50px;
     outline:none;
   }
   &:hover {
-  background-color: #F8AF59;
+  /* background-color: #F8AF59; */
   opacity:0.9;
   }
   @media screen and (max-width:1000px) {
@@ -148,10 +148,10 @@ animation-duration:3s;
 }
 &:focus{
     outline:none;
-    background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D;
+    /* background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D; */
   }
 &:hover{
-    background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D;
+    /* background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D; */
 border: none;
 box-sizing: border-box;
 border-radius: 25px;

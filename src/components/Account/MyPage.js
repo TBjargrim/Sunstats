@@ -6,46 +6,26 @@ import NY from '../../Images/NYimage.jpg'
 import Barcelona from '../../Images/BarcelonaImage.jpg'
 import Paris from '../../Images/ParisImage.jpg'
 import WeatherData from './GetWeaterData'
-
+import { FaHeart } from 'react-icons/fa';
 
 const StyledDiv = styled.div`
-padding: 0;
+display:flex;
+margin-top:30px;
+
 p {
-  font-size: 20px;
+  font-size: 18px;
   text-align: left;
-  margin:70px 150px;
-}
-ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-}
-li {
-  text-align: center;
-  margin: 5px;
+  font-weight:700;
+  letter-spacing:1px;
 }
 `
-// const CityCard = styled.div`
-// margin: 0;
-// padding: 5px;
-// h2{
-// font-size: 18px;
-// }
-// `;
-// const StyledImg = styled.div`
-// margin: 5px;
-// img{
-//   border-radius: 15px;
-//   float: left;
-//   width:  110px;
-//   height: 110px;
-//   object-fit: cover;
-// }
-// `
-
+const Heart = styled(FaHeart)`
+color: red;
+font-size: 18px;
+margin: 5px;
+margin-top:20px;
+margin-left:30px;
+`
 const StyledWrapper = styled.div`
 background-color:#D8DEE3;
 border-radius:15px;
@@ -110,15 +90,16 @@ img{
 }
 `
 
+
 const MyPage = () => {
 
   return (
     <div>
       <StyledDiv>
-        <p>Dina valda favoriter: </p>
-        <WeatherData />
+        <Heart /><p> Dina favoriter:   </p>
       </StyledDiv>
 
+      <WeatherData />
       <StyledWrapper>
         <StyledP>Utforska andra förslag för dig:</StyledP>
         <StyledWrapperTwo>
