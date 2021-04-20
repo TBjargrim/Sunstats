@@ -5,20 +5,24 @@ import { VingTheme, ApolloTheme } from './ThemeStyled'
 import { useVingMode } from './LocalStorage'
 
 const StyledDiv = styled.div`
-background: ${({ theme }) => theme.body};
+/* background: ${({ theme }) => theme.body}; */
 color: ${({ theme }) => theme.h1};
 border:1px solid ${({ theme }) => theme.h1};
 border-radius:20px;
-padding:10px 20px;
+padding:0 15px;
 display:flex;
-margin:40px auto;
+margin:20px auto;
+background: rgba(255, 255, 255, 0.65);
 display:flex;
 justify-content:space-between;
-width: 70%;
+width: 48%;
 button{
     cursor: ${({ theme }) => theme.button};
     justify-content:center;
-    font-size: 15px;
+    font-size: 12px;
+    margin: auto 0%;
+    height: 60px;
+    padding:5px;
     &:focus{
         outline: none;
     }

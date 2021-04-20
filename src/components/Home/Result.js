@@ -26,8 +26,10 @@ import UbudImg from '../../Images/UbudImage.jpg'
 
 const Green = styled.p`
 color: green;
-padding: 20px;
+margin-bottom: 10px;
 font-weight: 600;
+/* position:absolute; */
+
 `;
 const FlexDiv = styled.div`
   display: flex;
@@ -49,6 +51,7 @@ const FlexDiv = styled.div`
 `;
 const CityCard = styled.div`
 display: flex;
+position: relative;
 flex-direction: row;
 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
 margin: 15px;
@@ -64,7 +67,8 @@ width: 60%;
 padding: 35px;
 h2 {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-align: center;
   margin: 0px;
 }
@@ -73,7 +77,11 @@ p {
   text-align: center;
   margin: 0;
   padding-top: 10px;
-}
+
+} p span{
+    font-weight: 700;
+    font-size: 18px;
+  }
 `;
 
 const CityCardImg = styled.div`
@@ -89,7 +97,20 @@ img{
   border-radius: 30px 0 0 30px;
 }
 }`
-
+const StyledFa = styled(FaHeart)`
+color: red;
+position: absolute;
+right: 15px;
+top: 17px;
+font-size: 20px;
+`
+const StyledFi = styled(FiHeart)`
+color: red;
+position: absolute;
+right: 15px;
+top:17px;
+font-size:20px;
+`
 function Result({ setSaveDate }) {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
@@ -300,15 +321,6 @@ function Result({ setSaveDate }) {
       setCityTemp(temperature)
       console.log(temperature)
       history.push
-<<<<<<< HEAD
-      ({
-        pathname: `/result/${temp}/${date}/${destination}`,
-        state:
-        {
-          temp: temperature,
-        }
-      });
-=======
         ({
           pathname: `/result/${temp}/${date}/${destination}`,
           state:
@@ -316,30 +328,17 @@ function Result({ setSaveDate }) {
             temp: temperature,
           }
         });
->>>>>>> stylingBranding
     }
   }
   const AddFavourite = (city) => {
-    // const newFavouriteList = [...favorites, city] //Copy of the useState, favorites
-    // console.log(newFavouriteList)
-    // setToggleHeart(!toggleHeart);
-    // setFavorites(newFavouriteList)
-    // for (let i = 0; i < newFavouriteList.length; i++) {
-    //   let x = newFavouriteList[i]
-    //   console.log(x)
-    // }
-    // console.log(newFavouriteList)
-
     let tempFavorites = favorites;
     tempFavorites.push(city.city)
-    // console.log(...tempFavorites)
     setFavorites([...new Set(tempFavorites)]); // eliminate doubles
   }
   const deleteFavorite = (city) => {
     const filteredFav = favorites.filter(strCity => strCity !== city.city)
     setFavorites(filteredFav)
   }
-
   useEffect(() => {
     const json = JSON.stringify(favorites);
     localStorage.setItem("favorites", json)
@@ -360,11 +359,11 @@ function Result({ setSaveDate }) {
                 <CityCardInfo>
                   {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
                   <h2>{obj.city}</h2>
-                  <p>Medeltemperatur: {obj.temperatur}</p>
+                  <p>Medeltemperatur: <span>{obj.temperatur} ºC</span></p>
                   {favorites.includes(obj.city) ?
-                    (<FaHeart onClick={() => deleteFavorite(obj)} style={{ color: 'red' }} />)
+                    (<StyledFa onClick={() => deleteFavorite(obj)} />)
                     :
-                    (<FiHeart onClick={() => AddFavourite(obj)} style={{ color: 'red' }} />)}
+                    (<StyledFi onClick={() => AddFavourite(obj)} />)}
                 </CityCardInfo>
               </CityCard>
 

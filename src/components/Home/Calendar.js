@@ -7,27 +7,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import styled from "styled-components";
 import "./datepicker.css";
-// import * as ROUTES from '../../constants/routes';
+import { StyledDivCalender, StyledH2Temp, StyledP } from './SelectionStyling';
 
-// import { Redirect } from "react-router";
 const CalendarDiv = styled.div`
-padding-top: 200px; 
+padding-top: 160px; 
 div {
   text-align: center;
 }
 `;
 const TravelBtn = styled.button`
   display: block;
-  /* background: linear-gradient(
-    180deg
-    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565; */
   color: white;
   border: none;
   border-radius: 30px;
   padding: 5px 40px 5px 40px;
   font-size: 20px;
   margin: 15px 0 10px 0;
-/*   box-shadow: 1px 2px 10px gray; */
 &:active{
   outline:none;
 }
@@ -42,11 +37,11 @@ const Calendar = ({ setSaveDate }) => {
   const [startDate, setStartDate] = useState(new Date());
 
   function handleChange() {
-   let parent = document.getElementsByClassName("react-datepicker__month react-datepicker__monthPicker")
+    let parent = document.getElementsByClassName("react-datepicker__month react-datepicker__monthPicker")
     let obj = Object.keys(parent)[0];
     let value = parent[obj].getAttribute("aria-label");
     let month = value.substr(12, 2);
-    
+
     if (month === "01") {
       setSaveDate("January");
     }
@@ -95,16 +90,17 @@ const Calendar = ({ setSaveDate }) => {
 
   return (
     <CalendarDiv>
-      <div>
-      <p>Välj en månad...</p>
+      <StyledDivCalender>
+        <StyledH2Temp>När vill du åka ? </StyledH2Temp>
+        <StyledP>Välj en månad som passar dig</StyledP>
         <DatePicker
           selected={startDate}
           onChange={date => setStartDate(date)}
-          dateFormat="MMMM" 
+          dateFormat="MMMM"
           showMonthYearPicker
           inline
         />
-      </div>
+      </StyledDivCalender>
       {/* <StyledLinkSkip to={ROUTES.WIZ} onClick={handleJump}>Hoppa över</StyledLinkSkip> */}
       <BtnDiv>
         <TravelBtn type="submit" onClick={handleChange}>OK</TravelBtn>

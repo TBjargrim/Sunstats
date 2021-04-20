@@ -3,15 +3,7 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-
-=======
->>>>>>> stylingBranding
-=======
-
->>>>>>> Fixdescriptivetext
 };
 
 class Firebase {
@@ -24,9 +16,7 @@ class Firebase {
     this.auth = app.auth();
     this.db = app.database();
   }
-
   // *** Auth API ***
-
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 

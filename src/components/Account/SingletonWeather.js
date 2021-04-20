@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
-import sunset_icon from '../../Images/sunset_icon.png'
-import sunrise_icon from '../../Images/sunrise_icon.png'
+// import sunset_icon from '../../Images/sunset_icon.png'
+// import sunrise_icon from '../../Images/sunrise_icon.png'
 
 import { GiSunrise } from "react-icons/gi";
 import { GiSunset } from "react-icons/gi";

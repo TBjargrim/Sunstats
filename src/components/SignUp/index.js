@@ -52,8 +52,8 @@ text-align:center;
 const SignUpPage = () => (
   <div>
     <StyledH1>Skapa konto</StyledH1>
-     <SignUpForm />
-</div>
+    <SignUpForm />
+  </div>
 
 );
 
@@ -91,7 +91,7 @@ class SignUpFormBase extends Component {
             email,
             roles,
           })
-          
+
           .then(() => {
             this.setState({ ...INITIAL_STATE });
             this.props.history.push(ROUTES.WIZ);
@@ -162,16 +162,16 @@ class SignUpFormBase extends Component {
           placeholder="Bekräfta lösenord"
         />
         <div>
-        <StyledText>Admin:</StyledText>
+          <StyledText>Admin:</StyledText>
 
         </div>
-    <input
+        {/* <input
             name="isAdmin"
             type="checkbox"
             checked={isAdmin}
             onChange={this.onChangeCheckbox}
-          />
-    
+          /> */}
+
 
         <button disabled={isInvalid} type="submit">
           Logga in
@@ -192,7 +192,7 @@ width: 100%;
 border-top: 1px solid lightgray;
 padding-top: 15px;
 `
-const StyledLink=styled(Link)`
+const StyledLink = styled(Link)`
 margin-left:5px;
 text-decoration:none;
 font-weight:700;
@@ -203,7 +203,7 @@ text-transform:uppercase;
 
 const SignUpLink = () => (
   <StyledP>
-    Har du inget konto än? <StyledLink to={ROUTES.SIGN_UP}>Klicka här för att skapa konto</StyledLink>
+    Har du inget konto än? <StyledLink to={ROUTES.SIGN_UP}>Skapa konto</StyledLink>
   </StyledP>
 );
 

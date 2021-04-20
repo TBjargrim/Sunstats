@@ -30,6 +30,9 @@ h1{
 p{
   color: ${({ theme }) => theme.text};
 }
+h3{
+  color: ${({ theme }) => theme.text};
+}
 button{
   background: ${({ theme }) => theme.button.background};
   &:hover{

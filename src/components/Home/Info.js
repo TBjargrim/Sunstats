@@ -22,7 +22,10 @@ function Info({ setTargetInfoClick }) {
             </StyledImageDiv>
             <StyledText>
                 <StyledH2>Svårt att välja vart du ska resa?</StyledH2>
-                <StyledP>Vi hjälper dig.<br></br> Genom att välja när du vill åka och vilken temperatur som passar dig får du information om resmål som passar just dig! Klicka på pilen nedan för att komma igång.</StyledP>
+                <StyledP>Lugn, vi hjälper dig.<br />  </StyledP>
+                <StyledP>Att resa är en väldigt personlig upplevelse. För att hjälpa dig att hitta ditt perfekta resmål har vi skapat en guide.
+                <br /><br />Klicka på pilen nedan för att komma igång.
+                </StyledP>
             </StyledText>
             <LinkWrapper>
                 <StyledLink to={ROUTES.WIZ} onClick={handleClick}><FaArrowRight onClick={handleClick} /></StyledLink>
@@ -31,3 +34,4 @@ function Info({ setTargetInfoClick }) {
     );
 }
 export default Info;
+// Genom att välja när du vill åka och vilken temperatur som passar dig får du information om resmål som passar just dig!
