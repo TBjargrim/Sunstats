@@ -3,14 +3,29 @@ import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
 import styled from 'styled-components'
 const StyledDiv = styled.div`
-
+margin-top: 102px;
+div {
+    margin-top: 10px;
+}
+p {
+    margin-left: 10px;
+    font-size: 20px;
+}
 `
+
 
 const Settings = () => {
     return (
         <StyledDiv>
-            <PasswordForgetForm />
-            <PasswordChangeForm />
+            
+            <div>
+                <p>Byt lösenord:</p>
+                <PasswordChangeForm />
+            </div>
+            <div>
+                <p>Återställ lösenord:</p>
+                <PasswordForgetForm />
+            </div>
         </StyledDiv>
     )
 }
