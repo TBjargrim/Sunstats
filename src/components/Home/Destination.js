@@ -15,6 +15,9 @@ import { fromRenderProps, mapProps } from "recompose";
 
 import ving_logga from '../../Images/vinglogga_transparant.png'
 import apollo_logga from '../../Images/apollologga_transparant.png'
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+
+
 
 const StyledWrapper = styled.div`
 display:flex;
@@ -80,7 +83,7 @@ margin:20px 50px 70px 50px;
 }
 `
 const ComparisonDiv = styled.div`
-background-color: pink;
+background-color: whitesmoke;
 padding: 20px;
 
 p {
@@ -90,13 +93,28 @@ p {
 }
 `;
 
+const Arrow = styled(FaArrowLeft)`
+position: absolute;
+margin-top: 10px;
+left: 20px;
+font-size: 25px;
+cursor:pointer;
+color:${({ theme }) => theme.h1};
+`
+
 function Destination() {
     const { temp, date, destination } = useParams();
     const [theme, toggleTheme] = useVingMode();
+    
     const history = useHistory();
     const state = history.location.state.temp;
     let sweState;
 
+    function handleGoback(){
+        
+        window.history.back()
+        
+    }
     if (date === "January") {
         sweState = Stockholm[0];
     }
@@ -139,14 +157,18 @@ function Destination() {
 
     return (
         <ThemeProvider theme={themeMode}>
+            
             <StyledWrapper>
+            <Arrow onClick={handleGoback}/>
                 <StyledLogo>
                     <img src={theme === 'ving' ? ving_logga : apollo_logga} alt='Bild på strand' />
                 </StyledLogo>
+                
             </StyledWrapper>
             <CityCardImg>
                 <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt="city" />
             </CityCardImg>
+            
             <StyledContainer>
                 <Header>
                     <h1>{destination}</h1>
@@ -156,20 +178,20 @@ function Destination() {
                         <p>Stockholm: {sweState}ºC</p>
                         <p>Skillnad i medeltemp: {state - sweState}ºC</p>
                     </ComparisonDiv>
-
+                            
                 </Header>
-
+               
                 <StyledDiv>
                     <TestTemp city={destination} data={cityHistoric[destination]} />
                 </StyledDiv>
+                
                 <StyledDiv>
                     <TestHumidity city={destination} data={cityHistoric[destination]} />
+                 
                 </StyledDiv>
-                {/* <StyledDiv>
-                    <TestBubble date={date} city={destination} data={cityHistoric[destination]} />
-                </StyledDiv> */}
+                
             </StyledContainer>
 
-        </ThemeProvider>)
+        </ThemeProvider> )
 }
 export default Destination;
