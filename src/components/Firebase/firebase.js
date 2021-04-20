@@ -3,7 +3,8 @@ import "firebase/auth";
 import "firebase/database";
 
 const config = {
- 
+
+
 };
 
 class Firebase {
