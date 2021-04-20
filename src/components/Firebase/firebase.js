@@ -4,10 +4,14 @@ import "firebase/database";
 
 const config = {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> stylingBranding
+=======
+
+>>>>>>> Fixdescriptivetext
 };
 
 class Firebase {

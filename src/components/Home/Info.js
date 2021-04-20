@@ -22,7 +22,7 @@ function Info({ setTargetInfoClick }) {
             </StyledImageDiv>
             <StyledText>
                 <StyledH2>Svårt att välja vart du ska resa?</StyledH2>
-                <StyledP>Vi kan hjälpa dig. Genom att söka på när du vill åka och vart får du information om vilket resmål som passar dig!</StyledP>
+                <StyledP>Vi hjälper dig.<br></br> Genom att välja när du vill åka och vilken temperatur som passar dig får du information om resmål som passar just dig! Klicka på pilen nedan för att komma igång.</StyledP>
             </StyledText>
             <LinkWrapper>
                 <StyledLink to={ROUTES.WIZ} onClick={handleClick}><FaArrowRight onClick={handleClick} /></StyledLink>

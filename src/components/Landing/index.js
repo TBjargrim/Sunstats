@@ -132,7 +132,7 @@ left:50px;
 top:50px;
 width:250px;
    animation-name: moveInleft;
-    animation-duration: 3s;
+    animation-duration: 4s;
 @keyframes moveInleft {
     0% {
         opacity: 0;
@@ -166,9 +166,9 @@ const Landing = () => (
       <CreAccBtn to={ROUTES.SIGN_UP}> Skapa konto</CreAccBtn>
 
       <div>
-        <p>Hitta och planera dina resmål</p>
+      <p>Längtar du efter sol och värme och undrar vart du ska resa?</p>
+        <p>Logga in! Här kommer du att kunna hitta och planera din nästa och bästa resa</p>
         <p>Sök på temperaturer, datum och destinationer</p>
-      <p>Bli klimatsmart med våra funktioner</p>
       </div>
 
     </ContainerDiv>
