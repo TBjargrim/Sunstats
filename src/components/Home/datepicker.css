@@ -15,9 +15,13 @@
     color: black;
 }
 .react-datepicker__header{
-    background-color: #dcfaff;
+    background-color: #e6e6e6;
 }
 .react-datepicker__day--keyboard-selected{
     background: none;
     color: black;
+}
+.react-datepicker__month-text--keyboard-selected, 
+.react-datepicker__month-text.react-datepicker__month--selected:hover {
+    background-color: #F8C945; 
 }

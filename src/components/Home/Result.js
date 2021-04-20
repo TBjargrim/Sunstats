@@ -301,12 +301,13 @@ function Result({ setSaveDate }) {
       let clickedCity = destination;
       setRedirectionPath(clickedCity);
       setCityTemp(temperature)
+      console.log(temperature)
       history.push
       ({
         pathname: `/result/${temp}/${date}/${destination}`,
         state:
         {
-          temp: temperature, 
+          temp: temperature,
         }
       });
     }
@@ -346,7 +347,7 @@ function Result({ setSaveDate }) {
           <ul>
             {newArrSorted.map(obj => <li key={obj.city}>
               <CityCard >
-                <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
+                <CityCardImg onClick={createHandleClickForDestination(obj.city, obj.temperatur)}>
                   <img src={obj.image} alt='bild på strand' />
                 </CityCardImg>
                 <CityCardInfo>
