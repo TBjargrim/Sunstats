@@ -97,8 +97,8 @@ function Result({ setSaveDate }) {
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
   let history = useHistory();
   const [favorites, setFavorites] = useState([]);
-  const [toggleHeart, setToggleHeart] = useState(false);
-  const [cityTemp, setCityTemp] = useState();
+  console.log(redirectionPath);
+  console.log(toggleTheme);
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -297,10 +297,7 @@ function Result({ setSaveDate }) {
     return function () {
       let clickedCity = destination;
       setRedirectionPath(clickedCity);
-      setCityTemp(temperature)
-      console.log(temperature)
       history.push
-<<<<<<< HEAD
       ({
         pathname: `/result/${temp}/${date}/${destination}`,
         state:
@@ -308,15 +305,6 @@ function Result({ setSaveDate }) {
           temp: temperature,
         }
       });
-=======
-        ({
-          pathname: `/result/${temp}/${date}/${destination}`,
-          state:
-          {
-            temp: temperature,
-          }
-        });
->>>>>>> stylingBranding
     }
   }
   const AddFavourite = (city) => {

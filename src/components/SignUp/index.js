@@ -46,9 +46,7 @@ cursor:pointer;
 }
 }
 `
-const StyledDiv = styled.div`
-text-align:center;
-`
+
 const SignUpPage = () => (
   <div>
     <StyledH1>Skapa konto</StyledH1>

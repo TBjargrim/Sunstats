@@ -1,5 +1,4 @@
-import { useParams, useLocation, useHistory } from "react-router-dom"
-import { useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom"
 // import { CustomCollectedData, cityHistoric } from '../CachedData/CollectedData.txt';
 // import VingLogga from '../../Images/ving_logga.png'
 import styled from "styled-components";
@@ -11,11 +10,10 @@ import TestTemp from '../CollectedData/AverageTemp'
 import { ThemeProvider } from 'styled-components';
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 import { useVingMode } from '../ChangeBranding/LocalStorage'
-import { fromRenderProps, mapProps } from "recompose";
 
 import ving_logga from '../../Images/vinglogga_transparant.png'
 import apollo_logga from '../../Images/apollologga_transparant.png'
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import {FaArrowLeft } from 'react-icons/fa';
 
 
 
@@ -106,6 +104,9 @@ function Destination() {
     const { temp, date, destination } = useParams();
     const [theme, toggleTheme] = useVingMode();
     
+    console.log(temp);
+    console.log(toggleTheme);
+
     const history = useHistory();
     const state = history.location.state.temp;
     let sweState;

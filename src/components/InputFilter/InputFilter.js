@@ -45,6 +45,8 @@ function InputFilter() {
   const [theme, toggleTheme] = useVingMode();
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
+  console.log(toggleTheme)
+
   function handleClick(e) {
     e.preventDefault();
     let selectionMonth = document.querySelector(".month");
