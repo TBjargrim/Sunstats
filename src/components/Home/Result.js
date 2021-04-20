@@ -56,10 +56,11 @@ border-radius: 30px;
 div{
   display: flex;
 }
+
 `;
 const CityCardInfo = styled.div`
 flex-direction: column;
-width: 100%;
+width: 60%;
 padding: 35px;
 h2 {
   font-size: 20px;
@@ -73,10 +74,19 @@ p {
   margin: 0;
   padding-top: 10px;
 }
+
+
+
 `;
 
 const CityCardImg = styled.div`
-width: 100%;
+width: 20%;
+img{
+  width: 100%;
+  border-radius: 30px 0 0 30px;
+}
+@media only screen and (max-width : 703px) {
+  width: 400%;
 img{
   width: 100%;
   border-radius: 30px 0 0 30px;
@@ -292,14 +302,13 @@ function Result({ setSaveDate }) {
       setRedirectionPath(clickedCity);
       setCityTemp(temperature)
       history.push
-        ({
-          pathname: `/result/${temp}/${date}/${destination}`,
-          state:
-          {
-            temp: temperature,
-            image: image,
-          }
-        });
+      ({
+        pathname: `/result/${temp}/${date}/${destination}`,
+        state:
+        {
+          temp: temperature, 
+        }
+      });
     }
   }
   const AddFavourite = (city) => {
@@ -337,7 +346,7 @@ function Result({ setSaveDate }) {
           <ul>
             {newArrSorted.map(obj => <li key={obj.city}>
               <CityCard >
-                <CityCardImg onClick={createHandleClickForDestination(obj.city, obj.temperatur, obj.image)}>
+                <CityCardImg onClick={createHandleClickForDestination(obj.city)}>
                   <img src={obj.image} alt='bild på strand' />
                 </CityCardImg>
                 <CityCardInfo>
