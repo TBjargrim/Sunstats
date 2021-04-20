@@ -42,14 +42,23 @@ const ContainerDiv = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    animation: 19s autoplay1 infinite;
+    animation: 20s autoplay1 infinite;
   }
 
   @keyframes autoplay1 {
     0% {
       visibility: visible;
+      opacity: 0%;
+    }
+    6% {
+      visibility: visible;
+      opacity: 25%;
+    }
+    20% {
+      visibility: visible;
       opacity: 100%;
     }
+
     33.33% {
       visibility: hidden;
       opacity: 0%;
@@ -57,8 +66,8 @@ const ContainerDiv = styled.div`
   }
   
   div > *:nth-child(1) {animation-delay: 0s}
-  div > *:nth-child(2) {animation-delay: 4s}
-  div > *:nth-child(3) {animation-delay: 8s}
+  div > *:nth-child(2) {animation-delay: 6s}
+  div > *:nth-child(3) {animation-delay: 12s}
 `
 const SignInBtn = styled(Link)`
   width:330px;
@@ -164,8 +173,8 @@ const Landing = () => (
       <CreAccBtn to={ROUTES.SIGN_UP}> Skapa konto</CreAccBtn>
 
       <div>
-      <p>Hitta och planera dina resmål</p>
-      <p>Sök på temperaturer, datum och destinationer</p>
+        <p>Hitta och planera dina resmål</p>
+        <p>Sök på temperaturer, datum och destinationer</p>
       <p>Bli klimatsmart med våra funktioner</p>
       </div>
 
