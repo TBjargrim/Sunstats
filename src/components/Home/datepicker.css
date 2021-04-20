@@ -21,3 +21,7 @@
     background: none;
     color: black;
 }
+.react-datepicker__month-text--keyboard-selected, 
+.react-datepicker__month-text.react-datepicker__month--selected:hover {
+    background-color: #F8C945; 
+}

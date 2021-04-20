@@ -96,6 +96,8 @@ function Destination() {
     const history = useHistory();
     const state = history.location.state.temp;
     let sweState;
+    
+    console.log(history.location.state.temp)
 
     if (date === "January") {
         sweState = Stockholm[0];
