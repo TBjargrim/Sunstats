@@ -6,17 +6,69 @@ import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
+import styled from 'styled-components';
+import RenderTheme from '../ChangeBranding/RenderTheme';
+import {StyledButton} from "../PasswordChange/index"
+
+const DivWrapper = styled.div`
+margin: 20px;
+h1 {
+  margin-top: 30px;
+  margin-left: 15px;
+}
+`
+const StyledDiv = styled.div`
+h2{
+  font-size: 25px;
+  margin-left: 20px;
+}
+ul{
+padding-left: 20px;
+margin: 0;
+}
+li{
+  list-style:none;
+  max-width:450px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  padding: 30px;
+}
+div{
+  margin:5px;
+  padding:5px;
+}
+
+`
+const StyledLink = styled(Link)`
+  text-decoration:none;
+  border:solid 1px #EC8F21;
+  color:#EC8F21;
+  background-color: white;
+  border-radius:10px;
+  margin-top:7px;
+  margin-left:12px;
+  padding:2px;
+a{
+  text-decoration:none;
+  margin-bottom:12px;
+}
+`
+const StyledSpan = styled.span`
+  display: flex;
+  padding: 4px;
+`;
 
 const AdminPage = () => (
-  <div>
-    <h1>Admin</h1>
-    <p>The Admin Page is accessible by every signed in admin user.</p>
-
+  <>
+    <DivWrapper>
+      <h1>Admin</h1>
+    </DivWrapper>
+    <RenderTheme />
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />
       <Route exact path={ROUTES.ADMIN} component={UserList} />
     </Switch>
-  </div>
+
+  </>
 );
 
 class UserListBase extends Component {
@@ -55,35 +107,35 @@ class UserListBase extends Component {
     const { users, loading } = this.state;
 
     return (
-      <div>
-        <h2>Users</h2>
+      <StyledDiv>
+
+        <h2>Användare:</h2>
         { loading && <div>Loading ...</div>}
         <ul>
           {users.map(user => (
             <li key={user.uid}>
-              <span>
-                <strong>ID:</strong> {user.uid}
-              </span>
-              <span>
-                <strong>E-Mail:</strong> {user.email}
-              </span>
-              <span>
-                <strong>Username:</strong> {user.username}
-              </span>
-              <span>
-                <Link
+              <StyledSpan>
+                <strong>ID: </strong> {user.uid}
+              </StyledSpan>
+              <StyledSpan>
+                <strong>E-post: </strong> {user.email}
+              </StyledSpan>
+              <StyledSpan>
+                <strong>Användarnamn: </strong> {user.username}
+              </StyledSpan>
+              <StyledSpan>
+                <StyledLink
                   to={{
                     pathname: `${ROUTES.ADMIN}/${user.uid}`,
                     state: { user },
                   }}
-                >
-                  Details
-                </Link>
-              </span>
+                >Mer information
+                 </StyledLink>
+              </StyledSpan>
             </li>
           ))}
         </ul>
-      </div >
+      </StyledDiv>
     );
   }
 }
@@ -129,27 +181,26 @@ class UserItemBase extends Component {
 
     return (
       <div>
-        <h2>User ({this.props.match.params.id})</h2>
+        <h2>Användare ({this.props.match.params.id})</h2>
         {loading && <div>Loading ...</div>}
-
         {user && (
           <div>
+            <StyledSpan>
+              <strong>ID: </strong> {user.uid}
+            </StyledSpan>
+            <StyledSpan>
+              <strong>E-post: </strong> {user.email}
+            </StyledSpan>
+            <StyledSpan>
+              <strong>Användarnamn: </strong> {user.username}
+            </StyledSpan>
             <span>
-              <strong>ID:</strong> {user.uid}
-            </span>
-            <span>
-              <strong>E-Mail:</strong> {user.email}
-            </span>
-            <span>
-              <strong>Username:</strong> {user.username}
-            </span>
-            <span>
-              <button
+              <StyledButton
                 type="button"
                 onClick={this.onSendPasswordResetEmail}
               >
-                Send Password Reset
-              </button>
+                Skicka återställ lösenord
+              </StyledButton>
             </span>
           </div>
         )}

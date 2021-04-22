@@ -1,0 +1,16 @@
+import AlanyaImg from '../../Images/AlanyaImage.jpg'
+import ArubaImg from '../../Images/ArubaImage.jpg'
+import BarcelonaImg from '../../Images/BarcelonaImage.jpg'
+import HonoluluImg from '../../Images/Honolulu.jpg'
+import IbizaImg from '../../Images/IbizaImage.jpg'
+import KingstonImg from '../../Images/KingstonImage.jpg'
+import KretaImg from '../../Images/KretaImage.jpg'
+import ParisImg from '../../Images/ParisImage.jpg'
+import PhuketImg from '../../Images/PhuketImage.jpg'
+import RhodosImg from '../../Images/RhodosImage.jpg'
+import RomeImg from '../../Images/RomeImage.jpg'
+import SingaporeImg from '../../Images/SingaporeImage.jpg'
+import TokyoImg from '../../Images/TokyoImage.jpg'
+import UbudImg from '../../Images/UbudImage.jpg'
+
+export const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]

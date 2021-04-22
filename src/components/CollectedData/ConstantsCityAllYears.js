@@ -1,0 +1,32 @@
+import { Alanya2017, Alanya2018, Alanya2019 } from '../CachedData/DataAlanya';
+import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
+import { Barcelona2017, Barcelona2018, Barcelona2019 } from '../CachedData/DataBarcelona';
+import { Honolulu2017, Honolulu2018, Honolulu2019 } from '../CachedData/DataHonolulu';
+import { Ibiza2017, Ibiza2018, Ibiza2019 } from '../CachedData/DataIbiza';
+import { Kingston2017, Kingston2018, Kingston2019 } from '../CachedData/DataKingston';
+import { Kreta2017, Kreta2018, Kreta2019 } from '../CachedData/DataKreta';
+import { Paris2017, Paris2018, Paris2019 } from '../CachedData/DataParis';
+import { Phuket2017, Phuket2018, Phuket2019 } from '../CachedData/DataPhuket';
+import { Rhodos2017, Rhodos2018, Rhodos2019 } from '../CachedData/DataRhodos';
+import { Rome2017, Rome2018, Rome2019 } from '../CachedData/DataRome';
+import { Singapore2017, Singapore2018, Singapore2019 } from '../CachedData/DataSingapore';
+import { Stockholm2017, Stockholm2018, Stockholm2019 } from '../CachedData/DataStockholm';
+import { Tokyo2017, Tokyo2018, Tokyo2019 } from '../CachedData/DataTokyo';
+import { Bali2017, Bali2018, Bali2019 } from '../CachedData/DataBali';
+
+
+export const AlanyaAllYears = [Alanya2017, Alanya2018, Alanya2019];
+export const ArubaAllYears = [Aruba2017, Aruba2018, Aruba2019];
+export const BarcelonaAllYears = [Barcelona2017, Barcelona2018, Barcelona2019];
+export const HonoluluAllYears = [Honolulu2017, Honolulu2018, Honolulu2019];
+export const IbizaAllYears = [Ibiza2017, Ibiza2018, Ibiza2019];
+export const KingstonAllYears = [Kingston2017, Kingston2018, Kingston2019];
+export const KretaAllYears = [Kreta2017, Kreta2018, Kreta2019];
+export const ParisAllYears = [Paris2017, Paris2018, Paris2019];
+export const PhuketAllYears = [Phuket2017, Phuket2018, Phuket2019];
+export const RhodosAllYears = [Rhodos2017, Rhodos2018, Rhodos2019];
+export const RomeAllYears = [Rome2017, Rome2018, Rome2019];
+export const SingaporeAllYears = [Singapore2017, Singapore2018, Singapore2019];
+export const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
+export const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
+export const BaliAllYears = [Bali2017, Bali2018, Bali2019];

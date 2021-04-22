@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import BackgroundLanding from '../../Images/BackgroundLanding.jpg';
+/* import BackgroundLanding from '../../Images/BackgroundLanding.jpg'; */
+import BackgroundLanding from '../../Images/beach.jpg';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
 import Logo from '../../Images/sunstats_logo.png'
+import RenderTheme from '../ChangeBranding/RenderTheme';
 
-
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
 const Wrapper = styled.div`
 background-size:cover;
 position:absolute;
@@ -23,6 +27,44 @@ const ContainerDiv = styled.div`
   flex-direction:column;
   align-items:center;
   padding:150px;
+  p {
+    font-size: 33px;
+  }
+  div {
+    height: 10em;
+    position: relative;
+    margin-right: 0px;
+    width: 240px;
+  }
+  div > * {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: 20s autoplay1 infinite;
+  }
+  @keyframes autoplay1 {
+    0% {
+      visibility: visible;
+      opacity: 0%;
+    }
+    6% {
+      visibility: visible;
+      opacity: 25%;
+    }
+    20% {
+      visibility: visible;
+      opacity: 100%;
+    }
+    33.33% {
+      visibility: hidden;
+      opacity: 0%;
+    }
+  }
+  
+  div > *:nth-child(1) {animation-delay: 0s}
+  div > *:nth-child(2) {animation-delay: 6s}
+  div > *:nth-child(3) {animation-delay: 12s}
 `
 const SignInBtn = styled(Link)`
   width:330px;
@@ -40,12 +82,12 @@ const SignInBtn = styled(Link)`
   text-align: center;
   text-decoration: none;
   padding-top: 15px;
-  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+  background: ${({ theme }) => theme.button.background};
   &:focus{
     outline:none;
   }
   &:hover {
-  background-color: #F8AF59;
+  background-color: ${({ theme }) => theme.button.hover.backgroundColor};
   opacity:0.9;
   }
   @media screen and (max-width:1000px) {
@@ -92,14 +134,12 @@ left:50px;
 top:50px;
 width:250px;
    animation-name: moveInleft;
-    animation-duration: 3s;
-
+    animation-duration: 4s;
 @keyframes moveInleft {
     0% {
         opacity: 0;
         transform: translateX(-100px);
     }
-
     80% {
         transform: translateX(10px);
     }
@@ -114,21 +154,45 @@ width:250px;
 width:150px;
 }
  `
-// animation:         NAME-YOUR-ANIMATION 5s infinite;
-const Landing = () => (
+const InfoText = styled.div`
 
-  <Wrapper style={{ backgroundImage: `url(${BackgroundLanding})` }}>
-    <Logga src={Logo}></Logga>
-    <ContainerDiv>
+p {
+  font-weight: 700;
+  font-size: 35px;
+  color: white;
+}
+`
 
-      {/* <li>
+const Landing = () => {
+  const [theme, toggleTheme, componentMounted] = useVingMode();
+  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+  return (
+    <ThemeProvider theme={themeMode}>
+      <Wrapper style={{ backgroundImage: `url(${BackgroundLanding})` }}>
+        <Logga src={Logo}></Logga>
+        <ContainerDiv>
+
+          {/* <li>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li> */}
-      <SignInBtn to={ROUTES.SIGN_IN}>Logga in</SignInBtn>
-      <CreAccBtn to={ROUTES.SIGN_UP}> Skapa konto</CreAccBtn>
-    </ContainerDiv>
-  </Wrapper>
+          <InfoText>
+            <p>Längtar du efter sol och värme?</p>
+            <p>Logga in och sök efter din bästa resa</p>
+            <p>Sök på temperaturer och datum</p>
+          </InfoText>
 
-);
+          <SignInBtn to={ROUTES.SIGN_IN}>Logga in</SignInBtn>
+          <CreAccBtn to={ROUTES.SIGN_UP}> Skapa konto</CreAccBtn>
+
+
+
+        </ContainerDiv>
+        <section>
+          <RenderTheme />
+        </section>
+      </Wrapper>
+    </ThemeProvider>
+  )
+};
 
 export default Landing;

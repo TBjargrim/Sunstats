@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
@@ -7,24 +7,26 @@ import SignOutButton from '../SignOut';
 
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
-
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 const SideBarContainer = styled.aside`
 position:fixed;
 z-index:999;
-width:60%;
+width:100%;
 height:100%;
-background-color:#e7e7e7;
+background:${({ theme }) => theme.background};
 top:0;
 right:0;
 transition:0.3s ease-in-out;
 padding-top:60px;
 box-shadow: -2px 0px 3px rgba(69, 69, 69, 0.25);
 opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
-top:${({ isOpen }) => (isOpen ? '0' : '-100%')};
+top:${({ isOpen }) => (isOpen ? '0' : '-120%')};
 `
 const CloseIcon = styled(FaTimes)`
-color:#9d9d9d;
+color:${({ theme }) => theme.h1};
 `
 const Icon = styled.div`
 position:absolute;
@@ -53,15 +55,13 @@ grid-template-rows:repeat(6,60px);
 const StyledLI = styled.li`
 list-style:none;
 transition:0.2s ease-in-out;
-margin-top:30px;
+margin-top:17px;
 width:100%;
 text-align:center;
 padding:20px 0px;
 &:hover {
     color:white;
     transition:0.2s ease-in-out;
-    background:#fff;
-    /* margin:30px 0px; */
 }
 `
 const ButtonLI = styled.li`
@@ -70,37 +70,46 @@ justify-content:center;
 margin-top:40px;
 `
 const StyledLink = styled(Link)`
-font-size:1.5rem;
+font-size:1.7rem;
+font-weight:700;
 text-decoration:none;
-color:black;
+color:${({ theme }) => theme.h1};
 cursor:pointer;
 `
 const Sidebar = ({ authUser, isOpen, toggle }) => {
-
+    const [theme, toggleTheme, componentMounted] = useVingMode();
+    const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
     return (
-        <SideBarContainer isOpen={isOpen} onClick={toggle}>
-            <Icon onClick={toggle}>
-                <CloseIcon />
-            </Icon>
-            <SidebarWrapper>
-                <SidebarMenu>
-                    <StyledLI>
-                        <StyledLink to='/home' onClick={toggle}>Home</StyledLink>
-                    </StyledLI>
-                    <StyledLI>
-                        <StyledLink to='/account' onClick={toggle}>Account</StyledLink>
-                    </StyledLI>
-                    <StyledLI>
-                        {!!authUser.roles[ROLES.ADMIN] && (
-                            <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
-                    </StyledLI>
-                    <ButtonLI>
-                        <div onClick={toggle}> <SignOutButton /> </div>
-                    </ButtonLI>
-                </SidebarMenu>
-            </SidebarWrapper>
-        </SideBarContainer>
+        <ThemeProvider theme={themeMode}>
+            <SideBarContainer isOpen={isOpen} onClick={toggle}>
+                <Icon onClick={toggle}>
+                    <CloseIcon />
+                </Icon>
+                <SidebarWrapper>
+                    <SidebarMenu>
+
+                        <StyledLI>
+                            <StyledLink to='/account' onClick={toggle}>Min Profil</StyledLink>
+                        </StyledLI>
+                        <StyledLI>
+                            <StyledLink to='/wiz' onClick={toggle}>Hitta resmål</StyledLink>
+                        </StyledLI>
+                        <StyledLI>
+                            <StyledLink to='/settings' onClick={toggle}>Inställningar</StyledLink>
+                        </StyledLI>
+                        <StyledLI>
+                            {!!authUser.roles[ROLES.ADMIN] && (
+                                <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
+                        </StyledLI>
+
+                        <ButtonLI>
+                            <div onClick={toggle}> <SignOutButton /> </div>
+                        </ButtonLI>
+                    </SidebarMenu>
+                </SidebarWrapper>
+            </SideBarContainer>
+        </ThemeProvider>
     )
 }
 

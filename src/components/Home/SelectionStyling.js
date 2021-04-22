@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+// import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 export const StyledDiv = styled.div`
 margin:0 50px;
+`
+export const StyledDivCalender = styled.div`
+
 `
 export const StyledImageDiv = styled.div`
 text-align:center;
@@ -17,9 +20,6 @@ height:auto;
 filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 border-radius: 100%;
 
-&:hover{
-
-}
 @media screen and (max-width:960px) {
     width: 150px;
     margin-left: 30px;
@@ -35,10 +35,6 @@ height:auto;
 filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.25));
 border-radius: 100%;
 
-&:hover{
-
-}
- 
 @media screen and (max-width:960px) {
     width: 100px;
 }
@@ -52,18 +48,35 @@ margin:0px 300px;
 /* border:1px solid blue; */
 @media screen and (max-width:960px) {
     margin:10px;
+    
 }
 `
+export const StyledH2Temp = styled.h2`
+margin-top:35px;
+text-align:center;
+font-weight: 600;
+font-size: 50px;
+line-height: 45px;
+@media screen and (max-width:960px) {
+    font-size: 35px;
+    margin-left: 10px;
+}
+@media screen and (max-width:400px) {
+  font-size: 25px;
+  line-height: 30px;
+}
+`
+
 export const StyledH2 = styled.h2`
 text-align:center;
-font-weight: 500;
+font-weight: 600;
 font-size: 50px;
-line-height: 59px;
-color: #353535;
+line-height: 45px;
+/* color: #353535; */
 
 @media screen and (max-width:960px) {
     font-size: 35px;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 @media screen and (max-width:400px) {
   font-size: 25px;
@@ -73,11 +86,11 @@ color: #353535;
 
 export const StyledP = styled.p`
 text-align:center;
-font-weight: 200;
+font-weight: 400;
 font-size: 20px;
-line-height: 23px;
+line-height:23px; 
 @media screen and (max-width:960px) {
-    font-size: 20px;
+    font-size: 18px;
     margin:10px;
 }
 @media screen and (max-width:400px) {
@@ -100,18 +113,19 @@ height: 50px;
   text-align: center;
   text-decoration: none;
   padding: 15px 20px;
-  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+  background: ${({ theme }) => theme.button.background};
+  /* background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565; */
   &:focus{
     outline:none;
   }
   &:hover {
-  background-color: #F8AF59;
+  /* background-color: #F8AF59; */
   opacity:0.9;
   }
   @media screen and (max-width:1000px) {
     font-size: 35px;
     width: 35px;
-height: 35px;
+    height: 35px;
   }
 `
 
@@ -128,19 +142,22 @@ max-width:650px;
 export const StyledButtons = styled.button`
 position:relative;
 min-width:300px;
-background: #F4F4F4;
+background: #E4E4E4;
 border: 1px solid #DBDBDB;
 box-sizing: border-box;
-border-radius: 25px;
+border-radius: 20px;
 margin:10px;
-padding:15px 0px 15px 120px;
+padding:15px 0px 5px 120px;
 text-transform:uppercase;
 letter-spacing:0.5px;
-text-align:left;
+/* text-align:left; */
 cursor:pointer;
 animation-name:zoom;
 animation-duration:3s;
-
+span{
+  font-style: italic;
+  font-size: 12px;
+}
 @keyframes zoom {
   0% {
         transform: scale(1,1);
@@ -153,25 +170,24 @@ animation-duration:3s;
     }
 }
 &:focus{
-    outline:none;
+outline:none;
   }
 &:hover{
-    background: linear-gradient(180deg, #F68D2C 0%, rgba(255, 255, 255, 0.6) 100%), #F5813D;
 border: none;
 box-sizing: border-box;
 border-radius: 25px;
 }
-
 @media screen and (max-width:1000px) {
     width:200px;
-    padding:10px 0px 10px 120px;
+    padding:10px 0px 10px 90px;
   }
-
 `
+
 export const LinkWrapper = styled.div`
 display:flex;
 justify-content:center;
 `
+
 export const StyledLinkSkip = styled(Link)`
  text-decoration: none;
  display:flex;
@@ -189,20 +205,15 @@ color:black;
   }
 
 `
-// export const StyledLeftArrow = styled(FaArrowLeft)`
-// width:200px;
-// color:white;
-// z-index:99;
 
-// `
 export const StyledIcon = styled.img`
 position:absolute;
-top:20%;
+top:40%;
 left:20%;
 width:30px;
 height:30px;
 border-radius:100%;
 @media screen and (max-width:1000px) {
-    top:8%;
+    top:20%;
   }
 `

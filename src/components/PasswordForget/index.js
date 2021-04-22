@@ -3,10 +3,20 @@ import { Link } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import styled from 'styled-components';
+import { StyledButton } from "../PasswordChange/index"
+
+const StyledInput = styled.input`
+  width: 80%;
+  margin: 5px 10px;
+  padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+
+`;
 
 const PasswordForgetPage = () => (
   <div>
-    <h1>PasswordForget</h1>
+    <h1>Lösenordsåterställning</h1>
     <PasswordForgetForm />
   </div>
 );
@@ -39,16 +49,16 @@ class PasswordForgetFormBase extends Component {
     const isInvalid = email === '';
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <StyledInput
           name="email"
           value={this.state.email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="E-post"
         />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-</button>
+        <StyledButton disabled={isInvalid} type="submit">
+          OK
+</StyledButton>
         {error && <p>{error.message}</p>}
       </form>
     );
@@ -70,7 +80,7 @@ a{
 
 const PasswordForgetLink = () => (
   <StyledP>
-    <StyledLink to={ROUTES.PASSWORD_FORGET}>Forgot Password?</StyledLink>
+    <StyledLink to={ROUTES.PASSWORD_FORGET}>Glömt ditt lösenord?</StyledLink>
   </StyledP>
 );
 export default PasswordForgetPage;

@@ -9,15 +9,27 @@
     border: none;
     outline: none;
     box-shadow: 1px 2px 10px gray;
+    
 }
 .react-datepicker__day--selected {
     background-color: pink;
-    color: black;
+    color: grey;
+    
 }
+
+/* .react-datepicker {
+    width: 80%;
+    height: 50%;
+  } */
 .react-datepicker__header{
-    background-color: #dcfaff;
+    background-color: #e6e6e6;
+    
 }
 .react-datepicker__day--keyboard-selected{
     background: none;
     color: black;
+}
+.react-datepicker__month-text--keyboard-selected, 
+.react-datepicker__month-text.react-datepicker__month--selected:hover {
+    background-color: #F8C945;
 }

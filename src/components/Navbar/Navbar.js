@@ -2,12 +2,15 @@ import React from 'react';
 import * as ROLES from '../../constants/roles';
 import SignOutButton from '../SignOut';
 import {
-  BrowserRouter as Router,
   Link
 } from "react-router-dom";
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
-import Logo from '../../Images/logo.png'
+import ving_logga from '../../Images/vinglogga_transparant.png'
+import apollo_logga from '../../Images/apollologga_transparant.png'
+import { ThemeProvider } from 'styled-components';
+import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
+import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 const StyledNav = styled.nav`
  background-color:transparent;
@@ -35,7 +38,7 @@ text-decoration:none;
 `
 const MobileIcon = styled.div`
 display:none;
-@media screen and (max-width:768px) {
+@media screen and (max-width:960px) {
     display:block;
     position:absolute;
     top:0;
@@ -50,7 +53,7 @@ display:flex;
 flex-direction:row;
 justify-content: center;
 margin:50px;
-@media screen and (max-width:768px) {
+@media screen and (max-width:960px) {
     display:none;
 }
 `
@@ -67,49 +70,58 @@ margin-left:20px;
   margin-right:30px;
 }
 `
-
-
 const BurgerMenyIcon = styled(FaBars)`
-color:#9d9d9d;
+color:${({ theme }) => theme.h1};
 `
-
 const LogoImg = styled.img`
-max-width:270px;
-margin-top: -20px;
-@media screen and (max-width:768px) {
-    max-width:150px;
-    margin-top:15px;
+width: 40%;
+margin: -20px;
+margin-left:25px;
+@media screen and (max-width:960px) {
+  width: 20%;
+    margin-top:25px;
+    margin-left:25px;
 }
 `
 
 const Navbar = ({ authUser, toggle }) => {
+  const [theme, toggleTheme, componentMounted] = useVingMode();
+  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+
   return (
-    <StyledNav >
-      <NavbarContainer>
-        <NavLogo to='/home'><LogoImg src={Logo} /></NavLogo>
-        <MobileIcon onClick={toggle}>
-          <BurgerMenyIcon />
-        </MobileIcon>
-        <NavMenu>
-          <NavItem>
-            <Link to='/home'>Home</Link>
-          </NavItem>
-          <NavItem>
-            <Link to='/account'>Account</Link>
-          </NavItem>
-          {!!authUser.roles[ROLES.ADMIN] && (
+    <ThemeProvider theme={themeMode}>
+      <StyledNav >
+        <NavbarContainer>
+          <NavLogo to='/wiz'>
+            <LogoImg src={theme === 'ving' ? ving_logga : apollo_logga} />
+          </NavLogo>
+          <MobileIcon onClick={toggle}>
+            <BurgerMenyIcon />
+          </MobileIcon>
+          <NavMenu>
+
             <NavItem>
-              <Link to='/admin'>Admin</Link>
+              <Link to='/account'>Min Profil</Link>
             </NavItem>
-          )}
+            <NavItem>
+              <Link to='/wiz'>Sök resa</Link>
+            </NavItem>
+            {!!authUser.roles[ROLES.ADMIN] && (
+              <NavItem>
+                <Link to='/admin'>Admin</Link>
+              </NavItem>
+            )}
+            <NavItem>
+              <Link to='/settings'>Inställningar</Link>
+            </NavItem>
+            <NavItem>
+              <SignOutButton />
+            </NavItem>
+          </NavMenu>
 
-          <NavItem>
-            <SignOutButton />
-          </NavItem>
-        </NavMenu>
-
-      </NavbarContainer>
-    </StyledNav>
+        </NavbarContainer>
+      </StyledNav>
+    </ThemeProvider>
   )
 }
 

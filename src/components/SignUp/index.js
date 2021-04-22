@@ -1,16 +1,58 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import styled from 'styled-components';
+// import { StyledText } from "../Home/SelectionStyling";
+
+const StyledAdmin = styled.div`
+
+`
+
+const StyledH1 = styled.h1`
+display:flex;
+justify-content:center;
+letter-spacing:1px;
+`
+const StyledForm = styled.form`
+display:flex;
+flex-direction:column;
+align-items: center;
+margin:10px;
+input{
+  padding:5px 8px;
+  margin-top:6px;
+  width:300px;
+}
+button{
+margin-top:20px;
+display:flex;
+justify-content:center;
+background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+border: none;
+padding: 10px;
+color: white;
+border-radius: 25px;
+width:200px;
+letter-spacing:1px;
+cursor:pointer;
+&:hover {
+  background-color: #F8AF59;
+  border:1px solid #EC8F21;
+}
+&:focus{
+  outline:none;
+}
+}
+`
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <StyledH1>Skapa konto</StyledH1>
     <SignUpForm />
   </div>
+
 );
 
 const INITIAL_STATE = {
@@ -47,10 +89,10 @@ class SignUpFormBase extends Component {
             email,
             roles,
           })
-          
+
           .then(() => {
             this.setState({ ...INITIAL_STATE });
-            this.props.history.push(ROUTES.HOME);
+            this.props.history.push(ROUTES.WIZ);
           })
           .catch((error) => {
             this.setState({ error });
@@ -88,53 +130,54 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <StyledForm onSubmit={this.onSubmit}>
         <input
           name="username"
           value={username}
           onChange={this.onChange}
           type="text"
-          placeholder="Full Name"
+          placeholder="För- och efternamn"
         />
         <input
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
-          placeholder="Email Address"
+          placeholder="E-post"
         />
         <input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
-          placeholder="Password"
+          placeholder="Lösenord"
         />
         <input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Bekräfta lösenord"
         />
-        <label>
-          Admin:
+
+        <StyledAdmin>
+          <p>Admin:</p>
           <input
             name="isAdmin"
             type="checkbox"
             checked={isAdmin}
-            onChange={this.onChangeCheckbox}
-          />
-        </label>
+            onChange={this.onChangeCheckbox} />
+        </StyledAdmin>
         <button disabled={isInvalid} type="submit">
-          Sign Up
+          Logga in
         </button>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </StyledForm>
     );
   }
 }
+
 
 const StyledP = styled.p`
 position: absolute;
@@ -144,7 +187,7 @@ width: 100%;
 border-top: 1px solid lightgray;
 padding-top: 15px;
 `
-const StyledLink=styled(Link)`
+const StyledLink = styled(Link)`
 margin-left:5px;
 text-decoration:none;
 font-weight:700;
@@ -155,7 +198,7 @@ text-transform:uppercase;
 
 const SignUpLink = () => (
   <StyledP>
-    Don't have an account? <StyledLink to={ROUTES.SIGN_UP}>Sign Up</StyledLink>
+    Har du inget konto än? <StyledLink to={ROUTES.SIGN_UP}>Skapa konto</StyledLink>
   </StyledP>
 );
 

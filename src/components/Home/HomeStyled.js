@@ -1,9 +1,9 @@
 
 import styled from "styled-components";
-import { useState } from "react";
-import React, { Component } from "react";
+//import { useState } from "react";
+import React from "react";
 import Calendar from "./Calendar"
-import Temp from "./Temp"
+//import Temp from "./Temp"
 
 
 
@@ -24,27 +24,22 @@ const FlexDiv = styled.div`
     font-size: 15px;
   }
 `;
-
-
-
-
-
 function HomeStyled() {
   return (
     <FlexDiv>
       <div>
-         {/*
+        {/*
         <h2>Vilken medeltemperatur vill du ha?</h2>
        <Temp /> */}
       </div>
       <div>
         <h2>När vill du åka?</h2>
-          <Calendar />
-          <p><i>Startdatum för två veckors intervall</i></p>
+        <Calendar />
+        <p><i>Startdatum för två veckors intervall</i></p>
       </div>
-      
+
     </FlexDiv>
   );
-} 
+}
 
 export default HomeStyled;

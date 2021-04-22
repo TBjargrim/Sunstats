@@ -1,0 +1,75 @@
+import { Aruba2017, Aruba2018, Aruba2019 } from '../CachedData/DataAruba';
+
+const ArubaAllYears = [...Aruba2017, ...Aruba2018, ...Aruba2019]
+
+// let allJan = [];
+// let allFeb = [];
+// let allMar = [];
+// let allApr = [];
+// let allMay = [];
+// let allJun = [];
+// let allJul = [];
+// let allAug = [];
+// let allSep = [];
+// let allOct = [];
+// let allNov = [];
+// let allDec = [];
+
+
+const monthTemp = (arrCity) => {
+
+    // for (let i = 0; i < arrCity.length; i++) {
+    let filteredArr = arrCity.filter(item => item.data.weather[0].date.slice(4, 8) === '-01-')
+    var temperatureArr = filteredArr.map(item => parseInt(item.data.weather[0].avgtempC));
+    // }
+    var allJan = temperatureArr
+    console.log(allJan)
+
+    function avgTemp(arr) {
+        let avgSum;
+
+        for (var i = 0, sum = 0; i <= arr.length; sum += arr[i++]) {
+            avgSum = sum / arr.length
+        };
+        return avgSum.toFixed(1);
+    }
+    avgTemp(allJan)
+    console.log(avgTemp(allJan))
+
+}
+console.log(monthTemp(ArubaAllYears))
+
+
+const BrandedPage = () => {
+    return (
+        <div>
+        </div>
+    )
+}
+
+export default BrandedPage;
+
+//Array av object medeltemp för varje månad, luftfuktighet.
+let VingsTravels : [
+    Aruba:{
+månad:[
+    jan: {
+        // månad:jan, 
+        temp: 26,
+        luftfuktighet:88%}{feb,27},mars,april,maj]
+
+    }
+
+]
+
+let VingsTravels=[]
+
+let arubaInfo =[]
+
+arubaInfo.push(allMonth, )
+
+allMonths [
+    {månad, temp, luftfuktighet}
+
+    // en loop för att gå igenom datan, ta ut datum, temp och fuktighet. Sen loopa igenom igen och pusha till en arr för att samla stadens data tillsammans
+    // I första loopen kommer datan sparas i en arr 
