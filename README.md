@@ -1,29 +1,7 @@
-# SUN STATS - traveler app
-SunStats is an app for those who want to travel but don't know where or when. It gives you the possibility to choose travel destination based on temperature.
-<!-- TABLE OF CONTENTS -->
+<a href="https://ibb.co/Swf16zF"><img src="https://i.ibb.co/HThMKj5/Screenshot-2021-04-22-at-15-47-48.png" alt="Screenshot-2021-04-22-at-15-47-48" border="0" /></a>
 
- ## TABLE OF CONTENT
-<details open="open">
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#features">Features</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-      </ul>
-    </li>
-    <li> <a href="#api-referens">API Reference</a></li>
-    <li>
-    <a href="#contact">Contact</a></li>
-  </ol>
-# SUN STATS - traveler app
-<a href="https://ibb.co/f2XC9Cm"><img src="https://i.ibb.co/TkwH1Hz/Screenshot-2021-04-22-at-14-41-06.png" alt="Screenshot-2021-04-22-at-14-41-06" border="0"></a>
 SunStats is an app for those who want to travel but don't know where or when. It gives you the possibility to choose travel destination based on temperature.
+
 <!-- TABLE OF CONTENTS -->
 
  ## TABLE OF CONTENT
