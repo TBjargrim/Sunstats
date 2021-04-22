@@ -1,22 +1,68 @@
-# SUN STATS
+# SUN STATS - traveler app
+SunStats is an app for those who want to travel but don't know where or when. It gives you the possibility to choose travel destination based on temperature.
+<!-- TABLE OF CONTENTS -->
 
-<div align="center">
-    <a 
-        img src="Skarmavbild.png">
-    </a>
-</div>
+ ## TABLE OF CONTENT
+<details open="open">
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#features">Features</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li> <a href="#api-referens">API Reference</a></li>
+    <li>
+    <a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-## Description
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-SunStats is for you who are a Apollo or Ving customer, a functioning app for those who want to travel but do not know where or when. It gives you the possibility to choose travel destination based on temperature.
+![enter image description here](https://ibb.co/f2XC9Cm)
+![enter image description here](https://ibb.co/Swf16zF)
+![enter image description here](https://ibb.co/QpRtpbt)
 
-## Demo 
+This project is part of our studys to become front end developers. 
+xxxxxxx
+### Built With
+* HTML5 and CSS
+* JavaScript
+* React
 
-## Trello
+## Features
 
-(https://trello.com/b/5A2FEbr3/grupp-6)
+INTE KLAR! Here we put code that we stick out INTE KLAR!
 
-## Made By
+### Prerequisites
+
+In order to take part of our code and the product 
+you need to install the following packages:
+* chart 
+* react-datepicker
+* react-daterange
+*  axios 
+* recompose 
+* react-icons
+*  react-router
+*  firebase
+*  moment
+*  styled-components
+
+## API Reference
+
+![enter image description here](https://ibb.co/QjtTwyC)
+
+All clime charts are based on API's from [World Weather Online](https://www.worldweatheronline.com/developer/api/) We used [Postman](https://www.postman.com/) .  Postman is an interactive and automatic tool for verifying the APIs of a project, it makes sure that each API is working as intended and it make sure  that the API has the element needed.
+
+## Contact 
 
 - [Therese Bjärgrim ](https://github.com/tbjargrim)
 - [Jenny Magnessen](https://github.com/jennymag)
