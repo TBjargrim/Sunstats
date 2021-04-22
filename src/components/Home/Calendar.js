@@ -1,37 +1,9 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-// import { registerLocale, setDefaultLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import { subDays, addDays } from "date-fns";
-//bpCSS Modules, react - datepicker - cssmodules.css;
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import styled from "styled-components";
 import "./datepicker.css";
-import { StyledDivCalender, StyledH2Temp, StyledP } from './SelectionStyling';
-
-const CalendarDiv = styled.div`
-padding-top: 160px; 
-div {
-  text-align: center;
-}
-`;
-const TravelBtn = styled.button`
-  display: block;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 5px 40px 5px 40px;
-  font-size: 20px;
-  margin: 15px 0 10px 0;
-&:active{
-  outline:none;
-}
-`;
-const BtnDiv = styled.div`
-display: flex;
-justify-content: center;
-margin-top: 30px;
-`;
+import { StyledH2Temp, StyledP, CalendarDiv, TravelBtn, BtnDiv } from './SelectionStyling';
 
 const Calendar = ({ setSaveDate }) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -82,7 +54,7 @@ const Calendar = ({ setSaveDate }) => {
 
   return (
     <CalendarDiv>
-      <StyledDivCalender>
+      <div>
         <StyledH2Temp>När vill du åka ? </StyledH2Temp>
         <StyledP>Välj en månad som passar dig</StyledP>
         <DatePicker
@@ -92,8 +64,7 @@ const Calendar = ({ setSaveDate }) => {
           showMonthYearPicker
           inline
         />
-      </StyledDivCalender>
-      {/* <StyledLinkSkip to={ROUTES.WIZ} onClick={handleJump}>Hoppa över</StyledLinkSkip> */}
+      </div>
       <BtnDiv>
         <TravelBtn type="submit" onClick={handleChange}>OK</TravelBtn>
       </BtnDiv>

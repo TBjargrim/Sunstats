@@ -15,7 +15,6 @@ background-color: ${({ theme }) => theme.background};
 border-radius: 40px;
 padding: 10px;
 text-align: center;
-
 select {
   color:${({ theme }) => theme.text};
   margin: 5px;
@@ -33,16 +32,12 @@ button {
   border: none;
   font-size: 14px;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
-  /* background: ${({ theme }) => theme.background}; */
- /* background: linear-gradient(
-    180deg
-    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565;  */
 }
 `;
 
 function InputFilter() {
   let history = useHistory();
-  const [theme, toggleTheme] = useVingMode();
+  const [theme] = useVingMode();
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
   function handleClick(e) {
@@ -56,24 +51,23 @@ function InputFilter() {
   }
   return (
     <ThemeProvider theme={themeMode}>
-    <FlexDiv>
-      <BarWrapper>
-        <select className="month">
-          <option>Månad</option>
-          <option value="January">Januari</option>
-          <option value="February">Februari</option>
-          <option value="March">Mars</option>
-          <option value="April">April</option>
-          <option value="May">Maj</option>
-          <option value="June">Juni</option>
-          <option value="July">Juli</option>
-          <option value="August">Augusti</option>
-          <option value="September">September</option>
-          <option value="October">Oktober</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
-        </select>
-      
+      <FlexDiv>
+        <BarWrapper>
+          <select className="month">
+            <option>Månad</option>
+            <option value="January">Januari</option>
+            <option value="February">Februari</option>
+            <option value="March">Mars</option>
+            <option value="April">April</option>
+            <option value="May">Maj</option>
+            <option value="June">Juni</option>
+            <option value="July">Juli</option>
+            <option value="August">Augusti</option>
+            <option value="September">September</option>
+            <option value="October">Oktober</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
           <select className="temp">
             <option>Medeltemp</option>
             <option value="10">10ºC</option>
@@ -89,9 +83,5 @@ function InputFilter() {
     </ThemeProvider>
   );
 }
-
-
-
-
 
 export default InputFilter;

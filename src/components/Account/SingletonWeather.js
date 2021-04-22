@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
-
 import { GiSunrise } from "react-icons/gi";
 import { GiSunset } from "react-icons/gi";
 
@@ -32,16 +31,25 @@ right: 40px;
 top: 10px;
 z-index: -1;
 }
+@media screen and (max-width:980px) {
+width:280px;
+height: 190px;
+  h2{
+    margin:5px 0 0 5px;
+  }
+  img{
+  width:50px;
+  right: 10px;
+  }
+}
 `;
-
 const Temp = styled.div`
 width: 100%;
 border-radius: 10px;
 padding: 5px;
 display: flex;
-
 h4{
-  width:100%;
+width:100%;
 font-size: 50px;
 margin:0px 15px;
 font-weight: 500;
@@ -51,8 +59,17 @@ h4 span{
     font-size: 18px;
     font-weight: 400;
 }
-`
+@media screen and (max-width:980px) {
+  h4{
+    margin:0;  
+    font-size: 30px;
+    }
+    h4 span{
+    font-size: 15px;
+}
+}
 
+`
 
 const SunriseSunset = styled.div`
 width: 100%;
@@ -68,7 +85,6 @@ const SunriseIcon = styled(GiSunrise)`
 color:#E8CC3B;
 font-size: 30px;
 margin-top: 20px;
-
 `
 const SunsetIcon = styled(GiSunset)`
 color:#4F67E2;
@@ -94,7 +110,6 @@ const SingletonWeather = (props) => {
         let sunsetYo = res.data.data.weather[0].astronomy[0].sunset
         let iconYo = res.data.data.current_condition[0].weatherIconUrl[0].value
         cityObj.city = cityYo
-        // .split(',')[0]; //Take away the country name and only shows the city-name.
         cityObj.temp = tempYo
         cityObj.sunrise = sunriseYo
         cityObj.sunset = sunsetYo
@@ -104,14 +119,14 @@ const SingletonWeather = (props) => {
       .catch(err => {
         console.log(err)
       })
-  }, []);
+  }, [props]);
 
   return (
     <>
       {data && <li>
         <CityCard>
           <h2>{data.city}</h2>
-          <img src={data.icon} />
+          <img src={data.icon} alt='Bild på vald favorit stad' />
           <Temp>
             <h4><span>Just nu</span> {data.temp} ºC</h4>
           </Temp>

@@ -13,29 +13,17 @@ function Wiz() {
     return (
         <>
             {!targetTemp && !saveDate && !targetInfoClick ?
-                //OM info click inte är klickad, visa info
                 <Info
                     setTargetInfoClick={setTargetInfoClick} />
                 : null}
-
-            {!targetTemp && !saveDate && targetInfoClick
-            /* targetInfoClick && !targetTempClick && !targetJumpOver */ ?
-                //Om infoclick är klickad och
-                //tempclick inte är klickad
+            {!targetTemp && !saveDate && targetInfoClick ?
                 <Temp
                     setTargetInfoClick={setTargetInfoClick}
                     setTargetTemp={setTargetTemp}
                     setTargetJumpOver={setTargetJumpOver}
                 /> : null}
-
-            {targetTemp && !saveDate && targetInfoClick  /* targetTemp && targetTempClick ||
-            targetTemp && targetJumpOver */  ?
-
-                // om targettemp och targettempclick är true (klickade)
-                //
+            {targetTemp && !saveDate && targetInfoClick ?
                 <Calendar setSaveDate={setSaveDate} /> : null}
-
-
             {targetTemp && saveDate ? <Redirect to={`/result/${targetTemp}/${saveDate}`} /> : null}
         </>
     )

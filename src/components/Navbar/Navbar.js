@@ -1,9 +1,7 @@
 import React from 'react';
 import * as ROLES from '../../constants/roles';
 import SignOutButton from '../SignOut';
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import ving_logga from '../../Images/vinglogga_transparant.png'
@@ -15,8 +13,7 @@ import { useVingMode } from '../ChangeBranding/LocalStorage'
 const StyledNav = styled.nav`
  background-color:transparent;
  position:relative;
-
-
+ 
 @media screen and (max-width:960px) {
     transition:0.8s all ease;
 }
@@ -52,29 +49,32 @@ const NavMenu = styled.ul`
 display:flex;
 flex-direction:row;
 justify-content: center;
+flex-wrap: nowrap;
 margin:50px;
 @media screen and (max-width:960px) {
     display:none;
 }
 `
 const NavItem = styled.li`
-height:50px;
 list-style: none;
 a {
 display:flex;
-margin-top:5px;
-
-margin-left:20px;
-  text-decoration:none;
-  color: #6B6B6B;
-  margin-right:30px;
+flex-wrap: nowrap;
+width: 80px;
+margin:5px 10px;
+text-decoration:none;
+color: #6B6B6B;
+}
+& a:last-child{
+  padding-right: 35px;
+  padding-left: -10px;
 }
 `
 const BurgerMenyIcon = styled(FaBars)`
 color:${({ theme }) => theme.h1};
 `
 const LogoImg = styled.img`
-width: 40%;
+width: 180px;
 margin: -20px;
 margin-left:25px;
 @media screen and (max-width:960px) {
@@ -85,7 +85,7 @@ margin-left:25px;
 `
 
 const Navbar = ({ authUser, toggle }) => {
-  const [theme, toggleTheme, componentMounted] = useVingMode();
+  const [theme] = useVingMode();
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
   return (

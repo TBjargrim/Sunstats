@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-/* import BackgroundLanding from '../../Images/BackgroundLanding.jpg'; */
 import BackgroundLanding from '../../Images/beach.jpg';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
@@ -164,17 +163,13 @@ p {
 `
 
 const Landing = () => {
-  const [theme, toggleTheme, componentMounted] = useVingMode();
+  const [theme] = useVingMode();
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
   return (
     <ThemeProvider theme={themeMode}>
       <Wrapper style={{ backgroundImage: `url(${BackgroundLanding})` }}>
         <Logga src={Logo}></Logga>
         <ContainerDiv>
-
-          {/* <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li> */}
           <InfoText>
             <p>Längtar du efter sol och värme?</p>
             <p>Logga in och sök efter din bästa resa</p>

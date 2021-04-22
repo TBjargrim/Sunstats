@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-
-
 export const useVingMode = () => {
     const [theme, setTheme] = useState('ving');
     const [componentMounted, setComponentMounted] = useState(false);
@@ -20,7 +18,7 @@ export const useVingMode = () => {
             window.location.reload();
         }
     };
-    //Om användare valt ett tema så sätts läggs det i setTheme-functionen.
+
     useEffect(() => {
         const localTheme = window.localStorage.getItem('theme');
         window.matchMedia && window.matchMedia('(prefers-color-scheme: apollo)').matches && !localTheme ?
@@ -30,6 +28,6 @@ export const useVingMode = () => {
                 setMode('ving');
         setComponentMounted(true);
     }, []);
-    //Vi returnar theme som innehåller valt theme och toggletheme functionen som "switshar" mellan teman.
+
     return [theme, toggleTheme, componentMounted]
 };

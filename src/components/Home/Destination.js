@@ -1,141 +1,21 @@
-import { useParams, useLocation, useHistory } from "react-router-dom"
-import { useEffect } from "react";
-import styled from "styled-components";
+import { useParams, useHistory } from "react-router-dom"
+import { ThemeProvider } from 'styled-components';
+
 import { Stockholm } from "../CollectedData/AverageTemp"
 import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';
 import TestHumidity from '../CollectedData/AverageHumidity'
 import TestTemp from '../CollectedData/AverageTemp'
-import { ThemeProvider } from 'styled-components';
+
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 import { useVingMode } from '../ChangeBranding/LocalStorage'
-import { fromRenderProps, mapProps } from "recompose";
 
 import ving_logga from '../../Images/vinglogga_transparant.png'
 import apollo_logga from '../../Images/apollologga_transparant.png'
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-
-
-const StyledWrapper = styled.div`
-display:flex;
-justify-content: center;
-margin-top: 30px;
-`
-const StyledLogo = styled.div`
-position: absolute;
-text-align: center;
-img{
-    width: 70%;
-    margin-left: 30px;
-}
-`
-const CityCardImg = styled.div`
-width: 100%;
-img{
-  width: 100%;
-}
-`;
-const StyledContainer = styled.div`
-text-align: center;
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-background-color: white;
-border-radius: 60px;
-margin-top: -60px;
-position: absolute;
-width: 100%;
-p {
-    /* color: ${({ theme }) => theme.color}; */
-    font-weight: 800;
-    letter-spacing: 1px;
-    font-size: 25px;
-    margin: 0 0 15px 0;
-}
-h1 {
-    font-size: 40px;
-    font-weight: 900;
-    /* color: ${({ theme }) => theme.h1}; */
-    letter-spacing: 1px;
-    margin:10px 0 10px 0;
-}
-`
-const Header = styled.div`
-width: 100%;
-`
-const StyledDiv = styled.div`
-width: 40%;
-height: 15%;
-margin:20px 50px 70px 50px;
-
-@media screen and (max-width:1100px) {
-    margin:20px 20px 50px 20px;
-    width: 45%;
-}
-@media screen and (max-width:860px) {
-    width: 75%;
-    margin:20px 15px 50px 15px;
-}
-`
-const InfoDestination = styled.div`
-/* display:flex;
-justify-content: center; */
-h3{
-    margin: 10px;
-    padding:0;
-    /* color: orange; */
-    font-size: 30px;
-    font-weight:600;
-    margin-bottom:10px;
-}
-h1{
-    font-size:50px;
-    letter-spacing:3px;
-}
-p{
-    font-size: 20px;
-    font-weight:600;
-    margin:10px 30px 0 30px;
-}
-`
-const ComparisonDiv = styled.div`
-/* background-color: whitesmoke; */
-padding:5px 20px 20px 20px;
-h3 {
-    margin: 10px;
-    /* color: orange; */
-    font-size: 25px;
-    font-weight:500;
-    margin-bottom:10px;
-}
-h3 span {
-    font-size: 30px;
-    margin-left:5px;
-    font-weight:700;
-}
-p{
-    font-size: 20px;
-    font-weight:400;
-    margin:0 30px;
-}
-p span {
-    font-weight:500;
-}
-`
-
-const Arrow = styled(FaArrowLeft)`
-position: absolute;
-z-index: 1;
-background: transparent;
-margin-top: 10px;
-left: 20px;
-font-size: 30px;
-cursor:pointer;
-color:${({ theme }) => theme.h1};
-`
+import { StyledWrapper, StyledLogo, CityCardImg, StyledContainer, Header, StyledDivv, InfoDestination, ComparisonDiv, Arrow } from './SelectionStyling'
 
 function Destination() {
-    const { temp, date, destination } = useParams();
-    const [theme, toggleTheme] = useVingMode();
+    const { date, destination } = useParams();
+    const [theme] = useVingMode();
 
     const history = useHistory();
     const state = history.location.state.temp;
@@ -210,12 +90,12 @@ function Destination() {
                         <p>Det kommer vara <span>{state - sweState}ºC</span> varmare än hemma! </p>
                     </ComparisonDiv>
                 </Header>
-                <StyledDiv>
+                <StyledDivv>
                     <TestTemp city={destination} data={cityHistoric[destination]} />
-                </StyledDiv>
-                <StyledDiv>
+                </StyledDivv>
+                <StyledDivv>
                     <TestHumidity city={destination} data={cityHistoric[destination]} />
-                </StyledDiv>
+                </StyledDivv>
             </StyledContainer>
         </ThemeProvider>)
 }

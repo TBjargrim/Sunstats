@@ -87,4 +87,3 @@ export const collectedAvgTempAndCities = [
         averageTemp: Bali,
     },
 ]
-// console.log(collectedAvgTempAndCities)

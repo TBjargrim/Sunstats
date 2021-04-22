@@ -4,10 +4,19 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import styled from 'styled-components';
-// import { StyledText } from "../Home/SelectionStyling";
 
-const StyledAdmin = styled.div`
-
+const StyledAdmin = styled.label`
+display: flex;
+width: 80px;
+height: 20px;
+text-align: center;
+margin: 0px;
+padding:0px;
+p{
+  height: 20px;
+  margin-top: 2px;
+  padding:0px;
+}
 `
 
 const StyledH1 = styled.h1`
@@ -166,7 +175,8 @@ class SignUpFormBase extends Component {
             name="isAdmin"
             type="checkbox"
             checked={isAdmin}
-            onChange={this.onChangeCheckbox} />
+            onChange={this.onChangeCheckbox}
+          />
         </StyledAdmin>
         <button disabled={isInvalid} type="submit">
           Logga in

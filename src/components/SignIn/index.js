@@ -12,24 +12,21 @@ display:flex;
 justify-content:center;
 letter-spacing:1px;
 `
-
 const StyledForm = styled.form`
 display:flex;
 flex-direction:column;
 align-items: center;
-/* max-width:500px; */
 margin:10px;
-
 input{
   padding:5px 8px;
   margin-top:6px;
   width:300px;
 }
 button{
-  margin-top:20px;
-  display:flex;
-  justify-content:center;
-  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+margin-top:20px;
+display:flex;
+justify-content:center;
+background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
 border: none;
 padding: 10px;
 color: white;
@@ -49,9 +46,6 @@ cursor:pointer;
 const StyledDiv = styled.div`
 text-align:center;
 `
-
-
-
 const SignInPage = () => (
   <StyledDiv>
     <StyledH1>Logga in</StyledH1>
