@@ -18,21 +18,13 @@ ul {
   margin: 0;
   padding: 0;
 }
-
 li {
   text-align: center;
   margin: 5px;
-  /* border: 1px solid green; */
-
 }
-
 `
-
-
 const GetWeatherData = () => {
-  // const [fetchAPI, setFetchAPI] = useState([])
   const [savedFav, setSavedFav] = useState(JSON.parse(localStorage.getItem('favorites')) || [])
-  //let savedFav = JSON.parse(localStorage.getItem('favorites'));
 
   return (
     <>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import styled from 'styled-components'
-// import sunset_icon from '../../Images/sunset_icon.png'
-// import sunrise_icon from '../../Images/sunrise_icon.png'
 
 import { GiSunrise } from "react-icons/gi";
 import { GiSunset } from "react-icons/gi";
@@ -15,7 +13,6 @@ padding: 5px;
 background: #E1E1E1;
 box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.30);
 border-radius: 17px;
-/* border: 1px solid orange; */
 width: 350px;
 height: 200px;
 display: flex;
@@ -34,7 +31,6 @@ position: absolute;
 right: 40px;
 top: 10px;
 z-index: -1;
-/* border: 1px solid purple;   */
 }
 `;
 
@@ -42,12 +38,10 @@ const Temp = styled.div`
 width: 100%;
 border-radius: 10px;
 padding: 5px;
-/* border: 1px solid black; */
 display: flex;
 
 h4{
   width:100%;
-  /* border: 1px solid black; */
 font-size: 50px;
 margin:0px 15px;
 font-weight: 500;
@@ -56,7 +50,6 @@ text-align:center;
 h4 span{
     font-size: 18px;
     font-weight: 400;
-    /* margin-right:5px; */
 }
 `
 

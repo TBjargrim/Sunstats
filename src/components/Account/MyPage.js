@@ -90,7 +90,6 @@ img{
 }
 `
 
-
 const MyPage = () => {
 
   return (

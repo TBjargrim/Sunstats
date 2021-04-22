@@ -2,6 +2,7 @@ import React from 'react'
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
 import styled from 'styled-components'
+
 const StyledDiv = styled.div`
 margin-top: 102px;
 div {
@@ -13,11 +14,10 @@ p {
 }
 `
 
-
 const Settings = () => {
     return (
         <StyledDiv>
-            
+
             <div>
                 <p>Byt lösenord:</p>
                 <PasswordChangeForm />

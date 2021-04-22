@@ -80,14 +80,6 @@ const Calendar = ({ setSaveDate }) => {
     }
   }
 
-  // const handleJump = () => {
-  //   let clicked = true;
-  //   let temp = 30;
-  //   console.log(temp);
-  //   setTargetTemp(temp);
-  //   setTargetJumpOver(clicked);
-  // }
-
   return (
     <CalendarDiv>
       <StyledDivCalender>

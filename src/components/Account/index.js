@@ -1,11 +1,7 @@
 import React from 'react';
-// import CollectedData from '../CachedData/CollectedData.txt'
 import { AuthUserContext, withAuthorization } from '../Session';
-// import { PasswordForgetForm } from '../PasswordForget';
-// import PasswordChangeForm from '../PasswordChange';
 import MyPage from './MyPage';
 import styled from 'styled-components';
-// import Settings from './Settings';
 
 const Styledh1 = styled.div`
 display: flex;
@@ -32,18 +28,13 @@ animation-name: moveInleft;
 }
 `;
 
-
 const AccountPage = () => (
 
-
   <AuthUserContext.Consumer >
-    {/* <Settings isOpened={isOpened} setIsOpened={setIsOpened} toggle={toggle} /> */}
-
     {authUser => (
       <div>
         <Styledh1>Hejsan {authUser.username}</Styledh1>
         <MyPage />
-
       </div>
     )}
   </AuthUserContext.Consumer>

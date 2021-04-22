@@ -28,8 +28,6 @@ const Green = styled.p`
 color: green;
 margin-bottom: 10px;
 font-weight: 600;
-/* position:absolute; */
-
 `;
 const FlexDiv = styled.div`
   display: flex;
@@ -59,7 +57,6 @@ border-radius: 30px;
 div{
   display: flex;
 }
-
 `;
 const CityCardInfo = styled.div`
 flex-direction: column;
@@ -83,7 +80,6 @@ p {
     font-size: 18px;
   }
 `;
-
 const CityCardImg = styled.div`
 width: 20%;
 img{
@@ -111,15 +107,16 @@ right: 15px;
 top:17px;
 font-size:20px;
 `
-function Result({ setSaveDate }) {
+
+function Result() {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
   const [theme, toggleTheme] = useVingMode();
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
+  const [cityTemp, setCityTemp] = useState();
+
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
   let history = useHistory();
-  const [favorites, setFavorites] = useState([]);
-  const [toggleHeart, setToggleHeart] = useState(false);
-  const [cityTemp, setCityTemp] = useState();
 
   let citiesArr = []
   const ImagesCities = [AlanyaImg, ArubaImg, BarcelonaImg, HonoluluImg, IbizaImg, KingstonImg, KretaImg, ParisImg, PhuketImg, RhodosImg, RomeImg, SingaporeImg, TokyoImg, UbudImg]
@@ -166,7 +163,6 @@ function Result({ setSaveDate }) {
         newArr.push(JanObj)
           ;
       }
-
     });
   } else if (date === "February") {
     citiesArr.forEach((city, index) => {
@@ -340,6 +336,7 @@ function Result({ setSaveDate }) {
     setFavorites(filteredFav)
   }
   useEffect(() => {
+    console.log('hej')
     const json = JSON.stringify(favorites);
     localStorage.setItem("favorites", json)
   }, [favorites])
@@ -366,7 +363,6 @@ function Result({ setSaveDate }) {
                     (<StyledFi onClick={() => AddFavourite(obj)} />)}
                 </CityCardInfo>
               </CityCard>
-
             </li>)}
           </ul>
         </div>

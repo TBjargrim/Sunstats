@@ -141,12 +141,8 @@ function Destination() {
     const state = history.location.state.temp;
     let sweState;
 
-    console.log(history.location.state.temp)
-
     function handleGoback() {
-
         window.history.back()
-
     }
     if (date === "January") {
         sweState = Stockholm[0];
@@ -213,20 +209,14 @@ function Destination() {
                         <h3>Stockholm: <span>{sweState}ºC</span></h3>
                         <p>Det kommer vara <span>{state - sweState}ºC</span> varmare än hemma! </p>
                     </ComparisonDiv>
-
                 </Header>
-
                 <StyledDiv>
                     <TestTemp city={destination} data={cityHistoric[destination]} />
                 </StyledDiv>
-
                 <StyledDiv>
                     <TestHumidity city={destination} data={cityHistoric[destination]} />
-
                 </StyledDiv>
-
             </StyledContainer>
-
         </ThemeProvider>)
 }
 export default Destination;

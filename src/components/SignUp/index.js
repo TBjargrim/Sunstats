@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import styled from 'styled-components';
-import { StyledText } from "../Home/SelectionStyling";
+// import { StyledText } from "../Home/SelectionStyling";
+
+const StyledAdmin = styled.div`
+
+`
 
 const StyledH1 = styled.h1`
 display:flex;
@@ -16,20 +19,17 @@ const StyledForm = styled.form`
 display:flex;
 flex-direction:column;
 align-items: center;
-/* max-width:500px; */
 margin:10px;
-
-
 input{
   padding:5px 8px;
   margin-top:6px;
   width:300px;
 }
 button{
-  margin-top:20px;
-  display:flex;
-  justify-content:center;
-  background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
+margin-top:20px;
+display:flex;
+justify-content:center;
+background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
 border: none;
 padding: 10px;
 color: white;
@@ -46,9 +46,7 @@ cursor:pointer;
 }
 }
 `
-const StyledDiv = styled.div`
-text-align:center;
-`
+
 const SignUpPage = () => (
   <div>
     <StyledH1>Skapa konto</StyledH1>
@@ -161,18 +159,15 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Bekräfta lösenord"
         />
-        <div>
-          <StyledText>Admin:</StyledText>
 
-        </div>
-        {/* <input
+        <StyledAdmin>
+          <p>Admin:</p>
+          <input
             name="isAdmin"
             type="checkbox"
             checked={isAdmin}
-            onChange={this.onChangeCheckbox}
-          /> */}
-
-
+            onChange={this.onChangeCheckbox} />
+        </StyledAdmin>
         <button disabled={isInvalid} type="submit">
           Logga in
         </button>
