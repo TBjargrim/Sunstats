@@ -56,6 +56,7 @@ const StyledP = styled.p`
 `
 const StyledWrapperTwo = styled.div`
 display:flex;
+align-items: flex-start;
 justify-content: center;
 @media screen and (max-width:500px) {
 flex-wrap: wrap;
@@ -82,6 +83,7 @@ border-radius: 7px;
 const StyledExampelThree = styled.div`
 width:45%;
 height: 50%;
+align-items: flex-start;
 display: flex;
 justify-content: center;
 img{

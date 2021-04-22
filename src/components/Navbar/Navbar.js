@@ -24,6 +24,7 @@ justify-content:space-between;
 `
 const NavLogo = styled(Link)`
 color:black;
+align-items: flex-start;
 justify-self:flex-start;
 cursor:pointer;
 font-size:1.5rem;

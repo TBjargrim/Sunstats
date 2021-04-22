@@ -26,6 +26,7 @@ a {
 const StyledLogo = styled.img`
 max-width:130px;
 margin-left: -30px;
+align-items: flex-start;
 `
 const Navigation = ({ isOpen, toggle }) => (
   <AuthUserContext.Consumer>

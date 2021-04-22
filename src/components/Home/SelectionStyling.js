@@ -388,6 +388,7 @@ p {
 `;
 export const CityCardImage = styled.div`
 width: 20%;
+align-items: flex-start;
 img{
   width: 100%;
   border-radius: 30px 0 0 30px;
