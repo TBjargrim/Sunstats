@@ -12,20 +12,13 @@ SunStats is an app for those who want to travel but don't know where or when. It
  ## TABLE OF CONTENT
 <details open="open">
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
+    <li><a href="#about-the-project">About The Project</a>
         <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-      </ul>
+        <li><a href="#prerequisites">Prerequisites</a></li> 
     </li>
     <li> <a href="#api-referens">API Reference</a></li>
-    <li>
-    <a href="#contact">Contact</a></li>
-    <a href="#libraries">Libraries</a></li>
+    <li> <a href="#api-referens">Libraries</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
