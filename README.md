@@ -30,7 +30,7 @@ SunStats is an app for those who want to travel but don't know where or when. It
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 XXX HÄR BEHÖVS MER TEXT This project is part of our studys to become front end developers. The main task was to build an React and Firebase application. Many of our features are inspired by [The Road to React with Firebase](https://github.com/the-road-to-react-with-firebase), auther [Robin Wieruch](https://www.robinwieruch.de/). 
-xxxxxxx
+mer text xxxxxxx
 <a href="https://ibb.co/QpRtpbt"><img src="https://i.ibb.co/S58G5sG/Screenshot-2021-04-22-at-15-48-22.png" alt="Screenshot-2021-04-22-at-15-48-22" border="0" /></a>
 
 ### Built With
