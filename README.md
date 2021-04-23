@@ -22,6 +22,7 @@ SunStats is an app for those who want to travel but don't know where or when. It
     <li> <a href="#api-referens">API Reference</a></li>
     <li>
     <a href="#contact">Contact</a></li>
+    <a href="#libraries">Contact</a></li>
   </ol>
 </details>
 
