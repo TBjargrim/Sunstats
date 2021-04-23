@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Traveler app - built with React and Firebase
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Note! To use this app you need to create your own Firebase key.
+This is because of GDPR. [Link to firebase](https://firebase.google.com/)
 
-## Available Scripts
+<a href="https://ibb.co/Swf16zF"><img src="https://i.ibb.co/HThMKj5/Screenshot-2021-04-22-at-15-47-48.png" alt="Screenshot-2021-04-22-at-15-47-48" border="0" /></a>
 
-In the project directory, you can run:
+SunStats is an app for those who want to travel but don't know where or when. It gives you the possibility to choose travel destination based on temperature.
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ ## TABLE OF CONTENT
+<details open="open">
+  <ol>
+    <li><a href="#about-the-project">About The Project</a>
+        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li> 
+    </li>
+    <li> <a href="#api-referens">API Reference</a></li>
+    <li> <a href="#api-referens">Libraries</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- ABOUT THE PROJECT -->
+## About The Project
+This project is part of our studys to become front end developers. The main task was to build an React and Firebase application. Many of our features are inspired by [The Road to React with Firebase](https://github.com/the-road-to-react-with-firebase), author [Robin Wieruch](https://www.robinwieruch.de/). 
+<a href="https://ibb.co/QpRtpbt"><img src="https://i.ibb.co/S58G5sG/Screenshot-2021-04-22-at-15-48-22.png" alt="Screenshot-2021-04-22-at-15-48-22" border="0" /></a>
 
-### `npm test`
+### Built With
+* HTML5 and CSS
+* JavaScript
+* React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+In order to download our code you need to install the following packages:
+* react-chartjs-2 
+* date-fns
+* react-datepicker 
+* react-date-range
+* react-dates
+* axios 
+* recompose 
+* react-icons
+* react-router
+* firebase
+* moment
+* styled-components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API Reference
+All charts are based on API's from [World Weather Online](https://www.worldweatheronline.com/developer/api/) We used [Postman](https://www.postman.com/).  Postman is an interactive and automatic tool for verifying the APIs of a project, it makes sure that each API is working as intended and it make sure  that the API has the element needed. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a href="https://ibb.co/QjtTwyC"><img src="https://i.ibb.co/WpjMJmP/Screenshot-2021-04-22-at-16-48-05.png" alt="Screenshot-2021-04-22-at-16-48-05" border="0" /></a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Libraries
+All charts are created with [Chartjs.org](https://www.chartjs.org/)
 
-### `npm run eject`
+## Contact 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Therese Bjärgrim ](https://github.com/tbjargrim)
+- [Jenny Magnessen](https://github.com/jennymag)
+- [Mamite Andersson ](https://github.com/mamite100)
+- [Sandra Persson](https://github.com/sandrapersson149)
+- [Samira Ahmed](https://github.com/samira90)
