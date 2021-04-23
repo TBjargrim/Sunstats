@@ -1,4 +1,4 @@
-# SUN STATS - traveler app
+# Traveler app - built with React
 
 <a href="https://ibb.co/Swf16zF"><img src="https://i.ibb.co/HThMKj5/Screenshot-2021-04-22-at-15-47-48.png" alt="Screenshot-2021-04-22-at-15-47-48" border="0" /></a>
 
