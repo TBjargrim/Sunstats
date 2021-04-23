@@ -1,4 +1,4 @@
-# Traveler app - built with React
+# Traveler app - built with React and Firebase
 
 <a href="https://ibb.co/Swf16zF"><img src="https://i.ibb.co/HThMKj5/Screenshot-2021-04-22-at-15-47-48.png" alt="Screenshot-2021-04-22-at-15-47-48" border="0" /></a>
 
@@ -58,7 +58,7 @@ you need to install the following packages:
 *  styled-components
 
 ## API Reference
-All clime charts are based on API's from [World Weather Online](https://www.worldweatheronline.com/developer/api/) We used [Postman](https://www.postman.com/) .  Postman is an interactive and automatic tool for verifying the APIs of a project, it makes sure that each API is working as intended and it make sure  that the API has the element needed.
+All charts are based on API's from [World Weather Online](https://www.worldweatheronline.com/developer/api/) We used [Postman](https://www.postman.com/) .  Postman is an interactive and automatic tool for verifying the APIs of a project, it makes sure that each API is working as intended and it make sure  that the API has the element needed. 
 
 <a href="https://ibb.co/QjtTwyC"><img src="https://i.ibb.co/WpjMJmP/Screenshot-2021-04-22-at-16-48-05.png" alt="Screenshot-2021-04-22-at-16-48-05" border="0" /></a>
 
