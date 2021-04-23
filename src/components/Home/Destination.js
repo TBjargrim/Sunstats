@@ -1,13 +1,9 @@
 import { useParams, useHistory } from "react-router-dom"
-import { ThemeProvider } from 'styled-components';
 
 import { Stockholm } from "../CollectedData/AverageTemp"
 import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';
 import TestHumidity from '../CollectedData/AverageHumidity'
 import TestTemp from '../CollectedData/AverageTemp'
-
-import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 import ving_logga from '../../Images/vinglogga_transparant.png'
 import apollo_logga from '../../Images/apollologga_transparant.png'
@@ -15,7 +11,6 @@ import { StyledWrapper, StyledLogo, CityCardImg, StyledContainer, Header, Styled
 
 function Destination() {
     const { date, destination } = useParams();
-    const [theme] = useVingMode();
 
     const history = useHistory();
     const state = history.location.state.temp;
@@ -62,15 +57,12 @@ function Destination() {
     }
 
 
-    const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
-
     return (
-        <ThemeProvider theme={themeMode}>
-
+        <>
             <StyledWrapper>
                 <Arrow onClick={handleGoback} />
                 <StyledLogo>
-                    <img src={theme === 'ving' ? ving_logga : apollo_logga} alt='Bild på strand' />
+                    {/* <img src={theme === 'ving' ? ving_logga : apollo_logga} alt='Bild på strand' /> */}
                 </StyledLogo>
 
             </StyledWrapper>
@@ -97,6 +89,7 @@ function Destination() {
                     <TestHumidity city={destination} data={cityHistoric[destination]} />
                 </StyledDivv>
             </StyledContainer>
-        </ThemeProvider>)
+        </>
+    )
 }
 export default Destination;

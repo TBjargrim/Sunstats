@@ -6,9 +6,7 @@ import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa';
 import ving_logga from '../../Images/vinglogga_transparant.png'
 import apollo_logga from '../../Images/apollologga_transparant.png'
-import { ThemeProvider } from 'styled-components';
-import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
+
 
 const StyledNav = styled.nav`
  background-color:transparent;
@@ -86,43 +84,39 @@ margin-left:25px;
 `
 
 const Navbar = ({ authUser, toggle }) => {
-  const [theme] = useVingMode();
-  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <StyledNav >
-        <NavbarContainer>
-          <NavLogo to='/wiz'>
-            <LogoImg src={theme === 'ving' ? ving_logga : apollo_logga} />
-          </NavLogo>
-          <MobileIcon onClick={toggle}>
-            <BurgerMenyIcon />
-          </MobileIcon>
-          <NavMenu>
+    <StyledNav >
+      <NavbarContainer>
+        <NavLogo to='/wiz'>
+          {/* <LogoImg src={} /> */}
+        </NavLogo>
+        <MobileIcon onClick={toggle}>
+          <BurgerMenyIcon />
+        </MobileIcon>
+        <NavMenu>
 
+          <NavItem>
+            <Link to='/account'>Min Profil</Link>
+          </NavItem>
+          <NavItem>
+            <Link to='/wiz'>Sök resa</Link>
+          </NavItem>
+          {!!authUser.roles[ROLES.ADMIN] && (
             <NavItem>
-              <Link to='/account'>Min Profil</Link>
+              <Link to='/admin'>Admin</Link>
             </NavItem>
-            <NavItem>
-              <Link to='/wiz'>Sök resa</Link>
-            </NavItem>
-            {!!authUser.roles[ROLES.ADMIN] && (
-              <NavItem>
-                <Link to='/admin'>Admin</Link>
-              </NavItem>
-            )}
-            <NavItem>
-              <Link to='/settings'>Inställningar</Link>
-            </NavItem>
-            <NavItem>
-              <SignOutButton />
-            </NavItem>
-          </NavMenu>
+          )}
+          <NavItem>
+            <Link to='/settings'>Inställningar</Link>
+          </NavItem>
+          <NavItem>
+            <SignOutButton />
+          </NavItem>
+        </NavMenu>
 
-        </NavbarContainer>
-      </StyledNav>
-    </ThemeProvider>
+      </NavbarContainer>
+    </StyledNav>
   )
 }
 

@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withAuthentication } from '../Session';
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import * as ROUTES from '../../constants/routes';
-
 import Navigation from '../Navigation';
 import LandingPage from '../Landing';
 import SignUpPage from '../SignUp';
@@ -17,9 +16,7 @@ import Destination from '../Home/Destination';
 import Result from "../Home/Result";
 import Settings from '../Account/Settings';
 
-import { ThemeProvider } from 'styled-components';
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -51,16 +48,33 @@ Link{
 `
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme] = useVingMode();
+  const [theme, setTheme] = useState(window.localStorage.getItem('theme') || 'ving');
+
   const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
   const toggle = () => {
     setIsOpen(!isOpen)
   }
+  const toggleTheme = () => {
+    if (theme === 'ving') {
+      window.localStorage.setItem('theme', 'apollo')
+      setTheme('apollo');
+    } else {
+      window.localStorage.setItem('theme', 'ving')
+      setTheme('ving');
+    }
+  }
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    localTheme && setTheme(localTheme);
+  }, []);
+
   return (
     <ThemeProvider theme={themeMode}>
       <Router>
-        <div>
+        <>
+          <h2>Branded by {theme === 'ving' ? 'Ving' : 'Apollo'}!</h2>
+          <button onClick={toggleTheme}> Ändra resebolag</button>
           <GlobalStyle />
           <Navigation theme={theme} themeMode={themeMode} isOpen={isOpen} toggle={toggle} />
           <Switch>
@@ -73,10 +87,10 @@ const App = () => {
             <Route path={ROUTES.HOME} component={HomePage} />
             <Route path={ROUTES.WIZ} component={Wiz} />
             <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-            <Route path={ROUTES.ADMIN} component={AdminPage} />
+            <Route path={ROUTES.ADMIN} component={AdminPage} theme={theme} />
             <Route path={ROUTES.SETTINGS} component={Settings} />
           </Switch>
-        </div>
+        </>
       </Router>
     </ThemeProvider>
   )

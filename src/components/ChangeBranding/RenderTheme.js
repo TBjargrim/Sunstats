@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ThemeProvider } from 'styled-components';
-import { VingTheme, ApolloTheme } from './ThemeStyled'
-import { useVingMode } from './LocalStorage'
+
 
 const StyledDiv = styled.div`
 color: ${({ theme }) => theme.h1};
@@ -28,20 +26,20 @@ button{
 }
 `
 const RenderTheme = () => {
-    const [theme, toggleTheme, componentMounted] = useVingMode();
-    const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+    // const [theme, toggleTheme, componentMounted] = useVingMode();
+    // const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
-    if (!componentMounted) {
-        return <div />
-    };
+    // if (!componentMounted) {
+    //     return <div />
+    // };
     return (
         <div>
-            <ThemeProvider theme={themeMode}>
+            {/* <ThemeProvider theme={themeMode}>
                 <StyledDiv>
                     <h2>Branded by {theme === 'ving' ? 'Ving' : 'Apollo'}!</h2>
                     <button onClick={toggleTheme}>Ändra resebolag</button>
                 </StyledDiv>
-            </ThemeProvider>
+            </ThemeProvider> */}
         </div>
     )
 }

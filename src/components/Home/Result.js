@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
-
 import InputFilter from "../InputFilter/InputFilter"
-import { ThemeProvider } from 'styled-components';
-import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 import AlanyaImg from '../../Images/AlanyaImage.jpg'
 import ArubaImg from '../../Images/ArubaImage.jpg'
@@ -27,11 +23,9 @@ import { Green, FlexDiv, CityCard, CityCardInfo, CityCardImage, StyledFa, Styled
 function Result() {
   const { temp, date } = useParams();
   const [redirectionPath, setRedirectionPath] = useState();
-  const [theme, toggleTheme] = useVingMode();
   const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favorites')) || []);
   const [cityTemp, setCityTemp] = useState();
 
-  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
   let history = useHistory();
 
   let citiesArr = []
@@ -258,32 +252,30 @@ function Result() {
   }, [favorites])
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <FlexDiv>
-        <h1>{date}</h1>
-        <InputFilter />
-        <div>
-          <ul>
-            {newArrSorted.map(obj => <li key={obj.city}>
-              <CityCard >
-                <CityCardImage onClick={createHandleClickForDestination(obj.city, obj.temperatur)}>
-                  <img src={obj.image} alt='bild på strand' />
-                </CityCardImage>
-                <CityCardInfo>
-                  {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
-                  <h2>{obj.city}</h2>
-                  <p>Medeltemperatur: <span>{obj.temperatur} ºC</span></p>
-                  {favorites.includes(obj.city) ?
-                    (<StyledFa onClick={() => deleteFavorite(obj)} />)
-                    :
-                    (<StyledFi onClick={() => AddFavourite(obj)} />)}
-                </CityCardInfo>
-              </CityCard>
-            </li>)}
-          </ul>
-        </div>
-      </FlexDiv>
-    </ThemeProvider>
+    <FlexDiv>
+      <h1>{date}</h1>
+      <InputFilter />
+      <div>
+        <ul>
+          {newArrSorted.map(obj => <li key={obj.city}>
+            <CityCard >
+              <CityCardImage onClick={createHandleClickForDestination(obj.city, obj.temperatur)}>
+                <img src={obj.image} alt='bild på strand' />
+              </CityCardImage>
+              <CityCardInfo>
+                {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
+                <h2>{obj.city}</h2>
+                <p>Medeltemperatur: <span>{obj.temperatur} ºC</span></p>
+                {favorites.includes(obj.city) ?
+                  (<StyledFa onClick={() => deleteFavorite(obj)} />)
+                  :
+                  (<StyledFi onClick={() => AddFavourite(obj)} />)}
+              </CityCardInfo>
+            </CityCard>
+          </li>)}
+        </ul>
+      </div>
+    </FlexDiv>
   );
 }
 

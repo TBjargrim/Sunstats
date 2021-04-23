@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import { useHistory } from "react-router-dom"
-import { ThemeProvider } from 'styled-components';
-import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
+
 
 const FlexDiv = styled.div`
 display: flex;
@@ -37,8 +35,6 @@ button {
 
 function InputFilter() {
   let history = useHistory();
-  const [theme] = useVingMode();
-  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
   function handleClick(e) {
     e.preventDefault();
@@ -50,37 +46,35 @@ function InputFilter() {
     history.push(`/result/${tempValue}/${monthValue}`);
   }
   return (
-    <ThemeProvider theme={themeMode}>
-      <FlexDiv>
-        <BarWrapper>
-          <select className="month">
-            <option>Månad</option>
-            <option value="January">Januari</option>
-            <option value="February">Februari</option>
-            <option value="March">Mars</option>
-            <option value="April">April</option>
-            <option value="May">Maj</option>
-            <option value="June">Juni</option>
-            <option value="July">Juli</option>
-            <option value="August">Augusti</option>
-            <option value="September">September</option>
-            <option value="October">Oktober</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
-          </select>
-          <select className="temp">
-            <option>Medeltemp</option>
-            <option value="10">10ºC</option>
-            <option value="15">15ºC</option>
-            <option value="20">20ºC</option>
-            <option value="25">25ºC</option>
-            <option value="30">30ºC</option>
-            <option value="35">35ºC</option>
-          </select>
-          <button onClick={handleClick}>Sök</button>
-        </BarWrapper>
-      </FlexDiv>
-    </ThemeProvider>
+    <FlexDiv>
+      <BarWrapper>
+        <select className="month">
+          <option>Månad</option>
+          <option value="January">Januari</option>
+          <option value="February">Februari</option>
+          <option value="March">Mars</option>
+          <option value="April">April</option>
+          <option value="May">Maj</option>
+          <option value="June">Juni</option>
+          <option value="July">Juli</option>
+          <option value="August">Augusti</option>
+          <option value="September">September</option>
+          <option value="October">Oktober</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+        <select className="temp">
+          <option>Medeltemp</option>
+          <option value="10">10ºC</option>
+          <option value="15">15ºC</option>
+          <option value="20">20ºC</option>
+          <option value="25">25ºC</option>
+          <option value="30">30ºC</option>
+          <option value="35">35ºC</option>
+        </select>
+        <button onClick={handleClick}>Sök</button>
+      </BarWrapper>
+    </FlexDiv>
   );
 }
 

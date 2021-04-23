@@ -19,7 +19,6 @@ justify-content:center;
 const StyledLink = styled(Link)`
 text-decoration:none;
 font-size:15px;
-color: #6B6B6B;
 letter-spacing:1px;
 `
 

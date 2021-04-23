@@ -7,8 +7,7 @@ import { withAuthorization } from '../Session';
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
 import styled from 'styled-components';
-import RenderTheme from '../ChangeBranding/RenderTheme';
-import {StyledButton} from "../PasswordChange/index"
+import { StyledButton } from "../PasswordChange/index"
 
 const DivWrapper = styled.div`
 margin: 20px;
@@ -57,12 +56,18 @@ const StyledSpan = styled.span`
   padding: 4px;
 `;
 
-const AdminPage = () => (
+const AdminPage = ({ theme }) => (
+
   <>
     <DivWrapper>
       <h1>Admin</h1>
     </DivWrapper>
-    <RenderTheme />
+    <StyledDiv>
+
+      {/* <h2>Branded by {theme === 'ving' ? 'Ving' : 'Apollo'}!</h2> */}
+      {/* <button onClick={toggleTheme}> Ändra resebolad</button> */}
+    </StyledDiv>
+    {/* <RenderTheme /> */}
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />
       <Route exact path={ROUTES.ADMIN} component={UserList} />
