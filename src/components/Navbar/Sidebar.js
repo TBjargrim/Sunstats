@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles';
 import SignOutButton from '../SignOut';
-// import { AuthUserContext } from '../Session';
-
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 import { ThemeProvider } from 'styled-components';
@@ -37,9 +35,6 @@ font-size:2rem;
 cursor:pointer;
 outline:none;
 `
-const SidebarWrapper = styled.div`
-
-`
 const SidebarMenu = styled.ul`
 display:flex;
 flex-direction:column;
@@ -47,10 +42,6 @@ align-items:center;
 margin-top:60px;
 margin-right:25px;
 padding:0px;
-
-/* @media screen and(max-width:768px){
-grid-template-rows:repeat(6,60px);
-} */
 `
 const StyledLI = styled.li`
 list-style:none;
@@ -77,7 +68,7 @@ color:${({ theme }) => theme.h1};
 cursor:pointer;
 `
 const Sidebar = ({ authUser, isOpen, toggle }) => {
-    const [theme, toggleTheme, componentMounted] = useVingMode();
+    const [theme] = useVingMode();
     const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
 
     return (
@@ -86,7 +77,7 @@ const Sidebar = ({ authUser, isOpen, toggle }) => {
                 <Icon onClick={toggle}>
                     <CloseIcon />
                 </Icon>
-                <SidebarWrapper>
+                <div>
                     <SidebarMenu>
 
                         <StyledLI>
@@ -107,7 +98,7 @@ const Sidebar = ({ authUser, isOpen, toggle }) => {
                             <div onClick={toggle}> <SignOutButton /> </div>
                         </ButtonLI>
                     </SidebarMenu>
-                </SidebarWrapper>
+                </div>
             </SideBarContainer>
         </ThemeProvider>
     )

@@ -14,12 +14,10 @@ input {
   border-radius: 10px;
 }
 `
-
 export const StyledButton = styled.button`
 display: block;
  background: linear-gradient(
-    180deg
-    ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565;
+    180deg ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565;
   color: white;
   border: none;
   border-radius: 30px;
@@ -29,7 +27,9 @@ display: block;
   box-shadow: 1px 2px 10px gray; 
 &:active{
   outline:none;
+  }
 `
+
 const INITIAL_STATE = {
   passwordOne: '',
   passwordTwo: '',
@@ -61,26 +61,26 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
     return (
       <StyledForm>
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Nytt lösenord"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Bekräfta nytt lösenord"
-        />
-        <StyledButton disabled={isInvalid} type="submit">
-         OK
+        <form onSubmit={this.onSubmit}>
+          <input
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Nytt lösenord"
+          />
+          <input
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Bekräfta nytt lösenord"
+          />
+          <StyledButton disabled={isInvalid} type="submit">
+            OK
 </StyledButton>
-        {error && <p>{error.message}</p>}
-      </form>
+          {error && <p>{error.message}</p>}
+        </form>
       </StyledForm>
     );
   }

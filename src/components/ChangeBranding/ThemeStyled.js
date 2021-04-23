@@ -38,7 +38,6 @@ export const ApolloTheme = {
         cursor: 'pointer',
         hover: {
             backgroundColor: '#EC92FB',
-            // border: '1px solid white',
         },
         focus: {
             outline: 'none'

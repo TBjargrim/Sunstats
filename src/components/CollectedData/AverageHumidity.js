@@ -4,31 +4,16 @@ import { Stockholm2017, Stockholm2018, Stockholm2019 } from '../CachedData/DataS
 const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
 
 const monthDataHumidity = (arrCity, city) => {
-
     let humidityData = []
     for (let i = 0; i < arrCity.length; i++) {
         let filteredHumidity = arrCity[i].map(item => parseInt(item.data.weather[0].hourly[0].humidity))
-        // console.log(arrCity[i]);
         humidityData.push(filteredHumidity);
     }
-
     let SthlmHumidityData = []
-
     for (let i = 0; i < StockholmAllYears.length; i++) {
-
         let StockholmHumidity = StockholmAllYears[i].map(item => parseInt(item.data.weather[0].hourly[0].humidity))
-
         SthlmHumidityData.push(StockholmHumidity);
     }
-
-
-    let filteredMonthNum = arrCity[0].map(item => item.data.weather[0].date.slice(4, 8))
-
-
-    let labelMonths = filteredMonthNum.splice(0, 12);
-    filteredMonthNum.push('Jan', 'Feb', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec');
-
-
     const sumArray = (array) => {
         const newArray = [];
         array.forEach(sub => {
@@ -48,12 +33,12 @@ const monthDataHumidity = (arrCity, city) => {
         };
         return sumArr;
     }
-
     const avgHumidityData = (sumArray(humidityData));
     const avgHumiditySthlm = (sumArray(SthlmHumidityData));
 
+    let labelMonths = ['Jan', 'Feb', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec'];
     const chartData = {
-        labels: filteredMonthNum,
+        labels: labelMonths,
         datasets: [{
             label: city,
             data: avgHumidityData,
@@ -67,17 +52,10 @@ const monthDataHumidity = (arrCity, city) => {
             borderColor: 'rgb(165, 165, 165)',
             backgroundColor: 'rgba(0,0,0,0.1)',
             fill: false
-
         }
         ]
     }
     return chartData
-}
-// console.log(monthDataHumidity(StockholmAllYears))
-
-const city = (arrCity) => {
-    const cityData = arrCity[0][0].data.request[0].query
-    return cityData
 }
 
 const Humidity = (props) => {
@@ -90,7 +68,6 @@ const Humidity = (props) => {
                 options={{
                     maintainAspectRatio: true,
                     responsive: true,
-                    // title: { text: city(props.data), display: true },
                     title: { text: 'Luftfuktighet', display: true },
                     scales: {
                         yAxes: [
@@ -115,9 +92,7 @@ const Humidity = (props) => {
                     }
                 }}
             />
-
         </div>
     )
 }
-
 export default Humidity

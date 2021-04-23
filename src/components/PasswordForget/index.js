@@ -6,13 +6,22 @@ import styled from 'styled-components';
 import { StyledButton } from "../PasswordChange/index"
 
 const StyledInput = styled.input`
-  width: 80%;
+  width: 320px;
   margin: 5px 10px;
   padding: 5px;
-  border: 1px solid lightgray;
   border-radius: 10px;
-
-`;
+  border: 1px solid lightgray;
+`
+const StyledP = styled.p`
+display:flex;
+justify-content:center;
+`
+const StyledLink = styled(Link)`
+text-decoration:none;
+font-size:15px;
+color: #6B6B6B;
+letter-spacing:1px;
+`
 
 const PasswordForgetPage = () => (
   <div>
@@ -20,10 +29,12 @@ const PasswordForgetPage = () => (
     <PasswordForgetForm />
   </div>
 );
+
 const INITIAL_STATE = {
   email: '',
   error: null,
 };
+
 class PasswordForgetFormBase extends Component {
   constructor(props) {
     super(props);
@@ -58,25 +69,12 @@ class PasswordForgetFormBase extends Component {
         />
         <StyledButton disabled={isInvalid} type="submit">
           OK
-</StyledButton>
+        </StyledButton>
         {error && <p>{error.message}</p>}
       </form>
     );
   }
 }
-const StyledP = styled.p`
-display:flex;
-justify-content:center;
-`
-const StyledLink = styled(Link)`
-text-decoration:none;
-font-size:15px;
-color: #6B6B6B;
-letter-spacing:1px;
-a{
-  
-}
-`
 
 const PasswordForgetLink = () => (
   <StyledP>

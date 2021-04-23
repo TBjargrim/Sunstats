@@ -11,9 +11,10 @@ p {
 }
 ul {
   display:flex;
-  flex-direction:column;
+  flex-wrap:wrap;
   list-style: none;
   align-items: center;
+ justify-content: center;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
@@ -22,6 +23,7 @@ li {
   text-align: center;
   margin: 5px;
 }
+
 `
 const GetWeatherData = () => {
   const [savedFav, setSavedFav] = useState(JSON.parse(localStorage.getItem('favorites')) || [])
@@ -34,6 +36,5 @@ const GetWeatherData = () => {
         </ul>
       </StyledDiv>
     </>)
-
 }
 export default GetWeatherData

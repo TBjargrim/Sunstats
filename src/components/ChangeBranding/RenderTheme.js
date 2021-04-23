@@ -5,7 +5,6 @@ import { VingTheme, ApolloTheme } from './ThemeStyled'
 import { useVingMode } from './LocalStorage'
 
 const StyledDiv = styled.div`
-/* background: ${({ theme }) => theme.body}; */
 color: ${({ theme }) => theme.h1};
 border:1px solid ${({ theme }) => theme.h1};
 border-radius:20px;
@@ -28,7 +27,6 @@ button{
     }
 }
 `
-
 const RenderTheme = () => {
     const [theme, toggleTheme, componentMounted] = useVingMode();
     const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;

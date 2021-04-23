@@ -1,9 +1,7 @@
-import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom"
 import { collectedAvgTempAndCities } from '../CollectedData/SelectedAvgTempCity'
-import { FiHeart } from 'react-icons/fi';
-import { FaHeart } from 'react-icons/fa';
+
 import InputFilter from "../InputFilter/InputFilter"
 import { ThemeProvider } from 'styled-components';
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
@@ -23,90 +21,8 @@ import RomeImg from '../../Images/RomeImage.jpg'
 import SingaporeImg from '../../Images/SingaporeImage.jpg'
 import TokyoImg from '../../Images/TokyoImage.jpg'
 import UbudImg from '../../Images/UbudImage.jpg'
+import { Green, FlexDiv, CityCard, CityCardInfo, CityCardImage, StyledFa, StyledFi } from './SelectionStyling';
 
-const Green = styled.p`
-color: green;
-margin-bottom: 10px;
-font-weight: 600;
-`;
-const FlexDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  padding: 20px 20px 20px 12px;
-  h1 {
-    font-weight: 800;
-    text-align: center;
-    color: ${({ theme }) => theme.h1};
-  }
-  ul {
-    padding: 0;
-  }
-  li {
-      text-decoration: none;
-      list-style-type: none;
-  }
-`;
-const CityCard = styled.div`
-display: flex;
-position: relative;
-flex-direction: row;
-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
-margin: 15px;
-border-radius: 30px;
-div{
-  display: flex;
-}
-`;
-const CityCardInfo = styled.div`
-flex-direction: column;
-width: 60%;
-padding: 35px;
-h2 {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-align: center;
-  margin: 0px;
-}
-p {
-  font-size: 15px;
-  text-align: center;
-  margin: 0;
-  padding-top: 10px;
-
-} p span{
-    font-weight: 700;
-    font-size: 18px;
-  }
-`;
-const CityCardImg = styled.div`
-width: 20%;
-img{
-  width: 100%;
-  border-radius: 30px 0 0 30px;
-}
-@media only screen and (max-width : 703px) {
-  width: 400%;
-img{
-  width: 100%;
-  border-radius: 30px 0 0 30px;
-}
-}`
-const StyledFa = styled(FaHeart)`
-color: red;
-position: absolute;
-right: 15px;
-top: 17px;
-font-size: 20px;
-`
-const StyledFi = styled(FiHeart)`
-color: red;
-position: absolute;
-right: 15px;
-top:17px;
-font-size:20px;
-`
 
 function Result() {
   const { temp, date } = useParams();
@@ -350,9 +266,9 @@ function Result() {
           <ul>
             {newArrSorted.map(obj => <li key={obj.city}>
               <CityCard >
-                <CityCardImg onClick={createHandleClickForDestination(obj.city, obj.temperatur)}>
+                <CityCardImage onClick={createHandleClickForDestination(obj.city, obj.temperatur)}>
                   <img src={obj.image} alt='bild på strand' />
-                </CityCardImg>
+                </CityCardImage>
                 <CityCardInfo>
                   {obj.city === newArrSorted[0].city ? <Green>Din bästa match!</Green> : null}
                   <h2>{obj.city}</h2>

@@ -8,10 +8,18 @@ import Paris from '../../Images/ParisImage.jpg'
 import WeatherData from './GetWeaterData'
 import { FaHeart } from 'react-icons/fa';
 
+const WrapperFav = styled.div`
+width:70%;
+display:flex;
+flex-direction:column;
+align-items:center;
+margin:0 auto;
+`
 const StyledDiv = styled.div`
 display:flex;
+align-items:left;
 margin-top:30px;
-
+width: 100%;
 p {
   font-size: 18px;
   text-align: left;
@@ -19,6 +27,7 @@ p {
   letter-spacing:1px;
 }
 `
+
 const Heart = styled(FaHeart)`
 color: red;
 font-size: 18px;
@@ -47,6 +56,7 @@ const StyledP = styled.p`
 `
 const StyledWrapperTwo = styled.div`
 display:flex;
+align-items: flex-start;
 justify-content: center;
 @media screen and (max-width:500px) {
 flex-wrap: wrap;
@@ -73,6 +83,7 @@ border-radius: 7px;
 const StyledExampelThree = styled.div`
 width:45%;
 height: 50%;
+align-items: flex-start;
 display: flex;
 justify-content: center;
 img{
@@ -89,16 +100,15 @@ img{
 }
 }
 `
-
 const MyPage = () => {
-
   return (
     <div>
-      <StyledDiv>
-        <Heart /><p> Dina favoriter:   </p>
-      </StyledDiv>
-
-      <WeatherData />
+      <WrapperFav>
+        <StyledDiv>
+          <Heart /><p> Dina favoriter:   </p>
+        </StyledDiv>
+        <WeatherData />
+      </WrapperFav>
       <StyledWrapper>
         <StyledP>Utforska andra förslag för dig:</StyledP>
         <StyledWrapperTwo>

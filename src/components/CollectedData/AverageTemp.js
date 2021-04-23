@@ -6,20 +6,6 @@ import {
     KingstonAllYears, KretaAllYears, ParisAllYears, PhuketAllYears, RhodosAllYears, RomeAllYears, SingaporeAllYears, StockholmAllYears, TokyoAllYears, BaliAllYears
 } from './ConstantsCityAllYears'
 
-// const BarcelonaAllYears = [Barcelona2017, Barcelona2018, Barcelona2019];
-// const HonoluluAllYears = [Honolulu2017, Honolulu2018, Honolulu2019];
-// const IbizaAllYears = [Ibiza2017, Ibiza2018, Ibiza2019];
-// const KingstonAllYears = [Kingston2017, Kingston2018, Kingston2019];
-// const KretaAllYears = [Kreta2017, Kreta2018, Kreta2019];
-// const ParisAllYears = [Paris2017, Paris2018, Paris2019];
-// const PhuketAllYears = [Phuket2017, Phuket2018, Phuket2019];
-// const RhodosAllYears = [Rhodos2017, Rhodos2018, Rhodos2019];
-// const RomeAllYears = [Rome2017, Rome2018, Rome2019];
-// const SingaporeAllYears = [Singapore2017, Singapore2018, Singapore2019];
-// const StockholmAllYears = [Stockholm2017, Stockholm2018, Stockholm2019];
-// const TokyoAllYears = [Tokyo2017, Tokyo2018, Tokyo2019];
-// const UbudAllYears = [Ubud2017, Ubud2018, Ubud2019];
-
 const monthDataTemp = (arrCity, city) => {
 
     let tempData = []
@@ -33,11 +19,7 @@ const monthDataTemp = (arrCity, city) => {
         let StockholmTemp = StockholmAllYears[i].map(temp => parseInt(temp.data.weather[0].avgtempC))
         SthlmTempData.push(StockholmTemp);
     }
-    let filteredMonthNum = arrCity[0].map(item => item.data.weather[0].date.slice(4, 8))
-
-    let labelMonths = filteredMonthNum.splice(0, 12);
-    filteredMonthNum.push('Jan', 'Feb', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec');
-
+    let labelMonths = ['Jan', 'Feb', 'Mars', 'April', 'Maj', 'Juni', 'Juli', 'Aug', 'Sept', 'Okt', 'Nov', 'Dec'];
     const sumArray = (array) => {
         const newArray = [];
         array.forEach(sub => {
@@ -61,10 +43,8 @@ const monthDataTemp = (arrCity, city) => {
     const avgTempData = (sumArray(tempData));
     const avgTempSthlm = (sumArray(SthlmTempData));
 
-    
-
     const chartData = {
-        labels: filteredMonthNum,
+        labels: labelMonths,
         datasets: [
             {
                 label: city,
@@ -85,11 +65,10 @@ const monthDataTemp = (arrCity, city) => {
     return chartData
 }
 
-
-const city = (arrCity) => {
-    const cityData = arrCity[0][0].data.request[0].query
-    return cityData
-}
+// const city = (arrCity) => {
+//     const cityData = arrCity[0][0].data.request[0].query
+//     return cityData
+// }
 export const Aruba = monthDataTemp(ArubaAllYears).datasets[0].data
 export const Alanya = monthDataTemp(AlanyaAllYears).datasets[0].data
 export const Barcelona = monthDataTemp(BarcelonaAllYears).datasets[0].data
@@ -106,7 +85,6 @@ export const Tokyo = monthDataTemp(TokyoAllYears).datasets[0].data
 export const Bali = monthDataTemp(BaliAllYears).datasets[0].data
 export const Stockholm = monthDataTemp(StockholmAllYears).datasets[0].data
 
-// console.log(Aruba)
 const Temp = (props) => {
     return (
         <div>
@@ -118,7 +96,6 @@ const Temp = (props) => {
                     maintainAspectRatio: true,
                     responsive: true,
                     title: { text: 'Medeltemperatur', display: true },
-                    // city(props.data)
                     scales: {
                         yAxes: [
                             {
