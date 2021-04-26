@@ -7,7 +7,6 @@ import { FaBars } from 'react-icons/fa';
 import ving_logga from '../../Images/vinglogga_transparant.png'
 import apollo_logga from '../../Images/apollologga_transparant.png'
 
-
 const StyledNav = styled.nav`
  background-color:transparent;
  position:relative;
@@ -83,13 +82,13 @@ margin-left:25px;
 }
 `
 
-const Navbar = ({ authUser, toggle }) => {
+const Navbar = ({ authUser, toggle, themeMode, theme, toggleTheme }) => {
 
   return (
     <StyledNav >
       <NavbarContainer>
         <NavLogo to='/wiz'>
-          {/* <LogoImg src={} /> */}
+          <LogoImg src={theme === 'ving' ? ving_logga : apollo_logga} />
         </NavLogo>
         <MobileIcon onClick={toggle}>
           <BurgerMenyIcon />

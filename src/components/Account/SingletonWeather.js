@@ -31,17 +31,17 @@ right: 40px;
 top: 10px;
 z-index: -1;
 }
-@media screen and (max-width:980px) {
-width:280px;
-height: 190px;
-  h2{
-    margin:5px 0 0 5px;
+  @media screen and (max-width:980px) {
+  width:280px;
+  height: 190px;
+    h2{
+      margin:5px 0 0 5px;
+    }
+    img{
+    width:50px;
+    right: 10px;
+    }
   }
-  img{
-  width:50px;
-  right: 10px;
-  }
-}
 `;
 const Temp = styled.div`
 width: 100%;
@@ -68,9 +68,7 @@ h4 span{
     font-size: 15px;
 }
 }
-
 `
-
 const SunriseSunset = styled.div`
 width: 100%;
 display: flex;
@@ -95,7 +93,6 @@ const SunWrapper = styled.div`
 display: flex;
 margin:0 20px;
 `
-
 const SingletonWeather = (props) => {
   const [data, setData] = useState(false)
 

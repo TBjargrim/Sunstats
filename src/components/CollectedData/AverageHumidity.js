@@ -60,7 +60,7 @@ const monthDataHumidity = (arrCity, city) => {
 
 const Humidity = (props) => {
     return (
-        <div>
+        <>
             <Line
                 data={monthDataHumidity(props.data, props.city)}
                 width={500}
@@ -92,7 +92,7 @@ const Humidity = (props) => {
                     }
                 }}
             />
-        </div>
+        </>
     )
 }
 export default Humidity

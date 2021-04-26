@@ -25,7 +25,7 @@ const Temp = ({ setTargetTemp, setTargetJumpOver, setTargetInfoClick }) => {
   }
   return (
 
-    <div>
+    <>
       <StyledText>
         <StyledH2Temp>Välj önskad temperatur</StyledH2Temp>
         <StyledP> Genom att klicka nedan väljer du temperaturintervall och vi föreslår en resa för sol och perfekt temperatur!</StyledP>
@@ -41,7 +41,7 @@ const Temp = ({ setTargetTemp, setTargetJumpOver, setTargetInfoClick }) => {
         <StyledLink onClick={handleBack} to={ROUTES.WIZ}><FaArrowLeft onClick={handleBack} /></StyledLink>
         <StyledLink onClick={handleNext} to={ROUTES.WIZ}> <FaArrowRight onClick={handleNext} /> </StyledLink>
       </LinkWrapper>
-    </div>
+    </>
   );
 }
 

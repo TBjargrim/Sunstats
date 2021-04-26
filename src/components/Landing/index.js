@@ -4,7 +4,6 @@ import BackgroundLanding from '../../Images/beach.jpg';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
 import Logo from '../../Images/sunstats_logo.png'
-import RenderTheme from '../ChangeBranding/RenderTheme';
 
 const Wrapper = styled.div`
 background-size:cover;
@@ -123,14 +122,15 @@ const CreAccBtn = styled(Link)`
     padding-top: 15px;
     margin: 0px;
 }
-  `
+`
+
 const Logga = styled.img`
 position:absolute;
 left:50px;
 top:50px;
 width:250px;
-   animation-name: moveInleft;
-    animation-duration: 4s;
+animation-name: moveInleft;
+animation-duration: 4s;
 @keyframes moveInleft {
     0% {
         opacity: 0;
@@ -149,7 +149,7 @@ width:250px;
   left:25px;
 width:150px;
 }
- `
+`
 const InfoText = styled.div`
 
 p {
@@ -173,14 +173,9 @@ const Landing = () => {
         </InfoText>
 
         <SignInBtn to={ROUTES.SIGN_IN}>Logga in</SignInBtn>
-        <CreAccBtn to={ROUTES.SIGN_UP}> Skapa konto</CreAccBtn>
-
-
+        <CreAccBtn to={ROUTES.SIGN_UP}>Skapa konto</CreAccBtn>
 
       </ContainerDiv>
-      <section>
-        <RenderTheme />
-      </section>
     </Wrapper>
   )
 };

@@ -18,7 +18,6 @@ p{
   padding:0px;
 }
 `
-
 const StyledH1 = styled.h1`
 display:flex;
 justify-content:center;
@@ -57,11 +56,10 @@ cursor:pointer;
 `
 
 const SignUpPage = () => (
-  <div>
+  <>
     <StyledH1>Skapa konto</StyledH1>
     <SignUpForm />
-  </div>
-
+  </>
 );
 
 const INITIAL_STATE = {

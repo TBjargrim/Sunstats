@@ -2,7 +2,6 @@ import styled from "styled-components";
 import React from "react";
 import { useHistory } from "react-router-dom"
 
-
 const FlexDiv = styled.div`
 display: flex;
 justify-content: center;

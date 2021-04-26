@@ -54,7 +54,7 @@ const Calendar = ({ setSaveDate }) => {
 
   return (
     <CalendarDiv>
-      <div>
+      <>
         <StyledH2Temp>När vill du åka ? </StyledH2Temp>
         <StyledP>Välj en månad som passar dig</StyledP>
         <DatePicker
@@ -64,7 +64,7 @@ const Calendar = ({ setSaveDate }) => {
           showMonthYearPicker
           inline
         />
-      </div>
+      </>
       <BtnDiv>
         <TravelBtn type="submit" onClick={handleChange}>OK</TravelBtn>
       </BtnDiv>

@@ -23,10 +23,10 @@ letter-spacing:1px;
 `
 
 const PasswordForgetPage = () => (
-  <div>
+  <>
     <h1>Lösenordsåterställning</h1>
     <PasswordForgetForm />
-  </div>
+  </>
 );
 
 const INITIAL_STATE = {

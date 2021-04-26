@@ -23,11 +23,10 @@ li {
   text-align: center;
   margin: 5px;
 }
-
 `
+
 const GetWeatherData = () => {
   const [savedFav, setSavedFav] = useState(JSON.parse(localStorage.getItem('favorites')) || [])
-
   return (
     <>
       <StyledDiv>

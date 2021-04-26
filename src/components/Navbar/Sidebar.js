@@ -6,7 +6,6 @@ import SignOutButton from '../SignOut';
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
 
-
 const SideBarContainer = styled.aside`
 position:fixed;
 z-index:999;
@@ -65,14 +64,14 @@ text-decoration:none;
 color:${({ theme }) => theme.h1};
 cursor:pointer;
 `
-const Sidebar = ({ authUser, isOpen, toggle }) => {
+const Sidebar = ({ authUser, isOpen, toggle, themeMode, theme, toggleTheme }) => {
 
     return (
         <SideBarContainer isOpen={isOpen} onClick={toggle}>
             <Icon onClick={toggle}>
                 <CloseIcon />
             </Icon>
-            <div>
+            <>
                 <SidebarMenu>
 
                     <StyledLI>
@@ -93,7 +92,7 @@ const Sidebar = ({ authUser, isOpen, toggle }) => {
                         <div onClick={toggle}> <SignOutButton /> </div>
                     </ButtonLI>
                 </SidebarMenu>
-            </div>
+            </>
         </SideBarContainer>
     )
 }

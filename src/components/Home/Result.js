@@ -255,7 +255,7 @@ function Result() {
     <FlexDiv>
       <h1>{date}</h1>
       <InputFilter />
-      <div>
+      <>
         <ul>
           {newArrSorted.map(obj => <li key={obj.city}>
             <CityCard >
@@ -274,7 +274,7 @@ function Result() {
             </CityCard>
           </li>)}
         </ul>
-      </div>
+      </>
     </FlexDiv>
   );
 }

@@ -15,7 +15,6 @@ import Wiz from "../Home/Wiz";
 import Destination from '../Home/Destination';
 import Result from "../Home/Result";
 import Settings from '../Account/Settings';
-
 import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
 
 const GlobalStyle = createGlobalStyle`
@@ -59,9 +58,11 @@ const App = () => {
     if (theme === 'ving') {
       window.localStorage.setItem('theme', 'apollo')
       setTheme('apollo');
+      console.log('hej')
     } else {
       window.localStorage.setItem('theme', 'ving')
       setTheme('ving');
+      console.log('då')
     }
   }
   useEffect(() => {
@@ -73,10 +74,8 @@ const App = () => {
     <ThemeProvider theme={themeMode}>
       <Router>
         <>
-          <h2>Branded by {theme === 'ving' ? 'Ving' : 'Apollo'}!</h2>
-          <button onClick={toggleTheme}> Ändra resebolag</button>
           <GlobalStyle />
-          <Navigation theme={theme} themeMode={themeMode} isOpen={isOpen} toggle={toggle} />
+          <Navigation theme={theme} themeMode={themeMode} toggleTheme={toggleTheme} isOpen={isOpen} toggle={toggle} />
           <Switch>
             <Route exact path={ROUTES.LANDING} component={LandingPage} />
             <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
@@ -87,7 +86,10 @@ const App = () => {
             <Route path={ROUTES.HOME} component={HomePage} />
             <Route path={ROUTES.WIZ} component={Wiz} />
             <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-            <Route path={ROUTES.ADMIN} component={AdminPage} theme={theme} />
+            {/* <Route path={ROUTES.ADMIN} component={AdminPage} /> */}
+            <Route path={ROUTES.ADMIN}>
+              <AdminPage theme={theme} themeMode={themeMode} toggleTheme={toggleTheme} />
+            </Route>
             <Route path={ROUTES.SETTINGS} component={Settings} />
           </Switch>
         </>
