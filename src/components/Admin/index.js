@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import { compose } from 'recompose';
-
 import { withFirebase } from '../Firebase';
 import { withAuthorization } from '../Session';
 import * as ROLES from '../../constants/roles';
 import * as ROUTES from '../../constants/routes';
 import styled from 'styled-components';
-import RenderTheme from '../ChangeBranding/RenderTheme';
-import {StyledButton} from "../PasswordChange/index"
+import { StyledButton } from "../PasswordChange/index"
 
 const DivWrapper = styled.div`
 margin: 20px;
 h1 {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-left: 15px;
+}
+`
+const StyledWrapper = styled.div`
+display:flex;
+justify-content:space-around;
+margin: 0 auto;
+h2{
+  font-size: 18px;
 }
 `
 const StyledDiv = styled.div`
@@ -36,7 +42,6 @@ div{
   margin:5px;
   padding:5px;
 }
-
 `
 const StyledLink = styled(Link)`
   text-decoration:none;
@@ -55,19 +60,20 @@ a{
 const StyledSpan = styled.span`
   display: flex;
   padding: 4px;
-`;
-
-const AdminPage = () => (
+`
+const AdminPage = ({ theme, themeMode, toggleTheme }) => (
   <>
     <DivWrapper>
       <h1>Admin</h1>
     </DivWrapper>
-    <RenderTheme />
+    <StyledWrapper>
+      <h2>Branded by {theme === 'ving' ? 'Ving' : 'Apollo'}!</h2>
+      <StyledButton onClick={toggleTheme}> Ändra resebolag </StyledButton>
+    </StyledWrapper>
     <Switch>
       <Route exact path={ROUTES.ADMIN_DETAILS} component={UserItem} />
       <Route exact path={ROUTES.ADMIN} component={UserList} />
     </Switch>
-
   </>
 );
 
@@ -80,7 +86,6 @@ class UserListBase extends Component {
       users: [],
     };
   }
-
   componentDidMount() {
     this.setState({ loading: true });
 
@@ -102,13 +107,11 @@ class UserListBase extends Component {
   componentWillUnmount() {
     this.props.firebase.users().off();
   }
-
   render() {
     const { users, loading } = this.state;
 
     return (
       <StyledDiv>
-
         <h2>Användare:</h2>
         { loading && <div>Loading ...</div>}
         <ul>
@@ -180,11 +183,11 @@ class UserItemBase extends Component {
     const { user, loading } = this.state;
 
     return (
-      <div>
+      <>
         <h2>Användare ({this.props.match.params.id})</h2>
-        {loading && <div>Loading ...</div>}
+        {loading && <span>Loading ...</span>}
         {user && (
-          <div>
+          <>
             <StyledSpan>
               <strong>ID: </strong> {user.uid}
             </StyledSpan>
@@ -202,9 +205,9 @@ class UserItemBase extends Component {
                 Skicka återställ lösenord
               </StyledButton>
             </span>
-          </div>
+          </>
         )}
-      </div>
+      </>
     );
   }
 }
@@ -214,9 +217,6 @@ const UserItem = withFirebase(UserItemBase);
 
 const condition = authUser =>
   authUser && !!authUser.roles[ROLES.ADMIN];
-
-// const condition = authUser =>
-//   authUser && authUser.roles.includes(ROLES.ADMIN);
 
 export default compose(
   withAuthorization(condition),

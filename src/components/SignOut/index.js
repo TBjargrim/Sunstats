@@ -15,9 +15,9 @@ cursor:pointer;
 }
 `
 const SignOutButton = ({ firebase }) => (
-  <div>
+  <>
     <StyledBtn type="button" onClick={firebase.doSignOut}>Logga ut</StyledBtn>
-  </div>
+  </>
 );
 
 export default withFirebase(SignOutButton);

@@ -65,10 +65,6 @@ const monthDataTemp = (arrCity, city) => {
     return chartData
 }
 
-// const city = (arrCity) => {
-//     const cityData = arrCity[0][0].data.request[0].query
-//     return cityData
-// }
 export const Aruba = monthDataTemp(ArubaAllYears).datasets[0].data
 export const Alanya = monthDataTemp(AlanyaAllYears).datasets[0].data
 export const Barcelona = monthDataTemp(BarcelonaAllYears).datasets[0].data
@@ -87,7 +83,7 @@ export const Stockholm = monthDataTemp(StockholmAllYears).datasets[0].data
 
 const Temp = (props) => {
     return (
-        <div>
+        <>
             <Line
                 data={monthDataTemp(props.data, props.city)}
                 width={500}
@@ -120,7 +116,7 @@ const Temp = (props) => {
                 }}
             />
 
-        </div>
+        </>
     )
 }
 

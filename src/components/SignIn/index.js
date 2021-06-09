@@ -26,7 +26,6 @@ button{
 margin-top:20px;
 display:flex;
 justify-content:center;
-background: linear-gradient(180deg, #F79521 0%, rgba(248, 98, 14, 0) 100%), #F36565;
 border: none;
 padding: 10px;
 color: white;

@@ -16,8 +16,6 @@ input {
 `
 export const StyledButton = styled.button`
 display: block;
- background: linear-gradient(
-    180deg ,#F79521 0%,rgba(248,98,14,0) 100%),#F36565;
   color: white;
   border: none;
   border-radius: 30px;
@@ -78,7 +76,7 @@ class PasswordChangeForm extends Component {
           />
           <StyledButton disabled={isInvalid} type="submit">
             OK
-</StyledButton>
+          </StyledButton>
           {error && <p>{error.message}</p>}
         </form>
       </StyledForm>

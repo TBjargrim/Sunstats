@@ -1,4 +1,3 @@
-// import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
 import London from '../../Images/LondonImage.jpg'
 import Tokyo from '../../Images/TokyoImage.jpg'
@@ -27,7 +26,6 @@ p {
   letter-spacing:1px;
 }
 `
-
 const Heart = styled(FaHeart)`
 color: red;
 font-size: 18px;
@@ -92,20 +90,21 @@ img{
   border-radius: 7px;
 }
 @media screen and (max-width:1000px) {
-  width:100%;
-img{
-  width:80%;
-  height: 100%;
-  margin-top: 10px;
-}
+width:100%;
+  img{
+    width:80%;
+    height: 100%;
+    margin-top: 10px;
+  }
 }
 `
+
 const MyPage = () => {
   return (
     <div>
       <WrapperFav>
         <StyledDiv>
-          <Heart /><p> Dina favoriter:   </p>
+          <Heart /><p> Dina favoriter: </p>
         </StyledDiv>
         <WeatherData />
       </WrapperFav>

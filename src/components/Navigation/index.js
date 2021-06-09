@@ -28,11 +28,11 @@ max-width:130px;
 margin-left: -30px;
 align-items: flex-start;
 `
-const Navigation = ({ isOpen, toggle }) => (
+const Navigation = ({ isOpen, toggle, themeMode, theme }) => (
   <AuthUserContext.Consumer>
     {authUser =>
       authUser ? (
-        <NavigationAuth authUser={authUser} isOpen={isOpen} toggle={toggle} />
+        <NavigationAuth theme={theme} themeMode={themeMode} authUser={authUser} isOpen={isOpen} toggle={toggle} />
       ) : (
         <NavigationNonAuth />
       )
@@ -42,10 +42,10 @@ const Navigation = ({ isOpen, toggle }) => (
 
 const NavigationAuth = ({ authUser, isOpen, toggle, themeMode, theme }) => {
   return (
-    <div>
-      <Sidebar authUser={authUser} isOpen={isOpen} toggle={toggle} />
-      <Navbar authUser={authUser} toggle={toggle} />
-    </div>)
+    <>
+      <Sidebar theme={theme} themeMode={themeMode} authUser={authUser} isOpen={isOpen} toggle={toggle} />
+      <Navbar theme={theme} themeMode={themeMode} authUser={authUser} toggle={toggle} />
+    </>)
 };
 
 const NavigationNonAuth = () => (

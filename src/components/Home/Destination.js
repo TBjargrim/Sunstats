@@ -1,22 +1,12 @@
 import { useParams, useHistory } from "react-router-dom"
-import { ThemeProvider } from 'styled-components';
-
 import { Stockholm } from "../CollectedData/AverageTemp"
 import { cityHistoric } from '../CollectedData/SelectedAvgTempCity';
 import TestHumidity from '../CollectedData/AverageHumidity'
 import TestTemp from '../CollectedData/AverageTemp'
-
-import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
-
-import ving_logga from '../../Images/vinglogga_transparant.png'
-import apollo_logga from '../../Images/apollologga_transparant.png'
-import { StyledWrapper, StyledLogo, CityCardImg, StyledContainer, Header, StyledDivv, InfoDestination, ComparisonDiv, Arrow } from './SelectionStyling'
+import { StyledWrapper, CityCardImg, StyledContainer, Header, StyledDivv, InfoDestination, ComparisonDiv, Arrow } from './SelectionStyling'
 
 function Destination() {
     const { date, destination } = useParams();
-    const [theme] = useVingMode();
-
     const history = useHistory();
     const state = history.location.state.temp;
     let sweState;
@@ -62,17 +52,10 @@ function Destination() {
     }
 
 
-    const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
-
     return (
-        <ThemeProvider theme={themeMode}>
-
+        <>
             <StyledWrapper>
                 <Arrow onClick={handleGoback} />
-                <StyledLogo>
-                    <img src={theme === 'ving' ? ving_logga : apollo_logga} alt='Bild på strand' />
-                </StyledLogo>
-
             </StyledWrapper>
             <CityCardImg>
                 <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80" alt="city" />
@@ -97,6 +80,7 @@ function Destination() {
                     <TestHumidity city={destination} data={cityHistoric[destination]} />
                 </StyledDivv>
             </StyledContainer>
-        </ThemeProvider>)
+        </>
+    )
 }
 export default Destination;

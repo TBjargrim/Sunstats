@@ -11,7 +11,7 @@ font-weight:700;
 text-transform:capitalize;
 margin-top:70px;
 animation-name: moveInleft;
-    animation-duration: 3s;
+animation-duration: 3s;
 @keyframes moveInleft {
     0% {
         opacity: 0;
@@ -29,13 +29,12 @@ animation-name: moveInleft;
 `;
 
 const AccountPage = () => (
-
   <AuthUserContext.Consumer >
     {authUser => (
-      <div>
+      <>
         <Styledh1>Hejsan {authUser.username}</Styledh1>
         <MyPage />
-      </div>
+      </>
     )}
   </AuthUserContext.Consumer>
 );

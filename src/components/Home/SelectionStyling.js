@@ -225,14 +225,6 @@ display:flex;
 justify-content: center;
 margin-top: 30px;
 `
-export const StyledLogo = styled.div`
-position: absolute;
-text-align: center;
-img{
-    width: 70%;
-    margin-left: 30px;
-}
-`
 export const CityCardImg = styled.div`
 width: 100%;
 img{

@@ -5,9 +5,6 @@ import * as ROLES from '../../constants/roles';
 import SignOutButton from '../SignOut';
 import styled from 'styled-components';
 import { FaTimes } from 'react-icons/fa';
-import { ThemeProvider } from 'styled-components';
-import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
 
 const SideBarContainer = styled.aside`
 position:fixed;
@@ -67,40 +64,36 @@ text-decoration:none;
 color:${({ theme }) => theme.h1};
 cursor:pointer;
 `
-const Sidebar = ({ authUser, isOpen, toggle }) => {
-    const [theme] = useVingMode();
-    const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+const Sidebar = ({ authUser, isOpen, toggle, themeMode, theme, toggleTheme }) => {
 
     return (
-        <ThemeProvider theme={themeMode}>
-            <SideBarContainer isOpen={isOpen} onClick={toggle}>
-                <Icon onClick={toggle}>
-                    <CloseIcon />
-                </Icon>
-                <div>
-                    <SidebarMenu>
+        <SideBarContainer isOpen={isOpen} onClick={toggle}>
+            <Icon onClick={toggle}>
+                <CloseIcon />
+            </Icon>
+            <>
+                <SidebarMenu>
 
-                        <StyledLI>
-                            <StyledLink to='/account' onClick={toggle}>Min Profil</StyledLink>
-                        </StyledLI>
-                        <StyledLI>
-                            <StyledLink to='/wiz' onClick={toggle}>Hitta resmål</StyledLink>
-                        </StyledLI>
-                        <StyledLI>
-                            <StyledLink to='/settings' onClick={toggle}>Inställningar</StyledLink>
-                        </StyledLI>
-                        <StyledLI>
-                            {!!authUser.roles[ROLES.ADMIN] && (
-                                <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
-                        </StyledLI>
+                    <StyledLI>
+                        <StyledLink to='/account' onClick={toggle}>Min Profil</StyledLink>
+                    </StyledLI>
+                    <StyledLI>
+                        <StyledLink to='/wiz' onClick={toggle}>Hitta resmål</StyledLink>
+                    </StyledLI>
+                    <StyledLI>
+                        <StyledLink to='/settings' onClick={toggle}>Inställningar</StyledLink>
+                    </StyledLI>
+                    <StyledLI>
+                        {!!authUser.roles[ROLES.ADMIN] && (
+                            <StyledLink to={ROUTES.ADMIN}>Admin</StyledLink>)}
+                    </StyledLI>
 
-                        <ButtonLI>
-                            <div onClick={toggle}> <SignOutButton /> </div>
-                        </ButtonLI>
-                    </SidebarMenu>
-                </div>
-            </SideBarContainer>
-        </ThemeProvider>
+                    <ButtonLI>
+                        <div onClick={toggle}> <SignOutButton /> </div>
+                    </ButtonLI>
+                </SidebarMenu>
+            </>
+        </SideBarContainer>
     )
 }
 

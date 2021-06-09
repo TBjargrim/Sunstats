@@ -4,11 +4,7 @@ import BackgroundLanding from '../../Images/beach.jpg';
 import * as ROUTES from '../../constants/routes';
 import { Link } from 'react-router-dom'
 import Logo from '../../Images/sunstats_logo.png'
-import RenderTheme from '../ChangeBranding/RenderTheme';
 
-import { ThemeProvider } from 'styled-components';
-import { VingTheme, ApolloTheme } from '../ChangeBranding/ThemeStyled'
-import { useVingMode } from '../ChangeBranding/LocalStorage'
 const Wrapper = styled.div`
 background-size:cover;
 position:absolute;
@@ -126,14 +122,15 @@ const CreAccBtn = styled(Link)`
     padding-top: 15px;
     margin: 0px;
 }
-  `
+`
+
 const Logga = styled.img`
 position:absolute;
 left:50px;
 top:50px;
 width:250px;
-   animation-name: moveInleft;
-    animation-duration: 4s;
+animation-name: moveInleft;
+animation-duration: 4s;
 @keyframes moveInleft {
     0% {
         opacity: 0;
@@ -152,7 +149,7 @@ width:250px;
   left:25px;
 width:150px;
 }
- `
+`
 const InfoText = styled.div`
 
 p {
@@ -163,30 +160,23 @@ p {
 `
 
 const Landing = () => {
-  const [theme] = useVingMode();
-  const themeMode = theme === 'ving' ? VingTheme : ApolloTheme;
+
   return (
-    <ThemeProvider theme={themeMode}>
-      <Wrapper style={{ backgroundImage: `url(${BackgroundLanding})` }}>
-        <Logga src={Logo}></Logga>
-        <ContainerDiv>
-          <InfoText>
-            <p>Längtar du efter sol och värme?</p>
-            <p>Logga in och sök efter din bästa resa</p>
-            <p>Sök på temperaturer och datum</p>
-          </InfoText>
 
-          <SignInBtn to={ROUTES.SIGN_IN}>Logga in</SignInBtn>
-          <CreAccBtn to={ROUTES.SIGN_UP}> Skapa konto</CreAccBtn>
+    <Wrapper style={{ backgroundImage: `url(${BackgroundLanding})` }}>
+      <Logga src={Logo}></Logga>
+      <ContainerDiv>
+        <InfoText>
+          <p>Längtar du efter sol och värme?</p>
+          <p>Logga in och sök efter din bästa resa</p>
+          <p>Sök på temperaturer och datum</p>
+        </InfoText>
 
+        <SignInBtn to={ROUTES.SIGN_IN}>Logga in</SignInBtn>
+        <CreAccBtn to={ROUTES.SIGN_UP}>Skapa konto</CreAccBtn>
 
-
-        </ContainerDiv>
-        <section>
-          <RenderTheme />
-        </section>
-      </Wrapper>
-    </ThemeProvider>
+      </ContainerDiv>
+    </Wrapper>
   )
 };
 
