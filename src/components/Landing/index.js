@@ -158,7 +158,10 @@ p {
   color: white;
 }
 `
-
+const Message = styled.h4`
+font-size:25px;
+margin-top:200px;
+`
 const Landing = () => {
 
   return (
@@ -172,10 +175,13 @@ const Landing = () => {
           <p>Sök på temperaturer och datum</p>
         </InfoText>
 
+
         <SignInBtn to={ROUTES.SIGN_IN}>Logga in</SignInBtn>
         <CreAccBtn to={ROUTES.SIGN_UP}>Skapa konto</CreAccBtn>
-
+        <Message>När du skapar ett konto använd INTE din riktiga e-mail adress.<br />
+          Anledningen är att vi inte kan ta ansvar för dina personliga uppgifter.</Message>
       </ContainerDiv>
+
     </Wrapper>
   )
 };

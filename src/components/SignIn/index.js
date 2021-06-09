@@ -42,6 +42,10 @@ cursor:pointer;
 }
 }
 `
+const Message = styled.h4`
+font-size:25px;
+margin-top:200px;
+`
 const StyledDiv = styled.div`
 text-align:center;
 `
@@ -89,6 +93,8 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
     return (
       <StyledForm onSubmit={this.onSubmit}>
+        <Message>När du skapar ett konto använd INTE din riktiga e-mail adress.<br />
+          Anledningen är att vi inte kan ta ansvar för dina personliga uppgifter.</Message>
         <input
           name="email"
           value={email}

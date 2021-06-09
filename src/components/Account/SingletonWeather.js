@@ -98,7 +98,7 @@ const SingletonWeather = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=ec735448d26149ab9c7183714211504&format=json&num_of_days=1&q=${props.city}`)
+      .get(`http://api.worldweatheronline.com/premium/v1/weather.ashx?key=06d6da1a9a9c44c78a7115359210906&format=json&num_of_days=1&q=${props.city}`)
       .then(res => {
         const cityObj = {}
         let cityYo = res.data.data.request[0].query;

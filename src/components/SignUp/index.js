@@ -54,6 +54,11 @@ cursor:pointer;
 }
 }
 `
+const Message = styled.h4`
+font-size:25px;
+margin-top:200px;
+text-align:center;
+`
 
 const SignUpPage = () => (
   <>
@@ -137,51 +142,55 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <StyledForm onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="För- och efternamn"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="E-post"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Lösenord"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Bekräfta lösenord"
-        />
-
-        <StyledAdmin>
-          <p>Admin:</p>
+      <>
+        <Message>När du skapar ett konto använd INTE din riktiga e-mail adress.<br />
+      Anledningen är att vi inte kan ta ansvar för dina personliga uppgifter.</Message>
+        <StyledForm onSubmit={this.onSubmit}>
           <input
-            name="isAdmin"
-            type="checkbox"
-            checked={isAdmin}
-            onChange={this.onChangeCheckbox}
+            name="username"
+            value={username}
+            onChange={this.onChange}
+            type="text"
+            placeholder="För- och efternamn"
           />
-        </StyledAdmin>
-        <button disabled={isInvalid} type="submit">
-          Logga in
+          <input
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            placeholder="E-post"
+          />
+          <input
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Lösenord"
+          />
+          <input
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Bekräfta lösenord"
+          />
+
+          <StyledAdmin>
+            <p>Admin:</p>
+            <input
+              name="isAdmin"
+              type="checkbox"
+              checked={isAdmin}
+              onChange={this.onChangeCheckbox}
+            />
+          </StyledAdmin>
+          <button disabled={isInvalid} type="submit">
+            Logga in
         </button>
 
-        {error && <p>{error.message}</p>}
-      </StyledForm>
+          {error && <p>{error.message}</p>}
+        </StyledForm>
+      </>
     );
   }
 }
